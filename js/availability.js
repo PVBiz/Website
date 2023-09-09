@@ -14,9 +14,9 @@ function updateInverterData() {
 
     // Define your inverter names and corresponding HTML element IDs
     const inverters = [
-        { name: 'SUNSYNK', fields: ['field1', 'field2', 'field3'], updateTimeId: 'updateTime1' },
-        { name: 'DEYE', fields: ['field4', 'field5', 'field6'], updateTimeId: 'updateTime2' },
-        { name: 'SOLARMAN', fields: ['field7', 'field8', 'field9'], updateTimeId: 'updateTime3' }
+        { name: 'SUNSYNK', fields: ['field1'], updateTimeId: 'updateTime1' },
+        { name: 'DEYE', fields: ['field4'], updateTimeId: 'updateTime2' },
+        { name: 'SOLARMAN', fields: ['field7'], updateTimeId: 'updateTime3' }
     ];
 
     inverters.forEach(async (inverter) => {
