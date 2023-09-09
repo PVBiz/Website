@@ -1,5 +1,5 @@
 import dynamoDBConfig from './availability-config.js'; // Import your DynamoDB configuration
-import AWS from 'aws-sdk';
+//import AWS from 'aws-sdk';
 
 AWS.config.update(dynamoDBConfig);
 const dynamoDB = new AWS.DynamoDB();
