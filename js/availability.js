@@ -17,7 +17,7 @@ function updateInverterData() {
 
     inverters.forEach(async (inverter) => {
         const params = {
-            TableName: 'PVBIZ_SOLAR_ENV_STATUS',
+            TableName: dynamoDBConfig.tableName,
             Key: {
                 inverterName: { S: inverter.name }
             }
