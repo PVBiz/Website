@@ -1,5 +1,10 @@
 
-import dynamoDBConfig from './availability-config.js'; // Adjust the path as needed
+// main.js
+import dynamoDBConfig from './availability-config.js';
+
+const dynamodb = new AWS.DynamoDB({
+  config: dynamoDBConfig
+});
 
 const AWS = require('aws-sdk');
 
