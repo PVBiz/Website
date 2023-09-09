@@ -10,6 +10,7 @@ function updateInverterData() {
     ];
     //
     // Fetch and parse the data from availability_data.txt
+    //TEST
     fetch('js/data/availability.txt')
         .then(response => response.text())
         .then(data => {
