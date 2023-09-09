@@ -50,5 +50,5 @@ function updateInverterData() {
 }
 
 // Update data initially and then every 5 minutes (adjust as needed)
-//updateInverterData();
-//setInterval(updateInverterData, 5 * 60 * 1000);
+updateInverterData();
+setInterval(updateInverterData, 5 * 60 * 1000);
