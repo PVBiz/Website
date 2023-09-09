@@ -1,3 +1,14 @@
+
+import dynamoDBConfig from './availability-config.js'; // Adjust the path as needed
+
+const AWS = require('aws-sdk');
+
+// Set the AWS configuration using the imported configuration
+AWS.config.update(dynamoDBConfig);
+
+const dynamoDB = new AWS.DynamoDB();
+
+
 // Simulated data retrieval from DynamoDB (replace with actual data retrieval)
 function fetchData() {
     // Simulated data
