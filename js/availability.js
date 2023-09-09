@@ -8,40 +8,52 @@ AWS.config.update(dynamoDBConfig);
 
 const dynamoDB = new AWS.DynamoDB();
 
-
-// Simulated data retrieval from DynamoDB (replace with actual data retrieval)
-function fetchData() {
-    // Simulated data
-    const data = [
-        { field1: 'Value 1', field2: 'Value 2', field3: 'Value 3', timestamp: new Date() },
-        // Add more data objects for each inverter
-    ];
-
-    return data;
-}
-
 function updateInverterData() {
     const fifteenMinutes = 15 * 60 * 1000; // 15 minutes in milliseconds
     const oneHour = 60 * 60 * 1000; // 1 hour in milliseconds
 
-    const inverters = document.querySelectorAll('.inverter');
+    // Define your inverter names and corresponding HTML element IDs
+    const inverters = [
+        { name: 'SUNSYNK', fields: ['field1', 'field2', 'field3'], updateTimeId: 'updateTime1' },
+        { name: 'DEYE', fields: ['field4', 'field5', 'field6'], updateTimeId: 'updateTime2' },
+        { name: 'SOLARMAN', fields: ['field7', 'field8', 'field9'], updateTimeId: 'updateTime3' }
+    ];
 
-    inverters.forEach((inverter, index) => {
-        const data = fetchData()[index];
-        const dataFields = inverter.querySelectorAll('.data span');
+    inverters.forEach(async (inverter) => {
+        const params = {
+            TableName: 'PVBIZ_SOLAR_ENV_STATUS',
+            Key: {
+                inverterName: { S: inverter.name }
+            }
+        };
 
-        dataFields[0].textContent = data.field1;
-        dataFields[1].textContent = data.field2;
-        dataFields[2].textContent = data.field3;
+        try {
+            const data = await dynamoDB.getItem(params).promise();
+            const dataFields = inverter.fields.map((field) => document.getElementById(field));
+            const updateTime = document.getElementById(inverter.updateTimeId);
 
-        const timestamp = new Date(data.timestamp);
-        const currentTime = new Date();
-        const timeDifference = currentTime - timestamp;
+            if (data.Item) {
+                const timestamp = new Date(data.Item.UPDATE_TIME.S);
+                const currentTime = new Date();
+                const timeDifference = currentTime - timestamp;
 
-        if (timeDifference > oneHour) {
-            dataFields.forEach((field) => field.classList.add('old'));
-        } else if (timeDifference > fifteenMinutes) {
-            dataFields.forEach((field) => field.classList.remove('old'));
+                dataFields[0].textContent = data.Item.Field1.S;
+                dataFields[1].textContent = data.Item.Field2.S;
+                dataFields[2].textContent = data.Item.Field3.S;
+
+                updateTime.textContent = timestamp.toLocaleString();
+
+                if (timeDifference > oneHour) {
+                    dataFields.forEach((field) => field.classList.add('old'));
+                } else if (timeDifference > fifteenMinutes) {
+                    dataFields.forEach((field) => field.classList.remove('old'));
+                }
+            } else {
+                // Handle the case where no data is found for the inverter
+                console.error(`No data found for ${inverter.name}`);
+            }
+        } catch (error) {
+            console.error('Error fetching data from DynamoDB:', error);
         }
     });
 }
