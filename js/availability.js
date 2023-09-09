@@ -9,8 +9,8 @@ function updateInverterData() {
         { name: 'SOLARMAN', field: 'field7', updateTimeId: 'updateTime3' }
     ];
 
-    // Fetch the data from availability_data.txt
-    fetch('js/data/availability.txt')
+    // Fetch and parse the data from availability_data.txt
+    fetch('js/data/availability_data.txt')
         .then(response => response.text())
         .then(data => {
             try {
@@ -21,23 +21,19 @@ function updateInverterData() {
                         const dataField = document.getElementById(inverter.field);
                         const updateTimeElement = document.getElementById(inverter.updateTimeId);
 
-                        if (dataField && updateTimeElement) {
-                            // Update the HTML elements with data
-                            dataField.textContent = updateTime;
-                            updateTimeElement.textContent = updateTime;
+                        // Update the HTML elements with data
+                        dataField.textContent = updateTime;
+                        updateTimeElement.textContent = updateTime;
 
-                            // Calculate and apply the CSS class based on time difference
-                            const timestamp = new Date(updateTime);
-                            const currentTime = new Date();
-                            const timeDifference = currentTime - timestamp;
+                        // Calculate and apply the CSS class based on time difference
+                        const timestamp = new Date(updateTime);
+                        const currentTime = new Date();
+                        const timeDifference = currentTime - timestamp;
 
-                            if (timeDifference > oneHour) {
-                                dataField.classList.add('old');
-                            } else if (timeDifference > fifteenMinutes) {
-                                dataField.classList.remove('old');
-                            }
-                        } else {
-                            console.error(`HTML element not found for ${inverter.name}`);
+                        if (timeDifference > oneHour) {
+                            dataField.classList.add('old');
+                        } else if (timeDifference > fifteenMinutes) {
+                            dataField.classList.remove('old');
                         }
                     } else {
                         console.error(`No data found for ${inverter.name}`);
