@@ -1,5 +1,5 @@
 import dynamoDBConfig from './availability-config.js';
-import AWS from 'aws-sdk';
+
 
 AWS.config.update({
   accessKeyId: dynamoDBConfig.accessKeyId,
