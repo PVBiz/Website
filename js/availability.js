@@ -26,15 +26,15 @@ function updateInverterData() {
                         updateTimeElement.textContent = updateTime;
 
                         // Calculate and apply the CSS class based on time difference
-                        const timestamp = new Date(updateTime);
-                        const currentTime = new Date();
-                        const timeDifference = currentTime - timestamp;
+                        //const timestamp = new Date(updateTime);
+                        //const currentTime = new Date();
+                        //const timeDifference = currentTime - timestamp;
 
-                        if (timeDifference > oneHour) {
-                            dataField.classList.add('old');
-                        } else if (timeDifference > fifteenMinutes) {
-                            dataField.classList.remove('old');
-                        }
+                        //if (timeDifference > oneHour) {
+                        //    dataField.classList.add('old');
+                        //} else if (timeDifference > fifteenMinutes) {
+                        //    dataField.classList.remove('old');
+                        //}
                     } else {
                         console.error(`No data found for ${inverter.name}`);
                     }
