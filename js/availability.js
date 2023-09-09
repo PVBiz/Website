@@ -20,7 +20,7 @@ function updateInverterData() {
         const params = {
             TableName: dynamoDBConfig.tableName,
             Key: {
-                inverterName: { S: inverter.name }
+                SOLAR_TYPE: { S: inverter.name }
             }
         };
 
