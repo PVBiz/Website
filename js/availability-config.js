@@ -8,4 +8,4 @@ const dynamoDBConfig = {
 };
 
 export default dynamoDBConfig;
-//EOF
+//EOF1
