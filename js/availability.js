@@ -8,7 +8,7 @@ function updateInverterData() {
         { name: 'DEYE', field: 'field4', updateTimeId: 'updateTime2' },
         { name: 'SOLARMAN', field: 'field7', updateTimeId: 'updateTime3' }
     ];
-
+    //
     // Fetch and parse the data from availability_data.txt
     fetch('js/data/availability.txt')
         .then(response => response.text())
