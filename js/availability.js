@@ -10,7 +10,7 @@ function updateInverterData() {
     ];
 
     // Fetch and parse the data from availability_data.txt
-    ////
+    //
     fetch('js/data/availability.txt')
         .then(response => response.text())
         .then(data => {
@@ -50,5 +50,4 @@ function updateInverterData() {
 }
 
 // Update data initially and then every 5 minutes (adjust as needed)
-updateInverterData();
 setInterval(updateInverterData, 5 * 60 * 1000);
