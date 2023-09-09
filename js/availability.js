@@ -1,61 +1,53 @@
-import dynamoDBConfig from './availability-config.js';
-
-
-AWS.config.update({
-  accessKeyId: dynamoDBConfig.accessKeyId,
-  secretAccessKey: dynamoDBConfig.secretAccessKey,
-  region: dynamoDBConfig.region,
-});
-
-const dynamoDB = new AWS.DynamoDB();
-
 function updateInverterData() {
-  const fifteenMinutes = 15 * 60 * 1000; // 15 minutes in milliseconds
-  const oneHour = 60 * 60 * 1000; // 1 hour in milliseconds
+    const fifteenMinutes = 15 * 60 * 1000; // 15 minutes in milliseconds
+    const oneHour = 60 * 60 * 1000; // 1 hour in milliseconds
 
-  const inverters = [
-    { name: 'SUNSYNK', fields: ['field1'], updateTimeId: 'updateTime1' },
-    { name: 'DEYE', fields: ['field4'], updateTimeId: 'updateTime2' },
-    { name: 'SOLARMAN', fields: ['field7'], updateTimeId: 'updateTime3' }
-  ];
+    // Define your inverter names and corresponding HTML element IDs
+    const inverters = [
+        { name: 'SUNSYNK', field: 'field1', updateTimeId: 'updateTime1' },
+        { name: 'DEYE', field: 'field4', updateTimeId: 'updateTime2' },
+        { name: 'SOLARMAN', field: 'field7', updateTimeId: 'updateTime3' }
+    ];
 
-  inverters.forEach(async (inverter) => {
-    const params = {
-      TableName: dynamoDBConfig.tableName,
-      Key: {
-        SOLAR_TYPE: { S: inverter.name }
-      }
-    };
+    // Fetch and parse the data from availability_data.txt
+    fetch('data/availability_data.txt')
+        .then(response => response.text())
+        .then(data => {
+            const lines = data.split('\n');
+            
+            // Iterate through each line in the data
+            lines.forEach(line => {
+                const parts = line.trim().split(':');
+                const inverterName = parts[0].trim();
+                const updateTime = parts[1].trim();
 
-    try {
-      const data = await dynamoDB.getItem(params).promise();
-      const dataFields = inverter.fields.map((field) => document.getElementById(field));
-      const updateTime = document.getElementById(inverter.updateTimeId);
+                // Find the corresponding inverter in the inverters array
+                const inverter = inverters.find(inv => inv.name === inverterName);
 
-      if (data.Item) {
-        const timestamp = new Date(data.Item.UPDATE_TIME.S);
-        const currentTime = new Date();
-        const timeDifference = currentTime - timestamp;
+                if (inverter) {
+                    const dataField = document.getElementById(inverter.field);
+                    const updateTimeElement = document.getElementById(inverter.updateTimeId);
 
-        // Adjust this part based on your DynamoDB schema
-        dataFields[0].textContent = data.Item.Field1.S;
-        // Add similar lines for other fields if needed
+                    // Update the HTML elements with data
+                    dataField.textContent = updateTime;
+                    updateTimeElement.textContent = updateTime;
 
-        updateTime.textContent = timestamp.toLocaleString();
+                    // Calculate and apply the CSS class based on time difference
+                    const timestamp = new Date(updateTime);
+                    const currentTime = new Date();
+                    const timeDifference = currentTime - timestamp;
 
-        if (timeDifference > oneHour) {
-          dataFields.forEach((field) => field.classList.add('old'));
-        } else if (timeDifference > fifteenMinutes) {
-          dataFields.forEach((field) => field.classList.remove('old'));
-        }
-      } else {
-        // Handle the case where no data is found for the inverter
-        console.error(`No data found for ${inverter.name}`);
-      }
-    } catch (error) {
-      console.error('Error fetching data from DynamoDB:', error);
-    }
-  });
+                    if (timeDifference > oneHour) {
+                        dataField.classList.add('old');
+                    } else if (timeDifference > fifteenMinutes) {
+                        dataField.classList.remove('old');
+                    }
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
 }
 
 // Update data initially and then every 5 minutes (adjust as needed)
