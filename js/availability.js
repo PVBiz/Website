@@ -4,8 +4,8 @@ function updateInverterData() {
 
     // Define your inverter names and corresponding HTML element IDs
     const inverters = [
-        { name: 'SUNSYNK', field: 'field4', updateTimeId: 'updateTime1' },
-        { name: 'DEYE', field: 'field1', updateTimeId: 'updateTime2' },
+        { name: 'SUNSYNK', field: 'field1', updateTimeId: 'updateTime1' },
+        { name: 'DEYE', field: 'field4', updateTimeId: 'updateTime2' },
         { name: 'SOLARMAN', field: 'field7', updateTimeId: 'updateTime3' }
     ];
 
