@@ -8,43 +8,40 @@ function updateInverterData() {
         { name: 'DEYE', field: 'field4', updateTimeId: 'updateTime2' },
         { name: 'SOLARMAN', field: 'field7', updateTimeId: 'updateTime3' }
     ];
-    //
+
     // Fetch and parse the data from availability_data.txt
-    //TEST
-    fetch('js/data/availability.txt')
+    fetch('js/data/availability_data.txt')
         .then(response => response.text())
         .then(data => {
-            const lines = data.split('\n');
-            
-            // Iterate through each line in the data
-            lines.forEach(line => {
-                const parts = line.trim().split(':');
-                const inverterName = parts[0].trim();
-                const updateTime = parts[1].trim();
+            try {
+                const jsonData = JSON.parse(data);
+                for (const inverter of inverters) {
+                    if (jsonData.hasOwnProperty(inverter.name)) {
+                        const updateTime = jsonData[inverter.name];
+                        const dataField = document.getElementById(inverter.field);
+                        const updateTimeElement = document.getElementById(inverter.updateTimeId);
 
-                // Find the corresponding inverter in the inverters array
-                const inverter = inverters.find(inv => inv.name === inverterName);
+                        // Update the HTML elements with data
+                        dataField.textContent = updateTime;
+                        updateTimeElement.textContent = updateTime;
 
-                if (inverter) {
-                    const dataField = document.getElementById(inverter.field);
-                    const updateTimeElement = document.getElementById(inverter.updateTimeId);
+                        // Calculate and apply the CSS class based on time difference
+                        const timestamp = new Date(updateTime);
+                        const currentTime = new Date();
+                        const timeDifference = currentTime - timestamp;
 
-                    // Update the HTML elements with data
-                    dataField.textContent = updateTime;
-                    updateTimeElement.textContent = updateTime;
-
-                    // Calculate and apply the CSS class based on time difference
-                    const timestamp = new Date(updateTime);
-                    const currentTime = new Date();
-                    const timeDifference = currentTime - timestamp;
-
-                    if (timeDifference > oneHour) {
-                        dataField.classList.add('old');
-                    } else if (timeDifference > fifteenMinutes) {
-                        dataField.classList.remove('old');
+                        if (timeDifference > oneHour) {
+                            dataField.classList.add('old');
+                        } else if (timeDifference > fifteenMinutes) {
+                            dataField.classList.remove('old');
+                        }
+                    } else {
+                        console.error(`No data found for ${inverter.name}`);
                     }
                 }
-            });
+            } catch (error) {
+                console.error('Error parsing JSON data:', error);
+            }
         })
         .catch(error => {
             console.error('Error fetching data:', error);
