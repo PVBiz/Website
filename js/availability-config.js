@@ -1,8 +1,8 @@
 // config.js (Not publicly accessible)
 
 const dynamoDBConfig = {
-    accessKeyId: 'PVBIZ_DYNAMODB',
-    secretAccessKey: 'YAKIAZZOLPERQPPIGGJHD',
+    accessKeyId: 'AKIAZZOLPERQCTDDWOHQ',
+    secretAccessKey: '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',
     region: 'eu-central-1',
     tableName: 'PVBIZ_SOLAR_ENV_STATUS',
 };
