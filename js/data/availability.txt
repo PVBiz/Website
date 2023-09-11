@@ -1,14 +1,5 @@
-[
-    {
-        "SOLAR_TYPE": "DEYE",
-        "UPDATE_TIME": "2023-09-11 16:42:25"
-    },
-    {
-        "SOLAR_TYPE": "SOLARMAN",
-        "UPDATE_TIME": "2023-09-11 16:43:25"
-    },
-    {
-        "SOLAR_TYPE": "SUNSYNK",
-        "UPDATE_TIME": "2023-09-11 16:49:02"
-    }
-]
+{
+    "DEYE": "2023-09-11 16:47:30",
+    "SOLARMAN": "2023-09-11 16:43:25",
+    "SUNSYNK": "2023-09-11 16:53:03"
+}
