@@ -1,10 +1,5 @@
 // Install the Sheetrock.js library
-const Sheetrock = require('sheetrock');
-
-// Create a new Sheetrock object
-const sheetrock = new Sheetrock({
-  spreadsheetId: '1UsgZQY_S36ZuOTCW8hG-p05q2wlzcykAFRF-Ntjf0uU',
-});
+// Include this library via a script tag in your HTML file
 
 // Define your inverter names and corresponding HTML element IDs
 const inverters = [
@@ -17,28 +12,38 @@ const inverters = [
 async function updateInverterData() {
   try {
     // Read the data from the Google Sheet
-    const values = await sheetrock.get('Sheet1');
+    sheetrock({
+      url: 'https://docs.google.com/spreadsheets/d/1UsgZQY_S36ZuOTCW8hG-p05q2wlzcykAFRF-Ntjf0uU/edit#gid=0',
+      query: 'select *',
+      callback: function (error, options, response) {
+        if (!error) {
+          const values = response.rows;
 
-    // Update the HTML elements with data
-    for (const inverter of inverters) {
-      const updateTime = values[0][inverter.field];
-      const dataField = document.getElementById(inverter.field);
-      const updateTimeElement = document.getElementById(inverter.updateTimeId);
+          // Update the HTML elements with data
+          for (const inverter of inverters) {
+            const updateTime = values[0][inverter.field];
+            const dataField = document.getElementById(inverter.field);
+            const updateTimeElement = document.getElementById(inverter.updateTimeId);
 
-      dataField.textContent = updateTime;
-      updateTimeElement.textContent = updateTime;
+            dataField.textContent = updateTime;
+            updateTimeElement.textContent = updateTime;
 
-      // Calculate and apply the CSS class based on time difference
-      const timestamp = new Date(updateTime);
-      const currentTime = new Date();
-      const timeDifference = currentTime - timestamp;
+            // Calculate and apply the CSS class based on time difference
+            const timestamp = new Date(updateTime);
+            const currentTime = new Date();
+            const timeDifference = currentTime - timestamp;
 
-      if (timeDifference > oneHour) {
-        dataField.classList.add('old');
-      } else if (timeDifference > fifteenMinutes) {
-        dataField.classList.remove('old');
+            if (timeDifference > 60 * 60 * 1000) { // One hour in milliseconds
+              dataField.classList.add('old');
+            } else if (timeDifference > 15 * 60 * 1000) { // Fifteen minutes in milliseconds
+              dataField.classList.remove('old');
+            }
+          }
+        } else {
+          console.error('Error fetching data from Google Sheets:', error);
+        }
       }
-    }
+    });
   } catch (error) {
     console.error('Error fetching data from Google Sheets:', error);
   }
