@@ -3,6 +3,6 @@
     "version": "1.0.0",
     "description": "My GitHub Pages site",
     "dependencies": {
-      "sheetrock": "^latest"
+      "sheetrock": "latest"
     }
   }
