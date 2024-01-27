@@ -954,7 +954,7 @@ footer .connect-us ul li a:hover {
 }
 
 .large-text {
-    font-size: 2em; /* Adjust this value to make the text larger or smaller */
+    font-size: 1.5em; /* Adjust this value to make the text larger or smaller */
 	line-height: 2;
 	font-weight: bold;
 }
