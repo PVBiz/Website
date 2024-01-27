@@ -938,21 +938,23 @@ footer .connect-us ul li a:hover {
     background-size: cover;
     background-image: url(../img/PVBiz_Main.webp);
     text-align: center;
-    padding-top: 35vh;
+    padding-top: 25vh;
 }
 
 .highlight {
     display: inline-block;
     padding: 0.2em 0.6em;
     margin: 0 0.1em;
-    line-height: 1;
+    line-height: 3;
     color: #fff;
     background-color: #ff7700;
-    border-radius: 0.35em;
+    border-radius: 1em;
     box-decoration-break: clone;
     text-decoration: none;
 }
 
 .large-text {
     font-size: 2em; /* Adjust this value to make the text larger or smaller */
+	line-height: 2;
+	font-weight: bold;
 }
