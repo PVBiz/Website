@@ -931,3 +931,28 @@ footer .connect-us ul li a:hover {
 	}
 
 }
+
+.modern-content {
+    width: 100%;
+    min-height: 100vh;
+    background-size: cover;
+    background-image: url(../img/PVBiz_Main.webp);
+    text-align: center;
+    padding-top: 35vh;
+}
+
+.highlight {
+    display: inline-block;
+    padding: 0.2em 0.6em;
+    margin: 0 0.1em;
+    line-height: 1;
+    color: #fff;
+    background-color: #ff7700;
+    border-radius: 0.35em;
+    box-decoration-break: clone;
+    text-decoration: none;
+}
+
+.large-text {
+    font-size: 2em; /* Adjust this value to make the text larger or smaller */
+}
