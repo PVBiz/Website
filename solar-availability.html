@@ -36,7 +36,8 @@
 </head>
 <body>
     <h1>Sunsynk Health Dashboard</h1>
-    <iframe style="background: #21313C;border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);width: 100vw;height: 100vh;"  src="https://charts.mongodb.com/charts-pvbiz-hdhxn/embed/dashboards?id=86bfc9cb-7701-4a88-bd23-c487b4758d17&theme=dark&autoRefresh=true&maxDataAge=60&showTitleAndDesc=true&scalingWidth=scale&scalingHeight=scale"></iframe>    <h2>Subscribe to Sunsynk Availability Emails</h2>
+    <iframe style="background: #21313C;border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);width: 100vw;height: 100vh;"  src="https://charts.mongodb.com/charts-pvbiz-hdhxn/embed/dashboards?id=86bfc9cb-7701-4a88-bd23-c487b4758d17&theme=dark&autoRefresh=true&maxDataAge=60&showTitleAndDesc=true&scalingWidth=scale&scalingHeight=scale"></iframe>
+    <h2>Subscribe to Sunsynk Availability Email Notifications</h2>
     <form id="subscription-form">
         <label>
             Email:
@@ -71,9 +72,22 @@
                 },
                 body: JSON.stringify(data),
             })
-            .then(response => response.json())
-            .then(data => console.log('Success:', data))
-            .catch((error) => console.error('Error:', error));
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Success:', data);
+                // Show a success message
+                alert(`Successfully ${action}d`);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                // Show an error message
+                alert('An error occurred. Please try again.');
+            });
         });
     </script>
 </body>
