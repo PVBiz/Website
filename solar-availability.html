@@ -1,39 +1,10 @@
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solar System Inverter Monitoring</title>
-    <link rel="stylesheet" href="css/availability.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aws-sdk/2.1162.0/aws-sdk.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sheetrock/1.2.0/dist/sheetrock.min.js"></script>
+    <title>Sunsynk Health</title>
 </head>
 <body>
-    <header>
-        <h1>PVBiz Solar Availability</h1>
-    </header>
-    <main>
-        <section class="inverter">
-            <img src="img/SUNSYNK.png" alt="SYNSYNK">
-            <div class="data">
-                <h2>Last Update Time: <span id="field1"></span></h2>
-                <span class="old" id="updateTime1"></span>
-            </div>
-        </section>
-        <section class="inverter">
-            <img src="img/SOLARMAN.jpg" alt="SOLARMAN">
-            <div class="data">
-                <h2>Last Update Time: <span id="field4"></span></h2>
-                <span class="old" id="updateTime2"></span>
-            </div>
-        </section>
-        <section class="inverter">
-            <img src="img/DEYE.png" alt="Deye iCLOUD">
-            <div class="data">
-                <h2>Last Update Time: <span id="field7"></span></h2>
-                <span class="old" id="updateTime3"></span>
-            </div>
-        </section>
-    </main>
-    <script type="module" src="js/availability.js"></script>
+    <h1>Sunsynk Health Dashboard</h1>
+    <iframe style="background: #21313C;border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);width: 100vw;height: 100vh;"  src="https://charts.mongodb.com/charts-pvbiz-hdhxn/embed/dashboards?id=86bfc9cb-7701-4a88-bd23-c487b4758d17&theme=dark&autoRefresh=true&maxDataAge=300&showTitleAndDesc=true&scalingWidth=scale&scalingHeight=scale"></iframe>
 </body>
 </html>
