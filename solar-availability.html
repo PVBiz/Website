@@ -2,9 +2,80 @@
 <html>
 <head>
     <title>Sunsynk Health</title>
+    <style>
+        body {
+            background-color: #333;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        form {
+            margin: 0 auto;
+            width: 300px;
+            padding: 1em;
+            border: 1px solid #CCC;
+            border-radius: 1em;
+            background-color: #333;
+        }
+        label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1em;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <h1>Sunsynk Health Dashboard</h1>
-    <iframe style="background: #21313C;border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);width: 100vw;height: 100vh;"  src="https://charts.mongodb.com/charts-pvbiz-hdhxn/embed/dashboards?id=86bfc9cb-7701-4a88-bd23-c487b4758d17&theme=dark&autoRefresh=true&maxDataAge=60&showTitleAndDesc=true&scalingWidth=scale&scalingHeight=scale"></iframe>
+    <iframe style="background: #21313C;border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);width: 100vw;height: 100vh;"  src="https://charts.mongodb.com/x&theme=dark&autoRefresh=true&maxDataAge=60&showTitleAndDesc=true&scalingWidth=scale&scalingHeight=scale"></iframe>
+    <h2>Email Subscription Form</h2>
+    <form id="subscription-form">
+        <label>
+            Email:
+            <input type="email" id="email" required>
+        </label>
+        <label>
+            Action:
+            <select id="action">
+                <option value="subscribe" selected>Subscribe</option>
+                <option value="unsubscribe">Unsubscribe</option>
+            </select>
+        </label>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('subscription-form').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent the form from being submitted normally
+
+            var email = document.getElementById('email').value;
+            var action = document.getElementById('action').value;
+
+            var data = {
+                email: email,
+                action: action
+            };
+
+            fetch('https://your-server.com/endpoint', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(data => console.log('Success:', data))
+            .catch((error) => console.error('Error:', error));
+        });
+    </script>
 </body>
 </html>
