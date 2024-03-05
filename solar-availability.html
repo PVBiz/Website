@@ -32,6 +32,30 @@
             margin: 4px 2px;
             cursor: pointer;
         }
+        /* Add styles for the toast notification */
+        #toast {
+            visibility: hidden;
+            max-width: 50px;
+            height: 50px;
+            margin: auto;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            right: 0;
+            bottom: 30px;
+            font-size: 17px;
+            white-space: nowrap;
+        }
+        #toast.show {
+            visibility: visible;
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
     </style>
 </head>
 <body>
@@ -53,44 +77,47 @@
         <button type="submit">Submit</button>
     </form>
 
+    <!-- Add a div for the toast notification -->
+    <div id="toast"></div>
+
     <script>
-document.getElementById('subscription-form').addEventListener('submit', function(event) {
-    event.preventDefault();  // Prevent the form from being submitted normally
+        document.getElementById('subscription-form').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent the form from being submitted normally
 
-    var email = document.getElementById('email').value;
-    var action = document.getElementById('action').value;
+            var email = document.getElementById('email').value;
+            var action = document.getElementById('action').value;
 
-    var data = {
-        email: email,
-        action: action
-    };
+            var data = {
+                email: email,
+                action: action
+            };
 
-    fetch('https://pvbiz-express.onrender.com/solarhealth', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        // Show a success message
-        var toast = document.getElementById("toast");
-        toast.className = "show";
-        toast.textContent = `Successfully ${action}d`;
-        setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-        // Show an error message
-        var toast = document.getElementById("toast");
-        toast.className = "show";
-        toast.textContent = 'An error occurred. Please try again.';
-        setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
-    });
-});
+            fetch('https://pvbiz-express.onrender.com/solarhealth', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                // Show a success message
+                var toast = document.getElementById("toast");
+                toast.className = "show";
+                toast.textContent = `Successfully ${action}d`;
+                setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                // Show an error message
+                var toast = document.getElementById("toast");
+                toast.className = "show";
+                toast.textContent = 'An error occurred. Please try again.';
+                setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+            });
+        });
     </script>
 </body>
 </html>
