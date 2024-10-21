@@ -56,9 +56,45 @@
             -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
             animation: fadein 0.5s, fadeout 0.5s 2.5s;
         }
+        /* Modal styles */
+        #modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+        }
+        #modal-content {
+            background-color: #333;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            color: white;
+        }
+        #close-modal {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
+    <!-- Modal Popup -->
+    <div id="modal">
+        <div id="modal-content">
+            <span id="close-modal">&times;</span>
+            <p>Visit our new <a href="https://app.pvbiz.co.za/solarhealthstatus" style="color: #FFD700; text-decoration: underline;">Solar Health Status page</a> for more information! Register for a free account, this page will be discontinued on 25th of October :)</p>
+        </div>
+    </div>
+
     <h1>Sunsynk Health Dashboard</h1>
     <iframe style="background: #21313C;border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);width: 100vw;height: 100vh;"  src="https://charts.mongodb.com/charts-pvbiz-hdhxn/embed/dashboards?id=86bfc9cb-7701-4a88-bd23-c487b4758d17&theme=dark&autoRefresh=true&maxDataAge=60&showTitleAndDesc=true&scalingWidth=scale&scalingHeight=scale"></iframe>
     <h2>Subscribe to Sunsynk Availability Email Notifications</h2>
@@ -81,6 +117,17 @@
     <div id="toast"></div>
 
     <script>
+        // Show the modal when the page loads
+        window.onload = function() {
+            var modal = document.getElementById("modal");
+            modal.style.display = "block";
+
+            // Close the modal when the user clicks on the close button
+            document.getElementById("close-modal").onclick = function() {
+                modal.style.display = "none";
+            }
+        };
+
         document.getElementById('subscription-form').addEventListener('submit', function(event) {
             event.preventDefault();  // Prevent the form from being submitted normally
 
