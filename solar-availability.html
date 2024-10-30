@@ -8,57 +8,9 @@
             color: #fff;
             font-family: Arial, sans-serif;
         }
-        form {
-            margin: 0 auto;
-            width: 300px;
-            padding: 1em;
-            border: 1px solid #CCC;
-            border-radius: 1em;
-            background-color: #333;
-        }
-        label {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1em;
-        }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-        }
-        /* Add styles for the toast notification */
-        #toast {
-            visibility: hidden;
-            max-width: 50px;
-            height: 50px;
-            margin: auto;
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            border-radius: 2px;
-            padding: 16px;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            right: 0;
-            bottom: 30px;
-            font-size: 17px;
-            white-space: nowrap;
-        }
-        #toast.show {
-            visibility: visible;
-            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-            animation: fadein 0.5s, fadeout 0.5s 2.5s;
-        }
         /* Modal styles */
         #modal {
-            display: none;
+            display: block; /* Ensure the modal is displayed */
             position: fixed;
             z-index: 1;
             left: 0;
@@ -91,30 +43,11 @@
     <div id="modal">
         <div id="modal-content">
             <span id="close-modal">&times;</span>
-            <p>Visit our new <a href="https://app.pvbiz.co.za/solarhealthstatus" style="color: #FFD700; text-decoration: underline;">Solar Health Status page</a> for more information! Register for a free account, this page will be discontinued on 25th of October :)</p>
+            <p>Visit our new <a href="https://app.pvbiz.co.za/solarhealthstatus" style="color: #FFD700; text-decoration: underline;">Solar Health Status page</a> for more information! Register for a free account, this page will be discontinued soon :)</p>
         </div>
     </div>
 
     <h1>Sunsynk Health Dashboard</h1>
-    <iframe style="background: #21313C;border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);width: 100vw;height: 100vh;"  src="https://charts.mongodb.com/charts-pvbiz-hdhxn/embed/dashboards?id=86bfc9cb-7701-4a88-bd23-c487b4758d17&theme=dark&autoRefresh=true&maxDataAge=60&showTitleAndDesc=true&scalingWidth=scale&scalingHeight=scale"></iframe>
-    <h2>Subscribe to Sunsynk Availability Email Notifications</h2>
-    <form id="subscription-form">
-        <label>
-            Email:
-            <input type="email" id="email" required>
-        </label>
-        <label>
-            Action:
-            <select id="action">
-                <option value="subscribe" selected>Subscribe</option>
-                <option value="unsubscribe">Unsubscribe</option>
-            </select>
-        </label>
-        <button type="submit">Submit</button>
-    </form>
-
-    <!-- Add a div for the toast notification -->
-    <div id="toast"></div>
 
     <script>
         // Show the modal when the page loads
@@ -127,44 +60,6 @@
                 modal.style.display = "none";
             }
         };
-
-        document.getElementById('subscription-form').addEventListener('submit', function(event) {
-            event.preventDefault();  // Prevent the form from being submitted normally
-
-            var email = document.getElementById('email').value;
-            var action = document.getElementById('action').value;
-
-            var data = {
-                email: email,
-                action: action
-            };
-
-            fetch('https://pvbiz-express.onrender.com/solarhealth', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                // Show a success message
-                var toast = document.getElementById("toast");
-                toast.className = "show";
-                toast.textContent = `Successfully ${action}d`;
-                setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                // Show an error message
-                var toast = document.getElementById("toast");
-                toast.className = "show";
-                toast.textContent = 'An error occurred. Please try again.';
-                setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
-            });
-        });
     </script>
 </body>
 </html>
