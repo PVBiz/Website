@@ -1,459 +1,764 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        
-        <title>Sunsynk | Deye | Solarman - Inverter Notifications - PVBiz</title>
-        <meta name="description" content="Get instant notifications for Sunsynk, Deye, and Solarman Inverters with our mobile app.">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
-        
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PVBiz - Solar Monitoring Solutions</title>
+    
+    <!-- Required Dependencies -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="css/fontAwesome.css">
-        <link rel="stylesheet" href="css/hero-slider.css">
-        <link rel="stylesheet" href="css/owl-carousel.css">
-        <link rel="stylesheet" href="css/templatemo-style.css">
-        <link rel="stylesheet" href="css/lightbox.css">
-        <link rel="stylesheet" href="css/custom.css">
+    <style>
+        :root {
+            --primary-orange: #febe7a;
+            --dark-bg: #0a0a0a;
+            --card-bg: #1a1a1a;
+        }
 
-        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-        
+        body {
+            background: var(--dark-bg);
+            color: #ffffff;
+            padding-top: 80px;
+        }
 
-    </head>
+        /* Navigation */
+        .navbar {
+            background: rgba(10, 10, 10, 0.98) !important;
+            border-bottom: 1px solid rgba(255, 107, 53, 0.1);
+        }
 
+        .navbar-brand {
+            color: var(--primary-orange) !important;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .nav-link {
+            color: #cccccc !important;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-orange) !important;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: calc(50vh - 80px);
+            background: linear-gradient(45deg, #000000, #111111);
+            padding: 4rem 2rem;
+        }
+
+        .hero-heading {
+        background: linear-gradient(45deg, #ff7e5f, #febe7a);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 6rem 0;
+            background: #000;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 1rem;
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-orange);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .feature-icon img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .feature-description {
+            color: #cccccc;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card .btn-outline-light {
+    border: 2px solid #febe7a;
+    color: #febe7a;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+        /* Footer */
+        footer {
+            background: #000;
+            padding: 4rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero-heading {
+                font-size: 2.5rem;
+            }
+            
+            body {
+                padding-top: 60px;
+            }
+        }
+
+        .pricing-section {
+    padding: 6rem 0;
+    background: #0a0a0a;
+}
+
+.pricing-card {
+    background: #1a1a1a;
+    border-radius: 1rem;
+    padding: 2rem;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+}
+
+.pricing-header {
+    border-bottom: 2px solid #333;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.pricing-header h3 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.price {
+    font-size: 2.5rem;
+    color: #febe7a;
+    font-weight: 700;
+}
+
+.currency {
+    font-size: 1.2rem;
+    vertical-align: super;
+}
+
+.period {
+    font-size: 1rem;
+    color: #ccc;
+    font-weight: 400;
+}
+
+.features-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+}
+
+.features-list li {
+    padding: 0.5rem 0;
+    color: #ccc;
+}
+
+.text-orange {
+    color: #febe7a;
+}
+
+.save-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #febe7a;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    background: #febe7a;
+    border: none;
+    padding: 1rem 2rem;
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background: #febe7a;
+}
+
+@media (max-width: 768px) {
+    .pricing-card {
+        margin: 1rem;
+    }
+    
+    .price {
+        font-size: 2rem;
+    }
+}
+
+.data-section {
+    padding: 4rem 0;
+    background: #0a0a0a;
+}
+
+.data-nav .nav-link {
+    color: #ccc;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin: 0.25rem 0;
+    transition: all 0.3s ease;
+}
+
+.data-nav .nav-link.active,
+.data-nav .nav-link:hover {
+    background: #1a1a1a;
+    color: #febe7a;
+}
+
+.data-nav .nav-link i {
+    width: 1.5rem;
+    text-align: center;
+}
+
+.data-content {
+    background: #1a1a1a;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.data-content h3 {
+    color: #fff;
+    margin-bottom: 1.5rem;
+}
+
+.data-content img {
+    border-radius: 0.5rem;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+}
+
+.feature-list li {
+    padding: 0.5rem 0;
+    color: #ccc;
+}
+
+.faq-section {
+    padding: 6rem 0;
+    background: #0a0a0a;
+}
+
+.faq-section .card {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    margin-bottom: 1rem;
+}
+
+.faq-section .card-header {
+    background: #1a1a1a;
+    border-bottom: 1px solid #333;
+}
+
+.faq-section .btn-link {
+    color: #febe7a;
+    text-decoration: none;
+    width: 100%;
+    text-align: left;
+}
+
+.faq-section .btn-link:hover {
+    color: #ff7e5f;
+}
+
+.faq-section .card-body {
+    color: #ccc;
+    background: #1a1a1a;
+}
+
+@media (max-width: 768px) {
+    .data-nav {
+        margin-bottom: 2rem;
+    }
+    
+    .data-nav .nav-link {
+        margin: 0.25rem;
+    }
+}
+    </style>
+</head>
 <body>
-    <div class="header">
-        <div class="container">
-            <nav class="navbar navbar-inverse" role="navigation">
-                <div class="navbar-header">
-                    <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a href="#" class="navbar-brand scroll-top"><em>PV</em>Biz</a>
-                </div>
-                <!--/.navbar-header-->
-                <div id="main-nav" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="#" class="scroll-top">Home</a></li>
-                        <li><a href="#" class="scroll-link" data-id="about">About Us</a></li>
-                        <li><a href="#" class="scroll-link" data-id="portfolio">Services</a></li>
-                        <li><a href="#" class="scroll-link" data-id="data">Data</a></li>
-                        <li><a href="#" class="scroll-link" data-id="contact-us">Contact Us</a></li>
-                        <li><a href="solar-availability.html">Solar Health</a></li>
-                        <li><a href="https://app.pvbiz.co.za">Sign In</a></li>
+    <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#" onclick="window.location.reload();">PVBiz</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#data">Data</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li> <!-- Added FAQ Link -->
+                        <li class="nav-item"><a class="nav-link" href="#footer">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://app.pvbiz.co.za">Sign In / Sign Up</a></li>
                     </ul>
                 </div>
-                <!--/.navbar-collapse-->
-            </nav>
-            <!--/.navbar-->
-        </div>
-        <!--/.container-->
-    </div>
-    <!--/.headertest-->
-
-
-    <div class="modern-content" id="home">
-        <div class="container">
-            <div class="text-content">
-                <h4 class="large-text">Tired of your inverter provider app not working and notifying you on time?</h4>
-                <h3 class="large-text">Get <span class="highlight">Realtime</span> monitoring for your <span class="highlight">Sunsynk</span> and <span class="highlight">Deye</span> Solar Inverters now!</h3>
-                <div class="primary-white-button">
-                    <a href="#" class="scroll-link" data-id="about">Start Now!</a>
-                </div>
             </div>
-        </div>
-    </div>
+        </nav>
 
-
-    <section id="about" class="page-section">
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
         <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="service-item">
-                        <div class="icon">
-                            <img src="img/service_icon_01.png" alt="">
-                        </div>
-                        <h4>Smart Notifications</h4>
-                        <div class="line-dec"></div>
-                        <p>Receive critical notifications via whatsapp to alert you to any problems in real time</p>
-                        <div class="primary-blue-button">
-                            <a href="#" class="scroll-link" data-id="portfolio">Sign Up Now</a>
-                        </div>
+            <div class="row align-items-center">
+                <div class="col-lg-12 text-center">
+                    <h1 class="hero-heading mb-4">
+                        Solar Monitoring Made Simple
+                    </h1>
+                    <p class="lead text-muted mb-4">
+                        Get real-time insights and smart notifications for your Sunsynk and Deye solar inverters
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="https://app.pvbiz.co.za/register" class="btn btn-primary btn-lg px-5 py-3">Start Free Trial</a>
+                        <a href="#features" class="btn btn-outline-secondary btn-lg px-5 py-3 ml-3">Learn More</a>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="service-item">
-                        <div class="icon">
-                            <img src="img/service_icon_02.png" alt="">
-                        </div>
-                        <h4>Detailed Reporting</h4>
-                        <div class="line-dec"></div>
-                        <p>Provide detailed reporting on your solar installation in easy to use display formats direct to your inbox</p>
-                        <div class="primary-blue-button">
-                            <a href="#" class="scroll-link" data-id="portfolio">Sign Up Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="service-item">
-                        <div class="icon">
-                            <img src="img/service_icon_03.png" alt="">
-                        </div>
-                        <h4>Consulting Service</h4>
-                        <div class="line-dec"></div>
-                        <p>Time based consulting services for expert knowledge and Solar system support</p>
-                        <div class="primary-blue-button">
-                            <a href="#" class="scroll-link" data-id="portfolio">Continue Reading</a>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
 
+ <!-- Pricing Section -->
+<section id="pricing" class="pricing-section">
+    <div class="container">
+        <h2 class="section-heading text-center mb-5">Transparent Pricing</h2>
 
-    <section id="portfolio" class="page-section"></section>
-	<div class="pricing-container">
-		<div class="pricing-switcher">
-			<p class="fieldset">
-				<input type="radio" name="duration-1" value="monthly" id="monthly-1" checked>
-				<label for="monthly-1">Monthly</label>
-				<input type="radio" name="duration-1" value="yearly" id="yearly-1">
-				<label for="yearly-1">Yearly</label>
-				<span class="switch"></span>
-			</p>
-		</div>
-		<ul class="pricing-list bounce-invert">
-			<li>
-				<ul class="pricing-wrapper">
-					<li data-type="monthly" class="is-visible">
-						<header class="pricing-header">
-							<h2>ReportPro - Free</h2>
-							<div class="price">
-								<span class="currency">R</span>
-								<span class="value">0</span>
-								<span class="duration">mo</span>
-							</div>
-						</header>
-						<div class="pricing-body">
-							<ul class="pricing-features">
-								<li>Simplified Daily Report</li>
-								<li><em>5</em> Key Inverter Metrics</li>
-								<li>Excel Format</li>
-								<li>Direct to your inbox!</li>
-                                <li><s>Notifications</s></li>
-							</ul>
-						</div>
-						<footer class="pricing-footer">
-							<a class="select" href="mailto:info@pvbiz.co.za">Sign Up</a>
-						</footer>
-					</li>
-					<li data-type="yearly" class="is-hidden">
-						<header class="pricing-header">
-							<h2>ReportPro - Free</h2>
-							<div class="price">
-								<span class="currency">R</span>
-								<span class="value">0</span>
-								<span class="duration">yr</span>
-							</div>
-						</header>
-						<div class="pricing-body">
-							<ul class="pricing-features">
-								<li>Simplified Daily Report</li>
-								<li><em>5</em> Key Inverter Metrics</li>
-								<li>Excel Format</li>
-								<li>Direct to your inbox!</li>
-                                <li><s>Notifications</s></li>
-							</ul>
-						</div>
-						<footer class="pricing-footer">
-							<a class="select" href="mailto:info@pvbiz.co.za">Sign Up</a>
-						</footer>
-					</li>
-				</ul>
-			</li>
-			<li class="exclusive">
-				<ul class="pricing-wrapper">
-					<li data-type="monthly" class="is-visible">
-						<header class="pricing-header">
-							<h2>AlertPro - Basic</h2>
-							<div class="price">
-								<span class="currency">R</span>
-								<span class="value">45</span>
-								<span class="duration">mo</span>
-							</div>
-						</header>
-						<div class="pricing-body">
-							<ul class="pricing-features">
-								<li>Near Real-Time Notifications</li>
-								<li><em>25</em> Inverter Metrics of your choice!</li>
-								<li>Daily complete Inverter Report Export</li>
-								<li><em>10+</em> Multiple Notification Integration points</li>
-								<li><em>Unlimited</em> Monitoring Updates</li>
-								<li><em>9-5PM</em> Support</li>
-							</ul>
-						</div>
-						<footer class="pricing-footer">
-							<a class="select" href="https://app.pvbiz.co.za/register">Sign Up</a>
-						</footer>
-					</li>
-					<li data-type="yearly" class="is-hidden">
-						<header class="pricing-header">
-							<h2>AlertPro - Basic</h2>
-							<div class="price">
-								<span class="currency">R</span>
-								<span class="value">495</span>
-								<span class="duration">yr</span>
-							</div>
-						</header>
-						<div class="pricing-body">
-							<ul class="pricing-features">
-								<li>Near Real-Time Notifications</li>
-								<li><em>25</em> Inverter Metrics of your choice!</li>
-								<li>Daily complete Inverter Report Export</li>
-								<li><em>10+</em> Multiple Notification Integration points</li>
-								<li><em>Unlimited</em> Monitoring Updates</li>
-								<li><em>9-5PM</em> Support</li>
-							</ul>
-						</div>
-						<footer class="pricing-footer">
-							<a class="select" href="https://app.pvbiz.co.za/register">Sign Up</a>
-						</footer>
-					</li>
-				</ul>
-			</li>
-			<li>
-				<ul class="pricing-wrapper">
-					<li data-type="monthly" class="is-visible">
-						<header class="pricing-header">
-							<h2>ReportPro - Basic</h2>
-							<div class="price">
-								<span class="currency">R</span>
-								<span class="value">29.99</span>
-								<span class="duration">Once-Off</span>
-							</div>
-						</header>
-						<div class="pricing-body">
-							<ul class="pricing-features">
-								<li>Full Inverter Report Extract for last Month</li>
-								<li><em>150+</em> Inverter metrics</li>
-                                <li>Excel Format</li>
-								<li>Directly Mailed to Inbox</li>
-							</ul>
-						</div>
-						<footer class="pricing-footer">
-							<a class="select" href="https://app.pvbiz.co.za/register">Buy Now!</a>
-						</footer>
-					</li>
-					<li data-type="yearly" class="is-hidden">
-						<header class="pricing-header">
-							<h2>ReportPro - Basic</h2>
-							<div class="price">
-								<span class="currency">R</span>
-								<span class="value">199.99</span>
-								<span class="duration">Once-Off</span>
-							</div>
-						</header>
-						<div class="pricing-body">
-							<ul class="pricing-features">
-								<li>Full Monthly Inverter Report Extracts for 12 Months</li>
-								<li><em>150+</em> Inverter metrics</li>
-                                <li>Excel Format</li>
-								<li>Directly Mailed to Inbox Every Month</li>
-							</ul>
-						</div>
-						<footer class="pricing-footer">
-							<a class="select" href="https://app.pvbiz.co.za/register">Buy Now!</a>
-						</footer>
-					</li>
-				</ul>
-			</li>
-		</ul>
-	</div>
-</section>
+        <!-- Shared Features Section -->
+        <div class="text-center mb-5">
+            <h4 class="text-orange mb-4">All Plans Include:</h4>
+            <ul class="features-list list-inline">
+                <li class="list-inline-item"><i class="fas fa-check-circle text-orange"></i> Near real-time Alerts</li>
+                <li class="list-inline-item"><i class="fas fa-check-circle text-orange"></i> 10 Custom Rules</li>
+                <li class="list-inline-item"><i class="fas fa-check-circle text-orange"></i> Reports Anytime</li>
+                <li class="list-inline-item"><i class="fas fa-check-circle text-orange"></i> WhatsApp/Email Support</li>
+            </ul>
+            <ul class="features-list list-inline">
+                <li class="list-inline-item"><i class="fas fa-check-circle text-orange"></i> 2 Solar Plants allowed per subscription</li>
+            </ul>
+        </div>
 
-
-
-    <div class="tabs-content" id="data">
-        <div class="container">
-            <div class="row">
-                <div class="wrapper">
-                    <div class="col-md-4">
-                        <div class="section-heading">
-                            <h4>Data Provided</h4>
-                            <div class="line-dec"></div>
-                            <p>Please have a look at examples of data that will be available direct to you!</p>
-                            <ul class="tabs clearfix" data-tabgroup="first-tab-group">
-                                <li><a href="#tab1" class="active">Notifications</a></li>
-                                <li><a href="#tab2">Daily Reporting</a></li>
-                                <li><a href="#tab3">Consulting Services</a></li>
-                                <li><a href="#tab4">Custom Projects</a></li>
-                            </ul>
+        <!-- Pricing Cards -->
+        <div class="row justify-content-center">
+            <!-- Monthly Plan -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Monthly Billing</h3>
+                        <div class="price">
+                            <span class="currency">R</span>45<span class="period">/month</span>
                         </div>
                     </div>
-                    <div class="col-md-8">
-                        <section id="first-tab-group" class="tabgroup">
-                            <div id="tab1">
-                                <img src="img/PVBiz-WA-Notification.jpg" alt="">
-                                <div class="text-content">
-                                    <h4>Notifications</h4>
-                                    <p>Direct notifications for your required metrics. Always have the right information when you need it!</p>
-                                    <b>Supported Notification Systems</b>
-                                    <p>WhatsApp</p>
-                                    <p>Telegram</p>
-                                    <p>Email</p>
-                                    <p>Microsoft Teams</p>
-                                    <p>Slack</p>
-                                    <p>Discord</p>
-                                </div>
-                            </div>
-                            <div id="tab2">
-                                <img src="img/PVBiz-Simple-Report.jpg" alt="">
-                                <div class="text-content">
-                                    <h4>Daily Reporting</h4>
-                                    <p>Detailed Reporting in Excel format emailed directly to you inbox every day. Understand your inverter's usage trends with data at your fingertips!</p>
-                                </div>
-                            </div>
-                            <div id="tab3">
-                                <img src="img/PVBiz-Consulting.jpg" alt="">
-                                <div class="text-content">
-                                    <h4>Consulting Services</h4>
-                                    <p>Contact us for Time-Based Consulting advice and support for your Solar Setup.</p>
-                                </div>
-                            </div>
-                            <div id="tab4">
-                                <img src="img/PVBiz-Custom.jpg" alt="">
-                                <div class="text-content">
-                                    <h4>Custom Projects</h4>
-                                    <p>Need a more customized solution, please contact us for support and services - info@pvbiz.co.za</p>
-                                </div>
-                            </div>
-                        </section>
+                    <a href="https://app.pvbiz.co.za/register" class="btn btn-primary btn-block">Start Monthly Plan</a>
+                </div>
+            </div>
+
+            <!-- Yearly Plan -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="pricing-card featured">
+                    <div class="pricing-header">
+                        <h3>Yearly Billing</h3>
+                        <div class="price">
+                            <span class="currency">R</span>495<span class="period">/year</span>
+                        </div>
+                        <div class="save-badge">Save 10%!</div>
                     </div>
+                    <a href="https://app.pvbiz.co.za/register" class="btn btn-primary btn-block">Choose Yearly Plan</a>
+                </div>
+            </div>
+
+            <!-- Lifetime Plan -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Lifetime - Once-Off</h3>
+                        <div class="price">
+                            <span class="currency">R</span>999<span class="period"> once-off</span>
+                        </div>
+                    </div>
+                    <a href="mailto:info@pvbiz.co.za" class="btn btn-primary btn-block">Contact Sales</a>
                 </div>
             </div>
         </div>
     </div>
+</section>
 
-    <div id="contact-us">
+    <!-- Features Section -->
+    <section class="features-section" id="features">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="section-heading">
-                        <h4>Contact Us</h4>
-                        <div class="line-dec"></div>
-                        <p>Please contact and chat to us directly</p>
-                        <div class="pop-button">
-                            <a href="https://wa.me/27615467165" target="_blank">
-                                <h4>Whatsapp us Now</h4>
-                            </a>
+                <!-- Smart Notifications -->
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <img src="img/service_icon_01.png" alt="Notifications">
                         </div>
-                    </div>
-                </div>
-            </div> 
-    </div>
-
-
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-sm-12">
-                    <div class="logo">
-                        <a class="logo-ft scroll-top" href="#"><em>PV</em>Biz</a>
+                        <h3 class="feature-title">Smart Notifications</h3>
+                        <p class="feature-description">
+                            Receive critical notifications via mobile app for customized rules
+                        </p>
                         
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-12">
-                    <div class="location">
-                        <h4>Location</h4>
-                        <ul>
-                            <li>Johannesburg <br>Gauteng</li>
-                        </ul>
+
+                <!-- Detailed Reporting -->
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <img src="img/service_icon_02.png" alt="Reporting">
+                        </div>
+                        <h3 class="feature-title">Detailed Reporting</h3>
+                        <p class="feature-description">
+                            Historical system performance reports in easy-to-read formats
+                        </p>
                     </div>
                 </div>
-                <div class="col-md-2 col-sm-12">
-                    <div class="contact-info">
-                        <h4>More Info</h4>
-                        <ul>
-                            <li><em>WhatsApp</em>: +27615467165</li>
-                            <li><em>Email</em>: info@pvbiz.co.za</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-2 col-sm-12">
-                    <div class="connect-us">
-                        <h4>Get Social with us</h4>
-                        <ul>
-                            <li><a href="https://twitter.com/pv_biz_solar" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="https://www.facebook.com/profile.php?id=100091740205316" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                        </ul>
+
+                <!-- Consulting Service -->
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <img src="img/service_icon_03.png" alt="Consulting">
+                        </div>
+                        <h3 class="feature-title">Consulting Service</h3>
+                        <p class="feature-description">
+                            Expert support and system optimization consultations
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
+
+    <section id="data" class="data-section">
+        <div class="container">
+            <h2 class="section-heading text-center mb-5" style="color: #ff6b35;">What We Monitor</h2>
+            
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="data-nav">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#plant">
+                                    <i class="fas fa-leaf mr-2"></i>Plant
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#notifications">
+                                    <i class="fas fa-bell mr-2"></i>Notifications
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#daily-reports">
+                                    <i class="fas fa-chart-line mr-2"></i>Daily Reports
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#consulting">
+                                    <i class="fas fa-headset mr-2"></i>Consulting
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#custom">
+                                    <i class="fas fa-cogs mr-2"></i>Custom Solutions
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="tab-content">
+                        <!-- Plant Tab -->
+                        <div class="tab-pane fade show active" id="plant">
+                            <div class="data-content">
+                                <img src="img/pvbiz_web_main.png" alt="Plant" class="img-fluid mb-4">
+                                <h3>Plant Monitoring</h3>
+                                <p>Monitor your solar plant's performance in real-time:</p>
+                                <ul class="feature-list">
+                                    <li><i class="fas fa-check-circle text-orange"></i> Real-time Energy Production</li>
+                                    <li><i class="fas fa-check-circle text-orange"></i> System Health Status</li>
+                                    <li><i class="fas fa-check-circle text-orange"></i> Historical Data Analysis</li>
+                                    <li><i class="fas fa-check-circle text-orange"></i> Customizable Dashboards</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Notifications Tab -->
+                        <div class="tab-pane fade" id="notifications">
+                            <div class="data-content">
+                                <img src="img/PVBiz-WA-Notification.jpg" alt="Notifications" class="img-fluid mb-4">
+                                <h3>Real-time Notifications</h3>
+                                <p>Get instant alerts via multiple channels when your system needs attention:</p>
+                                <ul class="feature-list">
+                                    <li><i class="fas fa-check-circle text-orange"></i> Push Notifications</li>
+                                    <li><i class="fas fa-check-circle text-orange"></i> WhatsApp Notifications</li>
+                                    <li><i class="fas fa-check-circle text-orange"></i> Email Alerts</li>
+                                    <li><i class="fas fa-check-circle text-orange"></i> Telegram Messages</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Daily Reports Tab -->
+                        <div class="tab-pane fade" id="daily-reports">
+                            <div class="data-content">
+                                <img src="img/PVBiz-Simple-Report.jpg" alt="Daily Reports" class="img-fluid mb-4">
+                                <h3>Comprehensive Reports</h3>
+                                <p>Detailed system performance reports delivered to your inbox:</p>
+                                <ul class="feature-list">
+                                    <li><i class="fas fa-check-circle text-orange"></i> Excel Format Reports</li>
+                                    <li><i class="fas fa-check-circle text-orange"></i> All Available Metrics</li>
+                                    <li><i class="fas fa-check-circle text-orange"></i> Historical Data Analysis</li>
+                                    <li><i class="fas fa-check-circle text-orange"></i> System Health Overview</li>
+                                </ul>
+                            </div>
+                        </div>
+    
+                        <!-- Consulting Tab -->
+                        <div class="tab-pane fade" id="consulting">
+                            <div class="data-content">
+                                <img src="img/PVBiz-Consulting.jpg" alt="Consulting" class="img-fluid mb-4">
+                                <h3>Expert Consulting Services</h3>
+                                <p>Our solar experts are available for personalized consultations:</p>
+                                <ul class="feature-list">
+                                    <li><i class="fas fa-check-circle text-orange"></i> System Optimization</li>
+                                    <li><i class="fas fa-check-circle text-orange"></i> Performance Analysis</li>
+                                    <li><i class="fas fa-check-circle text-orange"></i> Maintenance Planning</li>
+                                    <li><i class="fas fa-check-circle text-orange"></i> Technical Support</li>
+                                    <li><i class="fas fa-check-circle text-orange"></i> Custom Solutions</li>
+                                </ul>
+                            </div>
+                        </div>
+    
+                        <!-- Custom Solutions Tab -->
+                        <div class="tab-pane fade" id="custom">
+                            <div class="data-content">
+                                <img src="img/PVBiz-Custom.jpg" alt="Custom Solutions" class="img-fluid mb-4">
+                                <h3>Custom Monitoring Solutions</h3>
+                                <p>Tailored solutions for your specific needs:</p>
+                                <ul class="feature-list">
+                                    <li><i class="fas fa-check-circle text-orange"></i> Custom Dashboards</li>
+                                    <li><i class="fas fa-check-circle text-orange"></i> API Integration</li>
+                                    <li><i class="fas fa-check-circle text-orange"></i> Advanced Analytics</li>
+                                    <li><i class="fas fa-check-circle text-orange"></i> Enterprise Solutions</li>
+                                    <li><i class="fas fa-check-circle text-orange"></i> White-label Options</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+<section id="faq" class="faq-section">
+    <div class="container">
+        <h2 class="section-heading text-center mb-5" style="color: #febe7a;">Frequently Asked Questions</h2>
+
+        <div class="accordion" id="faqAccordion">
+            <!-- Question 1 -->
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link text-orange text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            1. What is PVBiz?
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#faqAccordion">
+                    <div class="card-body">
+                        PVBiz is a solar monitoring solution that provides near real-time insights and smart notifications for Sunsynk, Solarman and Deye Cloud Plants. It helps you optimize your solar system's performance and stay informed about its health.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link text-orange text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            2. How do I get started with PVBiz?
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#faqAccordion">
+                    <div class="card-body">
+                        To get started, simply sign up for a free trial on our platform. Once registered, you can connect your solar plants and start monitoring your system in real-time.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="card">
+                <div class="card-header" id="headingThree">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link text-orange text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            3. How does PVBiz access my Solar Plant Data?
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#faqAccordion">
+                    <div class="card-body">
+                        You need to share your Solar Plant to allow PVBiz to access your data(Only read only visitor access required).
+                        For Sunsynk, please share your plant with PVBiz, by sharing the plant to this email - admin@pvbiz.co.za
+                        For Solarman or Deye, under your Authorizations, search for PVBiz under businesses, and share the plant as a visitor.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="card">
+                <div class="card-header" id="headingThree">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link text-orange text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            3. What types of notifications does PVBiz provide?
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#faqAccordion">
+                    <div class="card-body">
+                        PVBiz provides real-time notifications via Email, WhatsApp, and Push notifications via the PVBiz Mobile apps. You can customize rules for 10 inverter metrics.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="card">
+                <div class="card-header" id="headingFour">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link text-orange text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            4. Can I use PVBiz with multiple Plants?
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#faqAccordion">
+                    <div class="card-body">
+                        Yes, PVBiz supports monitoring for multiple plants, even from different Solar CLoud platforms such as Sunsynk, Solarman and Deye. You can add and manage all your plants from a single dashboard.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="card">
+                <div class="card-header" id="headingFive">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link text-orange text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            5. What happens after my free trial ends?
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#faqAccordion">
+                    <div class="card-body">
+                        After your free trial ends, you can choose from our affordable monthly, yearly, or lifetime plans to continue using PVBiz. No data or settings will be lost during the transition.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer  id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-orange mb-4">PVBiz</h5>
+                    <p class="text-muted">Professional Solar Monitoring Solutions</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-orange mb-4">Contact</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li class="mb-2"><i class="fab fa-whatsapp mr-2"></i>+27 61 546 7165</li>
+                        <li class="mb-2"><i class="fas fa-envelope mr-2"></i>info@pvbiz.co.za</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>Johannesburg, Gauteng</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-orange mb-4">Legal</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="privacy-policy.html" class="text-muted">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="terms.html" class="text-muted">Terms of Service</a></li>
+                        <li><a href="accountdata.html" class="text-muted">Account Data</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-top pt-4 mt-4 text-center">
+                <div class="social-icons mb-3">
+                    <a href="https://twitter.com/pv_biz_solar" class="text-muted mx-2"><i class="fab fa-twitter fa-2x"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=100091740205316" class="text-muted mx-2"><i class="fab fa-facebook fa-2x"></i></a>
+                </div>
+                <p class="text-muted small mb-0">&copy; 2024 PVBiz Pty Ltd. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+    <!-- Required Scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-    <script src="js/vendor/bootstrap.min.js"></script>
+    <script>
+        // Smooth scroll functionality
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/main1.js"></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
-    <script type="text/javascript">
-    $(document).ready(function() {
-        // navigation click actions 
-        $('.scroll-link').on('click', function(event){
-            event.preventDefault();
-            var sectionID = $(this).attr("data-id");
-            scrollToID('#' + sectionID, 750);
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.backgroundColor = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                navbar.style.backgroundColor = 'rgba(10, 10, 10, 0.95)';
+            }
         });
-        // scroll to top action
-        $('.scroll-top').on('click', function(event) {
-            event.preventDefault();
-            $('html, body').animate({scrollTop:0}, 'slow');         
-        });
-        // mobile nav toggle
-        $('#nav-toggle').on('click', function (event) {
-            event.preventDefault();
-            $('#main-nav').toggleClass("open");
-        });
-    });
-    // scroll function//
-    function scrollToID(id, speed){
-        var offSet = 50;
-        var targetOffset = $(id).offset().top - offSet;
-        var mainNav = $('#main-nav');
-        $('html,body').animate({scrollTop:targetOffset}, speed);
-        if (mainNav.hasClass("open")) {
-            mainNav.css("height", "1px").removeClass("in").addClass("collapse");
-            mainNav.removeClass("open");
-        }
-    }
-    if (typeof console === "undefined") {
-        console = {
-            log: function() { }
-        };
-    }
     </script>
-    <footer>
-        <p>&copy; 2025 PVBiz Pty Ltd. All rights reserved.</p>
-        <p><a href="/privacy-policy.html">Privacy Policy</a></p>
-        <p><a href="accountdata.html">Account Data</a></p>
-    </footer>
 </body>
 </html>
