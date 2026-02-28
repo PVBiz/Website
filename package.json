@@ -1,8 +1,11 @@
 {
-    "name": "my-github-pages-site",
-    "version": "1.0.0",
-    "description": "My GitHub Pages site",
-    "dependencies": {
-      "sheetrock": "latest"
-    }
+  "name": "my-github-pages-site",
+  "version": "1.0.0",
+  "description": "My GitHub Pages site",
+  "scripts": {
+    "start": "npx serve"
+  },
+  "dependencies": {
+    "sheetrock": "latest"
   }
+}
