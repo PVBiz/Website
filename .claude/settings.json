@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/morelz/pvbiz_dev/**)",
+      "Read(//Users/morelz/pvbiz_dev/pvbiz_web/**)"
+    ],
+    "additionalDirectories": [
+      "/Users/morelz/pvbiz_dev/pvbiz_chrome_extension_solark_free/src/assets",
+      "/Users/morelz/pvbiz_dev/Website"
+    ]
+  }
+}

@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://pvbiz.co.za</loc>
-    <priority>0.5</priority>
+    <loc>https://www.pvbiz.co.za/</loc>
+    <lastmod>2026-03-21</lastmod>
+    <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://pvbiz.co.za/solar-availability</loc>
+    <loc>https://www.pvbiz.co.za/privacy-policy.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.pvbiz.co.za/accountdata.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.pvbiz.co.za/chrome-extension-privacy-policy.html</loc>
+    <lastmod>2026-03-21</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.pvbiz.co.za/solar-availability.html</loc>
+    <lastmod>2026-03-21</lastmod>
     <priority>0.5</priority>
   </url>
 </urlset>

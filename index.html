@@ -4,9 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="facebook-domain-verification" content="1ddplc5p501esusgnhltt8udqkwcx3" />
-    <title>PVBiz - Solar Monitoring Solutions</title>
-    
+    <title>PVBiz - Solar Monitoring & Inverter Analytics for South Africa</title>
+    <meta name="description" content="Solar monitoring, analytics and automation for Sunsynk, Deye, Solarman, Sol-Ark and Solar Assistant inverters in South Africa. Smart solar notifications, forecasting, detailed reporting, and inverter monitoring from a single platform.">
+    <link rel="canonical" href="https://www.pvbiz.co.za/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="PVBiz - Solar Monitoring & Automation Made Simple">
+    <meta property="og:description" content="Solar monitoring, analytics and automation for Sunsynk, Deye, Solarman, Sol-Ark and Solar Assistant inverters. Smart notifications, forecasting, and inverter monitoring from one platform.">
+    <meta property="og:image" content="https://www.pvbiz.co.za/img/pvbiz_web_main.png">
+    <meta property="og:url" content="https://www.pvbiz.co.za/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="PVBiz">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PVBiz - Solar Monitoring & Automation Made Simple">
+    <meta name="twitter:description" content="Solar monitoring, analytics and automation for Sunsynk, Deye, Solarman, Sol-Ark and Solar Assistant inverters. Smart notifications, forecasting, and inverter monitoring from one platform.">
+    <meta name="twitter:image" content="https://www.pvbiz.co.za/img/pvbiz_web_main.png">
+
     <!-- Required Dependencies -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://stackpath.bootstrapcdn.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -57,6 +77,17 @@
         background-clip: text;
         -webkit-background-clip: text;
         color: transparent;
+        }
+
+        .btn-outline-orange {
+            border: 2px solid var(--primary-orange);
+            color: var(--primary-orange);
+            background: transparent;
+        }
+
+        .btn-outline-orange:hover {
+            background: var(--primary-orange);
+            color: #000;
         }
 
         /* Features Section */
@@ -270,6 +301,41 @@
     text-align: center;
 }
 
+/* App Showcase */
+.showcase-section {
+    background: #050505;
+    padding: 5rem 0;
+}
+
+.showcase-card {
+    background: #1a1a1a;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: 100%;
+}
+
+.showcase-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(254, 190, 122, 0.12);
+}
+
+.showcase-card img {
+    display: block;
+    width: 100%;
+}
+
+.showcase-hero-img {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 50px rgba(254, 190, 122, 0.18), 0 12px 40px rgba(0, 0, 0, 0.7);
+}
+
+.showcase-hero-img img {
+    display: block;
+    width: 100%;
+}
+
 .data-content {
     background: #1a1a1a;
     padding: 2rem;
@@ -337,6 +403,84 @@
     }
 }
     </style>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "PVBiz",
+        "url": "https://www.pvbiz.co.za",
+        "logo": "https://www.pvbiz.co.za/img/favicon.ico",
+        "description": "Solar monitoring, analytics and automation for Sunsynk, Deye, Solarman, Sol-Ark and Solar Assistant inverters in South Africa.",
+        "areaServed": "ZA",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "admin@pvbiz.co.za",
+            "contactType": "customer service"
+        },
+        "sameAs": [
+            "https://twitter.com/pv_biz_solar",
+            "https://www.facebook.com/profile.php?id=100091740205316"
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is PVBiz?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "PVBiz is a solar monitoring solution that provides near real-time insights and smart notifications for Sunsynk, Solarman, Deye, Sol-Ark and Solar Assistant plants. It helps you optimize your solar system's performance and stay informed about its health."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I get started with PVBiz?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "To get started, simply sign up for a free trial on our platform. Once registered, you can connect your solar plants and start monitoring your system in real-time."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How does PVBiz access my Solar Plant Data?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You need to share your Solar Plant to allow PVBiz to access your data (only read-only visitor access required). For Sunsynk, share your plant to admin@pvbiz.co.za. For Solarman or Deye, under your Authorizations, search for PVBiz under businesses, and share the plant as a visitor."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What types of notifications does PVBiz provide?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "PVBiz provides real-time notifications via Email, Telegram, and Push notifications through browser and mobile app. You can customize rules for 10 inverter metrics."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I use PVBiz with multiple Plants?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, PVBiz supports monitoring for multiple plants, even from different Solar Cloud platforms such as Sunsynk, Solarman, Deye, Sol-Ark and Solar Assistant. You can add and manage all your plants from a single dashboard."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What happens after my free trial ends?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "After your free trial ends, you can choose from our affordable monthly or yearly plans to continue using PVBiz. For custom solutions, please contact us. No data or settings will be lost during the transition."
+                }
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
     <!-- Navigation -->
@@ -350,8 +494,9 @@
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#showcase">App</a></li>
                         <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#data">Data</a></li>
+
                         <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li> <!-- Added FAQ Link -->
                         <li class="nav-item"><a class="nav-link" href="#footer">Contact</a></li>
                         <li class="nav-item"><a class="nav-link" href="https://app.pvbiz.co.za">Sign In / Sign Up</a></li>
@@ -364,21 +509,170 @@
     <section class="hero-section" id="home">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-12 text-center">
+                <div class="col-lg-5">
                     <h1 class="hero-heading mb-4">
                         Solar Monitoring Made Simple
                     </h1>
                     <p class="lead text-muted mb-4">
-                        Get real-time insights and smart notifications for your Sunsynk and Deye solar inverters
+                        One platform to monitor, analyse, and automate across all your solar providers.
                     </p>
                     <div class="cta-buttons">
                         <a href="https://app.pvbiz.co.za/register" class="btn btn-primary btn-lg px-5 py-3">Start Free Trial</a>
-                        <a href="#features" class="btn btn-outline-secondary btn-lg px-5 py-3 ml-3">Learn More</a>
+                        <a href="#features" class="btn btn-outline-orange btn-lg px-5 py-3 ml-3">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-7 text-center mt-4 mt-lg-0">
+                    <img src="img/pvbiz_flow_map.png" alt="PVBiz Energy Flow Map" class="img-fluid rounded" loading="eager" style="max-height: 500px; max-width: 100%;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compatible Platforms -->
+    <section class="py-4" style="background: #000;">
+        <div class="container">
+            <p class="text-center mb-4" style="color: #aaa; font-size: 1.1rem;">Compatible with leading inverter platforms</p>
+            <div class="d-flex justify-content-center align-items-center flex-wrap">
+                <img src="https://pvbizpublicimages.pvbiz.co.za/sunsynk_image_dark.png" alt="Sunsynk" class="mx-4 my-2" loading="lazy" style="height: 70px; width: 160px; object-fit: contain;">
+                <img src="https://pvbizpublicimages.pvbiz.co.za/deye_image.png" alt="Deye" class="mx-4 my-2" loading="lazy" style="height: 70px; width: 160px; object-fit: contain;">
+                <img src="https://pvbizpublicimages.pvbiz.co.za/solarman_image.jpg" alt="Solarman" class="mx-4 my-2" loading="lazy" style="height: 70px; width: 160px; object-fit: contain;">
+                <img src="https://pvbizpublicimages.pvbiz.co.za/solark_image.png" alt="Sol-Ark" class="mx-4 my-2" loading="lazy" style="height: 70px; width: 160px; object-fit: contain;">
+                <img src="https://pvbizpublicimages.pvbiz.co.za/solar_assistant_image.png" alt="Solar Assistant" class="mx-4 my-2" loading="lazy" style="height: 70px; width: 160px; object-fit: contain;">
+            </div>
+        </div>
+    </section>
+
+    <!-- App Showcase Section -->
+    <section class="showcase-section" id="showcase">
+        <div class="container">
+            <h2 class="text-center mb-2" style="color: #febe7a; font-size: 2.2rem; font-weight: 700;">See PVBiz In Action</h2>
+            <p class="text-center text-muted mb-5">Click through to explore the app</p>
+
+            <div class="row align-items-center justify-content-center">
+                <!-- Text Panel -->
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <div id="showcase-text">
+                        <h3 class="mb-3" style="font-size: 1.6rem; line-height: 1.3; color: #fff;" id="showcase-title">Energy Flow Visualization</h3>
+                        <p class="text-muted" style="font-size: 1rem; line-height: 1.7;" id="showcase-desc">See how energy moves through your entire system — solar generation, battery charge/discharge, grid import/export, and home consumption — all in one clear view.</p>
+                        <ul class="list-unstyled mt-3" id="showcase-features">
+                            <li class="mb-2 text-muted"><i class="fas fa-check-circle text-orange mr-2"></i>Power flow between all sources</li>
+                            <li class="mb-2 text-muted"><i class="fas fa-check-circle text-orange mr-2"></i>Battery state of charge at a glance</li>
+                            <li class="mb-2 text-muted"><i class="fas fa-check-circle text-orange mr-2"></i>Grid and load status overview</li>
+                        </ul>
+                    </div>
+                    <a href="https://app.pvbiz.co.za/register" class="btn btn-primary px-4 py-2 mt-3">Try It Free</a>
+                </div>
+
+                <!-- Carousel -->
+                <div class="col-lg-5 text-center">
+                    <div id="showcaseCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators mb-0" style="bottom: -2rem;">
+                            <li data-target="#showcaseCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#showcaseCarousel" data-slide-to="1"></li>
+                            <li data-target="#showcaseCarousel" data-slide-to="2"></li>
+                            <li data-target="#showcaseCarousel" data-slide-to="3"></li>
+                            <li data-target="#showcaseCarousel" data-slide-to="4"></li>
+                            <li data-target="#showcaseCarousel" data-slide-to="5"></li>
+                            <li data-target="#showcaseCarousel" data-slide-to="6"></li>
+                            <li data-target="#showcaseCarousel" data-slide-to="7"></li>
+                        </ol>
+
+                        <div class="carousel-inner" style="border-radius: 12px; overflow: hidden;">
+                            <div class="carousel-item active" style="text-align: center;">
+                                <img src="img/pvbiz_flow_map.png" alt="Energy Flow Visualization" class="d-block mx-auto img-fluid" style="max-height: 600px; border-radius: 24px; box-shadow: 0 4px 30px rgba(0,0,0,0.5); border: 3px solid #222;">
+                            </div>
+                            <div class="carousel-item" style="text-align: center;">
+                                <img src="img/pvbiz_plants.png" alt="Plant Dashboard" class="d-block mx-auto img-fluid" style="max-height: 600px; border-radius: 24px; box-shadow: 0 4px 30px rgba(0,0,0,0.5); border: 3px solid #222;">
+                            </div>
+                            <div class="carousel-item" style="text-align: center;">
+                                <img src="img/pvbiz_analysis_summary.png" alt="Analysis Summary" class="d-block mx-auto img-fluid" style="max-height: 600px; border-radius: 24px; box-shadow: 0 4px 30px rgba(0,0,0,0.5); border: 3px solid #222;">
+                            </div>
+                            <div class="carousel-item" style="text-align: center;">
+                                <img src="img/pvbiz_analysis_seasonal.png" alt="Seasonal Analysis" class="d-block mx-auto img-fluid" style="max-height: 600px; border-radius: 24px; box-shadow: 0 4px 30px rgba(0,0,0,0.5); border: 3px solid #222;">
+                            </div>
+                            <div class="carousel-item" style="text-align: center;">
+                                <img src="img/pvbiz_notification.png" alt="Smart Notifications" class="d-block mx-auto img-fluid" style="max-height: 600px; border-radius: 24px; box-shadow: 0 4px 30px rgba(0,0,0,0.5); border: 3px solid #222;">
+                            </div>
+                            <div class="carousel-item" style="text-align: center;">
+                                <img src="img/pvbiz_rules.png" alt="Custom Alert Rules" class="d-block mx-auto img-fluid" style="max-height: 600px; border-radius: 24px; box-shadow: 0 4px 30px rgba(0,0,0,0.5); border: 3px solid #222;">
+                            </div>
+                            <div class="carousel-item" style="text-align: center;">
+                                <img src="img/pvbiz_automation_smart.png" alt="Smart Automation" class="d-block mx-auto img-fluid" style="max-height: 600px; border-radius: 24px; box-shadow: 0 4px 30px rgba(0,0,0,0.5); border: 3px solid #222;">
+                            </div>
+                            <div class="carousel-item" style="text-align: center;">
+                                <img src="img/pvbiz_reports.png" alt="Detailed Reports" class="d-block mx-auto img-fluid" style="max-height: 600px; border-radius: 24px; box-shadow: 0 4px 30px rgba(0,0,0,0.5); border: 3px solid #222;">
+                            </div>
+                        </div>
+
+                        <a class="carousel-control-prev" href="#showcaseCarousel" role="button" data-slide="prev" style="width: 5%; left: -3rem;">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </a>
+                        <a class="carousel-control-next" href="#showcaseCarousel" role="button" data-slide="next" style="width: 5%; right: -3rem;">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <script>
+    (function() {
+        var slides = [
+            {
+                title: "Energy Flow Visualization",
+                desc: "See how energy moves through your entire system — solar generation, battery charge/discharge, grid import/export, and home consumption — all in one clear view.",
+                features: ["Power flow between all sources", "Battery state of charge at a glance", "Grid and load status overview"]
+            },
+            {
+                title: "Plant Dashboard",
+                desc: "All your solar plants in one view. Monitor multiple inverters across different platforms from a single subscription.",
+                features: ["Multi-inverter support", "Cross-platform monitoring", "At-a-glance system health"]
+            },
+            {
+                title: "Analysis Summary",
+                desc: "Comprehensive performance analysis with daily, monthly, and yearly breakdowns to help you understand your system's output.",
+                features: ["Production vs consumption trends", "Self-sufficiency metrics", "Historical comparisons"]
+            },
+            {
+                title: "Seasonal Analysis",
+                desc: "Understand how your solar production shifts across seasons and plan your energy usage accordingly.",
+                features: ["Seasonal production patterns", "Month-by-month breakdowns", "Year-over-year comparisons"]
+            },
+            {
+                title: "Smart Notifications",
+                desc: "Get instant alerts when your system needs attention — delivered via email, Telegram, or mobile push notifications.",
+                features: ["Email, Telegram &amp; push alerts", "Customisable trigger conditions", "Per-plant notification settings"]
+            },
+            {
+                title: "Custom Alert Rules",
+                desc: "Define 10+ rules on any inverter metric. You decide what matters and when to be notified.",
+                features: ["10+ custom rules per plant", "Any inverter metric supported", "Flexible threshold configuration"]
+            },
+            {
+                title: "Smart Automation",
+                desc: "Automate inverter actions based on conditions and custom rules — set it once and let PVBiz handle the rest.",
+                features: ["Condition-based inverter control", "Scheduled automations", "Quick and smart action modes"]
+            },
+            {
+                title: "Detailed Reports",
+                desc: "On-demand Excel reports covering every system metric. Download anytime for your own records or analysis.",
+                features: ["Excel format exports", "All available metrics included", "Historical data on demand"]
+            }
+        ];
+
+        $('#showcaseCarousel').on('slide.bs.carousel', function(e) {
+            var slide = slides[e.to];
+            var featuresHtml = slide.features.map(function(f) {
+                return '<li class="mb-2 text-muted"><i class="fas fa-check-circle text-orange mr-2"></i>' + f + '</li>';
+            }).join('');
+            document.getElementById('showcase-title').textContent = slide.title;
+            document.getElementById('showcase-desc').textContent = slide.desc;
+            document.getElementById('showcase-features').innerHTML = featuresHtml;
+        });
+    })();
+    </script>
 
  <!-- Pricing Section -->
 <section id="pricing" class="pricing-section">
@@ -387,10 +681,10 @@
 
         <!-- Shared Features Section -->
         <div class="text-center mb-5">
-            <h4 class="text-orange mb-4">All Plans Include:</h4>
+            <h3 class="text-orange mb-4" style="font-size: 1.5rem;">All Plans Include:</h3>
             <ul class="features-list list-inline">
                 <li class="list-inline-item"><i class="fas fa-check-circle text-orange"></i> Near real-time Alerts</li>
-                <li class="list-inline-item"><i class="fas fa-check-circle text-orange"></i> 10 Custom Rules</li>
+                <li class="list-inline-item"><i class="fas fa-check-circle text-orange"></i> 10+ Custom Rules</li>
                 <li class="list-inline-item"><i class="fas fa-check-circle text-orange"></i> Reports Anytime</li>
                 <li class="list-inline-item"><i class="fas fa-check-circle text-orange"></i> Email Support</li>
             </ul>
@@ -526,140 +820,44 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <section id="data" class="data-section">
-        <div class="container">
-            <h2 class="section-heading text-center mb-5" style="color: #ff6b35;">What We Monitor</h2>
-            
-            <div class="row">
+            <div class="row mt-2">
+                <!-- Data Analytics -->
                 <div class="col-md-4">
-                    <div class="data-nav">
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#plant">
-                                    <i class="fas fa-leaf mr-2"></i>Plant
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#notifications">
-                                    <i class="fas fa-broadcast-tower mr-2"></i>Notifications
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#daily-reports">
-                                    <i class="fas fa-chart-line mr-2"></i>Daily Reports
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#consulting">
-                                    <i class="fas fa-headset mr-2"></i>Consulting
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#custom">
-                                    <i class="fas fa-cogs mr-2"></i>Custom Solutions
-                                </a>
-                            </li>
-                        </ul>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-bar" style="font-size: 2rem; color: #000;"></i>
+                        </div>
+                        <h3 class="feature-title">Full Data Analytics</h3>
+                        <p class="feature-description">
+                            Deep performance insights with seasonal trends, consumption breakdowns, and historical comparisons
+                        </p>
                     </div>
                 </div>
 
-                <div class="col-md-8">
-                    <div class="tab-content">
-                        <!-- Plant Tab -->
-                        <div class="tab-pane fade show active" id="plant">
-                            <div class="data-content">
-                                <img src="img/pvbiz_web_main.png" alt="Plant" class="img-fluid mb-4">
-                                <h3>Plant Monitoring</h3>
-                                <p>Monitor your solar plant's performance in real-time:</p>
-                                <ul class="feature-list">
-                                    <li><i class="fas fa-check-circle text-orange"></i> Real-time Energy Production</li>
-                                    <li><i class="fas fa-check-circle text-orange"></i> System Health Status</li>
-                                    <li><i class="fas fa-check-circle text-orange"></i> Historical Data Analysis</li>
-                                    <li><i class="fas fa-check-circle text-orange"></i> Customizable Dashboards</li>
-                                </ul>
-                            </div>
+                <!-- Solar Forecasting -->
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-sun" style="font-size: 2rem; color: #000;"></i>
                         </div>
+                        <h3 class="feature-title">Solar Forecasting</h3>
+                        <p class="feature-description">
+                            7-day solar production forecasts to help you plan energy usage and maximise self-consumption
+                        </p>
+                    </div>
+                </div>
 
-                        <!-- Notifications Tab -->
-                        <div class="tab-pane fade" id="notifications">
-                            <div class="data-content">
-                                <div class="text-center mb-4">
-                                    <i class="fas fa-bell fa-4x text-orange mb-3"></i>
-                                    <h3>Smart Notification System</h3>
-                                </div>
-                                <p>Get instant alerts directly to your device when your system needs attention:</p>
-                                <ul class="feature-list">
-                                    <li><i class="fas fa-check-circle text-orange"></i> Mobile App Push notifications</li>
-                                    <li><i class="fas fa-check-circle text-orange"></i> Email Alerts</li>
-                                    <li><i class="fas fa-check-circle text-orange"></i> Telegram group Messages</li>
-                                </ul>
-                                
-                                <div class="alert alert-warning mt-4" style="background: linear-gradient(135deg, #fff3cd, #ffeaa7); border: 2px solid #febe7a; border-radius: 10px; padding: 20px;">
-                                    <div class="d-flex align-items-start">
-                                        <i class="fas fa-exclamation-triangle text-warning mr-3" style="font-size: 1.2rem; margin-top: 3px;"></i>
-                                        <div>
-                                            <h6 class="mb-2" style="color: #856404; font-weight: 600;">
-                                                <i class="fas fa-info-circle mr-2"></i>WhatsApp Notifications Update
-                                            </h6>
-                                            <p class="mb-0" style="color: #856404; line-height: 1.5;">
-                                                Due to WhatsApp's pricing changes effective September 1st, 2024, WhatsApp notifications have been removed from our regular subscription offerings. We've transitioned to more reliable and cost-effective notification methods. 
-                                                <strong>Need WhatsApp notifications?</strong> Contact us for custom pricing options that include WhatsApp integration.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                <!-- Automation Engine -->
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-cogs" style="font-size: 2rem; color: #000;"></i>
                         </div>
-                        
-                        <!-- Daily Reports Tab -->
-                        <div class="tab-pane fade" id="daily-reports">
-                            <div class="data-content">
-                                <img src="img/PVBiz-Simple-Report.jpg" alt="Daily Reports" class="img-fluid mb-4">
-                                <h3>Comprehensive Reports</h3>
-                                <p>Detailed system performance reports delivered to your inbox:</p>
-                                <ul class="feature-list">
-                                    <li><i class="fas fa-check-circle text-orange"></i> Excel Format Reports</li>
-                                    <li><i class="fas fa-check-circle text-orange"></i> All Available Metrics</li>
-                                    <li><i class="fas fa-check-circle text-orange"></i> Historical Data Analysis</li>
-                                    <li><i class="fas fa-check-circle text-orange"></i> System Health Overview</li>
-                                </ul>
-                            </div>
-                        </div>
-    
-                        <!-- Consulting Tab -->
-                        <div class="tab-pane fade" id="consulting">
-                            <div class="data-content">
-                                <img src="img/PVBiz-Consulting.jpg" alt="Consulting" class="img-fluid mb-4">
-                                <h3>Expert Consulting Services</h3>
-                                <p>Our solar experts are available for personalized consultations:</p>
-                                <ul class="feature-list">
-                                    <li><i class="fas fa-check-circle text-orange"></i> System Optimization</li>
-                                    <li><i class="fas fa-check-circle text-orange"></i> Performance Analysis</li>
-                                    <li><i class="fas fa-check-circle text-orange"></i> Maintenance Planning</li>
-                                    <li><i class="fas fa-check-circle text-orange"></i> Technical Support</li>
-                                    <li><i class="fas fa-check-circle text-orange"></i> Custom Solutions</li>
-                                </ul>
-                            </div>
-                        </div>
-    
-                        <!-- Custom Solutions Tab -->
-                        <div class="tab-pane fade" id="custom">
-                            <div class="data-content">
-                                <img src="img/PVBiz-Custom.jpg" alt="Custom Solutions" class="img-fluid mb-4">
-                                <h3>Custom Monitoring Solutions</h3>
-                                <p>Tailored solutions for your specific needs:</p>
-                                <ul class="feature-list">
-                                    <li><i class="fas fa-check-circle text-orange"></i> Custom Dashboards</li>
-                                    <li><i class="fas fa-check-circle text-orange"></i> API Integration</li>
-                                    <li><i class="fas fa-check-circle text-orange"></i> Advanced Analytics</li>
-                                    <li><i class="fas fa-check-circle text-orange"></i> Enterprise Solutions</li>
-                                    <li><i class="fas fa-check-circle text-orange"></i> White-label Options</li>
-                                </ul>
-                            </div>
-                        </div>
+                        <h3 class="feature-title">Automation Engine</h3>
+                        <p class="feature-description">
+                            Automate inverter actions with smart and quick rules based on system conditions
+                        </p>
                     </div>
                 </div>
             </div>
@@ -683,7 +881,7 @@
                 </div>
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#faqAccordion">
                     <div class="card-body">
-                        PVBiz is a solar monitoring solution that provides near real-time insights and smart notifications for Sunsynk, Solarman and Deye Cloud Plants. It helps you optimize your solar system's performance and stay informed about its health.
+                        PVBiz is a solar monitoring solution that provides near real-time insights and smart notifications for Sunsynk, Solarman, Deye, Sol-Ark and Solar Assistant plants. It helps you optimize your solar system's performance and stay informed about its health.
                     </div>
                 </div>
             </div>
@@ -722,34 +920,18 @@
                 </div>
             </div>
 
-            <!-- Question 3 -->
-            <div class="card">
-                <div class="card-header" id="headingThree">
-                    <h2 class="mb-0">
-                        <button class="btn btn-link text-orange text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            3. What types of notifications does PVBiz provide?
-                        </button>
-                    </h2>
-                </div>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#faqAccordion">
-                    <div class="card-body">
-                        PVBiz provides real-time notifications via Email, Telegram, and Push notifications through browser and mobile app. You can customize rules for 10 inverter metrics. Note: WhatsApp notifications are no longer included in regular subscriptions due to pricing changes, but custom pricing options are available.
-                    </div>
-                </div>
-            </div>
-
             <!-- Question 4 -->
             <div class="card">
                 <div class="card-header" id="headingFour">
                     <h2 class="mb-0">
                         <button class="btn btn-link text-orange text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                            4. Can I use PVBiz with multiple Plants?
+                            4. What types of notifications does PVBiz provide?
                         </button>
                     </h2>
                 </div>
                 <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#faqAccordion">
                     <div class="card-body">
-                        Yes, PVBiz supports monitoring for multiple plants, even from different Solar Cloud platforms such as Sunsynk, Solarman and Deye. You can add and manage all your plants from a single dashboard.
+                        PVBiz provides real-time notifications via Email, Telegram, and Push notifications through browser and mobile app. You can customize rules for 10 inverter metrics. Note: WhatsApp notifications are no longer included in regular subscriptions due to pricing changes, but custom pricing options are available.
                     </div>
                 </div>
             </div>
@@ -759,11 +941,27 @@
                 <div class="card-header" id="headingFive">
                     <h2 class="mb-0">
                         <button class="btn btn-link text-orange text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                            5. What happens after my free trial ends?
+                            5. Can I use PVBiz with multiple Plants?
                         </button>
                     </h2>
                 </div>
                 <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#faqAccordion">
+                    <div class="card-body">
+                        Yes, PVBiz supports monitoring for multiple plants, even from different Solar Cloud platforms such as Sunsynk, Solarman, Deye, Sol-Ark and Solar Assistant. You can add and manage all your plants from a single dashboard.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="card">
+                <div class="card-header" id="headingSix">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link text-orange text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                            6. What happens after my free trial ends?
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#faqAccordion">
                     <div class="card-body">
                         After your free trial ends, you can choose from our affordable monthly or yearly plans to continue using PVBiz. For custom solutions, please contact us. No data or settings will be lost during the transition.
                     </div>
@@ -793,7 +991,7 @@
                     <h5 class="text-orange mb-4">Legal</h5>
                     <ul class="list-unstyled">
                         <li class="mb-2"><a href="privacy-policy.html" class="text-muted">Privacy Policy</a></li>
-                        <li class="mb-2"><a href="terms.html" class="text-muted">Terms of Service</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted">Terms of Service</a></li>
                         <li><a href="accountdata.html" class="text-muted">Account Data</a></li>
                     </ul>
                 </div>
@@ -803,15 +1001,15 @@
                     <a href="https://twitter.com/pv_biz_solar" class="text-muted mx-2"><i class="fab fa-twitter fa-2x"></i></a>
                     <a href="https://www.facebook.com/profile.php?id=100091740205316" class="text-muted mx-2"><i class="fab fa-facebook fa-2x"></i></a>
                 </div>
-                <p class="text-muted small mb-0">&copy; 2024 PVBiz Pty Ltd. All rights reserved.</p>
+                <p class="text-muted small mb-0">&copy; 2026 PVBiz Pty Ltd. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <!-- Required Scripts -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" defer></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" defer></script>
 
     <script>
         // Smooth scroll functionality
