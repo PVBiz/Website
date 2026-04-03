@@ -195,6 +195,25 @@
     font-weight: 700;
 }
 
+.currency-btn {
+    background: transparent;
+    border: 1px solid #555;
+    color: #aaa;
+    padding: 4px 14px;
+    font-size: 0.8rem;
+    transition: all 0.2s;
+}
+.currency-btn.active {
+    background: #febe7a;
+    border-color: #febe7a;
+    color: #1a1a1a;
+    font-weight: 600;
+}
+.currency-btn:hover:not(.active) {
+    border-color: #febe7a;
+    color: #febe7a;
+}
+
 .currency {
     font-size: 1.2rem;
     vertical-align: super;
@@ -694,6 +713,15 @@
             </ul>
         </div>
 
+        <!-- Currency Switcher -->
+        <div class="text-center mb-4" id="currency-switcher">
+            <div class="btn-group" role="group" aria-label="Currency">
+                <button type="button" class="btn btn-sm currency-btn" data-currency="ZAR">ZAR (R)</button>
+                <button type="button" class="btn btn-sm currency-btn" data-currency="USD">USD ($)</button>
+                <button type="button" class="btn btn-sm currency-btn" data-currency="EUR">EUR (€)</button>
+            </div>
+        </div>
+
         <!-- Pricing Cards -->
         <div class="row justify-content-center">
             <!-- Monthly Plan -->
@@ -701,8 +729,8 @@
                 <div class="pricing-card">
                     <div class="pricing-header">
                         <h3>Monthly Billing</h3>
-                        <div class="price">
-                            <span class="currency">R</span>55<span class="period">/month</span>
+                        <div class="price" data-zar="55" data-period="/month">
+                            <span class="currency">R</span><span class="price-amount">55</span><span class="period">/month</span>
                         </div>
                     </div>
                     <a href="https://app.pvbiz.co.za/register" class="btn btn-primary btn-block">Start Monthly Plan</a>
@@ -714,8 +742,8 @@
                 <div class="pricing-card featured" style="border: 2px solid #febe7a; box-shadow: 0 0 30px rgba(254,190,122,0.35); transform: scale(1.04);">
                     <div class="pricing-header">
                         <h3>Yearly Billing</h3>
-                        <div class="price">
-                            <span class="currency">R</span>549<span class="period">/year</span>
+                        <div class="price" data-zar="549" data-period="/year">
+                            <span class="currency">R</span><span class="price-amount">549</span><span class="period">/year</span>
                         </div>
                         <div class="save-badge" style="background: #febe7a; color: #1a1a1a;">Most Popular</div>
                         <p class="text-muted small mb-0 mt-2" style="color: #febe7a !important;">Best value — save 10% vs monthly</p>
@@ -730,8 +758,8 @@
                     <div class="pricing-header">
                         <h3>CrunchCarbon Program</h3>
                         <div class="crunchcarbon-badge">60% off</div>
-                        <div class="price">
-                            <span class="currency">R</span>199<span class="period">/year</span>
+                        <div class="price" data-zar="199" data-period="/year">
+                            <span class="currency">R</span><span class="price-amount">199</span><span class="period">/year</span>
                         </div>
                         <p class="text-muted small mb-0 mt-2">Earn carbon credits. Same features, 2 plants.</p>
                         <p class="text-muted small mb-0 mt-1"><i class="fas fa-map-marker-alt mr-1"></i>South African customers only.</p>
@@ -1037,6 +1065,74 @@
                 navbar.style.backgroundColor = 'rgba(10, 10, 10, 0.95)';
             }
         });
+    </script>
+
+    <script>
+    (function() {
+        var CURRENCIES = {
+            ZAR: { symbol: 'R', decimals: 0 },
+            USD: { symbol: '$', decimals: 2 },
+            EUR: { symbol: '€', decimals: 2 }
+        };
+        var rates = { ZAR: 1 }; // will be filled from API
+        var activeCurrency = 'ZAR';
+
+        function updatePrices(currency) {
+            var cfg = CURRENCIES[currency];
+            var rate = rates[currency] || 1;
+            document.querySelectorAll('.price[data-zar]').forEach(function(el) {
+                var zarAmount = parseFloat(el.getAttribute('data-zar'));
+                var converted = zarAmount * rate;
+                var formatted = cfg.decimals === 0
+                    ? Math.round(converted).toString()
+                    : converted.toFixed(cfg.decimals);
+                el.querySelector('.currency').textContent = cfg.symbol;
+                el.querySelector('.price-amount').textContent = formatted;
+            });
+            document.querySelectorAll('.currency-btn').forEach(function(btn) {
+                btn.classList.toggle('active', btn.getAttribute('data-currency') === currency);
+            });
+            activeCurrency = currency;
+        }
+
+        function init(defaultCurrency) {
+            fetch('https://open.er-api.com/v6/latest/ZAR')
+                .then(function(r) { return r.json(); })
+                .then(function(data) {
+                    if (data && data.rates) {
+                        rates.USD = data.rates.USD;
+                        rates.EUR = data.rates.EUR;
+                    }
+                })
+                .catch(function() {
+                    // fallback approximate rates if API fails
+                    rates.USD = 0.054;
+                    rates.EUR = 0.049;
+                })
+                .finally(function() {
+                    updatePrices(defaultCurrency);
+                });
+        }
+
+        // Wire up buttons
+        document.querySelectorAll('.currency-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                updatePrices(btn.getAttribute('data-currency'));
+            });
+        });
+
+        // Detect country
+        fetch('https://ipapi.co/json/')
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                var country = data.country_code || '';
+                var defaultCurrency = country === 'ZA' ? 'ZAR' : (country === 'US' ? 'USD' : 'EUR');
+                init(defaultCurrency);
+            })
+            .catch(function() {
+                init('ZAR'); // default to ZAR if geolocation fails
+            });
+    })();
     </script>
 </body>
 </html>
