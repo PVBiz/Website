@@ -191,6 +191,10 @@
         label.form-label { color: #ddd; font-weight: 500; margin-bottom: 0.35rem; }
         .direct-email { color: var(--primary-orange); font-weight: 600; }
         .direct-email:hover { color: #ffcf95; }
+        .email-row { display: inline-flex; align-items: center; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+        .email-address { font-size: 1.6rem; font-weight: 700; text-decoration: none; }
+        .copy-btn { white-space: nowrap; }
+        @media (max-width: 480px) { .email-address { font-size: 1.25rem; } }
 
         /* CTA */
         .cta-section { background: linear-gradient(45deg, #ff7e5f22, #febe7a22), #0a0a0a; padding: 5rem 0; text-align: center; }
@@ -401,42 +405,18 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <h2 class="section-title">Book a demo</h2>
-                    <p class="section-intro">See the platform on your own fleet. Fill in the form and we'll be in touch &mdash; or email us directly.</p>
+                    <p class="section-intro">See the platform on your own fleet. Drop us an email and we'll be in touch.</p>
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="demo-card">
-                        <form id="demoForm">
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label class="form-label" for="df-name">Name</label>
-                                    <input type="text" class="form-control" id="df-name" placeholder="Your name" required>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label class="form-label" for="df-company">Company</label>
-                                    <input type="text" class="form-control" id="df-company" placeholder="Your company">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label class="form-label" for="df-email">Email</label>
-                                    <input type="email" class="form-control" id="df-email" placeholder="you@example.com" required>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label class="form-label" for="df-phone">Phone (optional)</label>
-                                    <input type="text" class="form-control" id="df-phone" placeholder="+27 ...">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="df-message">How many sites do you manage? Anything else?</label>
-                                <textarea class="form-control" id="df-message" rows="3" placeholder="Tell us a little about your fleet..."></textarea>
-                            </div>
-                            <div class="text-center mt-3">
-                                <button type="submit" class="btn btn-orange btn-lg px-5 py-3"><i class="fas fa-paper-plane mr-2"></i>Open Email to Send</button>
-                            </div>
-                        </form>
-                        <p class="text-center text-muted mt-4 mb-0">Prefer to email us directly? <a class="direct-email" href="mailto:info@pvbiz.co.za">info@pvbiz.co.za</a> &nbsp;|&nbsp; <i class="fas fa-phone mr-1"></i>+27 61 546 7165</p>
+                <div class="col-lg-7">
+                    <div class="demo-card text-center">
+                        <p class="text-muted mb-3">Email us at</p>
+                        <div class="email-row">
+                            <a class="direct-email email-address" href="mailto:info@pvbiz.co.za">info@pvbiz.co.za</a>
+                            <button type="button" class="btn btn-outline-orange copy-btn" id="copyEmailBtn" data-email="info@pvbiz.co.za"><i class="far fa-copy mr-2"></i>Copy</button>
+                        </div>
+                        <p class="text-muted mt-4 mb-0"><i class="fas fa-phone mr-2"></i>+27 61 546 7165</p>
                     </div>
                 </div>
             </div>
@@ -530,26 +510,24 @@
             counters.forEach(animateCounter);
         }
 
-        // Book a Demo -> open email client (mailto), no backend
-        var demoForm = document.getElementById('demoForm');
-        if (demoForm) {
-            demoForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                var name = document.getElementById('df-name').value.trim();
-                var company = document.getElementById('df-company').value.trim();
-                var email = document.getElementById('df-email').value.trim();
-                var phone = document.getElementById('df-phone').value.trim();
-                var message = document.getElementById('df-message').value.trim();
-                var subject = 'Installer Platform Demo Request' + (company ? ' - ' + company : '');
-                var body =
-                    'Name: ' + name + '\n' +
-                    'Company: ' + company + '\n' +
-                    'Email: ' + email + '\n' +
-                    'Phone: ' + phone + '\n\n' +
-                    'Message:\n' + message + '\n';
-                window.location.href = 'mailto:info@pvbiz.co.za'
-                    + '?subject=' + encodeURIComponent(subject)
-                    + '&body=' + encodeURIComponent(body);
+        // Copy email to clipboard
+        var copyBtn = document.getElementById('copyEmailBtn');
+        if (copyBtn) {
+            copyBtn.addEventListener('click', function() {
+                var email = copyBtn.getAttribute('data-email');
+                var original = copyBtn.innerHTML;
+                function done() {
+                    copyBtn.innerHTML = '<i class="fas fa-check mr-2"></i>Copied';
+                    setTimeout(function() { copyBtn.innerHTML = original; }, 2000);
+                }
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(email).then(done).catch(done);
+                } else {
+                    var t = document.createElement('textarea');
+                    t.value = email; document.body.appendChild(t); t.select();
+                    try { document.execCommand('copy'); } catch (e) {}
+                    document.body.removeChild(t); done();
+                }
             });
         }
     </script>

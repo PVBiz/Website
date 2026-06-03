@@ -5,59 +5,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account Data - PVBiz</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/fontAwesome.css">
-    <link rel="stylesheet" href="css/templatemo-style.css">
-    <link rel="stylesheet" href="css/custom.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     <style>
+        :root {
+            --primary-orange: #febe7a;
+            --dark-bg: #0a0a0a;
+            --card-bg: #1a1a1a;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: var(--dark-bg);
+            color: #ffffff;
+        }
         .account-data-container {
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 80vh;
-            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            min-height: 100vh;
+            padding: 2rem;
+            background: radial-gradient(1000px 500px at 50% -10%, rgba(254, 190, 122, 0.15), transparent 60%), linear-gradient(45deg, #000000, #111111);
         }
         .account-data-card {
-            background: #ffffff;
-            padding: 40px;
-            max-width: 500px;
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            background: var(--card-bg);
+            border: 1px solid #2a2a2a;
+            padding: 3rem 2.5rem;
+            max-width: 520px;
+            width: 100%;
+            border-radius: 1.25rem;
+            box-shadow: 0 22px 55px rgba(0, 0, 0, 0.55);
             text-align: center;
         }
-        .account-data-card h2 {
+        .account-data-card .brand {
+            color: var(--primary-orange);
             font-weight: 700;
-            color: #333;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .account-data-card h2 {
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: #ffffff;
+            margin: 0 0 1rem;
         }
         .account-data-card p {
-            color: #666;
-            margin-top: 10px;
-            font-size: 1.1em;
+            color: #bdbdbd;
+            margin-top: 0.75rem;
+            font-size: 1.02rem;
+            line-height: 1.7;
         }
         .account-data-card .email-link {
             display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1em;
-            font-weight: bold;
-            color: #ffffff;
-            background-color: #007bff;
-            border-radius: 5px;
+            margin-top: 1.75rem;
+            padding: 0.85rem 1.75rem;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #000000;
+            background-color: var(--primary-orange);
+            border-radius: 0.6rem;
             text-decoration: none;
             transition: background-color 0.3s ease;
         }
         .account-data-card .email-link:hover {
-            background-color: #0056b3;
+            background-color: #ffcf95;
         }
+        .account-data-card .back-link {
+            display: block;
+            margin-top: 1.5rem;
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .account-data-card .back-link:hover { color: var(--primary-orange); }
     </style>
 </head>
 <body>
     <div class="account-data-container">
         <div class="account-data-card">
+            <div class="brand">PVBiz</div>
             <h2>Account Data Request</h2>
             <p>If you would like to request the deletion of all your account data, please contact our support team.</p>
-            <p>Please allow up to 72 hours for account deletion, you will receive a confrmation email when it was completed.</p>
-            <a href="mailto:support@pvbiz.co.za" class="email-link">Email Support</a>
+            <p>Please allow up to 72 hours for account deletion. You will receive a confirmation email when it is completed.</p>
+            <a href="mailto:support@pvbiz.co.za" class="email-link"><i class="fas fa-envelope mr-2"></i>Email Support</a>
+            <a href="/" class="back-link">&larr; Back to pvbiz.co.za</a>
         </div>
     </div>
 </body>
