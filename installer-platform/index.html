@@ -164,6 +164,18 @@
         .why-item h6 { color: #fff; font-weight: 700; margin-bottom: 0.25rem; }
         .why-item p { color: #bdbdbd; margin-bottom: 0; font-size: 0.97rem; }
 
+        /* Product screenshots */
+        .screens-section { background: #0a0a0a; }
+        .shot-frame { width: 100%; height: auto; display: block; border-radius: 14px; border: 1px solid #2a2a2a; box-shadow: 0 22px 55px rgba(0, 0, 0, 0.55); }
+        .showcase-row { margin-bottom: 5rem; }
+        .showcase-row:last-child { margin-bottom: 0; }
+        .showcase-kicker { color: var(--primary-orange); font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; font-size: 0.78rem; margin-bottom: 0.5rem; }
+        .showcase-row h3 { color: #fff; font-weight: 800; font-size: 1.7rem; margin-bottom: 0.75rem; }
+        .showcase-row p { color: #bdbdbd; font-size: 1rem; line-height: 1.7; margin-bottom: 0; }
+        .showcase-row ul { list-style: none; padding-left: 0; margin: 1rem 0 0; }
+        .showcase-row ul li { color: #cfcfcf; margin-bottom: 0.5rem; font-size: 0.97rem; }
+        .showcase-row ul li i { color: var(--primary-orange); margin-right: 0.55rem; }
+
         /* Demo form */
         .demo-section { background: #0d0d0d; }
         .demo-card { background: var(--card-bg); border: 1px solid #222; border-radius: 1.25rem; padding: 2.5rem; }
@@ -209,6 +221,7 @@
                     <li class="nav-item"><a class="nav-link" href="../">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#brands">Supported Brands</a></li>
                     <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#screens">In Action</a></li>
                     <li class="nav-item"><a class="nav-link" href="#demo">Book a Demo</a></li>
                     <li class="nav-item"><a class="nav-link" href="https://installer.pvbiz.co.za">Installer Sign In</a></li>
                 </ul>
@@ -292,6 +305,67 @@
                 <div class="col-md-6 col-lg-3 mb-4"><div class="feature-card"><div class="feature-icon"><i class="fas fa-tools"></i></div><h5>Maintenance Management</h5><p>Track service tickets, site visits and equipment across your whole portfolio.</p></div></div>
                 <div class="col-md-6 col-lg-3 mb-4"><div class="feature-card"><div class="feature-icon"><i class="fas fa-leaf"></i></div><h5>Carbon &amp; REC Tracking</h5><p>Quantify CO&#8322; savings and renewable energy certificates across managed sites.</p></div></div>
                 <div class="col-md-6 col-lg-3 mb-4"><div class="feature-card"><div class="feature-icon"><i class="fas fa-coins"></i></div><h5>Billing &amp; Financials</h5><p>Tariff modelling, PPA and savings calculations to support your commercial offering.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- See it in action -->
+    <section class="section screens-section" id="screens">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">See the platform in action</h2>
+                <p class="section-intro">Real fleet data, real dashboards &mdash; here's what your team works with every day.</p>
+            </div>
+
+            <!-- Dashboard + map -->
+            <div class="row align-items-center showcase-row">
+                <div class="col-lg-7 mb-4 mb-lg-0">
+                    <img src="../img/installer_dashboard_map.png" alt="PVBiz installer fleet dashboard with plant locations map" class="shot-frame" loading="lazy">
+                </div>
+                <div class="col-lg-5">
+                    <div class="showcase-kicker">Fleet Command Centre</div>
+                    <h3>Your whole portfolio at a glance</h3>
+                    <p>Capacity, installations, environmental impact and every site plotted on a live map &mdash; the moment you log in.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i>Fleet-wide KPIs and capacity totals</li>
+                        <li><i class="fas fa-check-circle"></i>Interactive global plant map</li>
+                        <li><i class="fas fa-check-circle"></i>Instant health and status overview</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Live power flow -->
+            <div class="row align-items-center showcase-row flex-lg-row-reverse">
+                <div class="col-lg-7 mb-4 mb-lg-0">
+                    <img src="../img/installer_power_flow.png" alt="Live power flow diagram showing solar, inverter, battery, grid and home consumption" class="shot-frame" loading="lazy">
+                </div>
+                <div class="col-lg-5">
+                    <div class="showcase-kicker">Live Power Flow</div>
+                    <h3>Watch energy move in real time</h3>
+                    <p>Drill into any site to see solar generation, per-MPPT and inverter detail, battery, grid import/export and home consumption updating live.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i>Per-MPPT and per-inverter detail</li>
+                        <li><i class="fas fa-check-circle"></i>Battery, grid and load in one view</li>
+                        <li><i class="fas fa-check-circle"></i>Refreshes automatically</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Forecast + performance index -->
+            <div class="row align-items-center showcase-row">
+                <div class="col-lg-7 mb-4 mb-lg-0">
+                    <img src="../img/installer_performance.png" alt="Solar forecast and Site Performance Index table across multiple sites" class="shot-frame" loading="lazy">
+                </div>
+                <div class="col-lg-5">
+                    <div class="showcase-kicker">Forecasting &amp; Performance</div>
+                    <h3>Forecast yield, rank every site</h3>
+                    <p>Compare actual output against forecast across 7, 30, 90-day and yearly windows. The Site Performance Index surfaces underperformers instantly.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i>Weather-aware yield forecasting</li>
+                        <li><i class="fas fa-check-circle"></i>Colour-coded performance ratios</li>
+                        <li><i class="fas fa-check-circle"></i>Catch underperformance early</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
