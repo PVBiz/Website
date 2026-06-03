@@ -144,6 +144,20 @@
     transition: all 0.3s ease;
 }
 
+        /* Compatible brands grid */
+        .brand-tile {
+            background: #ffffff;
+            border-radius: 0.9rem;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .brand-tile:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(254, 190, 122, 0.25); }
+        .brand-tile img { max-width: 100%; max-height: 56px; object-fit: contain; }
+
         /* Footer */
         footer {
             background: #000;
@@ -514,6 +528,7 @@
                         <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
                         <li class="nav-item"><a class="nav-link" href="#showcase">App</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/installer-platform">For Installers</a></li>
                         <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
 
                         <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li> <!-- Added FAQ Link -->
@@ -548,17 +563,19 @@
     </section>
 
     <!-- Compatible Platforms -->
-    <section class="py-4" style="background: #000;">
+    <section class="py-5" style="background: #000;">
         <div class="container">
-            <p class="text-center mb-4" style="color: #aaa; font-size: 1.1rem;">Compatible with leading inverter platforms</p>
-            <div class="d-flex justify-content-center align-items-center flex-wrap">
-                <img src="https://pvbizpublicimages.pvbiz.co.za/sunsynk_image_dark.png" alt="Sunsynk" class="mx-4 my-2" loading="lazy" style="height: 70px; width: 160px; object-fit: contain;">
-                <img src="https://pvbizpublicimages.pvbiz.co.za/deye_image.png" alt="Deye" class="mx-4 my-2" loading="lazy" style="height: 70px; width: 160px; object-fit: contain;">
-                <img src="https://pvbizpublicimages.pvbiz.co.za/solarman_image.jpg" alt="Solarman" class="mx-4 my-2" loading="lazy" style="height: 70px; width: 160px; object-fit: contain;">
-                <img src="https://pvbizpublicimages.pvbiz.co.za/solark_image.png" alt="Sol-Ark" class="mx-4 my-2" loading="lazy" style="height: 70px; width: 160px; object-fit: contain;">
-                <img src="https://pvbizpublicimages.pvbiz.co.za/solar_assistant_image.png" alt="Solar Assistant" class="mx-4 my-2" loading="lazy" style="height: 70px; width: 160px; object-fit: contain;">
-                <img src="https://pvbizpublicimages.pvbiz.co.za/luxpowertek_image.png" alt="LuxPower" class="mx-4 my-2" loading="lazy" style="height: 70px; width: 160px; object-fit: contain;">
+            <h3 class="text-center mb-2" style="color: #fff; font-weight: 700; font-size: 1.8rem;">Works with your inverter</h3>
+            <p class="text-center mb-5" style="color: #aaa; font-size: 1.05rem;">PVBiz connects directly to the platforms you already use.</p>
+            <div class="row justify-content-center">
+                <div class="col-6 col-sm-4 col-md-2 mb-4"><div class="brand-tile"><img src="img/brands/sunsynk.png" alt="Sunsynk" loading="lazy"></div></div>
+                <div class="col-6 col-sm-4 col-md-2 mb-4"><div class="brand-tile"><img src="img/brands/deye.svg" alt="Deye" loading="lazy"></div></div>
+                <div class="col-6 col-sm-4 col-md-2 mb-4"><div class="brand-tile"><img src="img/brands/solarman.jpg" alt="Solarman" loading="lazy"></div></div>
+                <div class="col-6 col-sm-4 col-md-2 mb-4"><div class="brand-tile"><img src="img/brands/solark.png" alt="Sol-Ark" loading="lazy"></div></div>
+                <div class="col-6 col-sm-4 col-md-2 mb-4"><div class="brand-tile"><img src="img/brands/solarassistant.png" alt="Solar Assistant" loading="lazy"></div></div>
+                <div class="col-6 col-sm-4 col-md-2 mb-4"><div class="brand-tile"><img src="img/brands/luxpower.webp" alt="LuxPower" loading="lazy"></div></div>
             </div>
+            <p class="text-center mt-2" style="color: #777; font-size: 0.95rem;">Installer? We support 14+ brands &mdash; <a href="/installer-platform" style="color: #febe7a;">see the Installer Platform</a>.</p>
         </div>
     </section>
 
@@ -572,12 +589,12 @@
                 <!-- Text Panel -->
                 <div class="col-lg-5 mb-4 mb-lg-0">
                     <div id="showcase-text">
-                        <h3 class="mb-3" style="font-size: 1.6rem; line-height: 1.3; color: #fff;" id="showcase-title">Energy Flow Visualization</h3>
-                        <p class="text-muted" style="font-size: 1rem; line-height: 1.7;" id="showcase-desc">See how energy moves through your entire system — solar generation, battery charge/discharge, grid import/export, and home consumption — all in one clear view.</p>
+                        <h3 class="mb-3" style="font-size: 1.6rem; line-height: 1.3; color: #fff;" id="showcase-title">Plant Dashboard</h3>
+                        <p class="text-muted" style="font-size: 1rem; line-height: 1.7;" id="showcase-desc">All your solar plants in one view. Monitor multiple inverters across different platforms from a single subscription.</p>
                         <ul class="list-unstyled mt-3" id="showcase-features">
-                            <li class="mb-2 text-muted"><i class="fas fa-check-circle text-orange mr-2"></i>Power flow between all sources</li>
-                            <li class="mb-2 text-muted"><i class="fas fa-check-circle text-orange mr-2"></i>Battery state of charge at a glance</li>
-                            <li class="mb-2 text-muted"><i class="fas fa-check-circle text-orange mr-2"></i>Grid and load status overview</li>
+                            <li class="mb-2 text-muted"><i class="fas fa-check-circle text-orange mr-2"></i>Multi-inverter support</li>
+                            <li class="mb-2 text-muted"><i class="fas fa-check-circle text-orange mr-2"></i>Cross-platform monitoring</li>
+                            <li class="mb-2 text-muted"><i class="fas fa-check-circle text-orange mr-2"></i>At-a-glance system health</li>
                         </ul>
                     </div>
                     <a href="https://app.pvbiz.co.za/register" class="btn btn-primary px-4 py-2 mt-3">Try It Free</a>
@@ -595,14 +612,10 @@
                             <li data-target="#showcaseCarousel" data-slide-to="4"></li>
                             <li data-target="#showcaseCarousel" data-slide-to="5"></li>
                             <li data-target="#showcaseCarousel" data-slide-to="6"></li>
-                            <li data-target="#showcaseCarousel" data-slide-to="7"></li>
                         </ol>
 
                         <div class="carousel-inner" style="border-radius: 12px; overflow: hidden;">
                             <div class="carousel-item active" style="text-align: center;">
-                                <img src="img/pvbiz_flow_map.png" alt="Energy Flow Visualization" class="d-block mx-auto img-fluid" style="max-height: 600px; border-radius: 24px; box-shadow: 0 4px 30px rgba(0,0,0,0.5); border: 3px solid #222;">
-                            </div>
-                            <div class="carousel-item" style="text-align: center;">
                                 <img src="img/pvbiz_plants.png" alt="Plant Dashboard" class="d-block mx-auto img-fluid" style="max-height: 600px; border-radius: 24px; box-shadow: 0 4px 30px rgba(0,0,0,0.5); border: 3px solid #222;">
                             </div>
                             <div class="carousel-item" style="text-align: center;">
@@ -640,11 +653,6 @@
     <script>
     (function() {
         var slides = [
-            {
-                title: "Energy Flow Visualization",
-                desc: "See how energy moves through your entire system — solar generation, battery charge/discharge, grid import/export, and home consumption — all in one clear view.",
-                features: ["Power flow between all sources", "Battery state of charge at a glance", "Grid and load status overview"]
-            },
             {
                 title: "Plant Dashboard",
                 desc: "All your solar plants in one view. Monitor multiple inverters across different platforms from a single subscription.",

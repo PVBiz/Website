@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PVBiz Installer Platform - Multi-Brand Solar Fleet Monitoring & Analytics</title>
+    <meta name="description" content="The PVBiz Installer Platform lets solar installers monitor, manage and analyse entire fleets across 14+ inverter brands from one dashboard. Proudly South African - over 1,000 sites and 32 MWp of installed inverter capacity under management.">
+    <link rel="canonical" href="https://www.pvbiz.co.za/installer-platform">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="PVBiz Installer Platform - Multi-Brand Solar Fleet Management">
+    <meta property="og:description" content="Monitor, manage and analyse entire solar fleets across 14+ inverter brands from one platform. Proudly South African. Over 1,000 sites and 32 MWp of installed inverter capacity under management.">
+    <meta property="og:image" content="https://www.pvbiz.co.za/img/pvbiz_web_main.png">
+    <meta property="og:url" content="https://www.pvbiz.co.za/installer-platform">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="PVBiz">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PVBiz Installer Platform - Multi-Brand Solar Fleet Management">
+    <meta name="twitter:description" content="Monitor, manage and analyse entire solar fleets across 14+ inverter brands from one platform. Proudly South African.">
+    <meta name="twitter:image" content="https://www.pvbiz.co.za/img/pvbiz_web_main.png">
+
+    <!-- Required Dependencies -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
+    <style>
+        :root {
+            --primary-orange: #febe7a;
+            --dark-bg: #0a0a0a;
+            --card-bg: #1a1a1a;
+        }
+
+        body {
+            background: var(--dark-bg);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            padding-top: 80px;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(10, 10, 10, 0.98) !important;
+            border-bottom: 1px solid rgba(255, 107, 53, 0.1);
+        }
+        .navbar-brand {
+            color: var(--primary-orange) !important;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        .nav-link { color: #cccccc !important; transition: all 0.3s ease; }
+        .nav-link:hover { color: var(--primary-orange) !important; }
+
+        /* Hero */
+        .hero-section {
+            position: relative;
+            background: radial-gradient(1200px 500px at 70% -10%, rgba(254, 190, 122, 0.18), transparent 60%), linear-gradient(45deg, #000000, #111111);
+            padding: 6rem 0 5rem;
+            overflow: hidden;
+        }
+        .hero-heading {
+            font-size: 3.4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            background: linear-gradient(45deg, #ff7e5f, #febe7a);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .hero-sub { color: #cfcfcf; font-size: 1.25rem; line-height: 1.7; max-width: 640px; }
+        .sa-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(254, 190, 122, 0.12);
+            border: 1px solid rgba(254, 190, 122, 0.4);
+            color: var(--primary-orange);
+            padding: 0.4rem 1rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-orange {
+            background: var(--primary-orange);
+            color: #000 !important;
+            font-weight: 700;
+            border: 2px solid var(--primary-orange);
+        }
+        .btn-orange:hover { background: #ffcf95; border-color: #ffcf95; }
+        .btn-outline-orange {
+            border: 2px solid var(--primary-orange);
+            color: var(--primary-orange) !important;
+            background: transparent;
+            font-weight: 600;
+        }
+        .btn-outline-orange:hover { background: var(--primary-orange); color: #000 !important; }
+
+        /* Stats band */
+        .stats-section { background: #000; padding: 4rem 0; border-top: 1px solid #1d1d1d; border-bottom: 1px solid #1d1d1d; }
+        .stat-number { font-size: 3rem; font-weight: 800; color: var(--primary-orange); line-height: 1; }
+        .stat-unit { font-size: 1.4rem; font-weight: 700; color: var(--primary-orange); }
+        .stat-label { color: #bdbdbd; margin-top: 0.75rem; font-size: 1.05rem; }
+
+        /* Section shared */
+        .section { padding: 5.5rem 0; }
+        .section-title { font-size: 2.4rem; font-weight: 800; margin-bottom: 1rem; }
+        .section-intro { color: #bdbdbd; font-size: 1.1rem; max-width: 720px; margin: 0 auto 3rem; }
+
+        /* Brands grid */
+        .brands-section { background: #0d0d0d; }
+        .brand-tile {
+            background: #ffffff;
+            border-radius: 0.9rem;
+            height: 110px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.25rem;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .brand-tile:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(254, 190, 122, 0.25); }
+        .brand-tile img { max-width: 100%; max-height: 64px; object-fit: contain; }
+        .brand-more {
+            background: linear-gradient(135deg, #1a1a1a, #262017);
+            border: 1px dashed rgba(254, 190, 122, 0.5);
+            color: var(--primary-orange);
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        /* Features */
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid #222;
+            border-radius: 1rem;
+            padding: 2rem;
+            height: 100%;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .feature-card:hover { transform: translateY(-5px); border-color: rgba(254, 190, 122, 0.5); }
+        .feature-icon {
+            width: 60px; height: 60px;
+            background: rgba(254, 190, 122, 0.12);
+            color: var(--primary-orange);
+            border-radius: 0.85rem;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+        .feature-card h5 { color: #fff; font-weight: 700; margin-bottom: 0.6rem; }
+        .feature-card p { color: #bdbdbd; margin-bottom: 0; font-size: 0.97rem; line-height: 1.6; }
+
+        /* Why strip */
+        .why-section { background: linear-gradient(45deg, #120d08, #0a0a0a); }
+        .why-item { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.5rem; }
+        .why-item i { color: var(--primary-orange); font-size: 1.3rem; margin-top: 0.2rem; }
+        .why-item h6 { color: #fff; font-weight: 700; margin-bottom: 0.25rem; }
+        .why-item p { color: #bdbdbd; margin-bottom: 0; font-size: 0.97rem; }
+
+        /* Demo form */
+        .demo-section { background: #0d0d0d; }
+        .demo-card { background: var(--card-bg); border: 1px solid #222; border-radius: 1.25rem; padding: 2.5rem; }
+        .form-control {
+            background: #0f0f0f;
+            border: 1px solid #333;
+            color: #fff;
+            border-radius: 0.6rem;
+            padding: 0.8rem 1rem;
+        }
+        .form-control:focus { background: #0f0f0f; color: #fff; border-color: var(--primary-orange); box-shadow: 0 0 0 0.15rem rgba(254, 190, 122, 0.25); }
+        .form-control::placeholder { color: #777; }
+        label.form-label { color: #ddd; font-weight: 500; margin-bottom: 0.35rem; }
+        .direct-email { color: var(--primary-orange); font-weight: 600; }
+        .direct-email:hover { color: #ffcf95; }
+
+        /* CTA */
+        .cta-section { background: linear-gradient(45deg, #ff7e5f22, #febe7a22), #0a0a0a; padding: 5rem 0; text-align: center; }
+
+        footer { background: #000; padding: 4rem 0; }
+        .text-orange { color: var(--primary-orange); }
+
+        @media (max-width: 768px) {
+            body { padding-top: 60px; }
+            .hero-heading { font-size: 2.4rem; }
+            .hero-section { padding: 3.5rem 0; }
+            .stat-number { font-size: 2.3rem; }
+            .section-title { font-size: 1.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../">PVBiz</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="../">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#brands">Supported Brands</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#demo">Book a Demo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://installer.pvbiz.co.za">Installer Sign In</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12 text-center">
+                    <span class="sa-badge"><i class="fas fa-sun"></i> Proudly South African &#127487;&#127462;</span>
+                    <h1 class="hero-heading mb-4">The Installer Platform built for solar professionals</h1>
+                    <p class="hero-sub mx-auto mb-4">Monitor, manage and analyse your entire solar fleet across <strong class="text-orange">14+ inverter brands</strong> from one powerful dashboard. Catch faults early, automate client reporting, and run your business on real data.</p>
+                    <div class="mt-4">
+                        <a href="https://installer.pvbiz.co.za" class="btn btn-orange btn-lg px-5 py-3">Get Started</a>
+                        <a href="#demo" class="btn btn-outline-orange btn-lg px-5 py-3 ml-2">Book a Demo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats band -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row text-center justify-content-center">
+                <div class="col-md-5 mb-4 mb-md-0">
+                    <div class="stat-number"><span class="counter" data-target="1000">0</span>+</div>
+                    <div class="stat-label">Sites under management</div>
+                </div>
+                <div class="col-md-5">
+                    <div class="stat-number"><span class="counter" data-target="32">0</span> <span class="stat-unit">MWp</span></div>
+                    <div class="stat-label">Total installed inverter capacity</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supported Brands -->
+    <section class="section brands-section" id="brands">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">One platform. Every major brand.</h2>
+                <p class="section-intro">No more juggling a dozen manufacturer portals. PVBiz unifies your whole fleet &mdash; we currently support 14 inverter brands, with more added all the time.</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-6 col-sm-4 col-md-3 mb-4"><div class="brand-tile"><img src="../img/brands/solis.png" alt="Solis" loading="lazy"></div></div>
+                <div class="col-6 col-sm-4 col-md-3 mb-4"><div class="brand-tile"><img src="../img/brands/sunsynk.png" alt="Sunsynk" loading="lazy"></div></div>
+                <div class="col-6 col-sm-4 col-md-3 mb-4"><div class="brand-tile"><img src="../img/brands/deye.svg" alt="Deye" loading="lazy"></div></div>
+                <div class="col-6 col-sm-4 col-md-3 mb-4"><div class="brand-tile"><img src="../img/brands/solarman.jpg" alt="Solarman" loading="lazy"></div></div>
+                <div class="col-6 col-sm-4 col-md-3 mb-4"><div class="brand-tile"><img src="../img/brands/atess.svg" alt="Atess" loading="lazy"></div></div>
+                <div class="col-6 col-sm-4 col-md-3 mb-4"><div class="brand-tile"><img src="../img/brands/huawei.png" alt="Huawei FusionSolar" loading="lazy"></div></div>
+                <div class="col-6 col-sm-4 col-md-3 mb-4"><div class="brand-tile"><img src="../img/brands/foxess.png" alt="FoxESS" loading="lazy"></div></div>
+                <div class="col-6 col-sm-4 col-md-3 mb-4"><div class="brand-tile"><img src="../img/brands/goodwe.svg" alt="GoodWe" loading="lazy"></div></div>
+                <div class="col-6 col-sm-4 col-md-3 mb-4"><div class="brand-tile"><img src="../img/brands/luxpower.webp" alt="Luxpower" loading="lazy"></div></div>
+                <div class="col-6 col-sm-4 col-md-3 mb-4"><div class="brand-tile"><img src="../img/brands/growatt.png" alt="Growatt" loading="lazy"></div></div>
+                <div class="col-6 col-sm-4 col-md-3 mb-4"><div class="brand-tile"><img src="../img/brands/solaredge.svg" alt="SolarEdge" loading="lazy"></div></div>
+                <div class="col-6 col-sm-4 col-md-3 mb-4"><div class="brand-tile"><img src="../img/brands/canadiansolar.png" alt="Canadian Solar" loading="lazy"></div></div>
+                <div class="col-6 col-sm-4 col-md-3 mb-4"><div class="brand-tile"><img src="../img/brands/solark.png" alt="Sol-Ark" loading="lazy"></div></div>
+                <div class="col-6 col-sm-4 col-md-3 mb-4"><div class="brand-tile"><img src="../img/brands/sungrow.svg" alt="Sungrow" loading="lazy"></div></div>
+                <div class="col-6 col-sm-4 col-md-3 mb-4"><div class="brand-tile brand-more"><span>+ More<br>coming soon</span></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Everything an installer needs, in one place</h2>
+                <p class="section-intro">Purpose-built for installers and O&amp;M teams managing fleets at scale &mdash; not a consumer app stretched to fit.</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-3 mb-4"><div class="feature-card"><div class="feature-icon"><i class="fas fa-layer-group"></i></div><h5>Multi-Brand Fleet Dashboard</h5><p>Every site, every brand, one live view. Stop logging into a dozen manufacturer portals.</p></div></div>
+                <div class="col-md-6 col-lg-3 mb-4"><div class="feature-card"><div class="feature-icon"><i class="fas fa-chart-line"></i></div><h5>Fleet Analytics &amp; Performance Index</h5><p>Rank and compare sites by performance ratio and yield to spot underperformers instantly.</p></div></div>
+                <div class="col-md-6 col-lg-3 mb-4"><div class="feature-card"><div class="feature-icon"><i class="fas fa-cloud-sun"></i></div><h5>AI Yield Forecasting</h5><p>Seasonal and weather-aware production forecasts so you know what each site should be making.</p></div></div>
+                <div class="col-md-6 col-lg-3 mb-4"><div class="feature-card"><div class="feature-icon"><i class="fas fa-bell"></i></div><h5>Proactive Fault Alerts</h5><p>Automatic alerts on faults, downtime and underperformance &mdash; fix issues before clients call.</p></div></div>
+                <div class="col-md-6 col-lg-3 mb-4"><div class="feature-card"><div class="feature-icon"><i class="fas fa-file-invoice"></i></div><h5>Automated Client Reporting</h5><p>Branded performance and savings reports generated and delivered on autopilot.</p></div></div>
+                <div class="col-md-6 col-lg-3 mb-4"><div class="feature-card"><div class="feature-icon"><i class="fas fa-tools"></i></div><h5>Maintenance Management</h5><p>Track service tickets, site visits and equipment across your whole portfolio.</p></div></div>
+                <div class="col-md-6 col-lg-3 mb-4"><div class="feature-card"><div class="feature-icon"><i class="fas fa-leaf"></i></div><h5>Carbon &amp; REC Tracking</h5><p>Quantify CO&#8322; savings and renewable energy certificates across managed sites.</p></div></div>
+                <div class="col-md-6 col-lg-3 mb-4"><div class="feature-card"><div class="feature-icon"><i class="fas fa-coins"></i></div><h5>Billing &amp; Financials</h5><p>Tariff modelling, PPA and savings calculations to support your commercial offering.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why we're better -->
+    <section class="section why-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <h2 class="section-title">Why installers choose PVBiz</h2>
+                    <p style="color:#bdbdbd; font-size:1.05rem; line-height:1.7;">We don't just show you data &mdash; we turn it into action. Built by South Africans who understand local grids, loadshedding and the realities of running a solar business here.</p>
+                    <a href="https://installer.pvbiz.co.za" class="btn btn-orange px-4 py-2 mt-2">Start managing your fleet</a>
+                </div>
+                <div class="col-lg-7">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="why-item"><i class="fas fa-check-circle"></i><div><h6>Truly brand-agnostic</h6><p>14+ brands today and growing &mdash; you're never locked to one manufacturer.</p></div></div>
+                            <div class="why-item"><i class="fas fa-check-circle"></i><div><h6>Proven at scale</h6><p>Over 1,000 sites and 32 MWp of installed inverter capacity under management.</p></div></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="why-item"><i class="fas fa-check-circle"></i><div><h6>Local expertise</h6><p>Proudly South African &mdash; built for African grid conditions, not retro-fitted.</p></div></div>
+                            <div class="why-item"><i class="fas fa-check-circle"></i><div><h6>Actionable, not just pretty</h6><p>Forecasting, alerts and analytics that protect uptime and your reputation.</p></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Book a Demo -->
+    <section class="section demo-section" id="demo">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title">Book a demo</h2>
+                    <p class="section-intro">See the platform on your own fleet. Fill in the form and we'll be in touch &mdash; or email us directly.</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="demo-card">
+                        <form id="demoForm">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label class="form-label" for="df-name">Name</label>
+                                    <input type="text" class="form-control" id="df-name" placeholder="Your name" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="form-label" for="df-company">Company</label>
+                                    <input type="text" class="form-control" id="df-company" placeholder="Your company">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label class="form-label" for="df-email">Email</label>
+                                    <input type="email" class="form-control" id="df-email" placeholder="you@example.com" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="form-label" for="df-phone">Phone (optional)</label>
+                                    <input type="text" class="form-control" id="df-phone" placeholder="+27 ...">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="df-message">How many sites do you manage? Anything else?</label>
+                                <textarea class="form-control" id="df-message" rows="3" placeholder="Tell us a little about your fleet..."></textarea>
+                            </div>
+                            <div class="text-center mt-3">
+                                <button type="submit" class="btn btn-orange btn-lg px-5 py-3"><i class="fas fa-paper-plane mr-2"></i>Open Email to Send</button>
+                            </div>
+                        </form>
+                        <p class="text-center text-muted mt-4 mb-0">Prefer to email us directly? <a class="direct-email" href="mailto:info@pvbiz.co.za">info@pvbiz.co.za</a> &nbsp;|&nbsp; <i class="fas fa-phone mr-1"></i>+27 61 546 7165</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="section-title">Ready to run your fleet on real data?</h2>
+            <p class="section-intro">Join the installers already managing over 1,000 sites on PVBiz.</p>
+            <a href="https://installer.pvbiz.co.za" class="btn btn-orange btn-lg px-5 py-3">Get Started</a>
+            <a href="#demo" class="btn btn-outline-orange btn-lg px-5 py-3 ml-2">Book a Demo</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-orange mb-4">PVBiz</h5>
+                    <p class="text-muted">Professional Solar Monitoring Solutions</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-orange mb-4">Contact</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li class="mb-2"><i class="fas fa-phone mr-2"></i>+27 61 546 7165</li>
+                        <li class="mb-2"><i class="fas fa-envelope mr-2"></i>info@pvbiz.co.za</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>Johannesburg, Gauteng</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-orange mb-4">Legal</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="../privacy-policy.html" class="text-muted">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted">Terms of Service</a></li>
+                        <li><a href="../accountdata.html" class="text-muted">Account Data</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-top pt-4 mt-4 text-center">
+                <div class="social-icons mb-3">
+                    <a href="https://twitter.com/pv_biz_solar" class="text-muted mx-2"><i class="fab fa-twitter fa-2x"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=100091740205316" class="text-muted mx-2"><i class="fab fa-facebook fa-2x"></i></a>
+                </div>
+                <p class="text-muted small mb-0">&copy; 2026 PVBiz Pty Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Required Scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" defer></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" defer></script>
+
+    <script>
+        // Smooth scroll for on-page anchors
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function (e) {
+                var target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Animated stat counters
+        function animateCounter(el) {
+            var target = parseInt(el.getAttribute('data-target'), 10);
+            var duration = 1400, start = null;
+            function step(ts) {
+                if (!start) start = ts;
+                var progress = Math.min((ts - start) / duration, 1);
+                el.textContent = Math.floor(progress * target).toLocaleString();
+                if (progress < 1) requestAnimationFrame(step);
+                else el.textContent = target.toLocaleString();
+            }
+            requestAnimationFrame(step);
+        }
+        var counters = document.querySelectorAll('.counter');
+        if ('IntersectionObserver' in window) {
+            var io = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) { animateCounter(entry.target); io.unobserve(entry.target); }
+                });
+            }, { threshold: 0.4 });
+            counters.forEach(function(c) { io.observe(c); });
+        } else {
+            counters.forEach(animateCounter);
+        }
+
+        // Book a Demo -> open email client (mailto), no backend
+        var demoForm = document.getElementById('demoForm');
+        if (demoForm) {
+            demoForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var name = document.getElementById('df-name').value.trim();
+                var company = document.getElementById('df-company').value.trim();
+                var email = document.getElementById('df-email').value.trim();
+                var phone = document.getElementById('df-phone').value.trim();
+                var message = document.getElementById('df-message').value.trim();
+                var subject = 'Installer Platform Demo Request' + (company ? ' - ' + company : '');
+                var body =
+                    'Name: ' + name + '\n' +
+                    'Company: ' + company + '\n' +
+                    'Email: ' + email + '\n' +
+                    'Phone: ' + phone + '\n\n' +
+                    'Message:\n' + message + '\n';
+                window.location.href = 'mailto:info@pvbiz.co.za'
+                    + '?subject=' + encodeURIComponent(subject)
+                    + '&body=' + encodeURIComponent(body);
+            });
+        }
+    </script>
+</body>
+</html>
