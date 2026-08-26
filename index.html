@@ -727,6 +727,7 @@
                 <button type="button" class="btn btn-sm currency-btn" data-currency="ZAR">ZAR (R)</button>
                 <button type="button" class="btn btn-sm currency-btn" data-currency="USD">USD ($)</button>
                 <button type="button" class="btn btn-sm currency-btn" data-currency="EUR">EUR (€)</button>
+                <button type="button" class="btn btn-sm currency-btn" data-currency="GBP">GBP (£)</button>
             </div>
         </div>
 
@@ -1080,7 +1081,8 @@
         var CURRENCIES = {
             ZAR: { symbol: 'R', decimals: 0 },
             USD: { symbol: '$', decimals: 2 },
-            EUR: { symbol: '€', decimals: 2 }
+            EUR: { symbol: '€', decimals: 2 },
+            GBP: { symbol: '£', decimals: 2 }
         };
         var rates = { ZAR: 1 }; // will be filled from API
         var activeCurrency = 'ZAR';
@@ -1110,12 +1112,14 @@
                     if (data && data.rates) {
                         rates.USD = data.rates.USD;
                         rates.EUR = data.rates.EUR;
+                        rates.GBP = data.rates.GBP;
                     }
                 })
                 .catch(function() {
                     // fallback approximate rates if API fails
                     rates.USD = 0.054;
                     rates.EUR = 0.049;
+                    rates.GBP = 0.046;
                 })
                 .finally(function() {
                     updatePrices(defaultCurrency);
@@ -1134,7 +1138,7 @@
             .then(function(r) { return r.json(); })
             .then(function(data) {
                 var country = data.country_code || '';
-                var defaultCurrency = country === 'ZA' ? 'ZAR' : (country === 'US' ? 'USD' : 'EUR');
+                var defaultCurrency = country === 'ZA' ? 'ZAR' : (country === 'US' ? 'USD' : (country === 'GB' ? 'GBP' : 'EUR'));
                 init(defaultCurrency);
             })
             .catch(function() {
