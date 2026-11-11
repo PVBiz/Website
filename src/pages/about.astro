@@ -1,0 +1,103 @@
+---
+import Base from '../layouts/Base.astro';
+import Check from '../components/Check.astro';
+import { APP_STORE, EMAIL, ORGANIZATION, PHONE, PHONE_TEL, PLAY_STORE, REGISTER, breadcrumbs } from '../data/brands';
+---
+
+<Base
+  title="About PVBiz - solar monitoring built in Johannesburg, South Africa"
+  description="PVBiz Pty Ltd builds solar monitoring, alerting, forecasting and fleet-management software in Johannesburg, South Africa, for homeowners, businesses and installers on 14+ inverter brands. Over 1,000 sites and 32 MWp under management."
+  path="/about/"
+  jsonLd={[ORGANIZATION, breadcrumbs([{ name: 'About', path: '/about/' }])]}
+>
+  <section class="page-head">
+    <div class="container">
+      <ol class="crumbs">
+        <li><a href="/">Home</a></li>
+        <li>About</li>
+      </ol>
+      <h1>Built in Johannesburg, for the way solar actually runs here.</h1>
+      <p class="answer">
+        PVBiz Pty Ltd is a South African software company in Johannesburg, Gauteng. We build the
+        PVBiz app and the Installer Platform: solar monitoring, alerts, forecasting, reporting and
+        automation across 14+ inverter brands and platforms, used on over 1,000 sites and 32 MWp.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-tight alt hairline-top" id="what">
+    <div class="container">
+      <div class="section-head">
+        <h2>What we make</h2>
+      </div>
+      <div class="split">
+        <article class="panel">
+          <h3>PVBiz for homeowners and businesses</h3>
+          <p>An iOS, Android and web app for your own solar plants: live energy flow, alerts, a 7-day forecast, analysis, reports and automation. Public prices, from R55 a month for two plants.</p>
+          <ul>
+            <li><Check />Read-only access through the inverter's own cloud</li>
+            <li><Check />Push, email and Telegram alerts; WhatsApp as an add-on</li>
+            <li><Check />7-day free trial, no card needed</li>
+          </ul>
+          <div class="panel-cta">
+            <a class="btn btn-primary" href={REGISTER}>Start free trial</a>
+            <a class="text-link" href="/homeowners/">For homeowners</a>
+          </div>
+        </article>
+        <article class="panel panel-night">
+          <h3>The PVBiz Installer Platform</h3>
+          <p>One fleet view across every brand an installer or O&amp;M team has ever fitted, with fault alerts, branded client reports, a performance index, work orders, tariffs, PPA and REC tracking.</p>
+          <ul>
+            <li><Check />Over 1,000 sites and 32 MWp under management</li>
+            <li><Check />Eskom and municipal tariffs and loadshedding built in</li>
+            <li><Check />Priced per fleet</li>
+          </ul>
+          <div class="panel-cta">
+            <a class="btn btn-primary" href="/contact/">Book a demo</a>
+            <a href="/installers/">For installers</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="how">
+    <div class="container">
+      <div class="section-head">
+        <h2>How we work</h2>
+        <p>Three things we hold ourselves to, on every brand and every page.</p>
+      </div>
+      <ul class="why">
+        <li><h3>Read-only by default</h3><p>PVBiz needs to see a plant, not own it. You share it from the portal you already use, and you can revoke that share at any time. Nothing is installed on site.</p></li>
+        <li><h3>Brand-agnostic</h3><p>14+ inverter brands and platforms today, added on request for installer fleets. A mixed fleet is still one fleet, and a homeowner can mix two brands in one subscription.</p></li>
+        <li><h3>Public prices</h3><p>R55 a month or R549 a year, fixed in ZAR, USD, EUR and GBP, with every feature included. Installer fleets are quoted per fleet after a demo.</p></li>
+        <li><h3>Local first</h3><p>Proudly South African. Eskom and municipal tariffs, loadshedding behaviour and the realities of running a solar business here are built in, with fleets beyond South Africa supported in their own time zones.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section-tight alt hairline-top" id="company">
+    <div class="container">
+      <div class="contact-grid">
+        <article class="panel">
+          <h2>Company</h2>
+          <dl>
+            <div><dt>Legal name</dt><dd>PVBiz Pty Ltd</dd></div>
+            <div><dt>Location</dt><dd>Johannesburg, Gauteng, South Africa</dd></div>
+            <div><dt>Email</dt><dd><a href={`mailto:${EMAIL}`}>{EMAIL}</a></dd></div>
+            <div><dt>Phone</dt><dd><a href={`tel:${PHONE_TEL}`}>{PHONE}</a></dd></div>
+          </dl>
+        </article>
+        <article class="panel">
+          <h2>Find PVBiz</h2>
+          <dl>
+            <div><dt>Web app</dt><dd><a href="https://app.pvbiz.co.za">app.pvbiz.co.za</a></dd></div>
+            <div><dt>iOS</dt><dd><a href={APP_STORE} rel="noopener">PVBiz on the App Store</a></dd></div>
+            <div><dt>Android</dt><dd><a href={PLAY_STORE} rel="noopener">PVBiz on Google Play</a></dd></div>
+            <div><dt>Contact and demos</dt><dd><a href="/contact/">Contact page</a></dd></div>
+          </dl>
+        </article>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,124 @@
+---
+import Base from '../layouts/Base.astro';
+import Check from '../components/Check.astro';
+import Faq from '../components/Faq.astro';
+import Plans from '../components/Plans.astro';
+import { REGISTER, SITE, breadcrumbs, faqPage } from '../data/brands';
+
+const FAQ = [
+  {
+    q: 'How long is the free trial?',
+    a: 'Seven days, with no card required. A trial can be used once per account, and you can subscribe to a paid plan at any time, during or after it.',
+  },
+  {
+    q: 'What happens after my free trial ends?',
+    a: 'Choose the monthly or yearly plan to carry on. No data or settings are lost: without an active subscription the plant pages pause, and they resume as soon as you subscribe.',
+  },
+  {
+    q: 'Can I cancel?',
+    a: 'Yes. The monthly plan can be cancelled at any time and runs to the end of the paid period. The yearly plan is a single payment for the year.',
+  },
+  {
+    q: 'Which currencies can I pay in?',
+    a: 'ZAR, USD, EUR and GBP. Each price is fixed in its own currency, not converted from rand. Use the switcher above to see yours.',
+  },
+  {
+    q: 'What is covered by one subscription?',
+    a: 'Two solar plants, on any of the 14+ supported brands and platforms, with every feature: alerts, custom rules, forecasts, analysis, reports and automation. Nothing is sold as an upgrade except WhatsApp message bundles.',
+  },
+  {
+    q: 'How are installers priced?',
+    a: 'Per fleet, based on the number of sites under management. Book a demo for a quote on your fleet.',
+  },
+];
+
+const offers = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'PVBiz subscription (2 solar plants)',
+  url: `${SITE}/pricing/`,
+  brand: { '@type': 'Organization', name: 'PVBiz' },
+  offers: [
+    { '@type': 'Offer', name: 'Monthly', price: '55', priceCurrency: 'ZAR', url: REGISTER },
+    { '@type': 'Offer', name: 'Yearly', price: '549', priceCurrency: 'ZAR', url: REGISTER },
+    { '@type': 'Offer', name: 'Monthly', price: '5.30', priceCurrency: 'USD', url: REGISTER },
+    { '@type': 'Offer', name: 'Yearly', price: '42.00', priceCurrency: 'USD', url: REGISTER },
+    { '@type': 'Offer', name: 'Monthly', price: '4.90', priceCurrency: 'EUR', url: REGISTER },
+    { '@type': 'Offer', name: 'Yearly', price: '39.00', priceCurrency: 'EUR', url: REGISTER },
+    { '@type': 'Offer', name: 'Monthly', price: '4.20', priceCurrency: 'GBP', url: REGISTER },
+    { '@type': 'Offer', name: 'Yearly', price: '34.00', priceCurrency: 'GBP', url: REGISTER },
+  ],
+};
+---
+
+<Base
+  title="PVBiz pricing - R55 a month or R549 a year for two solar plants"
+  description="PVBiz costs R55 a month or R549 a year for up to two solar plants, with every feature included and a 7-day free trial. Prices in ZAR, USD, EUR and GBP. Installer fleets are priced per fleet."
+  path="/pricing/"
+  jsonLd={[offers, faqPage(FAQ), breadcrumbs([{ name: 'Pricing', path: '/pricing/' }])]}
+>
+  <section class="page-head">
+    <div class="container">
+      <ol class="crumbs">
+        <li><a href="/">Home</a></li>
+        <li>Pricing</li>
+      </ol>
+      <h1>Public prices, no quote needed.</h1>
+      <p class="answer">
+        PVBiz costs R55 a month or R549 a year for up to two solar plants, every feature included,
+        after a 7-day free trial with no card needed. Installer fleets are priced per fleet.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-tight alt hairline-top" id="plans">
+    <div class="container">
+      <Plans
+        heading="Plans"
+        intro="Every plan covers two solar plants on any of the 14+ supported brands. Pick the currency you pay in."
+      />
+    </div>
+  </section>
+
+  <section class="section" id="includes">
+    <div class="container">
+      <div class="section-head">
+        <h2>What every plan includes</h2>
+        <p>The same product for everyone. Nothing below is an upgrade.</p>
+      </div>
+      <ul class="includes">
+        <li><Check />2 solar plants per subscription, any brands</li>
+        <li><Check />Near real-time alerts by push, email and Telegram</li>
+        <li><Check />10+ custom rules per plant on any inverter metric</li>
+        <li><Check />7-day solar forecast</li>
+        <li><Check />Daily, monthly, seasonal and year-on-year analysis</li>
+        <li><Check />Excel reports on demand</li>
+        <li><Check />Automation: schedules and condition-based inverter actions</li>
+        <li><Check />iOS and Android apps plus the web dashboard</li>
+        <li><Check />Email support</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section-tight alt hairline-top" id="faq">
+    <div class="container">
+      <div class="section-head"><h2>Pricing questions</h2></div>
+      <Faq items={FAQ} />
+    </div>
+  </section>
+
+  <section class="section night" id="start">
+    <div class="container">
+      <div class="contact-card">
+        <div>
+          <p class="big">Try it on your own plant first.</p>
+          <p class="muted">7-day free trial, no card needed. Keep your data and settings if you stay.</p>
+        </div>
+        <div class="cta">
+          <a class="btn btn-primary btn-lg" href={REGISTER}>Start free trial</a>
+          <a class="btn btn-secondary btn-lg" href="/contact/">Book a fleet demo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

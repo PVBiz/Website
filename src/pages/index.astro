@@ -1,0 +1,436 @@
+---
+import { Image, getImage } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Check from '../components/Check.astro';
+import Faq from '../components/Faq.astro';
+import LogoGrid from '../components/LogoGrid.astro';
+import Plans from '../components/Plans.astro';
+import {
+  APP,
+  HOME_FAQ,
+  ORGANIZATION,
+  REGISTER,
+  SOFTWARE_APPLICATION,
+  faqPage,
+} from '../data/brands';
+import heroFlow from '../assets/app/hero-flow.webp';
+import plantDashboard from '../assets/app/plant-dashboard.webp';
+import alertsRules from '../assets/app/alerts-rules.webp';
+import analysis from '../assets/app/analysis.webp';
+
+const hero = await getImage({ src: heroFlow, format: 'webp' });
+---
+
+<Base
+  title="PVBiz - Solar monitoring and alerts for 14+ inverter brands"
+  description="Solar monitoring, analytics and automation across 14+ inverter brands and platforms, including Sunsynk, Deye, Solarman, Sol-Ark, Solis, Huawei FusionSolar and Solar Assistant. Smart solar notifications, forecasting, detailed reporting, and inverter monitoring from a single platform."
+  ogTitle="PVBiz - Solar Monitoring & Automation Made Simple"
+  path="/"
+  jsonLd={[ORGANIZATION, SOFTWARE_APPLICATION, faqPage(HOME_FAQ)]}
+  preload={[{ href: hero.src, as: 'image', type: 'image/webp' }]}
+>
+  <!-- Hero -->
+  <section class="hero night" id="home">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <h1>Every solar plant, every inverter brand, one app.</h1>
+          <p class="answer">
+            PVBiz monitors solar plants on 14+ inverter brands and platforms from one app, with
+            alerts, forecasts, reports and automation, from R55 a month for up to two plants.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-primary btn-lg" href={REGISTER}>Start free trial</a>
+            <a class="btn btn-secondary btn-lg" href="/installers/">For installers and O&amp;M teams</a>
+          </div>
+          <p class="hero-proof">
+            Read-only access to your plant. <strong>No hardware</strong>, no rewiring: connect in
+            minutes through the portal you already use.
+          </p>
+        </div>
+
+        <div class="hero-visual">
+          <div class="device">
+            <div class="device-screen">
+              <img
+                src={hero.src}
+                width={hero.attributes.width}
+                height={hero.attributes.height}
+                fetchpriority="high"
+                decoding="async"
+                alt="PVBiz app showing a live energy flow: 631 W from two solar strings, the grid supplying 962 W, the battery at 51% discharging 4.1 kW, and 5.3 kW to the home split between essential and non-essential loads"
+              />
+            </div>
+          </div>
+          <div class="alert-card" aria-hidden="true">
+            <span class="dot"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path
+                  d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"
+                ></path></svg
+              ></span
+            >
+            <div><strong>Grid restored</strong><span>Willow Road home, 2 minutes ago. Battery at 51%.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-horizon" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- Brands -->
+  <section class="section-tight logo-strip alt" id="brands">
+    <div class="container">
+      <div class="section-head">
+        <h2>Works with 14+ inverter brands and platforms</h2>
+        <p>Connect through the manufacturer portal you already use. No extra hardware.</p>
+      </div>
+      <LogoGrid />
+      <p class="logo-foot">
+        Don't see your inverter? <a href="/integrations/">See every integration and how each one connects</a>, or
+        <a href="/contact/">ask us</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- Audience split -->
+  <section class="section" id="solutions">
+    <div class="container">
+      <div class="section-head">
+        <h2>Two products, one set of data</h2>
+        <p>
+          Homeowners watch their own plants in the app. Installers run whole fleets from a
+          dashboard. Both read the same live inverter data.
+        </p>
+      </div>
+      <div class="split">
+        <article class="panel">
+          <h3>For homeowners and businesses</h3>
+          <p>Know what your system is doing without opening three manufacturer apps.</p>
+          <ul>
+            <li>
+              <Check />Alerts by push, email and Telegram when the grid drops, the battery runs low or
+              the inverter faults, with WhatsApp as an add-on
+            </li>
+            <li><Check />7-day solar forecast and daily, monthly, seasonal analysis</li>
+            <li><Check />Automations: change inverter settings on a schedule or when a condition is met</li>
+            <li><Check />Up to two plants per subscription, from R55 a month</li>
+          </ul>
+          <div class="panel-cta">
+            <a class="btn btn-primary" href={REGISTER}>Start free trial</a>
+            <a class="text-link" href="/homeowners/">More for homeowners</a>
+          </div>
+        </article>
+
+        <article class="panel panel-night">
+          <h3>For installers and O&amp;M teams</h3>
+          <p>
+            One fleet view across every brand you have ever installed. Over 1,000 sites and 32 MWp
+            are managed on PVBiz today.
+          </p>
+          <ul>
+            <li><Check />Fault, downtime and underperformance alerts routed to your team</li>
+            <li><Check />Branded client reports on a schedule, savings against the real tariff</li>
+            <li><Check />Yield forecasting and a performance index that ranks every site</li>
+            <li><Check />Work orders, maintenance windows, PPA and REC tracking</li>
+          </ul>
+          <div class="panel-cta">
+            <a class="btn btn-primary" href="/contact/">Book a demo</a>
+            <a href="/installers/">About the Installer Platform</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section alt hairline-top" id="features">
+    <div class="container">
+      <div class="section-head">
+        <h2>What you get</h2>
+        <p>
+          Everything below is included in every plan. Nothing is sold as an upgrade except WhatsApp
+          message bundles.
+        </p>
+      </div>
+      <ul class="feature-rows">
+        <li>
+          <span class="ico"
+            ><svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              ><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"></path></svg
+            ></span
+          >
+          <div>
+            <h3>Smart notifications</h3>
+            <p>
+              Near real-time alerts by push, email and Telegram when something needs attention.
+              WhatsApp is available as an add-on.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="ico"
+            ><svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"><path d="M4 20V10m6 10V4m6 16v-7m4 7H2"></path></svg
+            ></span
+          >
+          <div>
+            <h3>Custom alert rules</h3>
+            <p>
+              Ten or more rules per plant on any inverter metric: grid connection, AC temperature,
+              essential load, battery level and more.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="ico"
+            ><svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              ><circle cx="12" cy="12" r="4"></circle><path
+                d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+              ></path></svg
+            ></span
+          >
+          <div>
+            <h3>Solar forecasting</h3>
+            <p>
+              A 7-day production forecast from local weather, so you can plan heavy loads and
+              charging around the sun.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="ico"
+            ><svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"><path d="M3 3v18h18"></path><path d="m7 15 4-4 3 3 6-6"></path></svg
+            ></span
+          >
+          <div>
+            <h3>Analysis</h3>
+            <p>
+              Production against consumption, self-sufficiency, seasonal patterns and year-on-year
+              comparisons for each plant.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="ico"
+            ><svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              ><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><path
+                d="M14 3v6h6M8 13h8M8 17h8"></path></svg
+            ></span
+          >
+          <div>
+            <h3>Reports on demand</h3>
+            <p>
+              Excel exports of every metric for any period, for your own records, your accountant
+              or your installer.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="ico"
+            ><svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              ><path d="M4 7h10M18 7h2M4 17h2m4 0h10"></path><circle cx="16" cy="7" r="2"></circle><circle
+                cx="8"
+                cy="17"
+                r="2"></circle></svg
+            ></span
+          >
+          <div>
+            <h3>Automation</h3>
+            <p>
+              Quick actions, schedules and smart rules that change inverter settings when a
+              condition is met: battery priority before the evening peak, for example.
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- App gallery: static images, text in HTML -->
+  <section class="section" id="app">
+    <span id="showcase"></span>
+    <div class="container">
+      <div class="section-head">
+        <h2>The app, as you will use it</h2>
+        <p>iOS and Android, with the same account as the web dashboard.</p>
+      </div>
+      <div class="gallery">
+        <article class="shot">
+          <h3>Live energy flow</h3>
+          <p>
+            Solar, inverter, battery, grid and home updating every few minutes, with the inverter's
+            efficiency and the forecast for the week.
+          </p>
+          <figure>
+            <div class="screen">
+              <Image
+                src={plantDashboard}
+                format="webp"
+                loading="lazy"
+                alt="Plant status tiles: battery at 51% discharging 4,061 W, solar producing 631 W and 14.3 kWh today, grid importing 962 W, home load 5,285 W"
+              />
+            </div>
+          </figure>
+        </article>
+        <article class="shot">
+          <h3>Rules you set once</h3>
+          <p>
+            Switch a rule on, set its threshold, pick the channels. PVBiz checks the inverter for
+            you from then on.
+          </p>
+          <figure>
+            <div class="screen">
+              <Image
+                src={alertsRules}
+                format="webp"
+                loading="lazy"
+                alt="Rules screen for one plant with battery state-of-charge alerts at 50, 40 and 30 percent and a grid disconnect alert switched on"
+              />
+            </div>
+          </figure>
+        </article>
+        <article class="shot">
+          <h3>Analysis that answers questions</h3>
+          <p>
+            Best production days, most self-sufficient days, and how this month compares with the
+            last one and the same month last year.
+          </p>
+          <figure>
+            <div class="screen">
+              <Image
+                src={analysis}
+                format="webp"
+                loading="lazy"
+                alt="Power chart over 48 hours showing solar, load, battery and grid together, with 7 of 25 metrics selected"
+              />
+            </div>
+          </figure>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it connects -->
+  <section class="section alt hairline-top" id="connect">
+    <div class="container">
+      <div class="section-head">
+        <h2>How it connects</h2>
+        <p>
+          PVBiz reads from your inverter's own cloud. You keep full control of the plant; PVBiz
+          only needs to see it.
+        </p>
+      </div>
+      <ol class="steps">
+        <li>
+          <h3>Share your plant, read-only</h3>
+          <p>
+            On Sunsynk, share the plant with admin@pvbiz.co.za. On Solarman or Deye, authorise
+            PVBiz as a visitor under Authorizations. Each <a href="/integrations/">integration page</a>
+            has the exact steps.
+          </p>
+        </li>
+        <li>
+          <h3>Add it in PVBiz</h3>
+          <p>
+            Sign in, pick the brand, and the plant appears with its history. Mix brands freely: two
+            plants on different platforms fit in one subscription.
+          </p>
+        </li>
+        <li>
+          <h3>Turn on the rules you want</h3>
+          <p>
+            Defaults cover grid loss, low battery and inverter faults. Add your own thresholds,
+            choose the channels, done.
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section" id="pricing">
+    <div class="container">
+      <Plans
+        heading="Pricing"
+        intro="Public prices, no quote needed. Every plan covers two solar plants and includes every feature above."
+      />
+      <p class="logo-foot">
+        <a href="/pricing/">Full pricing, what every plan includes and the pricing FAQ</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section alt hairline-top" id="faq">
+    <div class="container">
+      <div class="section-head">
+        <h2>Questions people ask before they sign up</h2>
+      </div>
+      <Faq items={HOME_FAQ} />
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="section night" id="start">
+    <div class="container">
+      <div class="contact-card">
+        <div>
+          <p class="big">Connect your first plant in under ten minutes.</p>
+          <p class="muted">7-day free trial, no card needed. Keep your data and settings if you stay.</p>
+        </div>
+        <div class="cta">
+          <a class="btn btn-primary btn-lg" href={REGISTER}>Start free trial</a>
+          <a class="btn btn-secondary btn-lg" href={APP}>Sign in</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

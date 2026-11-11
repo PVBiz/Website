@@ -1,11 +1,24 @@
 {
-  "name": "my-github-pages-site",
-  "version": "1.0.0",
-  "description": "My GitHub Pages site",
+  "name": "pvbiz-website",
+  "version": "2.0.0",
+  "private": true,
+  "description": "www.pvbiz.co.za marketing site (Astro, static, Cloudflare Pages)",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
-    "start": "npx serve"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
   },
   "dependencies": {
-    "sheetrock": "latest"
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^7.4.10",
+    "sharp": "^0.35.5"
+  },
+  "devDependencies": {
+    "@fontsource-variable/inter": "^5.3.0"
   }
 }

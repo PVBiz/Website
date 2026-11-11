@@ -1,0 +1,266 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Check from '../../components/Check.astro';
+import Faq from '../../components/Faq.astro';
+import { REGISTER, SITE, breadcrumbs, faqPage } from '../../data/brands';
+import { brandLinks } from '../../data/links';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('integrations');
+  return entries.map((entry) => ({ params: { brand: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const d = entry.data;
+const { Content } = await render(entry);
+const path = `/integrations/${entry.id}/`;
+const updated = d.updated.toISOString().slice(0, 10);
+const updatedLabel = d.updated.toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
+
+const installer = d.installerOnly;
+const related = (await brandLinks()).filter((b) => b.slug !== entry.id).slice(0, 6);
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'PVBiz',
+    url: `${SITE}${path}`,
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web, iOS, Android',
+    description: d.answer,
+    isRelatedTo: { '@type': 'Product', name: d.name },
+    dateModified: updated,
+    publisher: { '@type': 'Organization', name: 'PVBiz', url: SITE },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: `How to connect ${d.name} to PVBiz`,
+    description: d.connectionMethod,
+    step: d.steps.map((s, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: s.title,
+      text: s.body,
+    })),
+  },
+  faqPage(d.faq),
+  breadcrumbs([
+    { name: 'Integrations', path: '/integrations/' },
+    { name: d.name, path },
+  ]),
+];
+---
+
+<Base title={`${d.name} monitoring with PVBiz`} description={d.description} path={path} jsonLd={jsonLd}>
+  <section class="page-head">
+    <div class="container">
+      <ol class="crumbs">
+        <li><a href="/">Home</a></li>
+        <li><a href="/integrations/">Integrations</a></li>
+        <li>{d.name}</li>
+      </ol>
+      <div class="brand-head">
+        <span class="logo-tile"
+          ><img src={d.logo} width={d.logoWidth} height={d.logoHeight} alt={`${d.name} logo`} /></span
+        >
+      </div>
+      <h1>{d.name} monitoring with PVBiz</h1>
+      <p class="answer">{d.answer}</p>
+      <p class="updated">Updated {updatedLabel}</p>
+      <div class="hero-cta">
+        {
+          installer ? (
+            <a class="btn btn-primary btn-lg" href="/contact/">Book a demo</a>
+          ) : (
+            <a class="btn btn-primary btn-lg" href={REGISTER}>Start free trial</a>
+          )
+        }
+        <a class="btn btn-secondary btn-lg" href="#connect">How to connect</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight alt hairline-top" id="data">
+    <div class="container">
+      <div class="section-head">
+        <h2>What PVBiz reads from {d.name}</h2>
+        <p>{d.connectionMethod}</p>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr><th scope="col">Data</th><th scope="col">Detail</th></tr>
+        </thead>
+        <tbody>
+          {
+            d.dataRead.map((row) => (
+              <tr>
+                <td>{row.metric}</td>
+                <td>{row.detail}</td>
+              </tr>
+            ))
+          }
+          <tr>
+            <td>Inverter control</td>
+            <td>{d.control ? 'Yes' : 'No, monitoring only'}{d.controlNote ? `. ${d.controlNote}` : ''}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" id="connect">
+    <div class="container">
+      <div class="section-head">
+        <h2>How to connect {d.name}</h2>
+        <p>
+          {
+            d.control
+              ? 'No hardware to install. PVBiz reads the plant, and changes settings only if you give it permission to.'
+              : 'No hardware to install. PVBiz only reads the plant; it never changes a setting.'
+          }
+        </p>
+      </div>
+      <ol class="steps steps-col">
+        {
+          d.steps.map((s) => (
+            <li>
+              <h3>{s.title}</h3>
+              <p>{s.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="section-tight alt hairline-top" id="alerts">
+    <div class="container">
+      <div class="section-head">
+        <h2>Alerts that work on {d.name}</h2>
+        <p>
+          {
+            installer
+              ? 'Delivered to your team by email, Slack, Microsoft Teams, Discord or webhook.'
+              : 'Delivered by push, email and Telegram, with WhatsApp as an optional add-on.'
+          }
+        </p>
+      </div>
+      <ul class="plain-list">
+        {
+          d.alerts.map((a) => (
+            <li>
+              <Check />
+              {a}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section-tight" id="limits">
+    <div class="container">
+      <div class="section-head">
+        <h2>Known limits</h2>
+      </div>
+      <ul class="plain-list">
+        {
+          d.limits.map((l) => (
+            <li>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 8v5m0 3h.01" />
+              </svg>
+              {l}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section alt hairline-top" id="about">
+    <div class="container">
+      <div class="prose">
+        <Content />
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight" id="faq">
+    <div class="container">
+      <div class="section-head"><h2>{d.name} questions</h2></div>
+      <Faq items={d.faq} openFirst={false} />
+    </div>
+  </section>
+
+  <section class="section-tight alt hairline-top" id="related">
+    <div class="container">
+      <div class="section-head"><h2>Other integrations</h2></div>
+      <ul class="related">
+        {
+          related.map((b) => (
+            <li>
+              <a href={b.href}>{b.name}</a>
+            </li>
+          ))
+        }
+        <li><a href="/integrations/">All 14+ integrations</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section night" id="start">
+    <div class="container">
+      <div class="contact-card">
+        <div>
+          {
+            installer ? (
+              <>
+                <p class="big">Monitor your {d.name} fleet on the PVBiz Installer Platform.</p>
+                <p class="muted">Pricing is per fleet. Book a demo and we will connect a plant with you.</p>
+              </>
+            ) : (
+              <>
+                <p class="big">Connect your {d.name} plant today.</p>
+                <p class="muted">7-day free trial, no card needed. Two plants per subscription, any brands.</p>
+              </>
+            )
+          }
+        </div>
+        <div class="cta">
+          {
+            installer ? (
+              <a class="btn btn-primary btn-lg" href="/contact/">Book a demo</a>
+            ) : (
+              <a class="btn btn-primary btn-lg" href={REGISTER}>Start free trial</a>
+            )
+          }
+          {
+            installer ? (
+              <a class="btn btn-secondary btn-lg" href="/installers/">See the Installer Platform</a>
+            ) : (
+              <a class="btn btn-secondary btn-lg" href="/contact/">Ask a question</a>
+            )
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

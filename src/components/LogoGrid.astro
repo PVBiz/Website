@@ -1,0 +1,16 @@
+---
+import { brandLinks } from '../data/links';
+const brands = await brandLinks();
+---
+
+<ul class="logo-grid">
+  {
+    brands.map((b) => (
+      <li class:list={[{ 'logo-tall': b.tall }]}>
+        <a href={b.href} aria-label={`${b.name} integration`}>
+          <img src={b.logo} width={b.width} height={b.height} alt={b.name} loading="lazy" />
+        </a>
+      </li>
+    ))
+  }
+</ul>

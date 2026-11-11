@@ -1,0 +1,197 @@
+---
+import { Image, getImage } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Check from '../components/Check.astro';
+import Faq from '../components/Faq.astro';
+import LogoGrid from '../components/LogoGrid.astro';
+import { APP, EMAIL, INSTALLER_APPLICATION, REGISTER, breadcrumbs, faqPage } from '../data/brands';
+import fleetDashboard from '../assets/app/fleet-dashboard.webp';
+import fleetPerformance from '../assets/app/fleet-performance.webp';
+
+const hero = await getImage({ src: fleetDashboard, format: 'webp' });
+const demoMail = `mailto:${EMAIL}?subject=${encodeURIComponent('PVBiz demo for a commercial site')}`;
+
+const FAQ = [
+  {
+    q: 'Is PVBiz for a single commercial site or a portfolio?',
+    a: 'Both. One or two sites fit the standard subscription at R55 a month. A portfolio of sites, or sites you own but an installer maintains, runs on the Installer Platform, priced per fleet.',
+  },
+  {
+    q: 'How are savings calculated?',
+    a: 'Against the tariff the site is actually on. PVBiz keeps an Eskom and municipal tariff library, and savings, PPA billing and reports use the real rates for the period, not an average.',
+  },
+  {
+    q: 'Can we report carbon and renewable energy certificates?',
+    a: 'Yes. CO2 avoided and REC tracking are calculated from recorded generation across the sites, ready for ESG reporting.',
+  },
+  {
+    q: 'Do we need to replace the monitoring the installer put in?',
+    a: 'No. PVBiz reads from the manufacturer cloud the inverter already reports to, through read-only sharing or the installer’s portal login. Nothing is installed on site.',
+  },
+];
+---
+
+<Base
+  title="PVBiz for commercial and asset owners - savings, PPA, REC and carbon tracking"
+  description="Monitor commercial solar sites on PVBiz: savings against the real Eskom or municipal tariff, PPA billing, REC and carbon tracking, scheduled reports and fault alerts, across 14+ inverter brands. No hardware."
+  path="/commercial/"
+  jsonLd={[INSTALLER_APPLICATION, faqPage(FAQ), breadcrumbs([{ name: 'Commercial and asset owners', path: '/commercial/' }])]}
+  preload={[{ href: hero.src, as: 'image', type: 'image/webp' }]}
+>
+  <section class="hero night" id="top">
+    <div class="container">
+      <div class="hero-grid hero-grid-stack">
+        <div class="hero-copy">
+          <ol class="crumbs">
+            <li><a href="/">Home</a></li>
+            <li>Commercial and asset owners</li>
+          </ol>
+          <h1>Know what every site is saving, against the tariff it is actually on.</h1>
+          <p class="answer">
+            PVBiz monitors commercial solar sites across 14+ inverter brands and platforms, with
+            savings against the real Eskom or municipal tariff, PPA billing, REC and carbon tracking,
+            scheduled reports and fault alerts. One or two sites from R55 a month; portfolios are
+            priced per fleet.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-primary btn-lg" href="/contact/">Book a demo</a>
+            <a class="btn btn-secondary btn-lg" href={REGISTER}>Start free trial</a>
+          </div>
+          <p class="hero-proof">
+            <strong>No hardware.</strong> Read-only access through the manufacturer cloud the site already reports to.
+          </p>
+        </div>
+        <div class="hero-visual hero-visual-wide">
+          <div class="browser">
+            <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+            <img
+              src={hero.src}
+              width={hero.attributes.width}
+              height={hero.attributes.height}
+              fetchpriority="high"
+              decoding="async"
+              alt="Fleet overview dashboard: 14 plants, 5 needing attention, 647 kW PV capacity, CO2 avoided 15,405 t, plant locations map and plants by type"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="hero-horizon" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section class="section-tight logo-strip alt" id="brands">
+    <div class="container">
+      <div class="section-head">
+        <h2>Whatever the installer fitted, it is one view</h2>
+        <p>Sites on different brands, bought from different installers, sit in one dashboard with one set of numbers.</p>
+      </div>
+      <LogoGrid />
+    </div>
+  </section>
+
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-head">
+        <h2>What asset owners get</h2>
+      </div>
+      <ul class="feature-rows">
+        <li>
+          <span class="ico"
+            ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+              ><circle cx="12" cy="12" r="9"></circle><path d="M12 7v10M9.5 9.5h3.75a1.75 1.75 0 0 1 0 3.5H10.75a1.75 1.75 0 0 0 0 3.5H14.5"></path></svg
+            ></span
+          >
+          <div><h3>Savings against the real tariff</h3><p>An Eskom and municipal tariff library, so the rand figure on the report is what the site avoided paying, not an estimate.</p></div>
+        </li>
+        <li>
+          <span class="ico"
+            ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+              ><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><path d="M14 3v6h6M8 13h8M8 17h8"></path></svg
+            ></span
+          >
+          <div><h3>PPA billing</h3><p>PPA agreements and price templates, with the energy delivered and the amount due calculated per period.</p></div>
+        </li>
+        <li>
+          <span class="ico"
+            ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+              ><path d="M12 22a8 8 0 0 0 8-8c0-6-8-12-8-12S4 8 4 14a8 8 0 0 0 8 8z"></path></svg
+            ></span
+          >
+          <div><h3>Carbon and REC tracking</h3><p>CO<sub>2</sub> avoided and renewable energy certificates from recorded generation, ready for ESG reporting.</p></div>
+        </li>
+        <li>
+          <span class="ico"
+            ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+              ><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"></path></svg
+            ></span
+          >
+          <div><h3>Fault and underperformance alerts</h3><p>Downtime, faults and sites producing below forecast reach you and your installer as they happen.</p></div>
+        </li>
+        <li>
+          <span class="ico"
+            ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+              ><path d="M3 3v18h18"></path><path d="m7 15 4-4 3 3 6-6"></path></svg
+            ></span
+          >
+          <div><h3>Performance index and forecasting</h3><p>Actual yield against a weather-aware forecast over 7, 30, 90 days and a year, so an underperforming site shows up before the invoice does.</p></div>
+        </li>
+        <li>
+          <span class="ico"
+            ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+              ><path d="M4 7h10M18 7h2M4 17h2m4 0h10"></path><circle cx="16" cy="7" r="2"></circle><circle cx="8" cy="17" r="2"></circle></svg
+            ></span
+          >
+          <div><h3>Scheduled reports</h3><p>Performance and savings reports generated and emailed on a schedule, in PDF or Excel, for the people who sign off on the asset.</p></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section alt hairline-top" id="screens">
+    <div class="container">
+      <div class="section-head"><h2>Every site, ranked</h2></div>
+      <div class="screen-row">
+        <div class="browser">
+          <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+          <Image
+            src={fleetPerformance}
+            format="webp"
+            loading="lazy"
+            alt="Forecasted performance index table: the fleet at 78% of forecast over 30 days, 4 of 13 plants on or above forecast, and each plant's actual against forecast for today, 7, 30 and 90 days and 12 months, colour-coded"
+          />
+        </div>
+        <div>
+          <h3>Actual against forecast, per site</h3>
+          <p>The performance index colours every site by yield against forecast across 7, 30 and 90-day and yearly windows. The ones losing money stand out without a spreadsheet.</p>
+          <ul>
+            <li><Check />Weather-aware forecast per site</li>
+            <li><Check />Peer benchmark by size tier</li>
+            <li><Check />Export to Excel for the board pack</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-head"><h2>Commercial questions</h2></div>
+      <Faq items={FAQ} />
+    </div>
+  </section>
+
+  <section class="section night" id="demo">
+    <div class="container">
+      <div class="contact-card">
+        <div>
+          <p class="big">See your own sites on PVBiz.</p>
+          <p class="muted">We connect a site or two and walk you through the savings, PPA and REC figures. Or <a href={APP}>sign in</a> if you already have an account.</p>
+        </div>
+        <div class="cta">
+          <a class="btn btn-primary btn-lg" href={demoMail}>Book a demo</a>
+          <a class="btn btn-secondary btn-lg" href="/contact/">Contact page</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

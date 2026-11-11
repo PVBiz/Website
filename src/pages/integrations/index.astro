@@ -1,0 +1,210 @@
+---
+import Base from '../../layouts/Base.astro';
+import Check from '../../components/Check.astro';
+import Faq from '../../components/Faq.astro';
+import { BRAND_NAMES, REGISTER, SITE, breadcrumbs, faqPage } from '../../data/brands';
+import { brandLinks, publishedBrandSlugs } from '../../data/links';
+
+const brands = await brandLinks();
+const published = await publishedBrandSlugs();
+
+// What is known per brand about how PVBiz connects, from the live site's FAQ and the
+// app's Integrations documentation. Brands not listed here connect with an own-portal login.
+const CONNECT: Record<string, string> = {
+  sunsynk: 'Share the plant with admin@pvbiz.co.za on the Sunsynk cloud (view-only, or Manager permission to allow settings changes), or add your own Sunsynk username and password.',
+  deye: 'Share the plant from Deye Cloud (plant, Settings, Sharing) with the PVBiz account shown in the app and enter the Station ID, or add your own Deye developer app credentials.',
+  solarman: 'Share the plant from the Sharing menu in Solarman with the PVBiz account shown in the app. Installers can instead add a Solarman login, which can cover several businesses.',
+  solis: 'Share the plant on SolisCloud with the PVBiz account shown in the app and add it by its Station ID. Installers can instead add their own API Key ID and Key Secret.',
+  foxess: 'Share the plant on FoxESS Cloud with admin@pvbiz.co.za and enter its Plant ID, or add your own FoxESS API key.',
+  'solar-assistant': 'Share the Solar Assistant site with the PVBiz account shown in the app, then add each site by its address.',
+  growatt: 'A Growatt API token plus the region of your Growatt server (Global, United States, China or Australia).',
+  luxpower: 'Your LuxPower portal username and password. An installer login or the homeowner’s own login both work.',
+  'sol-ark': 'Your Sol-Ark Cloud username and password. Monitoring only: realtime readings, history and energy totals.',
+  solaredge: 'The monitoring portal email and password used at monitoring.solaredge.com. SolarEdge API keys were retired on 2026-11-01 and are not used.',
+  'huawei-fusionsolar': 'A FusionSolar username and password, added on the PVBiz Installer Platform. Available on the Installer Platform today.',
+  goodwe: 'A GoodWe SEMS email and password, added on the PVBiz Installer Platform. PV-only monitoring. Available on the Installer Platform today.',
+  sungrow: 'An iSolarCloud region, App Key, Secret Key and your iSolarCloud login, added on the PVBiz Installer Platform. Available on the Installer Platform today.',
+  atess: 'An ATESS cloud username and password, added on the PVBiz Installer Platform. Available on the Installer Platform today.',
+  'canadian-solar': 'A Canadian Solar SmartEnergy Portal (EU) username and password, added on the PVBiz Installer Platform. Available on the Installer Platform today.',
+};
+
+const FAQ = [
+  {
+    q: 'Does PVBiz need any hardware or a data logger?',
+    a: 'No. PVBiz reads from the cloud platform your inverter already reports to. Nothing is installed and no wiring changes.',
+  },
+  {
+    q: 'Can PVBiz change my inverter settings?',
+    a: 'Only on Sunsynk, and only when the plant is shared with Manager permission or added with your own Sunsynk login. Every other brand is monitored only; a visitor share is always read-only.',
+  },
+  {
+    q: 'Can I mix brands in one subscription?',
+    a: `Yes. A homeowner subscription covers two plants on any of the 14+ supported brands and platforms, and the Installer Platform puts a whole mixed fleet in one view: ${BRAND_NAMES}.`,
+  },
+  {
+    q: 'My brand is not listed. Can you add it?',
+    a: 'Tell us which portal your sites report to. Integrations are added on request for installer fleets.',
+  },
+];
+---
+
+<Base
+  title="Integrations - 14+ inverter brands and platforms PVBiz monitors"
+  description={`PVBiz connects to 14+ inverter brands and platforms through read-only sharing or your own portal login: ${BRAND_NAMES}. How each one connects and what data is read.`}
+  path="/integrations/"
+  jsonLd={[
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'Inverter brands and platforms supported by PVBiz',
+      itemListElement: brands.map((b, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: b.name,
+        url: `${SITE}${b.href}`,
+      })),
+    },
+    faqPage(FAQ),
+    breadcrumbs([{ name: 'Integrations', path: '/integrations/' }]),
+  ]}
+>
+  <section class="page-head">
+    <div class="container">
+      <ol class="crumbs">
+        <li><a href="/">Home</a></li>
+        <li>Integrations</li>
+      </ol>
+      <h1>14+ inverter brands and platforms, one app.</h1>
+      <p class="answer">
+        PVBiz monitors solar plants on 14+ inverter brands and platforms through read-only
+        sharing on the manufacturer's own cloud or your own portal login. No hardware, and inverter
+        settings change only on Sunsynk, only if you allow it. From R55 a month for up to two plants.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-primary btn-lg" href={REGISTER}>Start free trial</a>
+        <a class="btn btn-secondary btn-lg" href="#how-it-connects">How connecting works</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight alt hairline-top" id="brands">
+    <div class="container">
+      <div class="section-head">
+        <h2>Every integration</h2>
+        <p>Each tile opens the brand's own page, with the exact connect steps, what is read and known limits.</p>
+      </div>
+      <ul class="logo-grid">
+        {
+          brands.map((b) => (
+            <li class:list={[{ 'logo-tall': b.tall }]} id={b.slug}>
+              <a href={b.href} aria-label={`${b.name} integration`}>
+                <img src={b.logo} width={b.width} height={b.height} alt={b.name} loading="lazy" />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="how-it-connects">
+    <div class="container">
+      <div class="section-head">
+        <h2>How connecting works: read-only access</h2>
+        <p>
+          PVBiz reads from your inverter's own cloud. You keep full control of the plant; PVBiz
+          only needs to see it. There are two ways in, and both take minutes.
+        </p>
+      </div>
+      <ol class="steps">
+        <li>
+          <h3>Share the plant with PVBiz</h3>
+          <p>
+            On Sunsynk or FoxESS, share the plant with admin@pvbiz.co.za. On Solarman, Deye, Solis and
+            Solar Assistant, share it with the PVBiz account shown in the app.
+          </p>
+        </li>
+        <li>
+          <h3>Or add your own portal login</h3>
+          <p>
+            Add your portal login (or an API token, for Growatt) under Integrations, see every plant
+            it can reach, and choose which to sync. Atess, Huawei FusionSolar, Canadian Solar, GoodWe
+            and Sungrow are available on the PVBiz Installer Platform today. Passwords are write-only and
+            never shown again.
+          </p>
+        </li>
+        <li>
+          <h3>PVBiz confirms it can see the plant</h3>
+          <p>
+            The plant appears with its history, the default rules switch on, and alerts, forecasts,
+            analysis and reports follow from there.
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section-tight alt hairline-top" id="per-brand">
+    <div class="container">
+      <div class="section-head">
+        <h2>How each brand connects</h2>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr><th scope="col">Brand</th><th scope="col">Connection</th></tr>
+        </thead>
+        <tbody>
+          {
+            brands.map((b) => (
+              <tr>
+                <td>
+                  {published.has(b.slug) ? <a href={b.href}>{b.name}</a> : b.name}
+                </td>
+                <td>{CONNECT[b.slug] ?? `Your own ${b.name} portal login, added under Integrations; choose which plants to sync.`}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" id="data">
+    <div class="container">
+      <div class="section-head">
+        <h2>What data is read</h2>
+        <p>The same figures the manufacturer's app shows, pulled into one place and kept as history.</p>
+      </div>
+      <ul class="plain-list">
+        <li><Check />Live power flow: solar generation, inverter output, battery charge and discharge, grid import and export, home consumption</li>
+        <li><Check />Battery state of charge and power</li>
+        <li><Check />Grid connection status, used for grid-loss alerts</li>
+        <li><Check />Inverter metrics such as AC temperature and essential load, available to custom rules</li>
+        <li><Check />Daily, monthly and yearly energy totals, used for analysis, seasonal comparisons and Excel reports</li>
+        <li><Check />Offline status and, on Huawei FusionSolar, Canadian Solar and GoodWe, the vendor's own alarms, used for alerts and the installer fleet view</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section-tight alt hairline-top" id="faq">
+    <div class="container">
+      <div class="section-head"><h2>Integration questions</h2></div>
+      <Faq items={FAQ} openFirst={false} />
+    </div>
+  </section>
+
+  <section class="section night" id="start">
+    <div class="container">
+      <div class="contact-card">
+        <div>
+          <p class="big">Connect your first plant in under ten minutes.</p>
+          <p class="muted">7-day free trial, no card needed. Installer fleets: <a href="/contact/">book a demo</a>.</p>
+        </div>
+        <div class="cta">
+          <a class="btn btn-primary btn-lg" href={REGISTER}>Start free trial</a>
+          <a class="btn btn-secondary btn-lg" href="/contact/">Ask about a brand</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

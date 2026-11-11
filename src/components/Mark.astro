@@ -1,0 +1,16 @@
+---
+// Placeholder amber mark plus the "PVBiz" wordmark, until a vector logo exists.
+interface Props {
+  href?: string;
+  class?: string;
+}
+const { href = '/', class: cls = 'brand' } = Astro.props;
+---
+
+<a class={cls} href={href} aria-label="PVBiz home">
+  <svg viewBox="0 0 28 28" aria-hidden="true">
+    <rect width="28" height="28" rx="7" fill="#ffbe79"></rect>
+    <path d="M15.6 5 8 15.6h5.2L12.2 23l7.8-10.9h-5.2z" fill="#121212"></path>
+  </svg>
+  PVBiz
+</a>
