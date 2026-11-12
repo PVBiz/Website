@@ -96,4 +96,4 @@ PVBiz reads from that same cloud. You share the plant with the PVBiz account fro
 
 ## Where Solarman is enough
 
-If every plant you look after has a Solarman logger, Solarman Business already gives you a fleet dashboard, report templates and work orders, and Solarman Smart is free for homeowners. Solarman also offers SMS alarms and one-minute uploads on request, which PVBiz does not.
+If every plant you look after has a Solarman logger, Solarman Business already gives you a fleet dashboard, report templates and work orders, and Solarman Smart is free for homeowners.

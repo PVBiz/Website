@@ -15,7 +15,7 @@ rows:
     pvbiz: 14+ brands and platforms, including Deye, side by side in one app.
     them: Deye equipment, including loggers, hybrid and micro inverters, smart switches, EV chargers and heat pumps.
   - feature: Live data
-    pvbiz: Solar, load, battery and grid about every five minutes, with energy totals refreshed hourly.
+    pvbiz: Solar, load, battery and grid about every five minutes, with each MPPT string and each phase, and energy totals refreshed hourly.
     them: Deye states loggers refresh every 60 seconds, adjustable.
   - feature: Alerts
     pvbiz: Grid lost and restored, battery below a level you choose, inverter fault or offline, no data arriving, and your own thresholds on temperatures, generator power, essential load and more.
@@ -71,7 +71,7 @@ checked: 2026-11-12
 
 Deye Cloud is where a Deye system is set up and controlled. Its manual covers per-inverter settings, batch commands across many plants, a control log and Deye Copilot, which plans battery charging and discharging around a tariff.
 
-PVBiz does not change Deye settings. It reads the plant, read-only, from Deye Cloud about every five minutes: solar, load, battery and grid, with energy totals refreshed hourly. You share the plant with the PVBiz account, or add your own Deye developer app credentials, and keep using Deye Cloud exactly as before.
+PVBiz reads the plant, read-only, from Deye Cloud about every five minutes: solar, load, battery and grid, with energy totals refreshed hourly. You share the plant with the PVBiz account, or add your own Deye developer app credentials, and keep using Deye Cloud exactly as before.
 
 ## Where PVBiz adds something
 
@@ -83,4 +83,4 @@ PVBiz does not change Deye settings. It reads the plant, read-only, from Deye Cl
 
 ## Where Deye Cloud is enough
 
-If you only run Deye equipment and mainly need to change settings, Deye Cloud covers that well and the app is free. PVBiz also reads fewer Deye details than some other brands: there are no per-string readings, and only phase 1 voltage is read.
+If you only run Deye equipment and mainly need to change settings, Deye Cloud covers that well and the app is free.

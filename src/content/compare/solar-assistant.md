@@ -91,6 +91,6 @@ So the two are not rivals. Solar Assistant is the local eyes on the inverter; PV
 
 **Everything in one place.** A Solar Assistant site at home and a Sunsynk or Solis plant elsewhere sit in one PVBiz subscription.
 
-## What Solar Assistant does that PVBiz does not
+## Where Solar Assistant shines
 
-Second-by-second local data, operation without the internet, local automations, Home Assistant integration and inverter settings changes are Solar Assistant's strengths. PVBiz does not change settings through Solar Assistant, and it cannot read the site while the device is offline.
+Second-by-second local data, operation without the internet, local automations, Home Assistant integration and inverter settings changes are Solar Assistant's strengths, and they keep working alongside PVBiz.
