@@ -5,7 +5,7 @@ logo: /img/brands/canadiansolar.png
 logoWidth: 631
 logoHeight: 118
 answer: "PVBiz reads inverter, string and grid-meter figures from the Canadian Solar SmartEnergy Portal about every five minutes, refreshes energy totals hourly and pulls in portal alarms, read-only, on the PVBiz Installer Platform."
-description: Canadian Solar monitoring on the PVBiz Installer Platform. Connect the SmartEnergy Portal (EU) for inverter, MPPT and meter data, portal alarms and history. No battery data. Read-only.
+description: "Canadian Solar monitoring on the PVBiz Installer Platform via the SmartEnergy Portal (EU): inverter, MPPT and meter data, alarms and history. Read-only."
 connectionMethod: Add your Canadian Solar SmartEnergy Portal (EU) username and password under Integrations on the PVBiz Installer Platform. Available on the PVBiz Installer Platform today.
 steps:
   - title: Have your SmartEnergy Portal login ready

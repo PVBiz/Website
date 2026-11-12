@@ -4,7 +4,7 @@ logo: /img/brands/growatt.png
 logoWidth: 182
 logoHeight: 31
 answer: "PVBiz reads your plant's solar, battery, load and grid figures from the Growatt API about every ten minutes and builds hourly energy totals, read-only, using a Growatt API token."
-description: Growatt monitoring with PVBiz. Connect with a Growatt API token and your server region for live solar, battery, load and grid readings, alerts and daily energy totals. Read-only.
+description: Growatt monitoring with PVBiz. Connect a Growatt API token and server region for live solar, battery, load and grid readings, alerts and daily totals.
 connectionMethod: Add a Growatt API token and choose your server region (Global, United States, China or Australia). Available to homeowners today.
 steps:
   - title: Get your Growatt API token

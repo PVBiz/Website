@@ -4,7 +4,7 @@ logo: /img/brands/solis.png
 logoWidth: 166
 logoHeight: 60
 answer: "PVBiz reads your plant's solar, load, battery and grid figures from SolisCloud about every five minutes and refreshes energy totals hourly, through a read-only share."
-description: Solis monitoring with PVBiz. Share your SolisCloud plant with the PVBiz account and add its Station ID for live flow, battery and grid alerts, history from 2020 and reports.
+description: Solis monitoring with PVBiz. Share your SolisCloud plant with the PVBiz account for live flow, battery and grid alerts, history from 2020 and reports.
 connectionMethod: Share the plant from SolisCloud with the PVBiz account shown in the app, then add it by its Station ID. Available to homeowners today (share only).
 steps:
   - title: Share the plant on SolisCloud

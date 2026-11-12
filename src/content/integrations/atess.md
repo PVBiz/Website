@@ -5,7 +5,7 @@ logo: /img/brands/atess.svg
 logoWidth: 120
 logoHeight: 36
 answer: "PVBiz reads your hybrid inverter's solar, battery and grid figures from the ATESS cloud about every five minutes and refreshes energy totals hourly, read-only, on the PVBiz Installer Platform."
-description: ATESS monitoring on the PVBiz Installer Platform. Connect with an ATESS cloud login for HPS inverter solar, battery and grid data, history and fleet alerts. Read-only.
+description: "ATESS monitoring on the PVBiz Installer Platform: connect an ATESS cloud login for HPS inverter solar, battery and grid data, history and alerts. Read-only."
 connectionMethod: Add an ATESS cloud username and password under Integrations on the PVBiz Installer Platform. Available on the PVBiz Installer Platform today.
 steps:
   - title: Have your ATESS login ready

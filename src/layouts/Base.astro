@@ -34,6 +34,11 @@ const {
 } = Astro.props;
 
 const canonical = `${SITE}${path}`;
+
+// Bing flags descriptions outside 25-160 characters; Google truncates past ~155.
+if (description.length < 25 || description.length > 158) {
+  throw new Error(`${path}: meta description is ${description.length} characters; keep it 25-158.`);
+}
 ---
 
 <!doctype html>

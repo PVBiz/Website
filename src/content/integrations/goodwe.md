@@ -5,7 +5,7 @@ logo: /img/brands/goodwe.svg
 logoWidth: 120
 logoHeight: 36
 answer: "PVBiz reads solar generation, grid and inverter figures from your GoodWe SEMS account about every five minutes, refreshes solar totals hourly and pulls in SEMS alarms, read-only, on the PVBiz Installer Platform."
-description: GoodWe monitoring on the PVBiz Installer Platform. Connect with a SEMS login for PV generation, grid and inverter data, SEMS alarms and history. PV-only monitoring, read-only.
+description: GoodWe monitoring on the PVBiz Installer Platform. Connect a SEMS login for PV generation, grid and inverter data, SEMS alarms and history. Read-only.
 connectionMethod: Add a GoodWe SEMS account email and password under Integrations on the PVBiz Installer Platform. Available on the PVBiz Installer Platform today.
 steps:
   - title: Have your SEMS login ready

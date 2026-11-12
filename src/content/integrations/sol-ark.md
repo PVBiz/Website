@@ -4,7 +4,7 @@ logo: /img/brands/solark.png
 logoWidth: 600
 logoHeight: 190
 answer: "PVBiz reads your plant's solar, battery, load and grid figures from Sol-Ark Cloud about every five minutes and refreshes energy totals hourly, monitoring only, with your Sol-Ark login."
-description: Sol-Ark monitoring with PVBiz. Connect with your Sol-Ark Cloud username and password for live flow, per-string solar, battery and grid alerts and history from plant creation. Monitoring only.
+description: Sol-Ark monitoring with PVBiz. Connect your Sol-Ark Cloud login for live flow, per-string solar, battery and grid alerts and full history. Monitoring only.
 connectionMethod: Add your Sol-Ark Cloud username and password, then choose which plants to sync. Monitoring only. Available to homeowners today.
 steps:
   - title: Use your Sol-Ark Cloud login

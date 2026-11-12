@@ -4,7 +4,7 @@ logo: /img/brands/solaredge.svg
 logoWidth: 120
 logoHeight: 36
 answer: "PVBiz reads your site's power flow, inverter and storage figures from the SolarEdge monitoring portal about every five minutes and refreshes energy totals hourly, read-only, with your portal email and password."
-description: SolarEdge monitoring with PVBiz. Connect with your monitoring-portal email and password (API keys were retired 2026-11-01) for live flow, 15-minute history, alerts and reports.
+description: SolarEdge monitoring with PVBiz. Connect with your monitoring-portal email and password for live flow, 15-minute history, alerts and reports.
 connectionMethod: Sign in with the email and password you use at monitoring.solaredge.com. SolarEdge retired API keys on 2026-11-01, so PVBiz does not use them. Available to homeowners today.
 steps:
   - title: Use your monitoring-portal login

@@ -5,7 +5,7 @@ logoWidth: 1509
 logoHeight: 782
 logoTall: true
 answer: "PVBiz reads your plant's live power flow, battery, grid and inverter figures from the Sunsynk cloud about every five minutes, adds hourly energy totals, and is the only brand where it can also change inverter settings."
-description: Sunsynk monitoring with PVBiz. Share your plant with admin@pvbiz.co.za or add your own login for live flow, battery and grid alerts, history, analysis and inverter control.
+description: Sunsynk monitoring with PVBiz. Share your plant with admin@pvbiz.co.za or add your login for live flow, battery and grid alerts, history and inverter control.
 connectionMethod: Share the plant with the PVBiz account (admin@pvbiz.co.za) on the Sunsynk cloud, or add your own Sunsynk username and password. Available to homeowners today.
 steps:
   - title: Share the plant on the Sunsynk cloud

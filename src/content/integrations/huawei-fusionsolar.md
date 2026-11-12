@@ -5,7 +5,7 @@ logo: /img/brands/huawei.png
 logoWidth: 266
 logoHeight: 60
 answer: "PVBiz reads inverter, battery and grid-meter figures from FusionSolar about every five minutes, refreshes energy totals hourly and pulls in FusionSolar alarms, read-only, on the PVBiz Installer Platform."
-description: Huawei FusionSolar monitoring on the PVBiz Installer Platform. Connect with a FusionSolar login for live inverter, battery and meter data, vendor alarms, history and fleet reports.
+description: "Huawei FusionSolar monitoring on the PVBiz Installer Platform: live inverter, battery and meter data, vendor alarms, history and fleet reports."
 connectionMethod: Add a FusionSolar account username and password under Integrations on the PVBiz Installer Platform. Available on the PVBiz Installer Platform today.
 steps:
   - title: Prepare a FusionSolar account

@@ -4,7 +4,7 @@ logo: /img/brands/luxpower.webp
 logoWidth: 1030
 logoHeight: 186
 answer: "PVBiz reads your main inverter's solar, battery, load and grid figures from the LuxPower portal about every five minutes and refreshes energy totals hourly, read-only, with your portal login."
-description: LuxPower monitoring with PVBiz. Connect with your LuxPower portal username and password, installer or homeowner, for live flow, battery and grid alerts and full yearly history. Read-only.
+description: LuxPower monitoring with PVBiz. Connect with your LuxPower portal login for live flow, battery and grid alerts and full yearly history. Read-only.
 connectionMethod: Add your LuxPower portal username and password. An installer login or the homeowner's own login both work. Available to homeowners today.
 steps:
   - title: Use your LuxPower portal login

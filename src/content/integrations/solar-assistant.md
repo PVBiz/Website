@@ -5,7 +5,7 @@ logoWidth: 503
 logoHeight: 300
 logoTall: true
 answer: "PVBiz reads your site's solar, battery, load and grid figures from your Solar Assistant gateway about every five minutes and works out energy totals hourly, through a read-only share."
-description: Solar Assistant monitoring with PVBiz. Share your site with the PVBiz account and add its address for live flow, battery and grid alerts and full history from the site's first sample.
+description: Solar Assistant monitoring with PVBiz. Share your site with the PVBiz account for live flow, battery and grid alerts and history from the first sample.
 connectionMethod: Share the Solar Assistant site with the PVBiz account shown in the app, then add the site by its address. Available to homeowners today (share only).
 steps:
   - title: Share the site with PVBiz

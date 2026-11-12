@@ -4,7 +4,7 @@ logo: /img/brands/deye.svg
 logoWidth: 120
 logoHeight: 36
 answer: "PVBiz reads your plant's solar, load, battery and grid figures from Deye Cloud about every five minutes and refreshes energy totals hourly, read-only."
-description: Deye monitoring with PVBiz. Share your plant from Deye Cloud or add your own developer app credentials for live flow, battery and grid alerts, history and reports. Read-only.
+description: Deye monitoring with PVBiz. Share your plant from Deye Cloud or add your own app credentials for live flow, battery and grid alerts, history and reports.
 connectionMethod: Share the plant with the PVBiz account shown in the app from Deye Cloud, or add your own Deye developer app credentials. Available to homeowners today.
 steps:
   - title: Choose how to connect

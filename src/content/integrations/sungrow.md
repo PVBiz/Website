@@ -5,7 +5,7 @@ logo: /img/brands/sungrow.svg
 logoWidth: 120
 logoHeight: 36
 answer: "PVBiz reads inverter solar, AC and meter figures from Sungrow iSolarCloud about every five minutes and refreshes solar totals hourly, read-only, on the PVBiz Installer Platform."
-description: Sungrow monitoring on the PVBiz Installer Platform. Connect iSolarCloud with an app key, secret and user login for inverter, MPPT and meter data and history. No load or battery data.
+description: Sungrow monitoring on the PVBiz Installer Platform. Connect iSolarCloud for inverter, MPPT and meter data and history. No load or battery data.
 connectionMethod: Add iSolarCloud OpenAPI credentials (region, App Key, Secret Key) and your iSolarCloud login under Integrations on the PVBiz Installer Platform. Available on the PVBiz Installer Platform today.
 steps:
   - title: Gather your iSolarCloud details
