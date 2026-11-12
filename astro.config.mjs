@@ -25,6 +25,8 @@ function sourceFor(url) {
   if (existsSync(`public/${slug}.html`)) return `public/${slug}.html`;
   const brand = slug.match(/^integrations\/([^/]+)$/);
   if (brand) return `src/content/integrations/${brand[1]}.md`;
+  const versus = slug.match(/^compare\/([^/]+)$/);
+  if (versus) return `src/content/compare/${versus[1]}.md`;
   for (const candidate of [
     `src/pages/${slug}.astro`,
     `src/pages/${slug}/index.astro`,

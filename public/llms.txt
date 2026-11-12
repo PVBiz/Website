@@ -2,7 +2,7 @@
 
 > PVBiz is a South African solar monitoring and fleet-management platform. It connects to 14+ inverter brands and platforms and gives homeowners, businesses and solar installers one place for live monitoring, smart alerts, forecasting, reporting, tariff and savings analysis, and inverter automation.
 
-PVBiz Pty Ltd, Johannesburg, Gauteng, South Africa. Contact: info@pvbiz.co.za, +27 61 546 7165.
+PVBiz Pty Ltd, South Africa. Contact: info@pvbiz.co.za, +27 61 546 7165.
 
 ## Products
 

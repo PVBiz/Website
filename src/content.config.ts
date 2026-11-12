@@ -47,4 +47,33 @@ const integrations = defineCollection({
   }),
 });
 
-export const collections = { integrations };
+// One entry per "PVBiz vs <competitor>" page. Every competitor claim must trace to a
+// source in `sources` (facts files: _pvbiz/ideas/website-redesign/compare/).
+const compare = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/compare" }),
+  schema: z.object({
+    /** Competitor display name, e.g. "Sunsynk Connect". */
+    competitor: z.string(),
+    /** "alternative": pick one or the other. "complement": used together with PVBiz. */
+    relationship: z.enum(["alternative", "complement"]),
+    /** Page h1. */
+    title: z.string(),
+    /** The one-paragraph answer under the h1. */
+    answer: z.string(),
+    /** Meta description (25-158 characters, enforced by Base.astro). */
+    description: z.string(),
+    /** Side-by-side rows. `them` states only what the sources support. */
+    rows: z
+      .array(z.object({ feature: z.string(), pvbiz: z.string(), them: z.string() }))
+      .min(5),
+    choosePvbiz: z.array(z.string()).min(1),
+    chooseThem: z.array(z.string()).min(1),
+    faq: z.array(z.object({ q: z.string(), a: z.string() })).min(1),
+    /** Public sources for every competitor claim on the page. */
+    sources: z.array(z.object({ label: z.string(), url: z.string().url() })).min(1),
+    /** Date the competitor facts were last checked; shown on the page. */
+    checked: z.coerce.date(),
+  }),
+});
+
+export const collections = { integrations, compare };

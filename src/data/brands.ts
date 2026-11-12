@@ -54,8 +54,6 @@ export const ORGANIZATION = {
   areaServed: 'Worldwide',
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Johannesburg',
-    addressRegion: 'Gauteng',
     addressCountry: 'ZA',
   },
   contactPoint: {

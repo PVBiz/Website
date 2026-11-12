@@ -1,0 +1,199 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Check from '../../components/Check.astro';
+import Faq from '../../components/Faq.astro';
+import { REGISTER, SITE, breadcrumbs, faqPage } from '../../data/brands';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('compare');
+  return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const d = entry.data;
+const { Content } = await render(entry);
+const path = `/compare/${entry.id}/`;
+const checked = d.checked.toISOString().slice(0, 10);
+const checkedLabel = d.checked.toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
+const others = (await getCollection('compare')).filter((e) => e.id !== entry.id);
+const complement = d.relationship === 'complement';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: d.title,
+    url: `${SITE}${path}`,
+    description: d.description,
+    dateModified: checked,
+    about: [
+      { '@type': 'SoftwareApplication', name: 'PVBiz', url: SITE },
+      { '@type': 'SoftwareApplication', name: d.competitor },
+    ],
+    publisher: { '@type': 'Organization', name: 'PVBiz', url: SITE },
+  },
+  faqPage(d.faq),
+  breadcrumbs([
+    { name: 'Compare', path: '/compare/' },
+    { name: d.competitor, path },
+  ]),
+];
+---
+
+<Base title={d.title} description={d.description} path={path} jsonLd={jsonLd}>
+  <section class="page-head">
+    <div class="container">
+      <ol class="crumbs">
+        <li><a href="/">Home</a></li>
+        <li><a href="/compare/">Compare</a></li>
+        <li>{d.competitor}</li>
+      </ol>
+      <h1>{d.title}</h1>
+      <p class="answer">{d.answer}</p>
+      <p class="updated">Facts about {d.competitor} last checked {checkedLabel}, from the public sources listed below.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary btn-lg" href={REGISTER}>Start free trial</a>
+        <a class="btn btn-secondary btn-lg" href="#side-by-side">See the comparison</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight alt hairline-top" id="side-by-side">
+    <div class="container">
+      <div class="section-head">
+        <h2>{complement ? `What each one does` : `PVBiz and ${d.competitor} side by side`}</h2>
+      </div>
+      <div>
+        <table class="data-table compare-table">
+          <thead>
+            <tr>
+              <th scope="col"><span class="visually-hidden">Feature</span></th>
+              <th scope="col">PVBiz</th>
+              <th scope="col">{d.competitor}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              d.rows.map((r) => (
+                <tr>
+                  <th scope="row">{r.feature}</th>
+                  <td data-label="PVBiz">{r.pvbiz}</td>
+                  <td data-label={d.competitor}>{r.them}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="choose">
+    <div class="container">
+      <div class="section-head">
+        <h2>{complement ? 'When to use which' : 'Which one fits'}</h2>
+      </div>
+      <div class="split">
+        <div class="panel">
+          <h3>{complement ? `${d.competitor} on its own` : `Choose ${d.competitor}`}</h3>
+          <ul class="plain-list">
+            {
+              d.chooseThem.map((x) => (
+                <li>
+                  <Check />
+                  {x}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>{complement ? `Add PVBiz` : 'Choose PVBiz'}</h3>
+          <ul class="plain-list">
+            {
+              d.choosePvbiz.map((x) => (
+                <li>
+                  <Check />
+                  {x}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt hairline-top" id="detail">
+    <div class="container">
+      <div class="prose">
+        <Content />
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight" id="faq">
+    <div class="container">
+      <div class="section-head"><h2>Questions</h2></div>
+      <Faq items={d.faq} openFirst={false} />
+    </div>
+  </section>
+
+  <section class="section-tight alt hairline-top" id="sources">
+    <div class="container">
+      <div class="section-head">
+        <h2>Sources</h2>
+        <p>
+          Checked {checkedLabel}. Products change; if something here is out of date, tell us at
+          info@pvbiz.co.za and we will correct it.
+        </p>
+      </div>
+      <ol class="source-list">
+        {
+          d.sources.map((s) => (
+            <li>
+              <a href={s.url} rel="nofollow noopener">
+                {s.label}
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+      {
+        others.length > 0 && (
+          <ul class="related">
+            {others.map((o) => (
+              <li>
+                <a href={`/compare/${o.id}/`}>PVBiz vs {o.data.competitor}</a>
+              </li>
+            ))}
+            <li>
+              <a href="/integrations/">All 14+ integrations</a>
+            </li>
+          </ul>
+        )
+      }
+    </div>
+  </section>
+
+  <section class="section night" id="start">
+    <div class="container">
+      <div class="contact-card">
+        <div>
+          <p class="big">Try PVBiz on your own plant.</p>
+          <p class="muted">7-day free trial, no card needed. Installers: book a demo on your own fleet.</p>
+        </div>
+        <div class="cta">
+          <a class="btn btn-primary btn-lg" href={REGISTER}>Start free trial</a>
+          <a class="btn btn-secondary btn-lg" href="/contact/">Book a demo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

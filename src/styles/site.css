@@ -1615,6 +1615,10 @@ ol {
   font-size: var(--t-2xl);
 }
 
+.prose > :first-child {
+  margin-top: 0;
+}
+
 .prose h3 {
   margin-top: 1.75rem;
   margin-bottom: 0.5rem;
@@ -1879,5 +1883,128 @@ ol {
   *::after {
     transition: none;
     animation: none;
+  }
+}
+
+/* ---------- Compare pages ---------- */
+.compare-table {
+  max-width: 980px;
+}
+
+.compare-table th[scope="row"] {
+  font-weight: 600;
+  color: var(--ink);
+  font-size: var(--t-sm);
+  width: 22%;
+}
+
+.compare-table td {
+  width: 39%;
+  color: var(--ink-2);
+}
+
+.compare-table td:first-child {
+  white-space: normal;
+}
+
+.source-list {
+  max-width: 66ch;
+  padding-left: 1.25rem;
+  margin-bottom: 2rem;
+  font-size: var(--t-sm);
+  color: var(--ink-3);
+}
+
+.source-list li + li {
+  margin-top: 0.35rem;
+}
+
+.source-list a {
+  color: var(--ink-2);
+  overflow-wrap: anywhere;
+}
+
+.compare-list {
+  list-style: none;
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 800px) {
+  .compare-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.compare-list a {
+  display: block;
+  height: 100%;
+  padding: 1.5rem;
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-lg);
+  background: var(--paper);
+  color: inherit;
+  text-decoration: none;
+}
+
+.compare-list a:hover {
+  border-color: var(--ink);
+}
+
+.compare-list h2 {
+  font-size: var(--t-xl);
+  margin-bottom: 0.5rem;
+}
+
+.compare-list p {
+  color: var(--ink-2);
+  font-size: var(--t-sm);
+}
+
+/* Phones: one block per row, both answers labelled, no sideways scroll. */
+@media (max-width: 699.98px) {
+  .compare-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .compare-table,
+  .compare-table tbody,
+  .compare-table tr,
+  .compare-table th[scope="row"],
+  .compare-table td {
+    display: block;
+    width: auto;
+  }
+
+  .compare-table tr {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--hair);
+  }
+
+  .compare-table th[scope="row"],
+  .compare-table td {
+    border: 0;
+    padding: 0;
+  }
+
+  .compare-table th[scope="row"] {
+    margin-bottom: 0.5rem;
+    font-size: var(--t-base);
+  }
+
+  .compare-table td + td {
+    margin-top: 0.6rem;
+  }
+
+  .compare-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: var(--t-xs);
+    font-weight: 600;
+    color: var(--ink-3);
   }
 }
