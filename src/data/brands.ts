@@ -60,7 +60,7 @@ export const ORGANIZATION = {
   },
   contactPoint: {
     '@type': 'ContactPoint',
-    email: 'admin@pvbiz.co.za',
+    email: 'info@pvbiz.co.za',
     telephone: PHONE_TEL,
     contactType: 'customer service',
   },
@@ -165,7 +165,7 @@ export const HOME_FAQ: Faq[] = [
   },
   {
     q: 'How does PVBiz access my solar plant data?',
-    a: 'You need to share your solar plant to allow PVBiz to access your data (only read-only visitor access is required). For Sunsynk, share the plant with admin@pvbiz.co.za. For Solarman or Deye, under your Authorizations, search for PVBiz under businesses and share the plant as a visitor.',
+    a: "PVBiz reads your data from your inverter's own monitoring cloud. Depending on the brand, you either share the plant with PVBiz as a read-only visitor or sign in with your portal login. Each integration page at pvbiz.co.za/integrations has the exact steps for that brand.",
   },
   {
     q: 'What types of notifications does PVBiz provide?',
