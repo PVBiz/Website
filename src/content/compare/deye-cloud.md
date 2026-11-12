@@ -1,5 +1,6 @@
 ---
 competitor: Deye Cloud
+integration: deye
 relationship: complement
 title: PVBiz vs Deye Cloud
 answer: "Deye Cloud is Deye's own free platform for Deye inverters, with detailed remote control and tariff-based battery strategies. PVBiz reads your Deye plant read-only and adds alerts at thresholds you set by push, email, Telegram or WhatsApp, a 7-day forecast and other inverter brands in one app. Keep Deye Cloud for settings; add PVBiz for alerts and mixed fleets."

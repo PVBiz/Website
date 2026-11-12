@@ -54,6 +54,8 @@ const compare = defineCollection({
   schema: z.object({
     /** Competitor display name, e.g. "Sunsynk Connect". */
     competitor: z.string(),
+    /** Slug of the matching integrations entry; links the two pages both ways. */
+    integration: z.string().optional(),
     /** "alternative": pick one or the other. "complement": used together with PVBiz. */
     relationship: z.enum(["alternative", "complement"]),
     /** Page h1. */

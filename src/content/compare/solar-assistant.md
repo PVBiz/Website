@@ -1,5 +1,6 @@
 ---
 competitor: Solar Assistant
+integration: solar-assistant
 relationship: complement
 title: PVBiz and Solar Assistant
 answer: "Solar Assistant is local monitoring software on a small Raspberry Pi or Orange Pi device wired to your inverter, bought once with no monthly fee. PVBiz is a cloud app that can read a Solar Assistant site you share with it, and adds push, Telegram and WhatsApp alerts, cloud history, a 7-day forecast and plants on other brands in one place. They work together."

@@ -168,6 +168,11 @@ const jsonLd = [
       {
         others.length > 0 && (
           <ul class="related">
+            {d.integration && (
+              <li>
+                <a href={`/integrations/${d.integration}/`}>How PVBiz connects to {d.competitor}</a>
+              </li>
+            )}
             {others.map((o) => (
               <li>
                 <a href={`/compare/${o.id}/`}>PVBiz vs {o.data.competitor}</a>

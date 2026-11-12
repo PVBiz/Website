@@ -1,5 +1,6 @@
 ---
 competitor: Sunsynk Connect
+integration: sunsynk
 relationship: complement
 title: PVBiz vs Sunsynk Connect
 answer: "Sunsynk Connect is Sunsynk's own free app for Sunsynk inverters. PVBiz is an independent app that reads your plant from the same Sunsynk cloud and adds alerts at thresholds you set, Telegram and WhatsApp delivery, a 7-day forecast and other inverter brands in one place. Most people keep Sunsynk Connect and add PVBiz on top."

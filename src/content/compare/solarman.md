@@ -1,5 +1,6 @@
 ---
 competitor: Solarman
+integration: solarman
 relationship: complement
 title: PVBiz vs Solarman
 answer: "Solarman is the data-logger cloud behind many inverter brands, with the free Solarman Smart app for homeowners and Solarman Business for installers. PVBiz reads your plant from Solarman through a read-only share and adds alerts at thresholds you set, Telegram and WhatsApp delivery, a 7-day forecast and other cloud platforms in the same app."
