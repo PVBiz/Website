@@ -12,7 +12,9 @@ export async function publishedBrandSlugs(): Promise<Set<string>> {
  * brand's entry on the integrations index, so no link on the site ever 404s.
  */
 export function brandHref(brand: Pick<Brand, 'slug'>, published: Set<string>): string {
-  return published.has(brand.slug) ? `/integrations/${brand.slug}/` : `/integrations/#${brand.slug}`;
+  return published.has(brand.slug)
+    ? `/integrations/${brand.slug}/`
+    : `/integrations/#${brand.slug}`;
 }
 
 export async function brandLinks(): Promise<(Brand & { href: string })[]> {

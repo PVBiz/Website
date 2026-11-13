@@ -55,15 +55,15 @@ faq:
   - q: Is Deye Cloud free?
     a: The Deye Cloud app is listed as free on the App Store, as checked on 12 November 2026. Deye's manual mentions a subscription for Deye Copilot without a published price.
 sources:
-  - label: "Deye: Deye Cloud"
+  - label: 'Deye: Deye Cloud'
     url: https://www.deyeinverter.com/deye-cloud/
   - label: Deye Cloud user manual (PDF, August 2026)
     url: https://www.deyeinverter.com/deyeinverter/2026/08/22/DeyeCloudUserManualnew1.pdf
   - label: Deye Cloud on the Apple App Store
     url: https://apps.apple.com/us/app/deye-cloud/id1632169719
-  - label: "Deye: Deye Cloud account transfer notice"
+  - label: 'Deye: Deye Cloud account transfer notice'
     url: https://www.deyeinverter.com/news/company-news/deye-cloud-account-transfer.html
-  - label: "Deye: Smart PV management platform"
+  - label: 'Deye: Smart PV management platform'
     url: https://www.deyeinverter.com/product/accessory-monitoring-1/smart-pv-management-platform.html
 checked: 2026-11-12
 ---

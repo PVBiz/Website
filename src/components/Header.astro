@@ -9,7 +9,9 @@ const brands = await brandLinks();
 const cols = [brands.slice(0, 5), brands.slice(5, 10), brands.slice(10, 15)];
 ---
 
-<a class="skip-link visually-hidden" href="#main">Skip to content</a>
+<a class="skip-link visually-hidden" href="#main">
+  Skip to content
+</a>
 <header class="site-header">
   <div class="container header-row">
     <Mark />
@@ -22,8 +24,10 @@ const cols = [brands.slice(0, 5), brands.slice(5, 10), brands.slice(10, 15)];
         stroke="currentColor"
         stroke-width="2"
         stroke-linecap="round"
-        aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg
+        aria-hidden="true"
       >
+        <path d="M4 7h16M4 12h16M4 17h16"></path>
+      </svg>
       <svg
         class="icon-close"
         viewBox="0 0 24 24"
@@ -31,15 +35,22 @@ const cols = [brands.slice(0, 5), brands.slice(5, 10), brands.slice(10, 15)];
         stroke="currentColor"
         stroke-width="2"
         stroke-linecap="round"
-        aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg
+        aria-hidden="true"
       >
+        <path d="M6 6l12 12M18 6 6 18"></path>
+      </svg>
       Menu
     </button>
 
     <nav id="site-nav" class="site-nav" aria-label="Main">
       <ul class="nav-list">
         <li class="has-menu">
-          <button class="nav-link" type="button" aria-expanded="false" aria-controls="menu-solutions">
+          <button
+            class="nav-link"
+            type="button"
+            aria-expanded="false"
+            aria-controls="menu-solutions"
+          >
             Solutions
             <svg
               class="chev"
@@ -49,8 +60,10 @@ const cols = [brands.slice(0, 5), brands.slice(5, 10), brands.slice(10, 15)];
               stroke-width="2.2"
               stroke-linecap="round"
               stroke-linejoin="round"
-              aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg
+              aria-hidden="true"
             >
+              <path d="m6 9 6 6 6-6"></path>
+            </svg>
           </button>
           <div class="menu menu-wide" id="menu-solutions">
             <div class="menu-cols cols-2">
@@ -58,29 +71,39 @@ const cols = [brands.slice(0, 5), brands.slice(5, 10), brands.slice(10, 15)];
                 <p class="menu-group-title">Who it is for</p>
                 <ul class="menu-list">
                   <li>
-                    <a href="/installers/"
-                      >Installers and O&amp;M teams<small>Fleet monitoring, fault alerts, client reports</small></a
-                    >
+                    <a href="/installers/">
+                      Installers and O&amp;M teams
+                      <small>Fleet monitoring, fault alerts, client reports</small>
+                    </a>
                   </li>
                   <li>
-                    <a href="/homeowners/"
-                      >Homeowners<small>Your own plants, alerts and forecasts in the app</small></a
-                    >
+                    <a href="/homeowners/">
+                      Homeowners<small>Your own plants, alerts and forecasts in the app</small>
+                    </a>
                   </li>
                   <li>
-                    <a href="/commercial/"
-                      >Commercial and asset owners<small>Savings against tariff, PPA and REC tracking</small></a
-                    >
+                    <a href="/commercial/">
+                      Commercial and asset owners
+                      <small>Savings against tariff, PPA and REC tracking</small>
+                    </a>
                   </li>
                 </ul>
               </div>
               <div>
                 <p class="menu-group-title">What you get</p>
                 <ul class="menu-list">
-                  <li><a href="/#features">Alerts and rules</a></li>
-                  <li><a href="/#features">Forecasting and analysis</a></li>
-                  <li><a href="/#features">Reports and automation</a></li>
-                  <li><a href="/#app">Mobile app for iOS and Android</a></li>
+                  <li>
+                    <a href="/#features">Alerts and rules</a>
+                  </li>
+                  <li>
+                    <a href="/#features">Forecasting and analysis</a>
+                  </li>
+                  <li>
+                    <a href="/#features">Reports and automation</a>
+                  </li>
+                  <li>
+                    <a href="/#app">Mobile app for iOS and Android</a>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -88,7 +111,12 @@ const cols = [brands.slice(0, 5), brands.slice(5, 10), brands.slice(10, 15)];
         </li>
 
         <li class="has-menu">
-          <button class="nav-link" type="button" aria-expanded="false" aria-controls="menu-integrations">
+          <button
+            class="nav-link"
+            type="button"
+            aria-expanded="false"
+            aria-controls="menu-integrations"
+          >
             Integrations
             <svg
               class="chev"
@@ -98,40 +126,58 @@ const cols = [brands.slice(0, 5), brands.slice(5, 10), brands.slice(10, 15)];
               stroke-width="2.2"
               stroke-linecap="round"
               stroke-linejoin="round"
-              aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg
+              aria-hidden="true"
             >
+              <path d="m6 9 6 6 6-6"></path>
+            </svg>
           </button>
           <div class="menu menu-wide" id="menu-integrations">
             <p class="menu-group-title">14+ inverter brands and platforms</p>
             <div class="menu-cols cols-3">
-              {
-                cols.map((col) => (
-                  <ul class="menu-list">
-                    {col.map((b) => (
-                      <li>
-                        <a href={b.href}>{b.name}</a>
-                      </li>
-                    ))}
-                  </ul>
-                ))
-              }
+              {cols.map((col) => (
+                <ul class="menu-list">
+                  {col.map((b) => (
+                    <li>
+                      <a href={b.href}>{b.name}</a>
+                    </li>
+                  ))}
+                </ul>
+              ))}
             </div>
             <p class="menu-foot">
-              <a class="text-link" href="/integrations/">All integrations</a>
+              <a class="text-link" href="/integrations/">
+                All integrations
+              </a>
               <a href="/integrations/#how-it-connects">How connecting works</a>
               <a href="/compare/">Compare with brand apps</a>
             </p>
           </div>
         </li>
 
-        <li><a class="nav-link" href="/pricing/" aria-current={current('/pricing/')}>Pricing</a></li>
-        <li><a class="nav-link" href="/about/" aria-current={current('/about/')}>About</a></li>
-        <li><a class="nav-link" href="/contact/" aria-current={current('/contact/')}>Contact</a></li>
+        <li>
+          <a class="nav-link" href="/pricing/" aria-current={current('/pricing/')}>
+            Pricing
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" href="/about/" aria-current={current('/about/')}>
+            About
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" href="/contact/" aria-current={current('/contact/')}>
+            Contact
+          </a>
+        </li>
       </ul>
 
       <div class="nav-actions">
-        <a class="btn btn-quiet" href={APP}>Sign in</a>
-        <a class="btn btn-primary" href={REGISTER}>Start free trial</a>
+        <a class="btn btn-quiet" href={APP}>
+          Sign in
+        </a>
+        <a class="btn btn-primary" href={REGISTER}>
+          Start free trial
+        </a>
       </div>
     </nav>
   </div>

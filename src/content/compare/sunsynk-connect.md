@@ -61,11 +61,11 @@ faq:
 sources:
   - label: Sunsynk Connect on the Apple App Store
     url: https://apps.apple.com/app/id1583953649
-  - label: "Sunsynk help centre: Remote monitoring with Sunsynk Connect"
+  - label: 'Sunsynk help centre: Remote monitoring with Sunsynk Connect'
     url: https://sunsynk.freshdesk.com/support/solutions/articles/103000400864-remote-monitoring-with-sunsynk-connect
-  - label: "Sunsynk help centre: How to locate and download operational data"
+  - label: 'Sunsynk help centre: How to locate and download operational data'
     url: https://sunsynk.freshdesk.com/support/solutions/articles/103000400860-how-to-locate-and-download-operational-data
-  - label: "Sunsynk help centre: Plant ownership and sharing"
+  - label: 'Sunsynk help centre: Plant ownership and sharing'
     url: https://sunsynk.freshdesk.com/support/solutions/articles/103000278290-plant-ownership-sharing
 checked: 2026-11-12
 ---

@@ -46,7 +46,11 @@ const demoMail = `mailto:${EMAIL}?subject=${encodeURIComponent('PVBiz Installer 
   description="The PVBiz Installer Platform: monitor and manage your whole solar fleet across 14+ inverter brands from one dashboard. 1,000+ sites and 32 MWp managed."
   ogTitle="PVBiz Installer Platform - Multi-Brand Solar Fleet Management"
   path="/installers/"
-  jsonLd={[INSTALLER_APPLICATION, faqPage(FAQ), breadcrumbs([{ name: 'Installers and O&M teams', path: '/installers/' }])]}
+  jsonLd={[
+    INSTALLER_APPLICATION,
+    faqPage(FAQ),
+    breadcrumbs([{ name: 'Installers and O&M teams', path: '/installers/' }]),
+  ]}
   preload={[{ href: hero.src, as: 'image', type: 'image/webp' }]}
 >
   <section class="hero night" id="top">
@@ -54,7 +58,9 @@ const demoMail = `mailto:${EMAIL}?subject=${encodeURIComponent('PVBiz Installer 
       <div class="hero-grid hero-grid-stack">
         <div class="hero-copy">
           <ol class="crumbs">
-            <li><a href="/">Home</a></li>
+            <li>
+              <a href="/">Home</a>
+            </li>
             <li>Installers and O&amp;M teams</li>
           </ol>
           <h1>Run your whole solar fleet from one dashboard.</h1>
@@ -64,18 +70,26 @@ const demoMail = `mailto:${EMAIL}?subject=${encodeURIComponent('PVBiz Installer 
             1,000 sites and 32 MWp are under management today. Pricing is per fleet.
           </p>
           <div class="hero-cta">
-            <a class="btn btn-primary btn-lg" href="#demo">Book a demo</a>
-            <a class="btn btn-secondary btn-lg" href={APP}>Sign in</a>
+            <a class="btn btn-primary btn-lg" href="#demo">
+              Book a demo
+            </a>
+            <a class="btn btn-secondary btn-lg" href={APP}>
+              Sign in
+            </a>
           </div>
           <p class="hero-proof">
-            Built in South Africa for South African grid conditions: <strong
-              >loadshedding, Eskom and municipal tariffs</strong
-            > are first-class, not retro-fitted.
+            Built in South Africa for South African grid conditions:{' '}
+            <strong>loadshedding, Eskom and municipal tariffs</strong> are first-class, not
+            retro-fitted.
           </p>
         </div>
         <div class="hero-visual hero-visual-wide">
           <div class="browser">
-            <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="browser-bar" aria-hidden="true">
+              <i></i>
+              <i></i>
+              <i></i>
+            </div>
             <img
               src={hero.src}
               width={hero.attributes.width}
@@ -95,9 +109,24 @@ const demoMail = `mailto:${EMAIL}?subject=${encodeURIComponent('PVBiz Installer 
   <section class="section-tight night stats-band" id="stats">
     <div class="container">
       <ul class="stats">
-        <li><p class="num">1,000<small>+</small></p><p class="label">Sites under management</p></li>
-        <li><p class="num">32<small>MWp</small></p><p class="label">Installed inverter capacity on the platform</p></li>
-        <li><p class="num">14<small>+</small></p><p class="label">Inverter brands and platforms, in one fleet view</p></li>
+        <li>
+          <p class="num">
+            1,000<small>+</small>
+          </p>
+          <p class="label">Sites under management</p>
+        </li>
+        <li>
+          <p class="num">
+            32<small>MWp</small>
+          </p>
+          <p class="label">Installed inverter capacity on the platform</p>
+        </li>
+        <li>
+          <p class="num">
+            14<small>+</small>
+          </p>
+          <p class="label">Inverter brands and platforms, in one fleet view</p>
+        </li>
       </ul>
     </div>
   </section>
@@ -107,13 +136,14 @@ const demoMail = `mailto:${EMAIL}?subject=${encodeURIComponent('PVBiz Installer 
       <div class="section-head">
         <h2>One fleet view across every brand you have installed</h2>
         <p>
-          Stop logging into a dozen manufacturer portals. Each integration pulls live and
-          historical data through read-only sharing or your own portal login.
+          Stop logging into a dozen manufacturer portals. Each integration pulls live and historical
+          data through read-only sharing or your own portal login.
         </p>
       </div>
       <LogoGrid />
       <p class="logo-foot">
-        Need a brand that is not here? <a href="/contact/">Tell us which portal your sites are on</a>.
+        Need a brand that is not here?{' '}
+        <a href="/contact/">Tell us which portal your sites are on</a>.
       </p>
     </div>
   </section>
@@ -122,75 +152,189 @@ const demoMail = `mailto:${EMAIL}?subject=${encodeURIComponent('PVBiz Installer 
     <div class="container">
       <div class="section-head">
         <h2>Everything an O&amp;M team needs, in one place</h2>
-        <p>Purpose-built for installers managing fleets at scale, not a consumer app stretched to fit.</p>
+        <p>
+          Purpose-built for installers managing fleets at scale, not a consumer app stretched to
+          fit.
+        </p>
       </div>
       <ul class="feature-rows">
         <li>
-          <span class="ico"
-            ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
-              ><path d="m12 3 9 5-9 5-9-5 9-5z"></path><path d="m3 13 9 5 9-5M3 18l9 5 9-5"></path></svg
-            ></span
-          >
-          <div><h3>Multi-brand fleet dashboard</h3><p>Every site, every brand, one live view with health, status and capacity totals.</p></div>
-        </li>
-        <li>
-          <span class="ico"
-            ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
-              ><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"></path></svg
-            ></span
-          >
+          <span class="ico">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="m12 3 9 5-9 5-9-5 9-5z"></path>
+              <path d="m3 13 9 5 9-5M3 18l9 5 9-5"></path>
+            </svg>
+          </span>
           <div>
-            <h3>Fault alerts your team can act on</h3>
-            <p>Faults, downtime and underperformance routed by email, Slack, Microsoft Teams, Discord or webhook, with acknowledge, snooze and maintenance windows.</p>
+            <h3>Multi-brand fleet dashboard</h3>
+            <p>Every site, every brand, one live view with health, status and capacity totals.</p>
           </div>
         </li>
         <li>
-          <span class="ico"
-            ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
-              ><path d="M3 3v18h18"></path><path d="m7 15 4-4 3 3 6-6"></path></svg
-            ></span
-          >
-          <div><h3>Performance index and analytics</h3><p>Rank sites by yield against forecast over 7, 30, 90 days and a year. Underperformers surface on their own.</p></div>
+          <span class="ico">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"></path>
+            </svg>
+          </span>
+          <div>
+            <h3>Fault alerts your team can act on</h3>
+            <p>
+              Faults, downtime and underperformance routed by email, Slack, Microsoft Teams, Discord
+              or webhook, with acknowledge, snooze and maintenance windows.
+            </p>
+          </div>
         </li>
         <li>
-          <span class="ico"
-            ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
-              ><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg
-            ></span
-          >
-          <div><h3>Yield forecasting</h3><p>Weather-aware forecasts per site, calibrated against what each plant actually produced, with long-term projections for proposals.</p></div>
+          <span class="ico">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M3 3v18h18"></path>
+              <path d="m7 15 4-4 3 3 6-6"></path>
+            </svg>
+          </span>
+          <div>
+            <h3>Performance index and analytics</h3>
+            <p>
+              Rank sites by yield against forecast over 7, 30, 90 days and a year. Underperformers
+              surface on their own.
+            </p>
+          </div>
         </li>
         <li>
-          <span class="ico"
-            ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
-              ><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><path d="M14 3v6h6M8 13h8M8 17h8"></path></svg
-            ></span
-          >
-          <div><h3>Branded client reports</h3><p>Performance and savings reports with your logo, generated and emailed on a schedule, in PDF or Excel.</p></div>
+          <span class="ico">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+            </svg>
+          </span>
+          <div>
+            <h3>Yield forecasting</h3>
+            <p>
+              Weather-aware forecasts per site, calibrated against what each plant actually
+              produced, with long-term projections for proposals.
+            </p>
+          </div>
         </li>
         <li>
-          <span class="ico"
-            ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
-              ><path d="M14.7 6.3a4 4 0 0 0 5 5L22 9l-2-2-2.3 2.3a1 1 0 0 1-1.4-1.4L18.6 5.6 16.6 3.6 14.7 6.3zM3 21l8-8"></path></svg
-            ></span
-          >
-          <div><h3>Work orders and maintenance</h3><p>Tickets, site visits, checklists and costs across the portfolio, with maintenance windows that silence expected alerts.</p></div>
+          <span class="ico">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+              <path d="M14 3v6h6M8 13h8M8 17h8"></path>
+            </svg>
+          </span>
+          <div>
+            <h3>Branded client reports</h3>
+            <p>
+              Performance and savings reports with your logo, generated and emailed on a schedule,
+              in PDF or Excel.
+            </p>
+          </div>
         </li>
         <li>
-          <span class="ico"
-            ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
-              ><path d="M12 22a8 8 0 0 0 8-8c0-6-8-12-8-12S4 8 4 14a8 8 0 0 0 8 8z"></path></svg
-            ></span
-          >
-          <div><h3>Carbon and REC tracking</h3><p>CO<sub>2</sub> avoided and renewable energy certificates across managed sites, ready for client ESG reporting.</p></div>
+          <span class="ico">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M14.7 6.3a4 4 0 0 0 5 5L22 9l-2-2-2.3 2.3a1 1 0 0 1-1.4-1.4L18.6 5.6 16.6 3.6 14.7 6.3zM3 21l8-8"></path>
+            </svg>
+          </span>
+          <div>
+            <h3>Work orders and maintenance</h3>
+            <p>
+              Tickets, site visits, checklists and costs across the portfolio, with maintenance
+              windows that silence expected alerts.
+            </p>
+          </div>
         </li>
         <li>
-          <span class="ico"
-            ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
-              ><circle cx="12" cy="12" r="9"></circle><path d="M12 7v10M9.5 9.5h3.75a1.75 1.75 0 0 1 0 3.5H10.75a1.75 1.75 0 0 0 0 3.5H14.5"></path></svg
-            ></span
-          >
-          <div><h3>Tariffs, savings and PPA billing</h3><p>An Eskom and municipal tariff library, savings against the real tariff, PPA agreements and price templates.</p></div>
+          <span class="ico">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M12 22a8 8 0 0 0 8-8c0-6-8-12-8-12S4 8 4 14a8 8 0 0 0 8 8z"></path>
+            </svg>
+          </span>
+          <div>
+            <h3>Carbon and REC tracking</h3>
+            <p>
+              CO<sub>2</sub> avoided and renewable energy certificates across managed sites, ready
+              for client ESG reporting.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="ico">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="9"></circle>
+              <path d="M12 7v10M9.5 9.5h3.75a1.75 1.75 0 0 1 0 3.5H10.75a1.75 1.75 0 0 0 0 3.5H14.5"></path>
+            </svg>
+          </span>
+          <div>
+            <h3>Tariffs, savings and PPA billing</h3>
+            <p>
+              An Eskom and municipal tariff library, savings against the real tariff, PPA agreements
+              and price templates.
+            </p>
+          </div>
         </li>
       </ul>
     </div>
@@ -204,7 +348,11 @@ const demoMail = `mailto:${EMAIL}?subject=${encodeURIComponent('PVBiz Installer 
 
       <div class="screen-row">
         <div class="browser">
-          <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="browser-bar" aria-hidden="true">
+            <i></i>
+            <i></i>
+            <i></i>
+          </div>
           <Image
             src={fleetDashboard}
             format="webp"
@@ -219,16 +367,29 @@ const demoMail = `mailto:${EMAIL}?subject=${encodeURIComponent('PVBiz Installer 
             moment you log in. Click a status band to filter the map to the sites that need you.
           </p>
           <ul>
-            <li><Check />Fleet-wide KPIs and capacity totals</li>
-            <li><Check />Map with online, warning, offline and critical markers</li>
-            <li><Check />Plants by brand and by size</li>
+            <li>
+              <Check />
+              Fleet-wide KPIs and capacity totals
+            </li>
+            <li>
+              <Check />
+              Map with online, warning, offline and critical markers
+            </li>
+            <li>
+              <Check />
+              Plants by brand and by size
+            </li>
           </ul>
         </div>
       </div>
 
       <div class="screen-row flip">
         <div class="browser">
-          <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="browser-bar" aria-hidden="true">
+            <i></i>
+            <i></i>
+            <i></i>
+          </div>
           <Image
             src={fleetPerformance}
             format="webp"
@@ -243,9 +404,18 @@ const demoMail = `mailto:${EMAIL}?subject=${encodeURIComponent('PVBiz Installer 
             performance index colours every site so the ones losing you money stand out.
           </p>
           <ul>
-            <li><Check />Weather-aware forecasting per site</li>
-            <li><Check />Peer benchmark by size tier</li>
-            <li><Check />Export to Excel for the client meeting</li>
+            <li>
+              <Check />
+              Weather-aware forecasting per site
+            </li>
+            <li>
+              <Check />
+              Peer benchmark by size tier
+            </li>
+            <li>
+              <Check />
+              Export to Excel for the client meeting
+            </li>
           </ul>
         </div>
       </div>
@@ -262,17 +432,40 @@ const demoMail = `mailto:${EMAIL}?subject=${encodeURIComponent('PVBiz Installer 
         </p>
       </div>
       <ul class="why">
-        <li><h3>Brand-agnostic by design</h3><p>14+ brands today and growing. You are never locked to one manufacturer's portal, and a mixed fleet is still one fleet.</p></li>
-        <li><h3>Proven at scale</h3><p>Over 1,000 sites and 32 MWp of installed inverter capacity under management.</p></li>
-        <li><h3>Local expertise</h3><p>Proudly South African: Eskom and municipal tariffs and loadshedding behaviour are built in, with fleets beyond South Africa supported in their own time zones.</p></li>
-        <li><h3>Actionable, not just pretty</h3><p>Alerts become work orders, forecasts become client reports, and tariffs become savings figures you can put in front of a customer.</p></li>
+        <li>
+          <h3>Brand-agnostic by design</h3>
+          <p>
+            14+ brands today and growing. You are never locked to one manufacturer's portal, and a
+            mixed fleet is still one fleet.
+          </p>
+        </li>
+        <li>
+          <h3>Proven at scale</h3>
+          <p>Over 1,000 sites and 32 MWp of installed inverter capacity under management.</p>
+        </li>
+        <li>
+          <h3>Local expertise</h3>
+          <p>
+            Proudly South African: Eskom and municipal tariffs and loadshedding behaviour are built
+            in, with fleets beyond South Africa supported in their own time zones.
+          </p>
+        </li>
+        <li>
+          <h3>Actionable, not just pretty</h3>
+          <p>
+            Alerts become work orders, forecasts become client reports, and tariffs become savings
+            figures you can put in front of a customer.
+          </p>
+        </li>
       </ul>
     </div>
   </section>
 
   <section class="section alt hairline-top" id="faq">
     <div class="container">
-      <div class="section-head"><h2>Installer questions</h2></div>
+      <div class="section-head">
+        <h2>Installer questions</h2>
+      </div>
       <Faq items={FAQ} />
     </div>
   </section>
@@ -283,13 +476,18 @@ const demoMail = `mailto:${EMAIL}?subject=${encodeURIComponent('PVBiz Installer 
         <div>
           <p class="big">See the platform on your own fleet.</p>
           <p class="muted">
-            Email <a href={`mailto:${EMAIL}`}>{EMAIL}</a> or call <a href={`tel:${PHONE_TEL}`}>{PHONE}</a>. We will
-            connect a few of your sites and walk you through them.
+            Email <a href={`mailto:${EMAIL}`}>{EMAIL}</a> or call{' '}
+            <a href={`tel:${PHONE_TEL}`}>{PHONE}</a>. We will connect a few of your sites and walk
+            you through them.
           </p>
         </div>
         <div class="cta">
-          <a class="btn btn-primary btn-lg" href={demoMail}>Book a demo</a>
-          <a class="btn btn-secondary btn-lg" href="/contact/">Contact page</a>
+          <a class="btn btn-primary btn-lg" href={demoMail}>
+            Book a demo
+          </a>
+          <a class="btn btn-secondary btn-lg" href="/contact/">
+            Contact page
+          </a>
         </div>
       </div>
     </div>

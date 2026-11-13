@@ -16,7 +16,7 @@ steps:
     body: PVBiz pulls your totals and recent intraday history, and the plant then appears with its figures. The default rules cover grid loss, low battery and inverter faults; add your own thresholds and pick the channels.
 dataRead:
   - metric: Live power flow
-    detail: "Solar generation, battery power, grid power and home load, read about every five minutes per inverter from separate load, solar, battery and grid readings."
+    detail: 'Solar generation, battery power, grid power and home load, read about every five minutes per inverter from separate load, solar, battery and grid readings.'
   - metric: Solar strings
     detail: Per-string MPPT voltage, current and power for strings 1 to 10, plus lifetime and today's yield.
   - metric: Battery
@@ -28,7 +28,7 @@ dataRead:
   - metric: History and totals
     detail: Daily, monthly and yearly energy (solar, load, import, export, charge, discharge) refreshed hourly, backfilled from the year the plant was created. Intraday 15-minute energy is kept too, but only for the last 90 days because that is all Sunsynk retains.
 control: true
-controlNote: "Sunsynk is the only brand where PVBiz can change inverter settings. Settings available are force charge, work mode, energy mode, solar export, grid peak shaving, battery charge current and a six-slot battery timer, with schedules and automations on top. This needs the plant shared with Manager permission or your own Sunsynk login added in PVBiz; a view-only share is monitored but refused control"
+controlNote: 'Sunsynk is the only brand where PVBiz can change inverter settings. Settings available are force charge, work mode, energy mode, solar export, grid peak shaving, battery charge current and a six-slot battery timer, with schedules and automations on top. This needs the plant shared with Manager permission or your own Sunsynk login added in PVBiz; a view-only share is monitored but refused control'
 alerts:
   - Grid disconnected and grid restored
   - Battery state of charge below a level you set

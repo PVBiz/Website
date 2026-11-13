@@ -3,8 +3,8 @@ competitor: Solar Assistant
 integration: solar-assistant
 relationship: complement
 title: PVBiz and Solar Assistant
-answer: "Solar Assistant is local monitoring software on a small Raspberry Pi or Orange Pi device wired to your inverter, bought once with no monthly fee. PVBiz is a cloud app that can read a Solar Assistant site you share with it, and adds push, Telegram and WhatsApp alerts, cloud history, a 7-day forecast and plants on other brands in one place. They work together."
-description: "PVBiz and Solar Assistant: a local monitoring device and a cloud app that reads it. What each does, alerts, prices and why many owners use both."
+answer: 'Solar Assistant is local monitoring software on a small Raspberry Pi or Orange Pi device wired to your inverter, bought once with no monthly fee. PVBiz is a cloud app that can read a Solar Assistant site you share with it, and adds push, Telegram and WhatsApp alerts, cloud history, a 7-day forecast and plants on other brands in one place. They work together.'
+description: 'PVBiz and Solar Assistant: a local monitoring device and a cloud app that reads it. What each does, alerts, prices and why many owners use both.'
 rows:
   - feature: What it is
     pvbiz: Cloud monitoring, alerts and analysis app. Reads a Solar Assistant site through a share, plus 14+ other brands and platforms.
@@ -57,21 +57,21 @@ faq:
 sources:
   - label: Solar Assistant home page
     url: https://solar-assistant.io/
-  - label: "Solar Assistant shop: software"
+  - label: 'Solar Assistant shop: software'
     url: https://solar-assistant.io/shop/products/software
-  - label: "Solar Assistant shop: Pro"
+  - label: 'Solar Assistant shop: Pro'
     url: https://solar-assistant.io/shop/products/software_pro
   - label: Solar Assistant shop
     url: https://solar-assistant.io/shop
-  - label: "Solar Assistant help: remote access"
+  - label: 'Solar Assistant help: remote access'
     url: https://solar-assistant.io/help/access/overview
-  - label: "Solar Assistant help: email notifications"
+  - label: 'Solar Assistant help: email notifications'
     url: https://solar-assistant.io/help/automation/notify
-  - label: "Solar Assistant help: exporting data"
+  - label: 'Solar Assistant help: exporting data'
     url: https://solar-assistant.io/help/historic-data/export
-  - label: "Solar Assistant help: users and roles"
+  - label: 'Solar Assistant help: users and roles'
     url: https://solar-assistant.io/help/user-management/overview
-  - label: "Solar Assistant help: organisations and bulk activation"
+  - label: 'Solar Assistant help: organisations and bulk activation'
     url: https://solar-assistant.io/help/organizations/bulk-activation
 checked: 2026-11-12
 ---

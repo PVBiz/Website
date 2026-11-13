@@ -26,69 +26,102 @@ const top5 = (await brandLinks()).slice(0, 5);
           platforms. Built in South Africa.
         </p>
         <div class="store-links">
-          <a href={APP_STORE} rel="noopener"
-            ><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
-              ><path
-                d="M16.4 12.6c0-2.5 2-3.7 2.1-3.8-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.8-1.7 0-3.2 1-4.1 2.5-1.8 3-.5 7.6 1.3 10.1.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.3.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.8-1.1-2.9-4.1zM14 5.2c.7-.8 1.2-2 1-3.2-1 0-2.3.7-3 1.5-.6.7-1.2 1.9-1.1 3.1 1.2.1 2.4-.6 3.1-1.4z"
-              ></path></svg
-            >App Store</a
-          >
-          <a href={PLAY_STORE} rel="noopener"
-            ><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
-              ><path
-                d="M3.6 2.3 13.2 12l-9.6 9.7c-.3-.2-.5-.6-.5-1.1V3.4c0-.5.2-.9.5-1.1zm11 11 2.7 2.7-10.8 6.2c-.4.2-.9.3-1.3.1L14.6 13.3zm0-2.6L5.2 1.7c.4-.2.9-.1 1.3.1l10.8 6.2-2.7 2.7zm1.1 1.3 3.3-1.9c.9-.5.9-1.7 0-2.2l-3.3-1.9L12.7 12l3 2.4z"
-              ></path></svg
-            >Google Play</a
-          >
+          <a href={APP_STORE} rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M16.4 12.6c0-2.5 2-3.7 2.1-3.8-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.8-1.7 0-3.2 1-4.1 2.5-1.8 3-.5 7.6 1.3 10.1.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.3.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.8-1.1-2.9-4.1zM14 5.2c.7-.8 1.2-2 1-3.2-1 0-2.3.7-3 1.5-.6.7-1.2 1.9-1.1 3.1 1.2.1 2.4-.6 3.1-1.4z"></path>
+            </svg>
+            App Store
+          </a>
+          <a href={PLAY_STORE} rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M3.6 2.3 13.2 12l-9.6 9.7c-.3-.2-.5-.6-.5-1.1V3.4c0-.5.2-.9.5-1.1zm11 11 2.7 2.7-10.8 6.2c-.4.2-.9.3-1.3.1L14.6 13.3zm0-2.6L5.2 1.7c.4-.2.9-.1 1.3.1l10.8 6.2-2.7 2.7zm1.1 1.3 3.3-1.9c.9-.5.9-1.7 0-2.2l-3.3-1.9L12.7 12l3 2.4z"></path>
+            </svg>
+            Google Play
+          </a>
         </div>
       </div>
 
       <div class="footer-col">
         <h2>Solutions</h2>
         <ul>
-          <li><a href="/installers/">Installers and O&amp;M</a></li>
-          <li><a href="/homeowners/">Homeowners</a></li>
-          <li><a href="/commercial/">Commercial and asset owners</a></li>
-          <li><a href="/pricing/">Pricing</a></li>
-          <li><a href="/compare/">Compare PVBiz</a></li>
-          <li><a href="/tools/homeflex-vs-homepower/">Homeflex calculator</a></li>
+          <li>
+            <a href="/installers/">Installers and O&amp;M</a>
+          </li>
+          <li>
+            <a href="/homeowners/">Homeowners</a>
+          </li>
+          <li>
+            <a href="/commercial/">Commercial and asset owners</a>
+          </li>
+          <li>
+            <a href="/pricing/">Pricing</a>
+          </li>
+          <li>
+            <a href="/compare/">Compare PVBiz</a>
+          </li>
+          <li>
+            <a href="/tools/homeflex-vs-homepower/">Homeflex calculator</a>
+          </li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h2>Integrations</h2>
         <ul>
-          {
-            top5.map((b) => (
-              <li>
-                <a href={b.href}>{b.name}</a>
-              </li>
-            ))
-          }
-          <li><a href="/integrations/">All 14+ integrations</a></li>
+          {top5.map((b) => (
+            <li>
+              <a href={b.href}>{b.name}</a>
+            </li>
+          ))}
+          <li>
+            <a href="/integrations/">All 14+ integrations</a>
+          </li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h2>Get started</h2>
         <ul>
-          <li><a href={REGISTER}>Start free trial</a></li>
-          <li><a href={APP}>Sign in</a></li>
-          <li><a href="/contact/">Book a demo</a></li>
-          <li><a href="/integrations/#how-it-connects">How connecting works</a></li>
-          <li><a href="/solar-availability">Solar availability checker</a></li>
+          <li>
+            <a href={REGISTER}>Start free trial</a>
+          </li>
+          <li>
+            <a href={APP}>Sign in</a>
+          </li>
+          <li>
+            <a href="/contact/">Book a demo</a>
+          </li>
+          <li>
+            <a href="/integrations/#how-it-connects">How connecting works</a>
+          </li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h2>Company</h2>
         <ul>
-          <li><a href="/about/">About PVBiz</a></li>
-          <li><a href="/contact/">Contact</a></li>
-          <li><a href={`mailto:${EMAIL}`}>{EMAIL}</a></li>
-          <li><a href={`tel:${PHONE_TEL}`}>{PHONE}</a></li>
-          <li><a href={TWITTER} rel="noopener">X (Twitter)</a></li>
-          <li><a href={FACEBOOK} rel="noopener">Facebook</a></li>
+          <li>
+            <a href="/about/">About PVBiz</a>
+          </li>
+          <li>
+            <a href="/contact/">Contact</a>
+          </li>
+          <li>
+            <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+          </li>
+          <li>
+            <a href={`tel:${PHONE_TEL}`}>{PHONE}</a>
+          </li>
+          <li>
+            <a href={TWITTER} rel="noopener">
+              X (Twitter)
+            </a>
+          </li>
+          <li>
+            <a href={FACEBOOK} rel="noopener">
+              Facebook
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -96,10 +129,18 @@ const top5 = (await brandLinks()).slice(0, 5);
     <div class="footer-bottom">
       <p>&copy; 2026 PVBiz Pty Ltd, South Africa.</p>
       <ul>
-        <li><a href="/privacy-policy">Privacy policy</a></li>
-        <li><a href={TERMS}>Terms of service</a></li>
-        <li><a href="/accountdata">Account data</a></li>
-        <li><a href="/chrome-extension-privacy-policy">Chrome extension privacy</a></li>
+        <li>
+          <a href="/privacy-policy">Privacy policy</a>
+        </li>
+        <li>
+          <a href={TERMS}>Terms of service</a>
+        </li>
+        <li>
+          <a href="/accountdata">Account data</a>
+        </li>
+        <li>
+          <a href="/chrome-extension-privacy-policy">Chrome extension privacy</a>
+        </li>
       </ul>
     </div>
   </div>

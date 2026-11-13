@@ -2,3 +2,9 @@
 /installer-platform/       /installers/   301
 /installer-platform/index.html /installers/ 301
 /sitemap.xml               /sitemap-index.xml 301
+/solar-availability         https://app.pvbiz.co.za/cloud-health 301
+/solar-availability.html    https://app.pvbiz.co.za/cloud-health 301
+/email-template             / 301
+/email-template.html        / 301
+/installer-email            /installers/ 301
+/installer-email.html       /installers/ 301

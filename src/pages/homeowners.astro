@@ -39,7 +39,11 @@ const FAQ = [
   title="PVBiz for homeowners - solar monitoring, alerts and forecasts in one app"
   description="Monitor your home solar in the PVBiz app: live energy flow, grid and battery alerts by push, email and Telegram, a 7-day forecast and reports. From R55/month."
   path="/homeowners/"
-  jsonLd={[SOFTWARE_APPLICATION, faqPage(FAQ), breadcrumbs([{ name: 'Homeowners', path: '/homeowners/' }])]}
+  jsonLd={[
+    SOFTWARE_APPLICATION,
+    faqPage(FAQ),
+    breadcrumbs([{ name: 'Homeowners', path: '/homeowners/' }]),
+  ]}
   preload={[{ href: hero.src, as: 'image', type: 'image/webp' }]}
 >
   <section class="hero night" id="top">
@@ -47,7 +51,9 @@ const FAQ = [
       <div class="hero-grid">
         <div class="hero-copy">
           <ol class="crumbs">
-            <li><a href="/">Home</a></li>
+            <li>
+              <a href="/">Home</a>
+            </li>
             <li>Homeowners</li>
           </ol>
           <h1>Know what your solar system is doing, without opening three apps.</h1>
@@ -57,11 +63,16 @@ const FAQ = [
             brands and platforms, from R55 a month for up to two plants.
           </p>
           <div class="hero-cta">
-            <a class="btn btn-primary btn-lg" href={REGISTER}>Start free trial</a>
-            <a class="btn btn-secondary btn-lg" href={APP}>Sign in</a>
+            <a class="btn btn-primary btn-lg" href={REGISTER}>
+              Start free trial
+            </a>
+            <a class="btn btn-secondary btn-lg" href={APP}>
+              Sign in
+            </a>
           </div>
           <p class="hero-proof">
-            <strong>7-day free trial, no card needed.</strong> Read-only access to your plant; no hardware, no rewiring.
+            <strong>7-day free trial, no card needed.</strong> Read-only access to your plant; no
+            hardware, no rewiring.
           </p>
         </div>
         <div class="hero-visual">
@@ -86,9 +97,24 @@ const FAQ = [
   <section class="section-tight night stats-band" id="stats">
     <div class="container">
       <ul class="stats">
-        <li><p class="num">R55<small>a month</small></p><p class="label">Or R549 a year, for up to two plants</p></li>
-        <li><p class="num">14<small>+</small></p><p class="label">Inverter brands and platforms</p></li>
-        <li><p class="num">7<small>days</small></p><p class="label">Solar forecast from local weather</p></li>
+        <li>
+          <p class="num">
+            R55<small>a month</small>
+          </p>
+          <p class="label">Or R549 a year, for up to two plants</p>
+        </li>
+        <li>
+          <p class="num">
+            14<small>+</small>
+          </p>
+          <p class="label">Inverter brands and platforms</p>
+        </li>
+        <li>
+          <p class="num">
+            7<small>days</small>
+          </p>
+          <p class="label">Solar forecast from local weather</p>
+        </li>
       </ul>
     </div>
   </section>
@@ -97,7 +123,10 @@ const FAQ = [
     <div class="container">
       <div class="section-head">
         <h2>Works with the inverter you already have</h2>
-        <p>Connect through the manufacturer portal you already use. Two plants on different brands fit in one subscription.</p>
+        <p>
+          Connect through the manufacturer portal you already use. Two plants on different brands
+          fit in one subscription.
+        </p>
       </div>
       <LogoGrid />
     </div>
@@ -107,56 +136,149 @@ const FAQ = [
     <div class="container">
       <div class="section-head">
         <h2>What you get</h2>
-        <p>Everything is included in every plan. Nothing is sold as an upgrade except WhatsApp message bundles.</p>
+        <p>
+          Everything is included in every plan. Nothing is sold as an upgrade except WhatsApp
+          message bundles.
+        </p>
       </div>
       <ul class="feature-rows">
         <li>
-          <span class="ico"
-            ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
-              ><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"></path></svg
-            ></span
-          >
-          <div><h3>Smart notifications</h3><p>Near real-time alerts by push, email and Telegram when the grid drops, the battery runs low or the inverter faults. WhatsApp is an optional add-on.</p></div>
+          <span class="ico">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"></path>
+            </svg>
+          </span>
+          <div>
+            <h3>Smart notifications</h3>
+            <p>
+              Near real-time alerts by push, email and Telegram when the grid drops, the battery
+              runs low or the inverter faults. WhatsApp is an optional add-on.
+            </p>
+          </div>
         </li>
         <li>
-          <span class="ico"
-            ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
-              ><path d="M4 20V10m6 10V4m6 16v-7m4 7H2"></path></svg
-            ></span
-          >
-          <div><h3>Custom alert rules</h3><p>Ten or more rules per plant on any inverter metric: grid connection, AC temperature, essential load, battery level and more. Switch a rule on, set its threshold, pick the channels.</p></div>
+          <span class="ico">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M4 20V10m6 10V4m6 16v-7m4 7H2"></path>
+            </svg>
+          </span>
+          <div>
+            <h3>Custom alert rules</h3>
+            <p>
+              Ten or more rules per plant on any inverter metric: grid connection, AC temperature,
+              essential load, battery level and more. Switch a rule on, set its threshold, pick the
+              channels.
+            </p>
+          </div>
         </li>
         <li>
-          <span class="ico"
-            ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
-              ><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg
-            ></span
-          >
-          <div><h3>Solar forecasting</h3><p>A 7-day production forecast from local weather, so you can plan the geyser, the pool pump and charging around the sun.</p></div>
+          <span class="ico">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+            </svg>
+          </span>
+          <div>
+            <h3>Solar forecasting</h3>
+            <p>
+              A 7-day production forecast from local weather, so you can plan the geyser, the pool
+              pump and charging around the sun.
+            </p>
+          </div>
         </li>
         <li>
-          <span class="ico"
-            ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
-              ><path d="M3 3v18h18"></path><path d="m7 15 4-4 3 3 6-6"></path></svg
-            ></span
-          >
-          <div><h3>Analysis</h3><p>Production against consumption, self-sufficiency, your best days, seasonal patterns and how this month compares with last month and last year.</p></div>
+          <span class="ico">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M3 3v18h18"></path>
+              <path d="m7 15 4-4 3 3 6-6"></path>
+            </svg>
+          </span>
+          <div>
+            <h3>Analysis</h3>
+            <p>
+              Production against consumption, self-sufficiency, your best days, seasonal patterns
+              and how this month compares with last month and last year.
+            </p>
+          </div>
         </li>
         <li>
-          <span class="ico"
-            ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
-              ><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><path d="M14 3v6h6M8 13h8M8 17h8"></path></svg
-            ></span
-          >
-          <div><h3>Reports on demand</h3><p>Excel exports of every metric for any period, for your own records, your accountant or your installer.</p></div>
+          <span class="ico">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+              <path d="M14 3v6h6M8 13h8M8 17h8"></path>
+            </svg>
+          </span>
+          <div>
+            <h3>Reports on demand</h3>
+            <p>
+              Excel exports of every metric for any period, for your own records, your accountant or
+              your installer.
+            </p>
+          </div>
         </li>
         <li>
-          <span class="ico"
-            ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
-              ><path d="M4 7h10M18 7h2M4 17h2m4 0h10"></path><circle cx="16" cy="7" r="2"></circle><circle cx="8" cy="17" r="2"></circle></svg
-            ></span
-          >
-          <div><h3>Automation</h3><p>Quick actions, schedules and smart rules that change inverter settings when a condition is met: battery priority before the evening peak, for example. Sunsynk only.</p></div>
+          <span class="ico">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M4 7h10M18 7h2M4 17h2m4 0h10"></path>
+              <circle cx="16" cy="7" r="2"></circle>
+              <circle cx="8" cy="17" r="2"></circle>
+            </svg>
+          </span>
+          <div>
+            <h3>Automation</h3>
+            <p>
+              Quick actions, schedules and smart rules that change inverter settings when a
+              condition is met: battery priority before the evening peak, for example. Sunsynk only.
+            </p>
+          </div>
         </li>
       </ul>
     </div>
@@ -164,7 +286,9 @@ const FAQ = [
 
   <section class="section alt hairline-top" id="screens">
     <div class="container">
-      <div class="section-head"><h2>The app, as you will use it</h2></div>
+      <div class="section-head">
+        <h2>The app, as you will use it</h2>
+      </div>
 
       <div class="screen-row">
         <div class="device">
@@ -179,11 +303,23 @@ const FAQ = [
         </div>
         <div>
           <h3>Rules you set once</h3>
-          <p>Switch a rule on, set its threshold, pick the channels. PVBiz checks the inverter for you from then on, and tells you the moment something changes.</p>
+          <p>
+            Switch a rule on, set its threshold, pick the channels. PVBiz checks the inverter for
+            you from then on, and tells you the moment something changes.
+          </p>
           <ul>
-            <li><Check />Grid connection, battery level, inverter faults by default</li>
-            <li><Check />Any inverter metric with your own threshold</li>
-            <li><Check />Push, email and Telegram per rule</li>
+            <li>
+              <Check />
+              Grid connection, battery level, inverter faults by default
+            </li>
+            <li>
+              <Check />
+              Any inverter metric with your own threshold
+            </li>
+            <li>
+              <Check />
+              Push, email and Telegram per rule
+            </li>
           </ul>
         </div>
       </div>
@@ -201,11 +337,23 @@ const FAQ = [
         </div>
         <div>
           <h3>Reports when you need them</h3>
-          <p>Pick a plant and a period, export to Excel. Every metric PVBiz has read is in the file, for your records or for the installer who looks after the system.</p>
+          <p>
+            Pick a plant and a period, export to Excel. Every metric PVBiz has read is in the file,
+            for your records or for the installer who looks after the system.
+          </p>
           <ul>
-            <li><Check />Excel format</li>
-            <li><Check />All available metrics included</li>
-            <li><Check />Any period, on demand</li>
+            <li>
+              <Check />
+              Excel format
+            </li>
+            <li>
+              <Check />
+              All available metrics included
+            </li>
+            <li>
+              <Check />
+              Any period, on demand
+            </li>
           </ul>
         </div>
       </div>
@@ -214,19 +362,47 @@ const FAQ = [
 
   <section class="section" id="why">
     <div class="container">
-      <div class="section-head"><h2>Why homeowners use PVBiz</h2></div>
+      <div class="section-head">
+        <h2>Why homeowners use PVBiz</h2>
+      </div>
       <ul class="why">
-        <li><h3>One app for mixed brands</h3><p>A Sunsynk at home and a Deye at the cottage sit side by side in one subscription, one app, one set of alerts.</p></li>
-        <li><h3>You hear about problems first</h3><p>Grid loss, a flat battery or an inverter fault reaches your phone as it happens, not when you notice the lights are off.</p></li>
-        <li><h3>Nothing to install</h3><p>Read-only access through the portal you already use. No hardware, no rewiring, no electrician.</p></li>
-        <li><h3>Public, fixed prices</h3><p>R55 a month or R549 a year, with every feature. Prices are fixed in ZAR, USD, EUR and GBP.</p></li>
+        <li>
+          <h3>One app for mixed brands</h3>
+          <p>
+            A Sunsynk at home and a Deye at the cottage sit side by side in one subscription, one
+            app, one set of alerts.
+          </p>
+        </li>
+        <li>
+          <h3>You hear about problems first</h3>
+          <p>
+            Grid loss, a flat battery or an inverter fault reaches your phone as it happens, not
+            when you notice the lights are off.
+          </p>
+        </li>
+        <li>
+          <h3>Nothing to install</h3>
+          <p>
+            Read-only access through the portal you already use. No hardware, no rewiring, no
+            electrician.
+          </p>
+        </li>
+        <li>
+          <h3>Public, fixed prices</h3>
+          <p>
+            R55 a month or R549 a year, with every feature. Prices are fixed in ZAR, USD, EUR and
+            GBP.
+          </p>
+        </li>
       </ul>
     </div>
   </section>
 
   <section class="section alt hairline-top" id="faq">
     <div class="container">
-      <div class="section-head"><h2>Homeowner questions</h2></div>
+      <div class="section-head">
+        <h2>Homeowner questions</h2>
+      </div>
       <Faq items={FAQ} />
     </div>
   </section>
@@ -236,11 +412,17 @@ const FAQ = [
       <div class="contact-card">
         <div>
           <p class="big">Connect your plant in under ten minutes.</p>
-          <p class="muted">7-day free trial, no card needed. Keep your data and settings if you stay.</p>
+          <p class="muted">
+            7-day free trial, no card needed. Keep your data and settings if you stay.
+          </p>
         </div>
         <div class="cta">
-          <a class="btn btn-primary btn-lg" href={REGISTER}>Start free trial</a>
-          <a class="btn btn-secondary btn-lg" href="/pricing/">See pricing</a>
+          <a class="btn btn-primary btn-lg" href={REGISTER}>
+            Start free trial
+          </a>
+          <a class="btn btn-secondary btn-lg" href="/pricing/">
+            See pricing
+          </a>
         </div>
       </div>
     </div>

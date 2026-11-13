@@ -45,11 +45,20 @@ export interface Result {
 // Relative hourly use, 00:00-23:00. Normalised to a daily share below.
 const SHAPES: Record<Pattern, number[]> = {
   // Out at work or school on weekdays: morning and evening peaks.
-  away: [0.45, 0.4, 0.38, 0.38, 0.4, 0.6, 1.6, 1.9, 1.3, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.9, 1.6, 2.2, 2.2, 1.8, 1.3, 0.9, 0.6],
+  away: [
+    0.45, 0.4, 0.38, 0.38, 0.4, 0.6, 1.6, 1.9, 1.3, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.9, 1.6,
+    2.2, 2.2, 1.8, 1.3, 0.9, 0.6,
+  ],
   // Someone home during the day.
-  home: [0.45, 0.4, 0.38, 0.38, 0.4, 0.6, 1.3, 1.6, 1.3, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.1, 1.5, 1.9, 1.9, 1.6, 1.2, 0.85, 0.6],
+  home: [
+    0.45, 0.4, 0.38, 0.38, 0.4, 0.6, 1.3, 1.6, 1.3, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.1, 1.5,
+    1.9, 1.9, 1.6, 1.2, 0.85, 0.6,
+  ],
   // Heavy daytime use: home office, pool pump and geyser on daytime timers.
-  daytime: [0.4, 0.38, 0.36, 0.36, 0.38, 0.5, 1.0, 1.2, 1.4, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.4, 1.4, 1.6, 1.6, 1.3, 1.0, 0.7, 0.5],
+  daytime: [
+    0.4, 0.38, 0.36, 0.36, 0.38, 0.5, 1.0, 1.2, 1.4, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.6, 1.4, 1.4,
+    1.6, 1.6, 1.3, 1.0, 0.7, 0.5,
+  ],
 };
 
 // More use in winter (heating, longer evenings). Day-weighted to average 1 over the year below.
@@ -139,7 +148,11 @@ export function simulate(input: Inputs, withSolar: boolean) {
 
 const zero = (): Record<Period, number> => ({ p: 0, s: 0, o: 0 });
 
-function bill(sim: ReturnType<typeof simulate>, size: SizeId, kind: 'homeflex' | 'homepower'): Bill {
+function bill(
+  sim: ReturnType<typeof simulate>,
+  size: SizeId,
+  kind: 'homeflex' | 'homepower'
+): Bill {
   const vatRate = tariffs.vatPercent / 100;
   const t = tariffs[kind][size] as {
     fixedPerDay: number;
@@ -151,11 +164,15 @@ function bill(sim: ReturnType<typeof simulate>, size: SizeId, kind: 'homeflex' |
   let energy = 0;
   let exportKwh = 0;
   // Gen-offset cap: per calendar month and TOU period.
-  const monthly = new Map<number, { season: string; imp: Record<Period, number>; exp: Record<Period, number> }>();
+  const monthly = new Map<
+    number,
+    { season: string; imp: Record<Period, number>; exp: Record<Period, number> }
+  >();
   for (const h of sim.hours) {
     importKwh[h.period] += h.importKwh;
     exportKwh += h.exportKwh;
-    energy += h.importKwh * (kind === 'homeflex' ? t.importRates![h.season][h.period] : t.importRate!);
+    energy +=
+      h.importKwh * (kind === 'homeflex' ? t.importRates![h.season][h.period] : t.importRate!);
     let m = monthly.get(h.month);
     if (!m) monthly.set(h.month, (m = { season: h.season, imp: zero(), exp: zero() }));
     m.imp[h.period] += h.importKwh;
@@ -197,11 +214,11 @@ export function rand(n: number, step = 1) {
   const v = Math.round(n / step) * step;
   const s = Math.abs(v)
     .toString()
-    .replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+    .replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0');
   return `${v < 0 ? '-' : ''}R${s}`;
 }
 
-export const kwh = (n: number) => `${rand(n).slice(1)} kWh`;
+export const kwh = (n: number) => `${rand(n).slice(1)}\u00a0kWh`;
 
 export const DEFAULT_INPUTS: Inputs = {
   size: '4',

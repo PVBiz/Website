@@ -3,8 +3,8 @@ competitor: Solarman
 integration: solarman
 relationship: complement
 title: PVBiz vs Solarman
-answer: "Solarman is the data-logger cloud behind many inverter brands, with the free Solarman Smart app for homeowners and Solarman Business for installers. PVBiz reads your plant from Solarman through a read-only share and adds alerts at thresholds you set, Telegram and WhatsApp delivery, a 7-day forecast and other cloud platforms in the same app."
-description: "PVBiz vs Solarman Smart and Solarman Business: what each does, alert channels and thresholds, reports, and how PVBiz reads a Solarman plant read-only."
+answer: 'Solarman is the data-logger cloud behind many inverter brands, with the free Solarman Smart app for homeowners and Solarman Business for installers. PVBiz reads your plant from Solarman through a read-only share and adds alerts at thresholds you set, Telegram and WhatsApp delivery, a 7-day forecast and other cloud platforms in the same app.'
+description: 'PVBiz vs Solarman Smart and Solarman Business: what each does, alert channels and thresholds, reports, and how PVBiz reads a Solarman plant read-only.'
 rows:
   - feature: What it is
     pvbiz: Independent monitoring, alerts and analysis app. Reads Solarman plants through a share, plus 14+ other brands and platforms.
@@ -58,25 +58,25 @@ faq:
   - q: Is Solarman free?
     a: Solarman Smart is listed as free on the App Store, as checked on 12 November 2026. Solarman does not publish a price for Solarman Business.
 sources:
-  - label: "Solarman: Solarman Business"
+  - label: 'Solarman: Solarman Business'
     url: https://www.solarmanpv.com/products/solarman-business
-  - label: "Solarman: Solarman Cloud"
+  - label: 'Solarman: Solarman Cloud'
     url: https://www.solarmanpv.com/products/solarman-cloud/
-  - label: "Solarman: report management"
+  - label: 'Solarman: report management'
     url: https://www.solarmanpv.com/solarman-business-report-management/
-  - label: "Solarman: O&M work orders"
+  - label: 'Solarman: O&M work orders'
     url: https://www.solarmanpv.com/solarman-business-om-work-order/
   - label: Solarman Smart on the Apple App Store
     url: https://apps.apple.com/us/app/solarman-smart/id1469487897
-  - label: "Solarman help centre: alarm notification frequency"
+  - label: 'Solarman help centre: alarm notification frequency'
     url: https://helpcenter.solarmanpv.com/portal/en/kb/articles/how-frequently-are-alarm-notifications-sent-and-how-long-after-an-alarm-ceases-are-notifications-discontinued
-  - label: "Solarman help centre: data upload every five minutes"
+  - label: 'Solarman help centre: data upload every five minutes'
     url: https://helpcenter.solarmanpv.com/portal/en/kb/articles/in-the-plant-power-data-is-uploaded-once-every-5-minutes-which-specific-value-is-being-uploaded
-  - label: "Solarman help centre: one-minute update frequency"
+  - label: 'Solarman help centre: one-minute update frequency'
     url: https://helpcenter.solarmanpv.com/portal/en/kb/articles/i-would-like-to-increase-the-update-frequency-of-the-data-stick-to-once-per-minute
-  - label: "Solarman help centre: daily detailed data period"
+  - label: 'Solarman help centre: daily detailed data period'
     url: https://helpcenter.solarmanpv.com/portal/en/kb/articles/can-i-view-daily-detailed-data-and-for-what-period
-  - label: "Solarman help centre: exporting reports from the app"
+  - label: 'Solarman help centre: exporting reports from the app'
     url: https://helpcenter.solarmanpv.com/portal/en/kb/articles/why-can-t-i-export-reports-from-the-app
 checked: 2026-11-12
 ---

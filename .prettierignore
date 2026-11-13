@@ -1,0 +1,19 @@
+# Build output and generated types
+dist/
+.astro/
+.wrangler/
+node_modules/
+package-lock.json
+
+# Files served at fixed URLs, kept byte-for-byte: legacy pages, email templates, vendored assets
+public/**/*.html
+public/fonts/
+public/img/
+
+# Generated data snapshots (regenerated each April, see src/data/*.json _source)
+src/data/*.json
+
+# Editor and agent tooling
+.claude/
+.cursor/
+.remember/

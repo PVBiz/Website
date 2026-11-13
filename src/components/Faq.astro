@@ -10,24 +10,22 @@ const { items, openFirst = true } = Astro.props;
 ---
 
 <div class="faq">
-  {
-    items.map((f, i) => (
-      <details open={openFirst && i === 0}>
-        <summary>
-          {f.q}
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            aria-hidden="true"
-          >
-            <path d="M12 5v14M5 12h14" />
-          </svg>
-        </summary>
-        <div class="faq-body">{f.a}</div>
-      </details>
-    ))
-  }
+  {items.map((f, i) => (
+    <details open={openFirst && i === 0}>
+      <summary>
+        {f.q}
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
+          <path d="M12 5v14M5 12h14" />
+        </svg>
+      </summary>
+      <div class="faq-body">{f.a}</div>
+    </details>
+  ))}
 </div>

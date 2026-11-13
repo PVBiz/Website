@@ -60,31 +60,44 @@ const jsonLd = [
 ];
 ---
 
-<Base title={`${d.name} monitoring with PVBiz`} description={d.description} path={path} jsonLd={jsonLd}>
+<Base
+  title={`${d.name} monitoring with PVBiz`}
+  description={d.description}
+  path={path}
+  jsonLd={jsonLd}
+>
   <section class="page-head">
     <div class="container">
       <ol class="crumbs">
-        <li><a href="/">Home</a></li>
-        <li><a href="/integrations/">Integrations</a></li>
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/integrations/">Integrations</a>
+        </li>
         <li>{d.name}</li>
       </ol>
       <div class="brand-head">
-        <span class="logo-tile"
-          ><img src={d.logo} width={d.logoWidth} height={d.logoHeight} alt={`${d.name} logo`} /></span
-        >
+        <span class="logo-tile">
+          <img src={d.logo} width={d.logoWidth} height={d.logoHeight} alt={`${d.name} logo`} />
+        </span>
       </div>
       <h1>{d.name} monitoring with PVBiz</h1>
       <p class="answer">{d.answer}</p>
       <p class="updated">Updated {updatedLabel}</p>
       <div class="hero-cta">
-        {
-          installer ? (
-            <a class="btn btn-primary btn-lg" href="/contact/">Book a demo</a>
-          ) : (
-            <a class="btn btn-primary btn-lg" href={REGISTER}>Start free trial</a>
-          )
-        }
-        <a class="btn btn-secondary btn-lg" href="#connect">How to connect</a>
+        {installer ? (
+          <a class="btn btn-primary btn-lg" href="/contact/">
+            Book a demo
+          </a>
+        ) : (
+          <a class="btn btn-primary btn-lg" href={REGISTER}>
+            Start free trial
+          </a>
+        )}
+        <a class="btn btn-secondary btn-lg" href="#connect">
+          How to connect
+        </a>
       </div>
     </div>
   </section>
@@ -97,20 +110,24 @@ const jsonLd = [
       </div>
       <table class="data-table">
         <thead>
-          <tr><th scope="col">Data</th><th scope="col">Detail</th></tr>
+          <tr>
+            <th scope="col">Data</th>
+            <th scope="col">Detail</th>
+          </tr>
         </thead>
         <tbody>
-          {
-            d.dataRead.map((row) => (
-              <tr>
-                <td>{row.metric}</td>
-                <td>{row.detail}</td>
-              </tr>
-            ))
-          }
+          {d.dataRead.map((row) => (
+            <tr>
+              <td>{row.metric}</td>
+              <td>{row.detail}</td>
+            </tr>
+          ))}
           <tr>
             <td>Inverter control</td>
-            <td>{d.control ? 'Yes' : 'No, monitoring only'}{d.controlNote ? `. ${d.controlNote}` : ''}</td>
+            <td>
+              {d.control ? 'Yes' : 'No, monitoring only'}
+              {d.controlNote ? `. ${d.controlNote}` : ''}
+            </td>
           </tr>
         </tbody>
       </table>
@@ -122,22 +139,18 @@ const jsonLd = [
       <div class="section-head">
         <h2>How to connect {d.name}</h2>
         <p>
-          {
-            d.control
-              ? 'No hardware to install. PVBiz reads the plant, and changes settings only if you give it permission to.'
-              : 'No hardware to install. PVBiz only reads the plant; it never changes a setting.'
-          }
+          {d.control
+            ? 'No hardware to install. PVBiz reads the plant, and changes settings only if you give it permission to.'
+            : 'No hardware to install. PVBiz only reads the plant; it never changes a setting.'}
         </p>
       </div>
       <ol class="steps steps-col">
-        {
-          d.steps.map((s) => (
-            <li>
-              <h3>{s.title}</h3>
-              <p>{s.body}</p>
-            </li>
-          ))
-        }
+        {d.steps.map((s) => (
+          <li>
+            <h3>{s.title}</h3>
+            <p>{s.body}</p>
+          </li>
+        ))}
       </ol>
     </div>
   </section>
@@ -147,22 +160,18 @@ const jsonLd = [
       <div class="section-head">
         <h2>Alerts that work on {d.name}</h2>
         <p>
-          {
-            installer
-              ? 'Delivered to your team by email, Slack, Microsoft Teams, Discord or webhook.'
-              : 'Delivered by push, email and Telegram, with WhatsApp as an optional add-on.'
-          }
+          {installer
+            ? 'Delivered to your team by email, Slack, Microsoft Teams, Discord or webhook.'
+            : 'Delivered by push, email and Telegram, with WhatsApp as an optional add-on.'}
         </p>
       </div>
       <ul class="plain-list">
-        {
-          d.alerts.map((a) => (
-            <li>
-              <Check />
-              {a}
-            </li>
-          ))
-        }
+        {d.alerts.map((a) => (
+          <li>
+            <Check />
+            {a}
+          </li>
+        ))}
       </ul>
     </div>
   </section>
@@ -173,25 +182,23 @@ const jsonLd = [
         <h2>Known limits</h2>
       </div>
       <ul class="plain-list">
-        {
-          d.limits.map((l) => (
-            <li>
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <circle cx="12" cy="12" r="9" />
-                <path d="M12 8v5m0 3h.01" />
-              </svg>
-              {l}
-            </li>
-          ))
-        }
+        {d.limits.map((l) => (
+          <li>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 8v5m0 3h.01" />
+            </svg>
+            {l}
+          </li>
+        ))}
       </ul>
     </div>
   </section>
@@ -206,30 +213,32 @@ const jsonLd = [
 
   <section class="section-tight" id="faq">
     <div class="container">
-      <div class="section-head"><h2>{d.name} questions</h2></div>
+      <div class="section-head">
+        <h2>{d.name} questions</h2>
+      </div>
       <Faq items={d.faq} openFirst={false} />
     </div>
   </section>
 
   <section class="section-tight alt hairline-top" id="related">
     <div class="container">
-      <div class="section-head"><h2>Other integrations</h2></div>
+      <div class="section-head">
+        <h2>Other integrations</h2>
+      </div>
       <ul class="related">
-        {
-          compareEntry && (
-            <li>
-              <a href={`/compare/${compareEntry.id}/`}>PVBiz vs {compareEntry.data.competitor}</a>
-            </li>
-          )
-        }
-        {
-          related.map((b) => (
-            <li>
-              <a href={b.href}>{b.name}</a>
-            </li>
-          ))
-        }
-        <li><a href="/integrations/">All 14+ integrations</a></li>
+        {compareEntry && (
+          <li>
+            <a href={`/compare/${compareEntry.id}/`}>PVBiz vs {compareEntry.data.competitor}</a>
+          </li>
+        )}
+        {related.map((b) => (
+          <li>
+            <a href={b.href}>{b.name}</a>
+          </li>
+        ))}
+        <li>
+          <a href="/integrations/">All 14+ integrations</a>
+        </li>
       </ul>
     </div>
   </section>
@@ -238,35 +247,41 @@ const jsonLd = [
     <div class="container">
       <div class="contact-card">
         <div>
-          {
-            installer ? (
-              <>
-                <p class="big">Monitor your {d.name} fleet on the PVBiz Installer Platform.</p>
-                <p class="muted">Pricing is per fleet. Book a demo and we will connect a plant with you.</p>
-              </>
-            ) : (
-              <>
-                <p class="big">Connect your {d.name} plant today.</p>
-                <p class="muted">7-day free trial, no card needed. Two plants per subscription, any brands.</p>
-              </>
-            )
-          }
+          {installer ? (
+            <>
+              <p class="big">Monitor your {d.name} fleet on the PVBiz Installer Platform.</p>
+              <p class="muted">
+                Pricing is per fleet. Book a demo and we will connect a plant with you.
+              </p>
+            </>
+          ) : (
+            <>
+              <p class="big">Connect your {d.name} plant today.</p>
+              <p class="muted">
+                7-day free trial, no card needed. Two plants per subscription, any brands.
+              </p>
+            </>
+          )}
         </div>
         <div class="cta">
-          {
-            installer ? (
-              <a class="btn btn-primary btn-lg" href="/contact/">Book a demo</a>
-            ) : (
-              <a class="btn btn-primary btn-lg" href={REGISTER}>Start free trial</a>
-            )
-          }
-          {
-            installer ? (
-              <a class="btn btn-secondary btn-lg" href="/installers/">See the Installer Platform</a>
-            ) : (
-              <a class="btn btn-secondary btn-lg" href="/contact/">Ask a question</a>
-            )
-          }
+          {installer ? (
+            <a class="btn btn-primary btn-lg" href="/contact/">
+              Book a demo
+            </a>
+          ) : (
+            <a class="btn btn-primary btn-lg" href={REGISTER}>
+              Start free trial
+            </a>
+          )}
+          {installer ? (
+            <a class="btn btn-secondary btn-lg" href="/installers/">
+              See the Installer Platform
+            </a>
+          ) : (
+            <a class="btn btn-secondary btn-lg" href="/contact/">
+              Ask a question
+            </a>
+          )}
         </div>
       </div>
     </div>

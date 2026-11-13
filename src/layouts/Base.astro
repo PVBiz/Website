@@ -48,7 +48,7 @@ if (description.length < 25 || description.length > 158) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
+    {!noindex && <link rel="canonical" href={canonical} />}
     {noindex && <meta name="robots" content="noindex" />}
     <meta name="facebook-domain-verification" content="1ddplc5p501esusgnhltt8udqkwcx3" />
 
@@ -76,13 +76,17 @@ if (description.length < 25 || description.length > 158) {
       type="font/woff2"
       crossorigin
     />
-    {preload.map((p) => <link rel="preload" href={p.href} as={p.as} type={p.type} fetchpriority="high" />)}
+    {preload.map((p) => (
+      <link rel="preload" href={p.href} as={p.as} type={p.type} fetchpriority="high" />
+    ))}
     <link rel="icon" href="/img/favicon.ico" sizes="32x32" />
     <link rel="icon" href="/img/pvbiz_logo.png" type="image/png" />
     <link rel="apple-touch-icon" href="/img/pvbiz_logo.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-    {jsonLd.map((node) => <script type="application/ld+json" set:html={JSON.stringify(node)} />)}
+    {jsonLd.map((node) => (
+      <script type="application/ld+json" set:html={JSON.stringify(node)} />
+    ))}
   </head>
   <body>
     <Header />

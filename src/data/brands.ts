@@ -11,21 +11,66 @@ export interface Brand {
 }
 
 export const BRANDS: Brand[] = [
-  { name: 'Sunsynk', slug: 'sunsynk', logo: '/img/brands/sunsynk.png', width: 1509, height: 782, tall: true },
+  {
+    name: 'Sunsynk',
+    slug: 'sunsynk',
+    logo: '/img/brands/sunsynk.png',
+    width: 1509,
+    height: 782,
+    tall: true,
+  },
   { name: 'Deye', slug: 'deye', logo: '/img/brands/deye.svg', width: 120, height: 36 },
-  { name: 'Solarman', slug: 'solarman', logo: '/img/brands/solarman.jpg', width: 600, height: 400, tall: true },
+  {
+    name: 'Solarman',
+    slug: 'solarman',
+    logo: '/img/brands/solarman.jpg',
+    width: 600,
+    height: 400,
+    tall: true,
+  },
   { name: 'Solis', slug: 'solis', logo: '/img/brands/solis.png', width: 166, height: 60 },
-  { name: 'Huawei FusionSolar', slug: 'huawei-fusionsolar', logo: '/img/brands/huawei.png', width: 266, height: 60 },
-  { name: 'SolarEdge', slug: 'solaredge', logo: '/img/brands/solaredge.svg', width: 120, height: 36 },
+  {
+    name: 'Huawei FusionSolar',
+    slug: 'huawei-fusionsolar',
+    logo: '/img/brands/huawei.png',
+    width: 266,
+    height: 60,
+  },
+  {
+    name: 'SolarEdge',
+    slug: 'solaredge',
+    logo: '/img/brands/solaredge.svg',
+    width: 120,
+    height: 36,
+  },
   { name: 'FoxESS', slug: 'foxess', logo: '/img/brands/foxess.png', width: 320, height: 320 },
   { name: 'GoodWe', slug: 'goodwe', logo: '/img/brands/goodwe.svg', width: 120, height: 36 },
   { name: 'Growatt', slug: 'growatt', logo: '/img/brands/growatt.png', width: 182, height: 31 },
   { name: 'Sungrow', slug: 'sungrow', logo: '/img/brands/sungrow.svg', width: 120, height: 36 },
-  { name: 'LuxPower', slug: 'luxpower', logo: '/img/brands/luxpower.webp', width: 1030, height: 186 },
+  {
+    name: 'LuxPower',
+    slug: 'luxpower',
+    logo: '/img/brands/luxpower.webp',
+    width: 1030,
+    height: 186,
+  },
   { name: 'Sol-Ark', slug: 'sol-ark', logo: '/img/brands/solark.png', width: 600, height: 190 },
   { name: 'ATESS', slug: 'atess', logo: '/img/brands/atess.svg', width: 120, height: 36 },
-  { name: 'Canadian Solar', slug: 'canadian-solar', logo: '/img/brands/canadiansolar.png', width: 631, height: 118 },
-  { name: 'Solar Assistant', slug: 'solar-assistant', logo: '/img/brands/solarassistant.png', width: 503, height: 300, tall: true },
+  {
+    name: 'Canadian Solar',
+    slug: 'canadian-solar',
+    logo: '/img/brands/canadiansolar.png',
+    width: 631,
+    height: 118,
+  },
+  {
+    name: 'Solar Assistant',
+    slug: 'solar-assistant',
+    logo: '/img/brands/solarassistant.png',
+    width: 503,
+    height: 300,
+    tall: true,
+  },
 ];
 
 export const BRAND_NAMES = BRANDS.map((b) => b.name).join(', ');
@@ -118,7 +163,12 @@ export const INSTALLER_APPLICATION = {
   applicationSubCategory: 'Solar fleet monitoring and O&M',
   operatingSystem: 'Web',
   description: `Multi-brand solar fleet monitoring, alerting, reporting, tariff modelling and analytics for solar installers and O&M teams, across 14+ inverter brands and platforms including ${BRAND_NAMES}.`,
-  publisher: { '@type': 'Organization', name: 'PVBiz', url: SITE, logo: `${SITE}/img/pvbiz_logo.png` },
+  publisher: {
+    '@type': 'Organization',
+    name: 'PVBiz',
+    url: SITE,
+    logo: `${SITE}/img/pvbiz_logo.png`,
+  },
 };
 
 export interface Faq {

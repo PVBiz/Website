@@ -1,6 +1,15 @@
 ---
 import Base from '../layouts/Base.astro';
-import { APP, EMAIL, ORGANIZATION, PHONE, PHONE_TEL, REGISTER, SITE, breadcrumbs } from '../data/brands';
+import {
+  APP,
+  EMAIL,
+  ORGANIZATION,
+  PHONE,
+  PHONE_TEL,
+  REGISTER,
+  SITE,
+  breadcrumbs,
+} from '../data/brands';
 
 const demoMail = `mailto:${EMAIL}?subject=${encodeURIComponent('PVBiz demo request')}`;
 const supportMail = `mailto:${EMAIL}?subject=${encodeURIComponent('PVBiz question')}`;
@@ -23,13 +32,16 @@ const contactPage = {
   <section class="page-head">
     <div class="container">
       <ol class="crumbs">
-        <li><a href="/">Home</a></li>
+        <li>
+          <a href="/">Home</a>
+        </li>
         <li>Contact</li>
       </ol>
       <h1>Talk to us.</h1>
       <p class="answer">
-        Email <a href={`mailto:${EMAIL}`}>{EMAIL}</a> or call <a href={`tel:${PHONE_TEL}`}>{PHONE}</a>. We are
-        in South Africa and answer in South African office hours.
+        Email <a href={`mailto:${EMAIL}`}>{EMAIL}</a> or call{' '}
+        <a href={`tel:${PHONE_TEL}`}>{PHONE}</a>. We are in South Africa and answer in South African
+        office hours.
       </p>
     </div>
   </section>
@@ -45,11 +57,23 @@ const contactPage = {
             fleet view, alerts, reports and tariff-based savings on your own data.
           </p>
           <dl>
-            <div><dt>Email</dt><dd><a href={demoMail}>{EMAIL}</a></dd></div>
-            <div><dt>Phone</dt><dd><a href={`tel:${PHONE_TEL}`}>{PHONE}</a></dd></div>
+            <div>
+              <dt>Email</dt>
+              <dd>
+                <a href={demoMail}>{EMAIL}</a>
+              </dd>
+            </div>
+            <div>
+              <dt>Phone</dt>
+              <dd>
+                <a href={`tel:${PHONE_TEL}`}>{PHONE}</a>
+              </dd>
+            </div>
           </dl>
           <div class="panel-cta">
-            <a class="btn btn-primary" href={demoMail}>Email a demo request</a>
+            <a class="btn btn-primary" href={demoMail}>
+              Email a demo request
+            </a>
             <a href="/installers/">About the Installer Platform</a>
           </div>
         </article>
@@ -61,12 +85,24 @@ const contactPage = {
             address on the account so we can find it.
           </p>
           <dl>
-            <div><dt>Email</dt><dd><a href={supportMail}>{EMAIL}</a></dd></div>
-            <div><dt>Location</dt><dd>South Africa</dd></div>
+            <div>
+              <dt>Email</dt>
+              <dd>
+                <a href={supportMail}>{EMAIL}</a>
+              </dd>
+            </div>
+            <div>
+              <dt>Location</dt>
+              <dd>South Africa</dd>
+            </div>
           </dl>
           <div class="panel-cta">
-            <a class="btn btn-secondary" href={supportMail}>Email a question</a>
-            <a class="text-link" href={APP}>Sign in to the app</a>
+            <a class="btn btn-secondary" href={supportMail}>
+              Email a question
+            </a>
+            <a class="text-link" href={APP}>
+              Sign in to the app
+            </a>
           </div>
         </article>
       </div>
@@ -77,11 +113,18 @@ const contactPage = {
     <div class="container">
       <div class="section-head">
         <h2>Prefer to try it yourself?</h2>
-        <p>A homeowner or small-business plant needs no demo: the free trial is seven days, with no card needed.</p>
+        <p>
+          A homeowner or small-business plant needs no demo: the free trial is seven days, with no
+          card needed.
+        </p>
       </div>
       <div class="hero-cta">
-        <a class="btn btn-primary btn-lg" href={REGISTER}>Start free trial</a>
-        <a class="btn btn-secondary btn-lg" href="/integrations/">How connecting works</a>
+        <a class="btn btn-primary btn-lg" href={REGISTER}>
+          Start free trial
+        </a>
+        <a class="btn btn-secondary btn-lg" href="/integrations/">
+          How connecting works
+        </a>
       </div>
     </div>
   </section>
