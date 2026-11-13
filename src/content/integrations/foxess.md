@@ -1,7 +1,7 @@
 ---
 name: FoxESS
 logo: /img/brands/foxess.png
-logoWidth: 320
+logoWidth: 570
 logoHeight: 320
 answer: "PVBiz reads your plant's solar strings, battery, load and grid figures from FoxESS Cloud about every five minutes, refreshes energy totals hourly and keeps 15-minute history, read-only."
 description: FoxESS monitoring with PVBiz. Share your plant with admin@pvbiz.co.za or add your own API key for live flow, battery and grid alerts and history.

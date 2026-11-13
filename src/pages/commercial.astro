@@ -4,7 +4,7 @@ import Base from '../layouts/Base.astro';
 import Check from '../components/Check.astro';
 import Faq from '../components/Faq.astro';
 import LogoGrid from '../components/LogoGrid.astro';
-import { APP, EMAIL, INSTALLER_APPLICATION, REGISTER, breadcrumbs, faqPage } from '../data/brands';
+import { APP, EMAIL, INSTALLER_APPLICATION, breadcrumbs, faqPage } from '../data/brands';
 import fleetDashboard from '../assets/app/fleet-dashboard.webp';
 import fleetPerformance from '../assets/app/fleet-performance.webp';
 
@@ -14,7 +14,7 @@ const demoMail = `mailto:${EMAIL}?subject=${encodeURIComponent('PVBiz demo for a
 const FAQ = [
   {
     q: 'Is PVBiz for a single commercial site or a portfolio?',
-    a: 'Both. One or two sites fit the standard subscription at R55 a month. A portfolio of sites, or sites you own but an installer maintains, runs on the Installer Platform, priced per fleet.',
+    a: 'Both. Commercial sites run on the PVBiz Installer Platform, from a single site to a portfolio, including sites you own but an installer maintains. Pricing is per fleet, quoted after a demo on your own sites.',
   },
   {
     q: 'How are savings calculated?',
@@ -56,15 +56,15 @@ const FAQ = [
           <p class="answer">
             PVBiz monitors commercial solar sites across 14+ inverter brands and platforms, with
             savings against the real Eskom or municipal tariff, PPA billing, REC and carbon
-            tracking, scheduled reports and fault alerts. One or two sites from R55 a month;
-            portfolios are priced per fleet.
+            tracking, scheduled reports and fault alerts. Priced per fleet, quoted after a demo on
+            your own sites.
           </p>
           <div class="hero-cta">
             <a class="btn btn-primary btn-lg" href="/contact/">
               Book a demo
             </a>
-            <a class="btn btn-secondary btn-lg" href={REGISTER}>
-              Start free trial
+            <a class="btn btn-secondary btn-lg" href="#features">
+              See what it does
             </a>
           </div>
           <p class="hero-proof">

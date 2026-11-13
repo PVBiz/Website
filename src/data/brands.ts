@@ -23,10 +23,9 @@ export const BRANDS: Brand[] = [
   {
     name: 'Solarman',
     slug: 'solarman',
-    logo: '/img/brands/solarman.jpg',
-    width: 600,
-    height: 400,
-    tall: true,
+    logo: '/img/brands/solarman.svg',
+    width: 1037,
+    height: 235,
   },
   { name: 'Solis', slug: 'solis', logo: '/img/brands/solis.png', width: 166, height: 60 },
   {
@@ -43,7 +42,13 @@ export const BRANDS: Brand[] = [
     width: 120,
     height: 36,
   },
-  { name: 'FoxESS', slug: 'foxess', logo: '/img/brands/foxess.png', width: 320, height: 320 },
+  {
+    name: 'FoxESS',
+    slug: 'foxess',
+    logo: '/img/brands/foxess.png',
+    width: 570,
+    height: 320,
+  },
   { name: 'GoodWe', slug: 'goodwe', logo: '/img/brands/goodwe.svg', width: 120, height: 36 },
   { name: 'Growatt', slug: 'growatt', logo: '/img/brands/growatt.png', width: 182, height: 31 },
   { name: 'Sungrow', slug: 'sungrow', logo: '/img/brands/sungrow.svg', width: 120, height: 36 },

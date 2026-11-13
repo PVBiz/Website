@@ -1,9 +1,8 @@
 ---
 name: Solarman
-logo: /img/brands/solarman.jpg
-logoWidth: 600
-logoHeight: 400
-logoTall: true
+logo: /img/brands/solarman.svg
+logoWidth: 1037
+logoHeight: 235
 answer: "PVBiz reads your plant's solar, load, battery and grid figures from Solarman about every five minutes and refreshes energy totals hourly, through a read-only share."
 description: Solarman monitoring with PVBiz. Share your plant with the PVBiz account from the Solarman Sharing menu for live flow, alerts, history and reports.
 connectionMethod: Share the plant with the PVBiz account shown in the app from the Solarman Sharing menu. Installers can instead add a Solarman login. Available to homeowners today (share only).
