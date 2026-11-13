@@ -1,0 +1,268 @@
+{
+ "_source": "Eskom Schedule of Standard Prices 1 April 2026 (non-local authority), via the PVBiz tariff library (audited against Eskom's Excel tables 2026-10-30). Rands per kWh and per day, excluding VAT. Regenerate every April.",
+ "sourceUrl": "https://www.eskom.co.za/distribution/wp-content/uploads/2026/03/20260226-Schedule-of-standard-prices-for-01-April-2026-Public-1.pdf",
+ "effectiveFrom": "2026-04-01",
+ "effectiveTo": "2027-03-31",
+ "vatPercent": 15,
+ "highSeasonMonths": [
+  6,
+  7,
+  8
+ ],
+ "tou": {
+  "high": {
+   "weekday": [
+    "o",
+    "o",
+    "o",
+    "o",
+    "o",
+    "o",
+    "p",
+    "p",
+    "s",
+    "s",
+    "s",
+    "s",
+    "s",
+    "s",
+    "s",
+    "s",
+    "s",
+    "p",
+    "p",
+    "p",
+    "s",
+    "s",
+    "o",
+    "o"
+   ]
+  },
+  "low": {
+   "weekday": [
+    "o",
+    "o",
+    "o",
+    "o",
+    "o",
+    "o",
+    "s",
+    "p",
+    "p",
+    "s",
+    "s",
+    "s",
+    "s",
+    "s",
+    "s",
+    "s",
+    "s",
+    "s",
+    "p",
+    "p",
+    "p",
+    "s",
+    "o",
+    "o"
+   ]
+  },
+  "saturday": [
+   "o",
+   "o",
+   "o",
+   "o",
+   "o",
+   "o",
+   "o",
+   "s",
+   "s",
+   "s",
+   "s",
+   "s",
+   "o",
+   "o",
+   "o",
+   "o",
+   "o",
+   "o",
+   "s",
+   "s",
+   "o",
+   "o",
+   "o",
+   "o"
+  ],
+  "sunday": [
+   "o",
+   "o",
+   "o",
+   "o",
+   "o",
+   "o",
+   "o",
+   "o",
+   "o",
+   "o",
+   "o",
+   "o",
+   "o",
+   "o",
+   "o",
+   "o",
+   "o",
+   "o",
+   "s",
+   "s",
+   "o",
+   "o",
+   "o",
+   "o"
+  ]
+ },
+ "sizes": [
+  {
+   "id": "4",
+   "label": "Single-phase up to 80 A (most homes)"
+  },
+  {
+   "id": "1",
+   "label": "Dual-phase up to 80 A, or three-phase up to 40 A"
+  },
+  {
+   "id": "2",
+   "label": "Dual-phase up to 150 A, or three-phase up to 80 A"
+  },
+  {
+   "id": "3",
+   "label": "Dual-phase up to 225 A, or three-phase up to 150 A"
+  }
+ ],
+ "homeflex": {
+  "1": {
+   "fixedPerDay": 20.02,
+   "importRates": {
+    "high": {
+     "o": 2.1985,
+     "p": 7.9052,
+     "s": 2.7929
+    },
+    "low": {
+     "o": 2.1985,
+     "p": 3.97,
+     "s": 2.674
+    }
+   },
+   "exportRates": {
+    "high": {
+     "o": 1.427,
+     "p": 7.0751,
+     "s": 2.0165
+    },
+    "low": {
+     "o": 1.427,
+     "p": 3.1839,
+     "s": 1.8987
+    }
+   }
+  },
+  "2": {
+   "fixedPerDay": 37.11,
+   "importRates": {
+    "high": {
+     "o": 2.1985,
+     "p": 7.9052,
+     "s": 2.7929
+    },
+    "low": {
+     "o": 2.1985,
+     "p": 3.97,
+     "s": 2.674
+    }
+   },
+   "exportRates": {
+    "high": {
+     "o": 1.427,
+     "p": 7.0751,
+     "s": 2.0165
+    },
+    "low": {
+     "o": 1.427,
+     "p": 3.1839,
+     "s": 1.8987
+    }
+   }
+  },
+  "3": {
+   "fixedPerDay": 73.33,
+   "importRates": {
+    "high": {
+     "o": 2.1985,
+     "p": 7.9052,
+     "s": 2.7929
+    },
+    "low": {
+     "o": 2.1985,
+     "p": 3.97,
+     "s": 2.674
+    }
+   },
+   "exportRates": {
+    "high": {
+     "o": 1.427,
+     "p": 7.0751,
+     "s": 2.0165
+    },
+    "low": {
+     "o": 1.427,
+     "p": 3.1839,
+     "s": 1.8987
+    }
+   }
+  },
+  "4": {
+   "fixedPerDay": 15.53,
+   "importRates": {
+    "high": {
+     "o": 2.1985,
+     "p": 7.9052,
+     "s": 2.7929
+    },
+    "low": {
+     "o": 2.1985,
+     "p": 3.97,
+     "s": 2.674
+    }
+   },
+   "exportRates": {
+    "high": {
+     "o": 1.427,
+     "p": 7.0751,
+     "s": 2.0165
+    },
+    "low": {
+     "o": 1.427,
+     "p": 3.1839,
+     "s": 1.8987
+    }
+   }
+  }
+ },
+ "homepower": {
+  "1": {
+   "fixedPerDay": 20.02,
+   "importRate": 3.0918
+  },
+  "2": {
+   "fixedPerDay": 37.11,
+   "importRate": 3.0918
+  },
+  "3": {
+   "fixedPerDay": 73.33,
+   "importRate": 3.0918
+  },
+  "4": {
+   "fixedPerDay": 15.53,
+   "importRate": 3.0918
+  }
+ }
+}

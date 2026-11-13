@@ -2008,3 +2008,192 @@ ol {
     color: var(--ink-3);
   }
 }
+
+/* ---------- Homeflex calculator ---------- */
+.calc {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 900px) {
+  .calc {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1.25rem;
+    align-items: start;
+  }
+}
+
+.calc-form {
+  gap: 1rem;
+}
+
+.calc-form h2 {
+  font-size: var(--t-lg);
+  margin: 0;
+}
+
+.calc-form h2 + .field {
+  margin-top: -0.25rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.35rem;
+  font-size: var(--t-sm);
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.field input,
+.field select {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.55rem 0.7rem;
+  font: inherit;
+  font-weight: 400;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--hair-strong);
+  border-radius: var(--radius);
+}
+
+.field input:focus-visible,
+.field select:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 1px;
+}
+
+.calc-form small,
+.field small {
+  font-weight: 400;
+  font-size: var(--t-xs);
+  color: var(--ink-3);
+}
+
+.field-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.calc-result {
+  gap: 0.5rem;
+}
+
+@media (min-width: 900px) {
+  .calc-result {
+    position: sticky;
+    top: calc(var(--header-h) + 16px);
+  }
+}
+
+.calc-label {
+  font-size: var(--t-sm);
+  font-weight: 600;
+  color: var(--ink-3);
+}
+
+.calc-total {
+  color: var(--ink);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.calc-total small {
+  font-size: var(--t-base);
+  font-weight: 500;
+  color: var(--ink-3);
+  letter-spacing: 0;
+}
+
+.calc-sub {
+  color: var(--ink-2);
+  font-size: var(--t-sm);
+}
+
+.calc-verdict {
+  margin-top: 0.5rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: var(--radius);
+  background: var(--amber-soft);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.calc-compare,
+.calc-breakdown dl {
+  margin: 0.5rem 0;
+  display: grid;
+}
+
+.calc-compare div,
+.calc-breakdown dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--hair);
+  font-size: var(--t-sm);
+}
+
+.calc-compare dt,
+.calc-breakdown dt {
+  color: var(--ink-2);
+}
+
+.calc-compare dd,
+.calc-breakdown dd {
+  margin: 0;
+  font-weight: 600;
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.calc-breakdown .calc-note dd {
+  font-weight: 400;
+  color: var(--ink-3);
+  white-space: normal;
+}
+
+.calc-breakdown .calc-sum {
+  border-bottom: 2px solid var(--ink);
+}
+
+.calc-breakdown summary {
+  cursor: pointer;
+  font-size: var(--t-sm);
+  font-weight: 600;
+  padding: 0.5rem 0;
+}
+
+.calc-fine {
+  font-size: var(--t-xs);
+  color: var(--ink-3);
+}
+
+.table-title {
+  font-size: var(--t-lg);
+  margin: 2rem 0 0.5rem;
+}
+
+.rate-table td small {
+  display: block;
+  font-size: var(--t-xs);
+  font-weight: 400;
+  color: var(--ink-3);
+}
+
+.rate-table td:first-child {
+  white-space: normal;
+}
+
+.table-note {
+  max-width: 820px;
+  margin-top: 0.75rem;
+  font-size: var(--t-sm);
+  color: var(--ink-3);
+}

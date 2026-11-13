@@ -37,6 +37,11 @@ PVBiz Pty Ltd, South Africa. Contact: info@pvbiz.co.za, +27 61 546 7165.
 
 Read-only access. You share your plant with PVBiz on your inverter's own cloud platform (for example, share a Sunsynk plant with admin@pvbiz.co.za, or authorise PVBiz as a business in Solarman/Deye). No hardware is installed.
 
+## Comparisons and tools
+
+- [Compare PVBiz with brand apps](https://www.pvbiz.co.za/compare/): PVBiz alongside Sunsynk Connect, Solarman, Deye Cloud and Solar Assistant, with dated sources.
+- [Homeflex vs Homepower calculator](https://www.pvbiz.co.za/tools/homeflex-vs-homepower/): estimate a home's yearly Eskom bill on Homeflex and Homepower with solar and a battery, using Eskom's 2026/27 prices, time-of-use hours and the Gen-offset export credit cap. Free, no sign-up.
+
 ## Company
 
 - [About PVBiz](https://www.pvbiz.co.za/about/)

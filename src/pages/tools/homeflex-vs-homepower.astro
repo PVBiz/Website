@@ -1,0 +1,370 @@
+---
+import Base from '../../layouts/Base.astro';
+import Faq from '../../components/Faq.astro';
+import { REGISTER, SITE, breadcrumbs, faqPage } from '../../data/brands';
+import tariffs from '../../data/eskom-residential-2026-27.json';
+import pv from '../../data/pv-profiles-za.json';
+import { DEFAULT_INPUTS, describe, estimate, type Period } from '../../scripts/homeflexCalc';
+
+const path = '/tools/homeflex-vs-homepower/';
+const title = 'Homeflex vs Homepower calculator: your Eskom bill with solar';
+const description =
+  "Estimate your yearly Eskom bill on Homeflex and Homepower with solar and a battery, using Eskom's 2026/27 prices and the export credit cap.";
+
+const out = describe(estimate(DEFAULT_INPUTS));
+
+const vat = 1 + tariffs.vatPercent / 100;
+const incl = (r: number) => `R${(r * vat).toFixed(2)}`;
+const excl = (r: number) => `${(r * 100).toFixed(2)}c`;
+const flex = tariffs.homeflex['4'];
+const power = tariffs.homepower['4'];
+const PERIODS: { id: Period; label: string }[] = [
+  { id: 'p', label: 'Peak' },
+  { id: 's', label: 'Standard' },
+  { id: 'o', label: 'Off-peak' },
+];
+
+// Turn a 24-hour period array into readable ranges, e.g. "06:00-08:00 and 17:00-20:00".
+const hh = (h: number) => `${String(h).padStart(2, '0')}:00`;
+function ranges(day: string[], period: Period, wrap = false) {
+  const spans: string[] = [];
+  for (let h = 0; h < 24; h++) {
+    if (day[h] !== period || (h > 0 && day[h - 1] === period)) continue;
+    let end = h;
+    while (end < 24 && day[end] === period) end++;
+    spans.push(`${hh(h)}–${hh(end)}`);
+  }
+  // Weekday off-peak runs overnight into the next weekday: show "22:00-06:00", not two pieces.
+  if (wrap && spans.length > 1 && spans[0].startsWith('00:00') && spans[spans.length - 1].endsWith('24:00')) {
+    const first = spans.shift()!;
+    spans[spans.length - 1] = `${spans[spans.length - 1].slice(0, 5)}–${first.slice(6)}`;
+  }
+  return spans.length ? spans.join(', ') : 'None';
+}
+const andJoin = (s: string) => s.replace(/, (?=[^,]*$)/, ' and ');
+const touRows = [
+  { label: 'Weekdays, high season (June to August)', day: tariffs.tou.high.weekday, wrap: true },
+  { label: 'Weekdays, low season (September to May)', day: tariffs.tou.low.weekday, wrap: true },
+  { label: 'Saturdays, all year', day: tariffs.tou.saturday, wrap: false },
+  { label: 'Sundays, all year', day: tariffs.tou.sunday, wrap: false },
+];
+
+const lowStd = incl(flex.importRates.low.s);
+const lowOff = incl(flex.importRates.low.o);
+const lowPeak = incl(flex.importRates.low.p);
+const highPeak = incl(flex.importRates.high.p);
+const hpRate = incl(power.importRate);
+
+const faq = [
+  {
+    q: 'Do I have to move to Homeflex if I install solar?',
+    a: "If you buy electricity directly from Eskom and your system is grid-tied, yes. Eskom's 2026/27 Schedule of Standard Prices says a time-of-use tariff is mandatory for grid-tied generation, and that customers with a grid-tied generator must meet NERSA's registration requirements whether they export or not. For homes, that tariff is Homeflex.",
+  },
+  {
+    q: 'Is Homeflex cheaper than Homepower?',
+    a: `It depends on when you use electricity. In the low season, Homeflex off-peak (${lowOff}/kWh) and standard (${lowStd}/kWh) cost less than Homepower's single rate of ${hpRate}/kWh, but Homeflex peak costs ${lowPeak}/kWh, and ${highPeak}/kWh on winter weekdays. Solar and a battery cut how much you buy in peak, and Homeflex credits what you export. Prices include VAT.`,
+  },
+  {
+    q: 'Does Eskom pay me for the solar I export?',
+    a: "On Homeflex, Eskom credits exported energy on your bill at its Gen-offset rate for the season and time of day. Each month, the kWh credited in each time-of-use period can't be more than the kWh you bought from Eskom in that period, so the credit reduces your bill but does not turn it into a payment. On Homepower, exports earn nothing.",
+  },
+  {
+    q: 'When are Homeflex peak hours?',
+    a: `On weekdays in the high-demand season (June to August), peak is ${andJoin(ranges(tariffs.tou.high.weekday, 'p'))}. On weekdays from September to May, it is ${andJoin(ranges(tariffs.tou.low.weekday, 'p'))}. Saturdays and Sundays have no peak hours. Public holidays are billed as the weekday they fall on.`,
+  },
+  {
+    q: 'I buy electricity from my municipality. Does this calculator apply?',
+    a: 'No. It uses Eskom direct tariffs only. Municipalities set their own tariffs and their own rules for solar and export, so a municipal bill can look quite different.',
+  },
+  {
+    q: 'How accurate is the estimate?',
+    a: 'The Eskom prices are exact. The usage pattern, solar yield and battery behaviour are typical values, so treat the result as a guide to which tariff suits you, not a quote. Your own monitoring data gives the real split between peak, standard and off-peak.',
+  },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'Homeflex vs Homepower calculator',
+    url: `${SITE}${path}`,
+    description,
+    applicationCategory: 'FinanceApplication',
+    operatingSystem: 'Web',
+    isAccessibleForFree: true,
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'ZAR' },
+    publisher: { '@type': 'Organization', name: 'PVBiz', url: SITE },
+  },
+  faqPage(faq),
+  breadcrumbs([{ name: 'Homeflex vs Homepower calculator', path }]),
+];
+---
+
+<Base title={title} description={description} path={path} jsonLd={jsonLd}>
+  <section class="page-head">
+    <div class="container">
+      <ol class="crumbs">
+        <li><a href="/">Home</a></li>
+        <li>Homeflex vs Homepower calculator</li>
+      </ol>
+      <h1>Homeflex vs Homepower: what your Eskom bill looks like with solar</h1>
+      <p class="answer">
+        Eskom requires every home with grid-tied solar to be on Homeflex, even if it never exports.
+        Homeflex charges by time of day and credits what you export; Homepower charges one rate all day.
+        Enter your usage and system to estimate your yearly bill on each, using Eskom's 2026/27 prices
+        for direct Eskom customers.
+      </p>
+      <p class="updated">Eskom prices valid 1 April 2026 to 31 March 2027, from Eskom's published Schedule of Standard Prices.</p>
+    </div>
+  </section>
+
+  <section class="section-tight alt hairline-top" id="calculator">
+    <div class="container">
+      <div class="calc">
+        <form class="panel calc-form" id="hf-form" aria-label="Your home and solar system">
+          <h2>Your home</h2>
+          <label class="field">
+            <span>Supply size</span>
+            <select name="size">
+              {tariffs.sizes.map((s) => <option value={s.id} selected={s.id === DEFAULT_INPUTS.size}>{s.label}</option>)}
+            </select>
+          </label>
+          <label class="field">
+            <span>Monthly electricity use before solar (kWh)</span>
+            <input name="monthlyKwh" type="number" inputmode="numeric" min="100" max="5000" step="10" value={DEFAULT_INPUTS.monthlyKwh} />
+            <small>On your Eskom bill. 900 kWh is a typical family home.</small>
+          </label>
+          <label class="field">
+            <span>When you use most electricity</span>
+            <select name="pattern">
+              <option value="away" selected>Mornings and evenings (out during the day)</option>
+              <option value="home">Spread through the day (someone at home)</option>
+              <option value="daytime">Mostly daytime (home office, pool pump and geyser on timers)</option>
+            </select>
+          </label>
+          <h2>Your solar</h2>
+          <label class="field">
+            <span>Where you live</span>
+            <select name="region">
+              {pv.regions.map((r) => <option value={r.id} selected={r.id === DEFAULT_INPUTS.region}>{r.label}</option>)}
+            </select>
+          </label>
+          <div class="field-pair">
+            <label class="field">
+              <span>Solar panels (kWp)</span>
+              <input name="kwp" type="number" inputmode="decimal" min="0" max="30" step="0.5" value={DEFAULT_INPUTS.kwp} />
+            </label>
+            <label class="field">
+              <span>Battery, usable (kWh)</span>
+              <input name="batteryKwh" type="number" inputmode="decimal" min="0" max="60" step="0.5" value={DEFAULT_INPUTS.batteryKwh} />
+            </label>
+          </div>
+          <small>Use 0 for no battery.</small>
+        </form>
+
+        <div class="panel calc-result" aria-live="polite">
+          <p class="calc-label">Homeflex with your solar</p>
+          <p class="calc-total"><span data-out="hfYear">{out.hfYear}</span> <small>a year</small></p>
+          <p class="calc-sub">About <span data-out="hfMonth">{out.hfMonth}</span> a month, including VAT.</p>
+          <p class="calc-verdict" data-out="verdict">{out.verdict}</p>
+          <dl class="calc-compare">
+            <div><dt>Homeflex, with solar</dt><dd data-out="hfYear">{out.hfYear}</dd></div>
+            <div><dt>Homepower, same solar, no export credit</dt><dd data-out="hpSolarYear">{out.hpSolarYear}</dd></div>
+            <div><dt>Homepower, no solar</dt><dd data-out="hpNoneYear">{out.hpNoneYear}</dd></div>
+          </dl>
+          <p class="calc-sub" data-out="saving">{out.saving}</p>
+          <details class="calc-breakdown">
+            <summary>Homeflex bill breakdown</summary>
+            <dl>
+              <div><dt>Fixed charges (365 days)</dt><dd data-out="fixed">{out.fixed}</dd></div>
+              <div><dt>Bought in peak</dt><dd data-out="peak">{out.peak}</dd></div>
+              <div><dt>Bought in standard</dt><dd data-out="standard">{out.standard}</dd></div>
+              <div><dt>Bought in off-peak</dt><dd data-out="offpeak">{out.offpeak}</dd></div>
+              <div><dt>Energy charges</dt><dd data-out="energy">{out.energy}</dd></div>
+              <div><dt>VAT</dt><dd data-out="vat">{out.vat}</dd></div>
+              <div><dt>Export credit</dt><dd data-out="credit">{out.credit}</dd></div>
+              <div class="calc-note"><dt>Credited</dt><dd data-out="creditKwh">{out.creditKwh}</dd></div>
+              <div class="calc-sum"><dt>Year total</dt><dd data-out="total">{out.total}</dd></div>
+              <div><dt>Solar produced</dt><dd data-out="solar">{out.solar}</dd></div>
+              <div><dt>Solar used at home</dt><dd data-out="selfUse">{out.selfUse}</dd></div>
+            </dl>
+          </details>
+          <p class="calc-fine">An estimate, not a quote. See <a href="#method">how it works</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight" id="rates">
+    <div class="container">
+      <div class="section-head">
+        <h2>Eskom Homeflex and Homepower prices, 2026/27</h2>
+        <p>
+          Prices for direct Eskom residential customers from 1 April 2026, including {tariffs.vatPercent}% VAT.
+          Eskom's schedule lists them excluding VAT, shown underneath.
+        </p>
+      </div>
+      <h3 class="table-title">Homeflex: energy you buy, per kWh</h3>
+      <table class="data-table rate-table">
+        <thead><tr><th scope="col">Period</th><th scope="col">High season (Jun–Aug)</th><th scope="col">Low season (Sep–May)</th></tr></thead>
+        <tbody>
+          {PERIODS.map((p) => (
+            <tr>
+              <td>{p.label}</td>
+              <td>{incl(flex.importRates.high[p.id])}<small>{excl(flex.importRates.high[p.id])} excl. VAT</small></td>
+              <td>{incl(flex.importRates.low[p.id])}<small>{excl(flex.importRates.low[p.id])} excl. VAT</small></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <h3 class="table-title">Homeflex: export credit (Gen-offset), per kWh</h3>
+      <table class="data-table rate-table">
+        <thead><tr><th scope="col">Period</th><th scope="col">High season (Jun–Aug)</th><th scope="col">Low season (Sep–May)</th></tr></thead>
+        <tbody>
+          {PERIODS.map((p) => (
+            <tr>
+              <td>{p.label}</td>
+              <td>{incl(flex.exportRates.high[p.id])}<small>{excl(flex.exportRates.high[p.id])} excl. VAT</small></td>
+              <td>{incl(flex.exportRates.low[p.id])}<small>{excl(flex.exportRates.low[p.id])} excl. VAT</small></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">
+        Credit is capped each month: in each period, Eskom credits no more kWh than you bought in that period.
+        Shown with VAT for comparison; the calculator values the credit without VAT.
+      </p>
+      <h3 class="table-title">Homepower: energy you buy, per kWh</h3>
+      <table class="data-table rate-table">
+        <thead><tr><th scope="col">Period</th><th scope="col">All year, all hours</th></tr></thead>
+        <tbody>
+          <tr><td>Single rate</td><td>{incl(power.importRate)}<small>{excl(power.importRate)} excl. VAT</small></td></tr>
+        </tbody>
+      </table>
+      <h3 class="table-title">Fixed charge per day (the same on Homeflex and Homepower)</h3>
+      <table class="data-table rate-table">
+        <thead><tr><th scope="col">Supply size</th><th scope="col">Per day</th></tr></thead>
+        <tbody>
+          {tariffs.sizes.map((s) => (
+            <tr>
+              <td>Homeflex {s.id} / Homepower {s.id}<small>{s.label}</small></td>
+              <td>{incl(tariffs.homeflex[s.id as '1'].fixedPerDay)}<small>R{tariffs.homeflex[s.id as '1'].fixedPerDay.toFixed(2)} excl. VAT</small></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">
+        Energy prices include network and ancillary charges. Fixed charges combine the service, administration,
+        network capacity and generation capacity charges.
+      </p>
+
+      <h3 class="table-title">Homeflex time-of-use hours</h3>
+      <table class="data-table compare-table tou-table">
+        <thead><tr><th scope="col"><span class="visually-hidden">Day</span></th><th scope="col">Peak</th><th scope="col">Standard</th><th scope="col">Off-peak</th></tr></thead>
+        <tbody>
+          {touRows.map((r) => (
+            <tr>
+              <th scope="row">{r.label}</th>
+              <td data-label="Peak">{ranges(r.day, 'p')}</td>
+              <td data-label="Standard">{ranges(r.day, 's')}</td>
+              <td data-label="Off-peak">{ranges(r.day, 'o', r.wrap)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="table-note">Public holidays are billed as the weekday they fall on.</p>
+    </div>
+  </section>
+
+  <section class="section alt hairline-top" id="method">
+    <div class="container">
+      <div class="prose">
+        <h2>How the calculator works</h2>
+        <p>
+          It runs one Eskom financial year, 1 April 2026 to 31 March 2027, hour by hour, and prices each
+          hour on Homeflex and Homepower.
+        </p>
+        <ul>
+          <li><strong>Your use.</strong> Your monthly figure is spread over the day in the pattern you choose, with about 20% more use in June and July than in summer. Weekends follow the at-home pattern.</li>
+          <li><strong>Solar.</strong> Hourly averages for 2018 to 2023 from PVGIS, the European Commission's solar database, for a north-facing roof at 26° with 14% system losses. Shading, orientation and panel type change real yield.</li>
+          <li><strong>Battery.</strong> It charges from solar only and covers your use whenever solar falls short, at about 90% round-trip efficiency and up to 5 kW. Time-of-use battery settings can move a little more use out of peak.</li>
+          <li><strong>Export credit.</strong> Homeflex exports are credited at Eskom's Gen-offset rates, capped each month per period at what you bought in that period. The credit is valued without VAT; if Eskom applies VAT to your net bill, it is worth up to 15% more. Homepower exports earn nothing.</li>
+          <li><strong>Not included.</strong> Municipal tariffs, Homelight, charging the battery from the grid, and any price changes after 31 March 2027.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight" id="faq">
+    <div class="container">
+      <div class="section-head"><h2>Questions</h2></div>
+      <Faq items={faq} openFirst={false} />
+    </div>
+  </section>
+
+  <section class="section-tight alt hairline-top" id="sources">
+    <div class="container">
+      <div class="section-head">
+        <h2>Sources</h2>
+        <p>If a price here is out of date, tell us at info@pvbiz.co.za and we will correct it.</p>
+      </div>
+      <ol class="source-list">
+        <li><a href={tariffs.sourceUrl} rel="nofollow noopener">Eskom: Schedule of Standard Prices, 1 April 2026 (sections 22 and 46, Appendix A)</a></li>
+        <li><a href="https://www.eskom.co.za/distribution/tariffs-and-charges/" rel="nofollow noopener">Eskom: tariffs and charges</a></li>
+        <li><a href={pv.sourceUrl} rel="nofollow noopener">European Commission JRC: PVGIS solar data</a></li>
+      </ol>
+      <ul class="related">
+        <li><a href="/homeowners/">PVBiz for homeowners</a></li>
+        <li><a href="/installers/">PVBiz for installers</a></li>
+        <li><a href="/integrations/">All 14+ integrations</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section night" id="start">
+    <div class="container">
+      <div class="contact-card">
+        <div>
+          <p class="big">See what your solar really does, hour by hour.</p>
+          <p class="muted">
+            PVBiz reads your inverter's solar, battery, home and grid figures and alerts you when something goes wrong.
+            Installers price every client's real use against their actual Eskom or municipal tariff.
+          </p>
+        </div>
+        <div class="cta">
+          <a class="btn btn-primary btn-lg" href={REGISTER}>Start free trial</a>
+          <a class="btn btn-secondary btn-lg" href="/installers/">For installers</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  import { describe, estimate, type Inputs } from '../../scripts/homeflexCalc';
+
+  const form = document.getElementById('hf-form') as HTMLFormElement | null;
+  const num = (v: FormDataEntryValue | null, min: number, max: number) => {
+    const n = Number(v);
+    return Number.isFinite(n) ? Math.min(max, Math.max(min, n)) : min;
+  };
+  function update() {
+    if (!form) return;
+    const f = new FormData(form);
+    const input: Inputs = {
+      size: String(f.get('size')) as Inputs['size'],
+      monthlyKwh: num(f.get('monthlyKwh'), 0, 5000),
+      pattern: String(f.get('pattern')) as Inputs['pattern'],
+      region: String(f.get('region')),
+      kwp: num(f.get('kwp'), 0, 30),
+      batteryKwh: num(f.get('batteryKwh'), 0, 60),
+    };
+    const out = describe(estimate(input));
+    document.querySelectorAll<HTMLElement>('[data-out]').forEach((el) => {
+      const v = out[el.dataset.out!];
+      if (v !== undefined) el.textContent = v;
+    });
+  }
+  form?.addEventListener('input', update);
+  form?.addEventListener('submit', (e) => e.preventDefault());
+</script>
