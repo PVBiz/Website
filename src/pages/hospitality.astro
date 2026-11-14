@@ -1,0 +1,372 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Check from '../components/Check.astro';
+import Faq from '../components/Faq.astro';
+import SectorHero from '../components/SectorHero.astro';
+import SectorCta from '../components/SectorCta.astro';
+import { BRAND_NAMES, INSTALLER_APPLICATION, breadcrumbs, faqPage } from '../data/brands';
+import alertsRules from '../assets/app/alerts-rules.webp';
+
+// Twelve months of solar yield at a coastal guesthouse, as a share of the best month,
+// with the high-season months shaded. Southern hemisphere: the sun and the bookings peak together.
+const MONTHS = [
+  { m: 'J', pv: 100, high: true },
+  { m: 'F', pv: 92, high: false },
+  { m: 'M', pv: 82, high: false },
+  { m: 'A', pv: 66, high: true },
+  { m: 'M', pv: 54, high: false },
+  { m: 'J', pv: 46, high: false },
+  { m: 'J', pv: 50, high: false },
+  { m: 'A', pv: 60, high: false },
+  { m: 'S', pv: 74, high: false },
+  { m: 'O', pv: 84, high: false },
+  { m: 'N', pv: 94, high: false },
+  { m: 'D', pv: 98, high: true },
+];
+
+const FAQ = [
+  {
+    q: 'Who gets the alert at two in the morning?',
+    a: 'Whoever you name for the property: the night manager, the owner and the installer, by push notification in the app, email or Telegram, with WhatsApp as an optional add-on. Up to 20 recipients on each channel. The owner can be in another country and still be the first to know.',
+  },
+  {
+    q: 'Can the manager have a login without seeing my other properties?',
+    a: 'Yes. On the installer platform a login can be limited to selected plants, so the manager of one lodge sees that lodge and nothing else, while the owner sees every property in one view.',
+  },
+  {
+    q: 'We have a generator. Will PVBiz tell me when it runs?',
+    a: 'Yes. PVBiz alerts you when the generator starts supplying power and again when it stops, so a generator left running after the grid comes back is noticed straight away.',
+  },
+  {
+    q: 'Does the seasonal analysis line up with our high and low season?',
+    a: 'Seasonal analysis splits the year into the four meteorological seasons for your hemisphere, with each season’s solar total, daily average, self-sufficiency and a year-on-year comparison, plus a twelve-month profile. It is in the app and on the installer platform. High season is usually one or two of those seasons, so the comparison reads directly.',
+  },
+  {
+    q: 'What does it cost a guesthouse?',
+    a: 'A guesthouse with one or two systems can start on the standard plan: R55 a month or R549 a year for up to two solar plants, every feature included, after a 7-day free trial with no card needed. A lodge with more systems, or a group with several properties, goes on the installer platform, priced per fleet. We quote after a short call.',
+  },
+  {
+    q: 'Which inverter brands work?',
+    a: `14+ inverter brands and platforms: ${BRAND_NAMES}. A guesthouse on Sunsynk and a lodge on Deye sit in one view. Nothing is installed at the property; the plant is shared read-only from the portal it already reports to.`,
+  },
+];
+---
+
+<Base
+  title="Solar and battery monitoring for guesthouses, lodges and small hotels - PVBiz"
+  description="Guesthouse and lodge solar monitoring: overnight battery and grid alerts to the owner or manager anywhere, generator alerts, seasonal analysis and reports."
+  path="/hospitality/"
+  jsonLd={[
+    INSTALLER_APPLICATION,
+    faqPage(FAQ),
+    breadcrumbs([{ name: 'Hospitality', path: '/hospitality/' }]),
+  ]}
+>
+  <SectorHero
+    crumb="Hospitality"
+    sector="hospitality"
+    title="Your guests should never be the ones who tell you the power is off."
+    answer="PVBiz watches a guesthouse, lodge or small hotel's solar and battery through the night and alerts the owner or manager wherever they are, by push, email or Telegram, before the battery runs flat. It tells you when the generator starts, shows the savings against your tariff, lines the year up by season and emails the owner a monthly report."
+  >
+    <Fragment slot="proof">
+      <strong>Nothing installed at the property.</strong> The inverter is shared read-only from the
+      portal it already reports to, on 14+ brands and platforms.
+    </Fragment>
+    <svg
+      class="art night-chart"
+      viewBox="0 0 520 300"
+      role="img"
+      aria-label="One night at a guesthouse: battery state of charge falls through a grid outage from 01:20 to 04:10, an alert goes out at 02:50 when it reaches 30 percent, and the battery recovers after sunrise"
+    >
+      <rect class="a-fill-2" x="210" y="36" width="146" height="194" rx="4"></rect>
+      <text class="a-label" x="283" y="28" text-anchor="middle">
+        Grid off, 01:20 to 04:10
+      </text>
+      <g class="a-dash">
+        <path d="M40 95H500M40 140H500M40 185H500"></path>
+      </g>
+      <text class="a-label" x="40" y="28">
+        Battery charge
+      </text>
+      <text class="a-label" x="34" y="98" text-anchor="end">
+        75%
+      </text>
+      <text class="a-label" x="34" y="143" text-anchor="end">
+        50%
+      </text>
+      <text class="a-label" x="34" y="188" text-anchor="end">
+        25%
+      </text>
+      <path class="a-line" d="M40 230H500"></path>
+      <g class="a-label">
+        <text x="40" y="252" text-anchor="middle">
+          22:00
+        </text>
+        <text x="142" y="252" text-anchor="middle">
+          00:00
+        </text>
+        <text x="244" y="252" text-anchor="middle">
+          02:00
+        </text>
+        <text x="347" y="252" text-anchor="middle">
+          04:00
+        </text>
+        <text x="449" y="252" text-anchor="middle">
+          06:00
+        </text>
+      </g>
+      <path
+        class="a-accent-line"
+        d="M40 104C90 110 160 122 210 131 240 150 262 166 286 176 310 182 332 185 356 187 390 186 420 185 449 182 470 168 486 156 500 149"
+      ></path>
+      <circle class="a-alert-ring" cx="286" cy="176" r="8"></circle>
+      <circle class="a-alert" cx="286" cy="176" r="3.5"></circle>
+      <path class="a-ink" d="M286 168V60H362"></path>
+      <text x="366" y="64">
+        Battery at 30%, 02:50
+      </text>
+      <text class="a-label" x="366" y="80">
+        Manager and owner alerted
+      </text>
+      <circle class="a-ok" cx="356" cy="187" r="4"></circle>
+      <path class="a-ink" d="M356 196v18"></path>
+      <text class="a-label" x="362" y="218">
+        Grid back, all-clear
+      </text>
+      <text class="a-label" x="500" y="126" text-anchor="end">
+        Breakfast, 07:00
+      </text>
+    </svg>
+  </SectorHero>
+
+  <section class="section" id="people">
+    <div class="container">
+      <div class="section-head">
+        <h2>Three people, three places, one battery</h2>
+        <p>
+          The owner is often not at the property. The manager is, but asleep. The installer is forty
+          minutes away. Each needs to know different things, and none of them should hear it from a
+          guest at breakfast.
+        </p>
+      </div>
+      <ul class="people">
+        <li>
+          <h3>The owner, wherever they are</h3>
+          <p>
+            Push notification in the app for grid loss, low battery and generator start, in another
+            city or another country. One login that sees every property, with the savings against
+            the tariff and the monthly report in the inbox.
+          </p>
+        </li>
+        <li>
+          <h3>The manager on site</h3>
+          <p>
+            A login limited to this property. The battery alert at 30% arrives in time to switch the
+            geysers and the pool pump off, so the kitchen still has power at 06:00.
+          </p>
+        </li>
+        <li>
+          <h3>The installer</h3>
+          <p>
+            The same alerts by email, and the plant on their own fleet view. An inverter fault on a
+            Friday night is a Saturday-morning visit, not a Monday phone call.
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section alt hairline-top" id="night">
+    <div class="container">
+      <div class="screen-row">
+        <div class="device">
+          <div class="device-screen">
+            <Image
+              src={alertsRules}
+              format="webp"
+              loading="lazy"
+              alt="Rules screen for one plant with battery state-of-charge alerts at 50, 40 and 30 percent and a grid disconnect alert switched on"
+            />
+          </div>
+        </div>
+        <div>
+          <h3>The night shift, done by the monitoring</h3>
+          <p>
+            Guests are the heaviest load after dark: geysers, air conditioning, the kitchen at dawn.
+            PVBiz tracks the battery through every outage and tells the right person before it runs
+            flat.
+          </p>
+          <ul>
+            <li>
+              <Check />
+              Battery alerts at 50, 40, 30, 20 and 10 percent, with an all-clear on recovery
+            </li>
+            <li>
+              <Check />
+              Grid lost and grid restored, so load-shedding and a real fault read differently
+            </li>
+            <li>
+              <Check />
+              Generator started and stopped
+            </li>
+            <li>
+              <Check />
+              No-data alert when the inverter or the property's internet stops reporting
+            </li>
+            <li>
+              <Check />
+              Push, email and Telegram, with WhatsApp as an add-on
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="season">
+    <div class="container">
+      <div class="season-row">
+        <div>
+          <h3>A year that reads by season, like your bookings do</h3>
+          <p>
+            A guesthouse does not have an average month. PVBiz's seasonal analysis splits the year
+            into four seasons for your hemisphere, each with its solar total, daily average,
+            self-sufficiency and a year-on-year comparison, and a twelve-month profile alongside.
+          </p>
+          <ul>
+            <li>
+              <Check />
+              Compare this high season with last high season, not with the yearly mean
+            </li>
+            <li>
+              <Check />
+              See how much of the property's use the system covered in each season
+            </li>
+            <li>
+              <Check />
+              Savings in rands against the tariff the property is on, including time-of-use
+            </li>
+            <li>
+              <Check />
+              In the app and on the installer platform
+            </li>
+          </ul>
+        </div>
+        <figure class="seasons" aria-hidden="true">
+          <ul>
+            {MONTHS.map((mo) => (
+              <li class:list={[{ high: mo.high }]} style={`--pv:${mo.pv}%`}>
+                <span class="bar"></span>
+                <span class="m">{mo.m}</span>
+              </li>
+            ))}
+          </ul>
+          <figcaption>
+            Solar yield by month at a coastal guesthouse, as a share of the best month. Shaded
+            months are high season: December, January and Easter.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt hairline-top" id="example">
+    <div class="container">
+      <div class="section-head">
+        <h2>One night at a guesthouse, with monitoring</h2>
+      </div>
+      <div class="example">
+        <p class="example-note">An illustrative example, not a real property.</p>
+        <h3>A 9-room guesthouse with a 10 kW hybrid and a 15 kWh battery</h3>
+        <p>
+          Full house on a Saturday in January. The owner is overseas, the manager lives on the
+          property, the installer is in the next town. One Sunsynk inverter, one PVBiz plant.
+        </p>
+        <ol class="example-steps">
+          <li>
+            01:20. Load-shedding takes the grid off. Nothing changes for the guests: the battery
+            carries the rooms. The manager's phone gets a grid-lost alert and goes back on the
+            bedside table.
+          </li>
+          <li>
+            02:50. Nine rooms of air conditioning have taken the battery to 30%. The alert reaches
+            the manager, the owner and the installer. The manager switches the geysers and the pool
+            pump off from the kitchen panel. The battery settles and holds.
+          </li>
+          <li>
+            04:10. The grid comes back and the all-clear follows. At 07:00 the kitchen has power,
+            the geysers are hot again and nobody at breakfast knows there was a night.
+          </li>
+          <li>
+            Month end. The owner's PDF shows January's production, the outages the battery carried,
+            the saving in rands against the tariff and how the month compares with last January.
+          </li>
+        </ol>
+        <dl>
+          <div>
+            <dt>Alerts in the night</dt>
+            <dd>
+              3<small>grid lost, battery 30%, all-clear</small>
+            </dd>
+          </div>
+          <div>
+            <dt>Who was told</dt>
+            <dd>
+              Manager, owner, installer<small>push, email and Telegram</small>
+            </dd>
+          </div>
+          <div>
+            <dt>Guests who noticed</dt>
+            <dd>
+              0<small>of 18</small>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="plans">
+    <div class="container">
+      <div class="section-head">
+        <h2>Start small, grow to the group</h2>
+        <p>Public prices for a single property, a quote for a group.</p>
+      </div>
+      <div class="fit">
+        <div>
+          <h3>A guesthouse or B&amp;B with one or two systems</h3>
+          <p>
+            The standard plan: R55 a month or R549 a year for up to two solar plants, every feature
+            included, after a 7-day free trial with no card needed. Alerts, custom rules, forecasts,
+            seasonal analysis, reports and the app.
+          </p>
+          <a href="/pricing/">See pricing</a>
+        </div>
+        <div>
+          <h3>A lodge with several systems, or a group of properties</h3>
+          <p>
+            The installer platform: unlimited plants across 14+ brands, team roles with logins
+            limited to selected properties, branded reports, tariffs and work orders. Priced per
+            fleet, on the sites under management.
+          </p>
+          <a href="/installers/">About the installer platform</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt hairline-top" id="faq">
+    <div class="container">
+      <div class="section-head">
+        <h2>Guesthouse and lodge questions</h2>
+      </div>
+      <Faq items={FAQ} />
+    </div>
+  </section>
+
+  <SectorCta sector="hospitality" big="Put the property on watch before the next full house.">
+    Tell us the inverter brand, whether there is a generator and who should be woken at 02:50. We
+    will connect the plant and send the first monthly report to the owner.
+  </SectorCta>
+</Base>

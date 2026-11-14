@@ -2664,3 +2664,475 @@ ol {
   font-weight: 600;
   font-size: var(--t-sm);
 }
+
+@media (min-width: 1100px) {
+  .sectors {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+/* Off-grid: the site board, twelve tiles each with its own local clock, drawn in HTML. */
+.board {
+  color: var(--night-ink-2);
+}
+
+.board-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+
+@media (min-width: 480px) {
+  .board-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.board-grid li {
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.6rem 0.65rem 0.7rem;
+  border-radius: 6px;
+  background: var(--night-3);
+  border: 1px solid transparent;
+  font-size: var(--t-xs);
+  line-height: 1.3;
+}
+
+.board-grid .site {
+  color: var(--night-ink-3);
+}
+
+.board-grid .clock {
+  color: var(--night-ink);
+  font-size: var(--t-base);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+
+.board-grid .src {
+  color: var(--night-ink-2);
+}
+
+.board-grid .soc {
+  position: relative;
+  display: block;
+  height: 4px;
+  margin-top: 0.3rem;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.board-grid .soc::after {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--soc, 0%);
+  border-radius: 2px;
+  background: var(--night-ok);
+}
+
+.board-grid .soc.none::after {
+  display: none;
+}
+
+.board-grid .gen {
+  border-color: var(--amber);
+}
+
+.board-grid .gen .src {
+  color: var(--amber);
+  font-weight: 600;
+}
+
+.board-grid .gen .soc::after {
+  background: var(--amber);
+}
+
+.board-grid .off {
+  background: transparent;
+  border-color: var(--night-hair);
+}
+
+.board-grid .off .clock,
+.board-grid .off .src {
+  color: var(--night-ink-3);
+}
+
+.board-grid .off .src {
+  color: var(--night-err);
+}
+
+.board-foot {
+  margin-top: 0.875rem;
+  font-size: var(--t-xs);
+  color: var(--night-ink-3);
+}
+
+/* Off-grid: what the generator alert does, beside what its history gives you. */
+.honest {
+  display: grid;
+  gap: 2rem;
+  max-width: 980px;
+}
+
+@media (min-width: 800px) {
+  .honest {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+}
+
+.honest h3 {
+  font-size: var(--t-lg);
+}
+
+.honest ul {
+  list-style: none;
+  margin-top: 0.875rem;
+  display: grid;
+  gap: 0.5rem;
+  font-size: var(--t-sm);
+  color: var(--ink-2);
+}
+
+.honest li {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.honest li svg {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin-top: 0.2rem;
+  color: var(--ok);
+}
+
+.honest .aside {
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-lg);
+  background: var(--paper-2);
+}
+
+.honest .aside p {
+  margin-top: 0.875rem;
+  font-size: var(--t-sm);
+  color: var(--ink-2);
+}
+
+/* Off-grid: the power-source table collapses to blocks at phone width. */
+.source-table td:first-child {
+  white-space: normal;
+}
+
+.source-table td:empty::after {
+  content: '\2014';
+  color: var(--ink-4);
+}
+
+@media (max-width: 639.98px) {
+  .source-table thead {
+    display: none;
+  }
+
+  .source-table,
+  .source-table tbody,
+  .source-table tr,
+  .source-table td {
+    display: block;
+  }
+
+  .source-table tr {
+    padding: 0.875rem 0;
+    border-bottom: 1px solid var(--hair);
+  }
+
+  .source-table td {
+    padding: 0.25rem 0;
+    border: 0;
+  }
+
+  .source-table td:first-child {
+    font-size: var(--t-base);
+    padding-bottom: 0.5rem;
+  }
+
+  .source-table td:not(:first-child)::before {
+    content: attr(data-th);
+    display: block;
+    font-size: var(--t-xs);
+    font-weight: 600;
+    color: var(--ink-3);
+  }
+
+  .source-table td:empty {
+    display: none;
+  }
+}
+
+/* Off-grid: the battery ladder, five rungs down. */
+.ladder-row {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .ladder-row {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+    gap: 4rem;
+  }
+}
+
+.ladder-row h3 {
+  font-size: var(--t-2xl);
+}
+
+.ladder-row p {
+  margin-top: 0.75rem;
+  color: var(--ink-2);
+}
+
+.ladder-row ul {
+  list-style: none;
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.4rem;
+  font-size: var(--t-sm);
+  color: var(--ink-2);
+}
+
+.ladder-row li {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.ladder-row li svg {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin-top: 0.2rem;
+  color: var(--ok);
+}
+
+.ladder {
+  max-width: 360px;
+  padding: 1.5rem 1.5rem 1.25rem;
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-lg);
+  background: var(--paper-2);
+}
+
+.ladder ol {
+  list-style: none;
+  display: grid;
+}
+
+.ladder ol li {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-top: 2px solid var(--hair-strong);
+  font-size: var(--t-sm);
+  color: var(--ink-2);
+}
+
+.ladder ol li:last-child {
+  border-bottom: 2px solid var(--hair-strong);
+}
+
+.ladder .rung {
+  font-size: var(--t-xl);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.ladder .crit .rung {
+  color: var(--err);
+}
+
+.ladder .crit .what {
+  color: var(--err);
+  font-weight: 600;
+}
+
+.ladder-foot {
+  margin-top: 0.875rem;
+  font-size: var(--t-xs);
+  color: var(--ok);
+  font-weight: 600;
+}
+
+/* Hospitality: the three people on one battery. */
+.people {
+  list-style: none;
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 800px) {
+  .people {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.5rem;
+  }
+}
+
+.people li {
+  padding-top: 1rem;
+  border-top: 2px solid var(--ink);
+}
+
+.people h3 {
+  font-size: var(--t-lg);
+}
+
+.people p {
+  margin-top: 0.5rem;
+  color: var(--ink-2);
+  font-size: var(--t-sm);
+}
+
+/* Hospitality: the season strip, twelve bars with high season shaded. */
+.season-row {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .season-row {
+    grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
+    gap: 4rem;
+  }
+}
+
+.season-row h3 {
+  font-size: var(--t-2xl);
+}
+
+.season-row p {
+  margin-top: 0.75rem;
+  color: var(--ink-2);
+}
+
+.season-row > div > ul {
+  list-style: none;
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.4rem;
+  font-size: var(--t-sm);
+  color: var(--ink-2);
+}
+
+.season-row > div li {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.season-row > div li svg {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin-top: 0.2rem;
+  color: var(--ok);
+}
+
+.seasons {
+  margin: 0;
+  padding: 1.5rem 1.5rem 1.25rem;
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-lg);
+  background: var(--paper);
+}
+
+.seasons ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 4px;
+  height: 180px;
+  align-items: end;
+}
+
+.seasons li {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  height: 100%;
+  border-radius: 4px;
+}
+
+.seasons .high {
+  background: var(--amber-soft);
+}
+
+.seasons .bar {
+  align-self: end;
+  height: var(--pv, 0%);
+  margin: 0 3px;
+  border-radius: 3px 3px 0 0;
+  background: var(--hair-strong);
+}
+
+.seasons .high .bar {
+  background: var(--amber);
+}
+
+.seasons .m {
+  padding-top: 0.35rem;
+  text-align: center;
+  font-size: var(--t-xs);
+  color: var(--ink-3);
+}
+
+.seasons figcaption {
+  margin-top: 0.875rem;
+  font-size: var(--t-xs);
+  color: var(--ink-3);
+}
+
+/* Hospitality: which plan fits, two plain columns mirroring /pricing/. */
+.fit {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 980px;
+}
+
+@media (min-width: 800px) {
+  .fit {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+.fit > div {
+  padding: 1.5rem;
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-lg);
+  background: var(--paper);
+}
+
+.fit h3 {
+  font-size: var(--t-lg);
+}
+
+.fit p {
+  margin-top: 0.5rem;
+  color: var(--ink-2);
+  font-size: var(--t-sm);
+}
+
+.fit a {
+  display: inline-block;
+  margin-top: 0.875rem;
+  font-weight: 600;
+  font-size: var(--t-sm);
+}

@@ -1,0 +1,344 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Check from '../components/Check.astro';
+import Faq from '../components/Faq.astro';
+import SectorHero from '../components/SectorHero.astro';
+import SectorCta from '../components/SectorCta.astro';
+import { BRAND_NAMES, INSTALLER_APPLICATION, breadcrumbs, faqPage } from '../data/brands';
+import fleetDashboard from '../assets/app/fleet-dashboard.webp';
+
+// The site board: twelve field sites across three time zones, read at one moment.
+// Each tile carries its own local clock; one generator is running.
+const SITES = [
+  { id: '01', time: '06:12', soc: 34, src: 'Generator', gen: true },
+  { id: '02', time: '06:12', soc: 71, src: 'Battery' },
+  { id: '03', time: '06:12', soc: 58, src: 'Battery' },
+  { id: '04', time: '07:12', soc: 44, src: 'Battery' },
+  { id: '05', time: '07:12', soc: null, src: 'Solar only' },
+  { id: '06', time: '07:12', soc: 83, src: 'Solar' },
+  { id: '07', time: '07:12', soc: 66, src: 'Grid' },
+  { id: '08', time: '07:12', soc: null, src: 'No data', off: true },
+  { id: '09', time: '08:12', soc: 90, src: 'Solar' },
+  { id: '10', time: '08:12', soc: 77, src: 'Solar' },
+  { id: '11', time: '08:12', soc: null, src: 'Solar only' },
+  { id: '12', time: '08:12', soc: 61, src: 'Grid' },
+];
+
+const FAQ = [
+  {
+    q: 'Our sites are in several countries. Does that work?',
+    a: 'Yes. Every plant carries its own time zone and currency, so an alert from a site is stamped in that site’s local time and a report for the fleet reads each site in its own day. The people receiving alerts can be anywhere.',
+  },
+  {
+    q: 'Will an off-grid site keep alarming that the grid is down?',
+    a: 'No. Each plant is marked grid-connected or off-grid, by your team or detected from the inverter cloud. An off-grid plant does not raise grid-loss alerts. A solar-only inverter with no battery does not raise low-battery alerts either.',
+  },
+  {
+    q: 'Which inverter brands are supported?',
+    a: `14+ inverter brands and platforms: ${BRAND_NAMES}.`,
+  },
+  {
+    q: 'Does anything need to be installed at the sites?',
+    a: 'No. PVBiz reads from the cloud each inverter already reports to, shared read-only or through your portal login. Nothing is shipped, installed or configured at the site. The site does need its own internet link for the inverter; if that link drops, PVBiz raises a no-data alert.',
+  },
+];
+---
+
+<Base
+  title="Solar, battery and generator monitoring for off-grid and remote sites - PVBiz"
+  description="Off-grid and hybrid sites across countries in one view: generator-start alert, battery and no-data alerts, scheduled reports to head office or donors."
+  path="/off-grid/"
+  jsonLd={[
+    INSTALLER_APPLICATION,
+    faqPage(FAQ),
+    breadcrumbs([{ name: 'Off-grid sites', path: '/off-grid/' }]),
+  ]}
+>
+  <SectorHero
+    crumb="Off-grid sites"
+    sector="off-grid"
+    title="Diesel is the expensive part. Know the moment a generator starts, at every site, in every country."
+    answer="PVBiz monitors solar, battery and generator sites for field operations across borders: a generator-start alert, battery alerts at 50, 40, 30, 20 and 10 percent, a no-data alert for sites on poor links, and one view of the whole fleet with scheduled PDF or Excel reports to head office or donors."
+  >
+    <Fragment slot="proof">
+      <strong>Nothing to ship to the site.</strong> Each inverter is shared read-only from the cloud
+      it already reports to, across 14+ brands and platforms.
+    </Fragment>
+    <div class="board" aria-hidden="true">
+      <ul class="board-grid">
+        {SITES.map((s) => (
+          <li class:list={[{ gen: s.gen, off: s.off }]}>
+            <span class="site">Site {s.id}</span>
+            <span class="clock">{s.time}</span>
+            <span class="src">{s.src}</span>
+            {s.soc !== null ? (
+              <span class="soc" style={`--soc:${s.soc}%`}></span>
+            ) : (
+              <span class="soc none"></span>
+            )}
+          </li>
+        ))}
+      </ul>
+      <p class="board-foot">
+        Twelve sites, three time zones, one view. Site 01 started its generator at 06:12 local time.
+        Site 08 has not reported for an hour.
+      </p>
+    </div>
+  </SectorHero>
+
+  <section class="section" id="generator">
+    <div class="container">
+      <div class="section-head">
+        <h2>Know when the generator starts</h2>
+        <p>
+          A generator that runs an hour longer than it should at twelve sites is a fuel bill nobody
+          approved. The first step is knowing when it starts.
+        </p>
+      </div>
+      <div class="honest">
+        <div>
+          <h3>What PVBiz does</h3>
+          <ul>
+            <li>
+              <Check />
+              Alerts when the generator starts supplying power, and again when it stops
+            </li>
+            <li>
+              <Check />
+              Sends the alert by email, Telegram or WhatsApp to the people you name for that site,
+              stamped in the site's local time
+            </li>
+            <li>
+              <Check />
+              Keeps every start and stop in the alert history, per site
+            </li>
+          </ul>
+        </div>
+        <div class="aside">
+          <h3>What the history gives you</h3>
+          <p>
+            Every start and stop, at every site, in local time. That is the record your operations
+            team needs to question a fuel delivery, spot a battery that no longer carries the night,
+            or decide which site needs more solar next.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt hairline-top" id="sources">
+    <div class="container">
+      <div class="section-head">
+        <h2>Three kinds of site, and the alerts that fit each one</h2>
+        <p>
+          A fleet of field sites is rarely one kind of site. PVBiz records how each plant is
+          powered, set by your team or detected from the inverter cloud, and alerts accordingly.
+        </p>
+      </div>
+      <table class="data-table source-table">
+        <thead>
+          <tr>
+            <th scope="col">Site</th>
+            <th scope="col">Watched for</th>
+            <th scope="col">Not raised</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Grid-connected</td>
+            <td data-th="Watched for">
+              Grid lost and grid restored, battery levels, inverter faults, no data
+            </td>
+            <td data-th="Not raised"></td>
+          </tr>
+          <tr>
+            <td>Off-grid</td>
+            <td data-th="Watched for">Battery levels, generator start, inverter faults, no data</td>
+            <td data-th="Not raised">Grid lost. There is no grid to lose.</td>
+          </tr>
+          <tr>
+            <td>Solar only, no battery</td>
+            <td data-th="Watched for">Solar output, inverter faults, no data</td>
+            <td data-th="Not raised">Low battery. The inverter reports none.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" id="battery">
+    <div class="container">
+      <div class="ladder-row">
+        <div class="ladder" aria-hidden="true">
+          <ol>
+            <li>
+              <span class="rung">50%</span>
+              <span class="what">Warning to the site contact</span>
+            </li>
+            <li>
+              <span class="rung">40%</span>
+              <span class="what">Warning</span>
+            </li>
+            <li>
+              <span class="rung">30%</span>
+              <span class="what">Warning</span>
+            </li>
+            <li class="crit">
+              <span class="rung">20%</span>
+              <span class="what">Critical</span>
+            </li>
+            <li class="crit">
+              <span class="rung">10%</span>
+              <span class="what">Critical</span>
+            </li>
+          </ol>
+          <p class="ladder-foot">All-clear when the battery recovers</p>
+        </div>
+        <div>
+          <h3>Batteries watched down the ladder, links watched for silence</h3>
+          <p>
+            At a site with no grid the battery is the night. PVBiz alerts at each step down, 50, 40,
+            30, 20 and 10 percent, and sends an all-clear when it recovers, so the site contact can
+            shed load or start the generator on purpose rather than find it started on its own.
+          </p>
+          <ul>
+            <li>
+              <Check />
+              Battery alerts at five levels, 20 and 10 percent marked critical
+            </li>
+            <li>
+              <Check />
+              No-data alert when a site has not reported for longer than you allow, an hour by
+              default, so a dead link or a dead inverter is reported rather than noticed later
+            </li>
+            <li>
+              <Check />
+              Inverter temperature alerts, for container rooms in hot climates
+            </li>
+            <li>
+              <Check />
+              Up to 20 recipients on each of email, WhatsApp and Telegram, per site
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt hairline-top" id="fleet">
+    <div class="container">
+      <div class="screen-row">
+        <div class="browser">
+          <div class="browser-bar" aria-hidden="true">
+            <i></i>
+            <i></i>
+            <i></i>
+          </div>
+          <Image
+            src={fleetDashboard}
+            format="webp"
+            loading="lazy"
+            alt="Fleet overview dashboard: 14 plants, 5 needing attention, PV capacity, plant locations map and plants by type"
+          />
+        </div>
+        <div>
+          <h3>One fleet across borders, reported in each site's own day</h3>
+          <p>
+            Every plant carries its own time zone and currency. An alert from a site is stamped in
+            that site's local time, and the monthly report reads each site in its own calendar day
+            rather than head office's.
+          </p>
+          <ul>
+            <li>
+              <Check />
+              All sites on one map and one list, whatever the brand
+            </li>
+            <li>
+              <Check />
+              PDF or Excel reports, generated and emailed weekly, monthly, quarterly or yearly
+            </li>
+            <li>
+              <Check />
+              Recipients at head office or a donor need no login
+            </li>
+            <li>
+              <Check />
+              Separate logins for a country team, limited to their sites
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="example">
+    <div class="container">
+      <div class="section-head">
+        <h2>A morning across four countries, with monitoring</h2>
+      </div>
+      <div class="example">
+        <p class="example-note">An illustrative example, not a real organisation.</p>
+        <h3>An NGO with 12 field offices in four countries</h3>
+        <p>
+          Seven offices on Deye hybrids with a battery and a generator, three on Solis solar-only
+          inverters feeding a grid-connected compound, two on Sunsynk with batteries. Three time
+          zones, one PVBiz fleet, one operations lead at head office.
+        </p>
+        <ol class="example-steps">
+          <li>
+            06:12 local at Site 01. The generator starts because the battery passed 30% before
+            sunrise; the night load was higher than usual. The site contact gets a Telegram, the
+            operations lead gets the same alert at 08:12 head-office time, and the history shows the
+            battery alerts that led up to it.
+          </li>
+          <li>
+            07:30 local at Site 08. The compound's satellite link has been down for an hour and the
+            inverter has gone quiet. PVBiz raises a no-data alert rather than showing stale numbers
+            as current. The three solar-only sites raise no battery alerts at all, because they have
+            no battery.
+          </li>
+          <li>
+            Month end. A PDF to the donor and an Excel file to finance list each site's solar
+            production, uptime and alert count, each in its own local day, with the generator starts
+            for the month in the alert history.
+          </li>
+        </ol>
+        <dl>
+          <div>
+            <dt>Sites in one view</dt>
+            <dd>
+              12<small>four countries, three brands</small>
+            </dd>
+          </div>
+          <div>
+            <dt>Alerts that morning</dt>
+            <dd>
+              2<small>generator start, no data</small>
+            </dd>
+          </div>
+          <div>
+            <dt>False alerts</dt>
+            <dd>
+              0<small>off-grid and solar-only sites excluded from grid and battery rules</small>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt hairline-top" id="faq">
+    <div class="container">
+      <div class="section-head">
+        <h2>Off-grid and remote site questions</h2>
+      </div>
+      <Faq items={FAQ} />
+    </div>
+  </section>
+
+  <SectorCta sector="off-grid" big="Tell us about the sites.">
+    The inverter brands, the countries and whether each site has a grid, a battery, a generator or
+    all three. We will say which alerts each site will raise before you connect anything.
+  </SectorCta>
+</Base>

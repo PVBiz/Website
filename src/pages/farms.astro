@@ -14,10 +14,6 @@ const FAQ = [
     a: "PVBiz reads from the cloud the inverter already reports to, so the inverter needs its own internet link: the manufacturer's dongle on Wi-Fi, a SIM router or a point-to-point link from the homestead. If that link drops, PVBiz raises a no-data alert, so a dead router is reported like a fault rather than going unnoticed.",
   },
   {
-    q: 'Can PVBiz switch the pumps or irrigation on and off?',
-    a: 'No. PVBiz monitors and alerts; it does not control pumps, irrigation or generators. On Sunsynk inverters it can change inverter settings, such as battery priority before load-shedding, through schedules and automation rules. Every other brand is monitored only.',
-  },
-  {
     q: 'Does the tariff library cover Ruraflex and Landrate?',
     a: "Yes, both, at Eskom's current published rates, alongside Megaflex, Businessrate and the municipal tariffs. Set the farm's tariff on each plant and the savings are calculated in rands at the rate that applied in each time-of-use period.",
   },
@@ -237,6 +233,11 @@ const FAQ = [
             <li>
               <Check />
               Grid lost and grid restored, per system
+            </li>
+            <li>
+              <Check />
+              Generator started and stopped, so a diesel set running past the outage is noticed the
+              same morning
             </li>
             <li>
               <Check />
