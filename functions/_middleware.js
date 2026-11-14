@@ -7,10 +7,17 @@ export async function onRequest(context) {
   const url = new URL(context.request.url);
 
   if (REDIRECT_HOSTS.has(url.hostname)) {
-    url.protocol = 'https:';
-    url.hostname = CANONICAL_HOST;
-    url.port = '';
-    return Response.redirect(url.toString(), 301);
+    // Apply public/_redirects first so an old path lands on its final URL in one hop
+    // (pages.dev/installer-platform -> www/installers/, not www/installer-platform -> /installers/).
+    const legacy = await context.next();
+    const location = legacy.status >= 300 && legacy.status < 400 && legacy.headers.get('Location');
+    const target = location ? new URL(location, url) : url;
+    if (REDIRECT_HOSTS.has(target.hostname)) {
+      target.protocol = 'https:';
+      target.hostname = CANONICAL_HOST;
+      target.port = '';
+    }
+    return Response.redirect(target.toString(), 301);
   }
 
   const response = await context.next();
