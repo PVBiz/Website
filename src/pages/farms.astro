@@ -1,0 +1,321 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Check from '../components/Check.astro';
+import Faq from '../components/Faq.astro';
+import SectorHero from '../components/SectorHero.astro';
+import SectorCta from '../components/SectorCta.astro';
+import { BRAND_NAMES, INSTALLER_APPLICATION, breadcrumbs, faqPage } from '../data/brands';
+import alertsRules from '../assets/app/alerts-rules.webp';
+
+const FAQ = [
+  {
+    q: 'The inverter at the borehole has no Wi-Fi. Can PVBiz still see it?',
+    a: "PVBiz reads from the cloud the inverter already reports to, so the inverter needs its own internet link: the manufacturer's dongle on Wi-Fi, a SIM router or a point-to-point link from the homestead. If that link drops, PVBiz raises a no-data alert, so a dead router is reported like a fault rather than going unnoticed.",
+  },
+  {
+    q: 'Can PVBiz switch the pumps or irrigation on and off?',
+    a: 'No. PVBiz monitors and alerts; it does not control pumps, irrigation or generators. On Sunsynk inverters it can change inverter settings, such as battery priority before load-shedding, through schedules and automation rules. Every other brand is monitored only.',
+  },
+  {
+    q: 'Does the tariff library cover Ruraflex and Landrate?',
+    a: "Yes, both, at Eskom's current published rates, alongside Megaflex, Businessrate and the municipal tariffs. Set the farm's tariff on each plant and the savings are calculated in rands at the rate that applied in each time-of-use period.",
+  },
+  {
+    q: 'What does WhatsApp alerting cost?',
+    a: 'Email and Telegram alerts are included. WhatsApp uses message credits sold in bundles, so a farm with a handful of alerts a month pays very little for them. Email and Telegram carry the same alert at no extra cost.',
+  },
+  {
+    q: 'Which inverter brands work?',
+    a: `14+ inverter brands and platforms: ${BRAND_NAMES}. A Sunsynk at the homestead, a Deye on the borehole and a Huawei on the pack shed sit in one view.`,
+  },
+  {
+    q: 'How is it priced for a farm?',
+    a: 'Per fleet, by the number of plants under management. Four systems on one farm is a four-plant fleet. We quote after a short call, and the installer who maintains the systems can share the view.',
+  },
+];
+---
+
+<Base
+  title="Farm solar monitoring: Ruraflex savings, batteries and alerts - PVBiz"
+  description="Farm solar monitoring: homestead, boreholes, pack shed and staff housing in one view, savings against Eskom Ruraflex or Landrate, battery alerts by WhatsApp."
+  path="/farms/"
+  jsonLd={[INSTALLER_APPLICATION, faqPage(FAQ), breadcrumbs([{ name: 'Farms', path: '/farms/' }])]}
+>
+  <SectorHero
+    crumb="Farms"
+    sector="farm"
+    title="Four solar systems, forty kilometres from town, one place to see them."
+    answer="PVBiz monitors every solar system on the farm, the homestead, the borehole inverters, the pack shed and the staff housing, in one view across 14+ inverter brands and platforms, with savings against Eskom Ruraflex or Landrate, battery alerts through load-shedding, and a WhatsApp, Telegram or email the moment something stops while nobody is near the inverter."
+  >
+    <Fragment slot="proof">
+      <strong>Nothing to install on the farm.</strong> Each inverter is shared read-only from the
+      portal it already reports to.
+    </Fragment>
+    <svg
+      class="art"
+      viewBox="0 0 520 340"
+      role="img"
+      aria-label="Map of a farm with four solar systems: homestead, borehole, pack shed and staff housing, all reporting to one phone"
+    >
+      <path class="a-fill-2" d="M16 40 170 22l24 120-150 36z"></path>
+      <path class="a-fill-2" d="M190 20l150-8 10 96-152 20z"></path>
+      <path class="a-fill-2" d="M22 206l154-32 20 118-160 26z"></path>
+      <path class="a-fill-2" d="M196 170l152-24 12 94-150 36z"></path>
+      <path class="a-fill-2" d="M356 14l140 10-6 150-120 10z"></path>
+      <path class="a-dash" d="M4 190c60 4 120-18 190-20s120 10 170 2 90-6 152-20"></path>
+      <path class="a-dash" d="M262 4c-10 60 10 120 4 170s-20 110-8 162"></path>
+      <g class="a-dash">
+        <path d="M118 128 404 272M300 76 404 272M110 282 404 272M262 236 404 272"></path>
+      </g>
+      <g class="a-fill">
+        <path d="M94 110 118 90l24 20v30H94z"></path>
+        <rect x="124" y="124" width="14" height="10" rx="1.5"></rect>
+        <rect x="60" y="126" width="26" height="14" rx="2"></rect>
+      </g>
+      <circle class="a-badge" cx="92" cy="92" r="11"></circle>
+      <text class="a-badge-text" x="92" y="96">
+        1
+      </text>
+      <g class="a-fill">
+        <circle cx="300" cy="74" r="14"></circle>
+        <path d="M300 60v-14M292 46h16"></path>
+        <rect x="318" y="62" width="20" height="14" rx="2"></rect>
+      </g>
+      <circle class="a-badge" cx="282" cy="52" r="11"></circle>
+      <text class="a-badge-text" x="282" y="56">
+        2
+      </text>
+      <g class="a-fill">
+        <path d="M212 222h100v30H212z"></path>
+        <path d="M212 222l12-14 13 14 12-14 13 14 12-14 13 14 12-14 13 14"></path>
+        <rect x="316" y="236" width="18" height="12" rx="2"></rect>
+      </g>
+      <circle class="a-badge" cx="206" cy="212" r="11"></circle>
+      <text class="a-badge-text" x="206" y="216">
+        3
+      </text>
+      <g class="a-fill">
+        <path d="M70 270 84 258l14 12v20H70z"></path>
+        <path d="M100 270l14-12 14 12v20h-28z"></path>
+        <path d="M130 270l14-12 14 12v20h-28z"></path>
+        <rect x="160" y="278" width="14" height="10" rx="1.5"></rect>
+      </g>
+      <circle class="a-badge" cx="66" cy="254" r="11"></circle>
+      <text class="a-badge-text" x="66" y="258">
+        4
+      </text>
+      <rect class="a-fill" x="386" y="250" width="40" height="72" rx="6"></rect>
+      <rect class="a-fill-2" x="392" y="258" width="28" height="48" rx="2"></rect>
+      <circle class="a-ok" cx="400" cy="268" r="3"></circle>
+      <circle class="a-ok" cx="400" cy="280" r="3"></circle>
+      <circle class="a-alert" cx="400" cy="292" r="3"></circle>
+      <path class="a-line" d="M406 268h10M406 280h10M406 292h10"></path>
+      <text x="440" y="282">
+        One view
+      </text>
+      <text class="a-label" x="440" y="300">
+        4 systems
+      </text>
+      <text class="a-label" x="440" y="316">
+        1 alert
+      </text>
+    </svg>
+  </SectorHero>
+
+  <section class="section" id="map">
+    <div class="container">
+      <div class="section-head">
+        <h2>Several systems, one farm, one fleet</h2>
+        <p>
+          A working farm rarely has one solar system. It has one at every place that needs power and
+          is too far from the next. PVBiz treats each as a plant and the farm as a fleet.
+        </p>
+      </div>
+      <ul class="map-key">
+        <li>
+          <span class="key">1</span>
+          <div>
+            <strong>Homestead</strong>
+            Hybrid inverter with a battery. The one everybody notices when it fails, and the one
+            that carries the house through load-shedding.
+          </div>
+        </li>
+        <li>
+          <span class="key">2</span>
+          <div>
+            <strong>Borehole and pump station</strong>
+            Often a grid-tied inverter on its own, kilometres from the house. If it trips, the pump
+            runs on Eskom at Ruraflex peak rates and nobody knows.
+          </div>
+        </li>
+        <li>
+          <span class="key">3</span>
+          <div>
+            <strong>Pack shed or dairy</strong>
+            The biggest array on the farm and the biggest daytime load. Underperformance here is the
+            most expensive kind.
+          </div>
+        </li>
+        <li>
+          <span class="key">4</span>
+          <div>
+            <strong>Staff housing</strong>A small system that is easy to forget. In the same view,
+            with the same alerts, it is not.
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section alt hairline-top" id="tariff">
+    <div class="container">
+      <div class="section-head">
+        <h2>Ruraflex, Landrate and what a unit of solar is actually worth</h2>
+        <p>
+          On Ruraflex the same kilowatt-hour costs several times more at 07:00 on a winter weekday
+          than at midday on a Sunday. A savings figure that ignores that is a guess.
+        </p>
+      </div>
+      <ul class="why">
+        <li>
+          <h3>Time-of-use is built in</h3>
+          <p>
+            PVBiz carries Eskom's current Ruraflex rates by season and period, Landrate,
+            Businessrate and Megaflex, and the municipal tariffs. Set the tariff on each plant once.
+          </p>
+        </li>
+        <li>
+          <h3>Savings in rands, per period</h3>
+          <p>
+            Each unit the farm did not buy is valued at the rate that applied in that hour. The
+            monthly report shows the saving in rands, per system and for the farm.
+          </p>
+        </li>
+        <li>
+          <h3>Grid-tied means time-of-use</h3>
+          <p>
+            Eskom's schedule puts grid-tied generation on a time-of-use tariff, which for most farms
+            means Ruraflex rather than Landrate. PVBiz shows the farm's figures on either.
+          </p>
+        </li>
+        <li>
+          <h3>Forecast against actual</h3>
+          <p>
+            A weather-aware forecast per system, so a pack shed array producing 70% of what the sun
+            allowed shows up as a number before it shows up on the bill.
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="battery">
+    <div class="container">
+      <div class="screen-row">
+        <div class="device">
+          <div class="device-screen">
+            <Image
+              src={alertsRules}
+              format="webp"
+              loading="lazy"
+              alt="Rules screen for one plant with battery state-of-charge alerts at 50, 40 and 30 percent and a grid disconnect alert switched on"
+            />
+          </div>
+        </div>
+        <div>
+          <h3>Batteries and load-shedding, watched overnight</h3>
+          <p>
+            The homestead battery is the farm's insurance. PVBiz tracks its state of charge through
+            every outage and tells you before it runs flat, not after the freezers have thawed.
+          </p>
+          <ul>
+            <li>
+              <Check />
+              Battery alerts at 50, 40, 30, 20 and 10 percent, with an all-clear on recovery
+            </li>
+            <li>
+              <Check />
+              Grid lost and grid restored, per system
+            </li>
+            <li>
+              <Check />
+              No-data alert when an inverter or its router stops reporting
+            </li>
+            <li>
+              <Check />
+              History of every outage, for the installer and the insurer
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt hairline-top" id="example">
+    <div class="container">
+      <div class="section-head">
+        <h2>A week on the farm, with monitoring</h2>
+      </div>
+      <div class="example">
+        <p class="example-note">An illustrative example, not a real farm.</p>
+        <h3>A citrus farm with four systems on Ruraflex</h3>
+        <p>
+          An 8 kW hybrid with a battery at the homestead, two 15 kW grid-tied inverters at the
+          boreholes, 60 kW on the pack shed and 5 kW at the staff housing. Three brands, one
+          installer, one PVBiz fleet.
+        </p>
+        <ol class="example-steps">
+          <li>
+            Tuesday, 02:40, stage 4 load-shedding. The homestead battery passes 30%. The farmer's
+            phone gets a WhatsApp; he switches the second freezer off and goes back to sleep. The
+            battery holds to 04:30 and the all-clear arrives when the grid returns.
+          </li>
+          <li>
+            Thursday, 09:10. The second borehole inverter stops reporting. The farmer is in town;
+            the installer gets the same alert by email, sees the plant offline on their fleet view
+            and finds a tripped breaker on Friday's visit.
+          </li>
+          <li>
+            Month end. The PDF report lists each system's production, its uptime, its yield against
+            forecast and the saving in rands per Ruraflex period for the farm.
+          </li>
+        </ol>
+        <dl>
+          <div>
+            <dt>Systems in one view</dt>
+            <dd>
+              4<small>three inverter brands</small>
+            </dd>
+          </div>
+          <div>
+            <dt>Alerts in the week</dt>
+            <dd>
+              2<small>battery low, inverter offline</small>
+            </dd>
+          </div>
+          <div>
+            <dt>Who was told</dt>
+            <dd>
+              Farmer and installer<small>WhatsApp and email</small>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-head">
+        <h2>Farm questions</h2>
+      </div>
+      <Faq items={FAQ} />
+    </div>
+  </section>
+
+  <SectorCta sector="farm" big="Tell us what is on the farm.">
+    The inverter brands, how many systems and who should be woken up at 02:40. We will connect them
+    and show you the farm in one view.
+  </SectorCta>
+</Base>

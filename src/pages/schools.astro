@@ -1,0 +1,355 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Check from '../components/Check.astro';
+import Faq from '../components/Faq.astro';
+import SectorHero from '../components/SectorHero.astro';
+import SectorCta from '../components/SectorCta.astro';
+import { INSTALLER_APPLICATION, breadcrumbs, faqPage } from '../data/brands';
+import reports from '../assets/app/reports.webp';
+
+// Five weeks of a term calendar: a week of school, three weeks of holiday, a week back.
+// The trip lands on the first Saturday, when the last person has left the grounds.
+const DOW = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+const DAYS = Array.from({ length: 35 }, (_, i) => {
+  const week = Math.floor(i / 7);
+  const dow = i % 7;
+  const holiday = week >= 1 && week <= 3;
+  const weekend = dow >= 5;
+  return { n: i + 1, off: holiday || weekend, trip: i === 5 };
+});
+
+const FAQ = [
+  {
+    q: 'Who gets the alert when the inverter trips over a weekend?',
+    a: 'Whoever you name for the plant: the caretaker or maintenance person, the bursar and the installer, up to 20 recipients on each of email, WhatsApp and Telegram. The installer sees the same plant on their own fleet view, so they usually know before the school does.',
+  },
+  {
+    q: 'How are the savings worked out?',
+    a: 'Against the tariff the school is actually on. PVBiz keeps a library of Eskom and municipal tariffs, including time-of-use tariffs, so the rand figure on the report is what the school avoided buying at the rate that applied in that hour, not an average.',
+  },
+  {
+    q: 'Can the governing body or a donor get the report without a login?',
+    a: 'Yes. Reports are generated and emailed on a schedule, in PDF or Excel. The SGB chair, the bursar and a funder can each be on the list without ever signing in.',
+  },
+  {
+    q: 'Does the school need to buy anything?',
+    a: "No. PVBiz reads from the cloud the school's inverter already reports to. The installer shares the plant with PVBiz read-only, or adds it with their portal login, and nothing is installed on the premises.",
+  },
+  {
+    q: 'We have a primary and a high school campus. Is that two subscriptions?',
+    a: 'It is one fleet with two plants. Both campuses sit in one view with one set of alerts and one report, or a report per campus if the two have separate budgets.',
+  },
+  {
+    q: 'What does it cost a school?',
+    a: 'Pricing is per fleet, by the number of plants under management. Most schools are one or two plants. We quote after a short call, and the installer who maintains the system is welcome on it.',
+  },
+];
+---
+
+<Base
+  title="Solar monitoring for schools in South Africa - PVBiz"
+  description="Solar monitoring for schools: alerts when the inverter trips over a holiday, savings in rands against the municipal or Eskom tariff, PDF reports for the SGB."
+  path="/schools/"
+  jsonLd={[
+    INSTALLER_APPLICATION,
+    faqPage(FAQ),
+    breadcrumbs([{ name: 'Schools', path: '/schools/' }]),
+  ]}
+>
+  <SectorHero
+    crumb="Schools"
+    sector="school"
+    title="A school is empty for a third of the year. Its inverter should not go unwatched."
+    answer="PVBiz watches the school's solar plant through weekends and holidays, alerts the maintenance person and the installer within minutes of a trip, proves the savings in rands against the school's municipal or Eskom tariff, and emails a PDF report to the governing body, bursar or funders on a schedule."
+  >
+    <Fragment slot="proof">
+      <strong>A tripped inverter does not switch the lights off.</strong> The grid takes over
+      silently, and the only sign is the next municipal bill.
+    </Fragment>
+    <div aria-hidden="true">
+      <ul class="term">
+        {DOW.map((d) => (
+          <li class="dow">{d}</li>
+        ))}
+        {DAYS.map((d) => (
+          <li class:list={[{ off: d.off, trip: d.trip }]}>{d.n}</li>
+        ))}
+      </ul>
+      <ul class="term-bars">
+        <li>
+          <span>
+            <strong>Without monitoring:</strong> the trip on day 6 is found when the bill arrives
+          </span>
+          <span class="bar"></span>
+        </li>
+        <li>
+          <span>
+            <strong>With PVBiz:</strong> caretaker and installer alerted within minutes
+          </span>
+          <span class="bar short"></span>
+        </li>
+      </ul>
+      <p class="term-foot">Shaded days are school days. Open days are weekends and holidays.</p>
+    </div>
+  </SectorHero>
+
+  <section class="section" id="why">
+    <div class="container">
+      <div class="section-head">
+        <h2>Why school solar underperforms quietly</h2>
+        <p>
+          A school's plant is well sized and well installed more often than not. What it lacks is
+          someone whose job is to look at it.
+        </p>
+      </div>
+      <ul class="why">
+        <li>
+          <h3>Nobody is there when it matters</h3>
+          <p>
+            Weekends, the four holiday blocks and every afternoon after 15:00. A trip on the last
+            Friday of term can sit for weeks.
+          </p>
+        </li>
+        <li>
+          <h3>The failure is invisible</h3>
+          <p>
+            When the inverter stops, the grid carries the load and everything keeps working. The
+            school pays full price without knowing until the account is reconciled.
+          </p>
+        </li>
+        <li>
+          <h3>The login walks out the gate</h3>
+          <p>
+            The manufacturer app sits on one staff member's phone. When they leave, so does the only
+            view of the system. PVBiz logins belong to the school.
+          </p>
+        </li>
+        <li>
+          <h3>Funders want proof, not promises</h3>
+          <p>
+            A donor who paid for the plant, or a governing body that approved it, asks what it
+            saved. The answer has to be in rands, against the real tariff, on a schedule.
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section alt hairline-top" id="features">
+    <div class="container">
+      <div class="section-head">
+        <h2>What the school gets</h2>
+      </div>
+      <ul class="feature-rows">
+        <li>
+          <span class="ico">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"></path>
+            </svg>
+          </span>
+          <div>
+            <h3>Alerts to the people who can act</h3>
+            <p>
+              Inverter faults, grid loss, no data from the plant and low battery, sent by email,
+              WhatsApp or Telegram to the caretaker, the bursar and the installer at the same time.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="ico">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="9"></circle>
+              <path d="M12 7v10M9.5 9.5h3.75a1.75 1.75 0 0 1 0 3.5H10.75a1.75 1.75 0 0 0 0 3.5H14.5"></path>
+            </svg>
+          </span>
+          <div>
+            <h3>Savings in rands, against your tariff</h3>
+            <p>
+              A library of Eskom and municipal tariffs, including time-of-use. The saving is the
+              energy the school did not buy, at the rate that applied when it was used.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="ico">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+              <path d="M14 3v6h6M8 13h8M8 17h8"></path>
+            </svg>
+          </span>
+          <div>
+            <h3>Scheduled reports for the SGB and funders</h3>
+            <p>
+              A PDF or Excel report, generated and emailed monthly or quarterly, to the governing
+              body, the bursar, the donor and the installer. Nobody needs a login to receive it.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="ico">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M3 3v18h18"></path>
+              <path d="m7 15 4-4 3 3 6-6"></path>
+            </svg>
+          </span>
+          <div>
+            <h3>Underperformance, not just outages</h3>
+            <p>
+              Actual yield against a weather-aware forecast over 7, 30 and 90 days. A dusty array
+              after the winter holidays or a failed string shows up as a number, not a hunch.
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="example">
+    <div class="container">
+      <div class="section-head">
+        <h2>What a silent trip costs</h2>
+      </div>
+      <div class="example">
+        <p class="example-note">
+          An illustrative example, not a real school. Rand figures are rounded.
+        </p>
+        <h3>A 60 kWp primary school on a municipal business tariff</h3>
+        <p>
+          The plant covers most of the school's daytime load on a school day, roughly 250 kWh, and
+          at about R3 a unit that is around R750 a day the school does not buy from the
+          municipality. Over a year of school days it is in the region of R150,000.
+        </p>
+        <p>
+          On the last Friday before the winter holidays an earth-leakage trip takes the inverter off
+          at 11:40. Nothing visible changes: the grid picks up the load and the classrooms stay lit.
+        </p>
+        <ol class="example-steps">
+          <li>
+            Without monitoring, the inverter stays off through three weeks of holiday and into the
+            new term. The bursar sees it on the next municipal account, six weeks later, as about
+            R15,000 of electricity the school expected the sun to cover.
+          </li>
+          <li>
+            With PVBiz, the caretaker's WhatsApp and the installer's email get a fault alert within
+            minutes. The installer resets the trip that afternoon, before the grounds empty for
+            three weeks, and the all-clear arrives as production resumes.
+          </li>
+          <li>
+            The quarterly PDF to the governing body shows the hours lost, the production against
+            forecast and the rand saving for the term.
+          </li>
+        </ol>
+        <dl>
+          <div>
+            <dt>Saving on a school day</dt>
+            <dd>
+              R750<small>250 kWh at about R3 a unit</small>
+            </dd>
+          </div>
+          <div>
+            <dt>Unnoticed outage</dt>
+            <dd>
+              R15,000<small>four school weeks on the grid</small>
+            </dd>
+          </div>
+          <div>
+            <dt>Time to the alert</dt>
+            <dd>
+              Minutes<small>WhatsApp, Telegram or email</small>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt hairline-top" id="reports">
+    <div class="container">
+      <div class="screen-row flip">
+        <div class="device">
+          <div class="device-screen">
+            <Image
+              src={reports}
+              format="webp"
+              loading="lazy"
+              alt="Reports screen with two scheduled monthly energy summaries, one active and one paused, and a New schedule button"
+            />
+          </div>
+        </div>
+        <div>
+          <h3>Reports for the people who ask</h3>
+          <p>
+            Set the schedule once. The governing body gets a PDF at quarter end, the bursar an Excel
+            file at month end, the donor a yearly summary, each with the plant's production, uptime
+            and savings against the tariff.
+          </p>
+          <ul>
+            <li>
+              <Check />
+              PDF, Excel or both, emailed on a schedule
+            </li>
+            <li>
+              <Check />
+              Recipients do not need a PVBiz login
+            </li>
+            <li>
+              <Check />
+              Savings against the real municipal or Eskom tariff
+            </li>
+            <li>
+              <Check />
+              CO<sub>2</sub> avoided, for the school's own reporting
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-head">
+        <h2>School questions</h2>
+      </div>
+      <Faq items={FAQ} />
+    </div>
+  </section>
+
+  <SectorCta sector="school" big="Put the school's plant on watch before the next holiday.">
+    Tell us the inverter brand and who should get the alerts. We will connect the plant and send the
+    first report to the governing body.
+  </SectorCta>
+</Base>

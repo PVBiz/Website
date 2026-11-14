@@ -1,0 +1,424 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Check from '../components/Check.astro';
+import Faq from '../components/Faq.astro';
+import SectorHero from '../components/SectorHero.astro';
+import SectorCta from '../components/SectorCta.astro';
+import { BRAND_NAMES, INSTALLER_APPLICATION, breadcrumbs, faqPage } from '../data/brands';
+import fleetDashboard from '../assets/app/fleet-dashboard.webp';
+import fleetPerformance from '../assets/app/fleet-performance.webp';
+
+const FAQ = [
+  {
+    q: 'Our estate has a mix of inverter brands. Is that a problem?',
+    a: `No. PVBiz reads from each manufacturer's own cloud, so homes on different brands sit in the same fleet view with the same alerts and reports. It supports 14+ inverter brands and platforms: ${BRAND_NAMES}.`,
+  },
+  {
+    q: 'Can a homeowner see the other houses?',
+    a: 'No. A homeowner is invited to their own plant only. Their app shows their house, their alerts and their reports. The estate manager or installer holds the login that sees every home.',
+  },
+  {
+    q: 'Does PVBiz bill residents or split the electricity levy?',
+    a: 'No. PVBiz is monitoring, alerting and reporting. It does not meter or bill residents, and it does not do prepaid or sub-metering. Savings figures are reported against the tariff the plant is on, for the people who manage the system.',
+  },
+  {
+    q: 'Who gets the alerts when an inverter trips?',
+    a: 'Whoever you choose, per plant: up to 20 recipients on each of email, WhatsApp and Telegram. A common setup is the installer and the estate office on every home, with the homeowner getting push notifications in their own app.',
+  },
+  {
+    q: 'Does anything get installed on site?',
+    a: "No. The estate's plants are shared with PVBiz read-only on the inverter's own portal, or added with the installer's portal login. No hardware, no visits to each house.",
+  },
+  {
+    q: 'How is it priced for an estate?',
+    a: 'Per fleet, by the number of plants under management, whether that is one central plant or 120 homes. We quote after a short call about how the estate is wired.',
+  },
+];
+---
+
+<Base
+  title="Solar monitoring for residential estates and body corporates - PVBiz"
+  description="Estate solar monitoring: every home's inverter in one fleet view, or one dashboard for a centrally fed estate. Alerts, trustee reports, an app login per home."
+  path="/estates/"
+  jsonLd={[
+    INSTALLER_APPLICATION,
+    faqPage(FAQ),
+    breadcrumbs([{ name: 'Estates', path: '/estates/' }]),
+  ]}
+>
+  <SectorHero
+    crumb="Estates"
+    sector="estate"
+    title="Every solar system on the estate, in one view, however the estate was wired."
+    answer="PVBiz monitors estate solar across 14+ inverter brands and platforms. Homes with their own inverters appear as one fleet with alerts and reports for the estate manager or installer, and each homeowner can have an app login for their own house. A centrally fed estate gets one dashboard for the central plant."
+  >
+    <Fragment slot="proof">
+      <strong>No hardware and no visits to each house.</strong> Plants are shared read-only from the
+      inverter portal the estate already uses.
+    </Fragment>
+    <div class="browser">
+      <div class="browser-bar" aria-hidden="true">
+        <i></i>
+        <i></i>
+        <i></i>
+      </div>
+      <Image
+        src={fleetDashboard}
+        format="webp"
+        loading="eager"
+        alt="Fleet overview dashboard: 14 plants, 5 needing attention, PV capacity, plant locations map and plants by type"
+      />
+    </div>
+  </SectorHero>
+
+  <section class="section" id="layouts">
+    <div class="container">
+      <div class="section-head">
+        <h2>Two ways an estate goes solar, and what each one needs</h2>
+        <p>
+          Some estates have an inverter in every home. Others run one central plant that feeds the
+          whole estate. PVBiz handles both, but they are set up differently, so here is each one.
+        </p>
+      </div>
+      <div class="layouts">
+        <article class="layout">
+          <figure>
+            <svg
+              class="art"
+              viewBox="0 0 420 250"
+              role="img"
+              aria-label="Six homes, each with its own inverter, reporting up to one fleet view; each home also has its own phone app"
+            >
+              <rect class="a-fill-2" x="40" y="14" width="340" height="58" rx="8"></rect>
+              <text x="56" y="38">
+                Fleet view
+              </text>
+              <text class="a-label" x="56" y="56">
+                6 homes, 1 needs attention
+              </text>
+              <circle class="a-ok" cx="250" cy="43" r="5"></circle>
+              <circle class="a-ok" cx="272" cy="43" r="5"></circle>
+              <circle class="a-ok" cx="294" cy="43" r="5"></circle>
+              <circle class="a-alert" cx="316" cy="43" r="5"></circle>
+              <circle class="a-ok" cx="338" cy="43" r="5"></circle>
+              <circle class="a-ok" cx="360" cy="43" r="5"></circle>
+              <g class="a-dash">
+                <path d="M52 134V72M116 134V72M180 134V72M244 134V72M308 134V72M372 134V72"></path>
+              </g>
+              <g id="homes">
+                <g class="a-fill" transform="translate(30 134)">
+                  <path d="M0 18 22 0l22 18v30H0z"></path>
+                  <rect x="30" y="26" width="10" height="9" rx="1.5"></rect>
+                </g>
+                <g class="a-fill" transform="translate(94 134)">
+                  <path d="M0 18 22 0l22 18v30H0z"></path>
+                  <rect x="30" y="26" width="10" height="9" rx="1.5"></rect>
+                </g>
+                <g class="a-fill" transform="translate(158 134)">
+                  <path d="M0 18 22 0l22 18v30H0z"></path>
+                  <rect x="30" y="26" width="10" height="9" rx="1.5"></rect>
+                </g>
+                <g class="a-fill" transform="translate(222 134)">
+                  <path d="M0 18 22 0l22 18v30H0z"></path>
+                  <rect x="30" y="26" width="10" height="9" rx="1.5"></rect>
+                </g>
+                <g class="a-fill" transform="translate(286 134)">
+                  <path d="M0 18 22 0l22 18v30H0z"></path>
+                  <rect x="30" y="26" width="10" height="9" rx="1.5"></rect>
+                </g>
+                <g class="a-fill" transform="translate(350 134)">
+                  <path d="M0 18 22 0l22 18v30H0z"></path>
+                  <rect x="30" y="26" width="10" height="9" rx="1.5"></rect>
+                </g>
+              </g>
+              <circle class="a-alert-ring" cx="308" cy="138" r="11"></circle>
+              <g class="a-ink">
+                <rect x="45" y="196" width="14" height="24" rx="3"></rect>
+                <rect x="109" y="196" width="14" height="24" rx="3"></rect>
+                <rect x="173" y="196" width="14" height="24" rx="3"></rect>
+                <rect x="237" y="196" width="14" height="24" rx="3"></rect>
+                <rect x="301" y="196" width="14" height="24" rx="3"></rect>
+                <rect x="365" y="196" width="14" height="24" rx="3"></rect>
+              </g>
+              <text class="a-label" x="210" y="242" text-anchor="middle">
+                One app login per home, each showing only that house
+              </text>
+            </svg>
+          </figure>
+          <h3>An inverter in every home</h3>
+          <p>
+            Each home is its own plant in PVBiz. The estate manager or the installer sees all of
+            them as one fleet: which are online, which have tripped, which are producing below
+            forecast. Each homeowner can be invited to their own plant and gets the PVBiz app for
+            their house alone.
+          </p>
+          <ul>
+            <li>
+              <Check />
+              Fleet view with health status and a "needs attention" list across all homes
+            </li>
+            <li>
+              <Check />
+              Fault, grid-loss and low-battery alerts to the estate office and the installer
+            </li>
+            <li>
+              <Check />
+              Homeowner login scoped to one plant: their alerts, their history, their reports
+            </li>
+            <li>
+              <Check />
+              Mixed brands welcome: a Sunsynk next door to a Deye is still one fleet
+            </li>
+          </ul>
+        </article>
+
+        <article class="layout">
+          <figure>
+            <svg
+              class="art"
+              viewBox="0 0 420 250"
+              role="img"
+              aria-label="One central solar plant feeding a cluster of homes through a single feed, with one dashboard above it"
+            >
+              <rect class="a-fill-2" x="214" y="14" width="166" height="58" rx="8"></rect>
+              <text x="230" y="38">
+                One dashboard
+              </text>
+              <polyline
+                class="a-accent-line"
+                points="230,60 250,54 268,58 286,46 304,50 322,40 340,44 362,34"
+              ></polyline>
+              <g class="a-fill">
+                <path d="M26 118h26l-8 22H18z"></path>
+                <path d="M56 118h26l-8 22H48z"></path>
+                <path d="M86 118h26l-8 22H78z"></path>
+                <path d="M26 146h26l-8 22H18z"></path>
+                <path d="M56 146h26l-8 22H48z"></path>
+                <path d="M86 146h26l-8 22H78z"></path>
+              </g>
+              <rect class="a-fill" x="44" y="186" width="44" height="26" rx="3"></rect>
+              <circle class="a-ok" cx="80" cy="199" r="3"></circle>
+              <text class="a-label" x="66" y="236" text-anchor="middle">
+                Central plant
+              </text>
+              <path class="a-dash" d="M88 199h40V80h169"></path>
+              <path class="a-accent-line" d="M128 199h50"></path>
+              <path class="a-accent-line" d="M178 199h30M208 199v-56h60M208 199h60"></path>
+              <g class="a-fill">
+                <g transform="translate(268 120)">
+                  <path d="M0 14 17 0l17 14v24H0z"></path>
+                </g>
+                <g transform="translate(316 120)">
+                  <path d="M0 14 17 0l17 14v24H0z"></path>
+                </g>
+                <g transform="translate(364 120)">
+                  <path d="M0 14 17 0l17 14v24H0z"></path>
+                </g>
+                <g transform="translate(268 176)">
+                  <path d="M0 14 17 0l17 14v24H0z"></path>
+                </g>
+                <g transform="translate(316 176)">
+                  <path d="M0 14 17 0l17 14v24H0z"></path>
+                </g>
+                <g transform="translate(364 176)">
+                  <path d="M0 14 17 0l17 14v24H0z"></path>
+                </g>
+              </g>
+              <text class="a-label" x="326" y="236" text-anchor="middle">
+                Homes fed from the central system
+              </text>
+            </svg>
+          </figure>
+          <h3>A centrally fed estate</h3>
+          <p>
+            One plant, or a few, feeds the whole estate and there are no inverters in the homes. The
+            estate manager, the trustees or the installer get one dashboard for the central system:
+            live status, alerts when it trips, performance against forecast, and reports for the
+            trustee meeting.
+          </p>
+          <ul>
+            <li>
+              <Check />
+              Live view of the central plant, with grid, battery and load where the inverter reports
+              them
+            </li>
+            <li>
+              <Check />
+              Scheduled PDF or Excel reports for trustees, the managing agent or the AGM
+            </li>
+            <li>
+              <Check />
+              Savings against the Eskom or municipal tariff the estate account is on
+            </li>
+            <li>
+              <Check />
+              Trustee logins that see the central plant and nothing else
+            </li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt hairline-top" id="who">
+    <div class="container">
+      <div class="section-head">
+        <h2>Who sees what</h2>
+        <p>
+          Every login is scoped to the plants it should see. Invite the estate office to all of
+          them, a homeowner to one, the trustees to the central plant.
+        </p>
+      </div>
+      <table class="data-table who-table">
+        <thead>
+          <tr>
+            <th scope="col">Person</th>
+            <th scope="col">Sees</th>
+            <th scope="col">Alerts</th>
+            <th scope="col">Reports</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-th="Person">Estate manager or managing agent</td>
+            <td data-th="Sees">Every home, or the central plant, in one fleet view</td>
+            <td data-th="Alerts">Email, WhatsApp or Telegram for any plant</td>
+            <td data-th="Reports">Scheduled PDF or Excel across the estate</td>
+          </tr>
+          <tr>
+            <td data-th="Person">Trustees or body corporate</td>
+            <td data-th="Sees">The central plant, or the homes they are invited to</td>
+            <td data-th="Alerts">Optional</td>
+            <td data-th="Reports">Monthly report emailed on a schedule</td>
+          </tr>
+          <tr>
+            <td data-th="Person">Homeowner</td>
+            <td data-th="Sees">Their own house only, in the PVBiz app</td>
+            <td data-th="Alerts">Push, email or Telegram for their plant</td>
+            <td data-th="Reports">Excel export of their own plant</td>
+          </tr>
+          <tr>
+            <td data-th="Person">Installer or O&amp;M company</td>
+            <td data-th="Sees">Every plant they maintain, across this and other estates</td>
+            <td data-th="Alerts">Faults, downtime and underperformance for the whole fleet</td>
+            <td data-th="Reports">Branded reports with their own logo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" id="example">
+    <div class="container">
+      <div class="section-head">
+        <h2>What a bad morning looks like with monitoring</h2>
+      </div>
+      <div class="example">
+        <p class="example-note">An illustrative example, not a real estate.</p>
+        <h3>A 120-home estate with an inverter in every house</h3>
+        <p>
+          A summer storm passes over on Saturday night. By Sunday morning the fleet view shows 116
+          homes online and 4 needing attention: three inverters are offline and one is reporting a
+          grid fault.
+        </p>
+        <ol class="example-steps">
+          <li>
+            The installer's WhatsApp group and the estate office email get one alert per affected
+            home, naming the house, as each one drops.
+          </li>
+          <li>
+            Each of the four homeowners sees the same fault in their own app. Nobody else's house is
+            visible to them.
+          </li>
+          <li>
+            The installer talks two homeowners through a reset by phone, books a site visit for the
+            other two, and the all-clear alerts arrive as each inverter comes back.
+          </li>
+          <li>
+            At month end the scheduled report to the trustees shows the four outages, the hours lost
+            and the estate's production against forecast.
+          </li>
+        </ol>
+        <dl>
+          <div>
+            <dt>Homes under one login</dt>
+            <dd>120</dd>
+          </div>
+          <div>
+            <dt>Homes needing attention</dt>
+            <dd>
+              4<small>offline or grid fault</small>
+            </dd>
+          </div>
+          <div>
+            <dt>Homeowner logins</dt>
+            <dd>
+              120<small>each scoped to one house</small>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt hairline-top" id="installers">
+    <div class="container">
+      <div class="screen-row">
+        <div class="browser">
+          <div class="browser-bar" aria-hidden="true">
+            <i></i>
+            <i></i>
+            <i></i>
+          </div>
+          <Image
+            src={fleetPerformance}
+            format="webp"
+            loading="lazy"
+            alt="Forecasted performance index table ranking plants by actual output against forecast over today, 7, 30 and 90 days and 12 months"
+          />
+        </div>
+        <div>
+          <h3>For the installer who looks after the estate</h3>
+          <p>
+            A hundred near-identical systems are the ideal case for a performance index. Rank them
+            by yield against forecast and the one with a failed string or a shaded array shows up on
+            its own, without a visit.
+          </p>
+          <ul>
+            <li>
+              <Check />
+              Performance index over 7, 30, 90 days and a year
+            </li>
+            <li>
+              <Check />
+              Peer benchmark by size tier
+            </li>
+            <li>
+              <Check />
+              Work orders, site visits and maintenance windows that silence expected alerts
+            </li>
+            <li>
+              <Check />
+              Branded client reports with your logo, on a schedule
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-head">
+        <h2>Estate questions</h2>
+      </div>
+      <Faq items={FAQ} />
+    </div>
+  </section>
+
+  <SectorCta sector="estate" big="Tell us how your estate is wired.">
+    Individual inverters, a central plant or both. We will connect a few homes and show you the
+    fleet view on your own systems.
+  </SectorCta>
+</Base>

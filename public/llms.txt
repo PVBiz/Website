@@ -9,6 +9,9 @@ PVBiz Pty Ltd, South Africa. Contact: info@pvbiz.co.za, +27 61 546 7165.
 - [PVBiz for homeowners and businesses](https://www.pvbiz.co.za/homeowners/): monitor your own solar plants, get alerts by push, email and Telegram (WhatsApp as an add-on), see forecasts and reports. 7-day free trial, no card needed; R55/month or R549/year for up to 2 solar plants.
 - [PVBiz for commercial and asset owners](https://www.pvbiz.co.za/commercial/): savings against the real tariff, PPA tracking, REC and carbon tracking, scheduled reports.
 - [PVBiz Installer Platform](https://www.pvbiz.co.za/installers/): multi-brand fleet monitoring for solar installers and O&M teams, with alerting, client reporting, tariff modelling, PPA and savings calculations. Over 1,000 sites and 32 MWp under management. Priced per fleet; book a demo.
+- [PVBiz for residential estates](https://www.pvbiz.co.za/estates/): every home's inverter in one fleet view with an app login per home, or one dashboard for a centrally fed estate. Monitoring, alerts and reports only; no resident billing.
+- [PVBiz for schools](https://www.pvbiz.co.za/schools/): alerts when the inverter trips over a weekend or holiday, savings in rands against the municipal or Eskom tariff, scheduled PDF reports for the governing body and funders.
+- [PVBiz for farms](https://www.pvbiz.co.za/farms/): several systems on one farm in one view, savings against Eskom Ruraflex or Landrate, battery and grid alerts by WhatsApp, Telegram or email.
 - [Pricing](https://www.pvbiz.co.za/pricing/): public prices in ZAR, USD, EUR and GBP (fixed per currency, not converted).
 - Mobile apps: [App Store](https://apps.apple.com/za/app/pvbiz/id6742043415), [Google Play](https://play.google.com/store/apps/details?id=com.pvbiz).
 - Web app: https://app.pvbiz.co.za

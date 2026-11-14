@@ -47,6 +47,9 @@
   --err-soft: #fde8ec;
   --info: #3366a8;
   --whatsapp: #128c7e;
+  /* Status inks on night (sector diagrams and the term calendar) */
+  --night-err: #ff6b8f;
+  --night-ok: #5fc98f;
 
   --radius: 7px;
   --radius-lg: 14px;
@@ -582,6 +585,10 @@ ol {
 
   .menu-wide {
     min-width: 640px;
+  }
+
+  .menu-solutions {
+    min-width: 860px;
   }
 
   .menu-cols {
@@ -2186,4 +2193,474 @@ ol {
   margin-top: 0.75rem;
   font-size: var(--t-sm);
   color: var(--ink-3);
+}
+
+/* ---------- Sector pages (estates, schools, farms) ---------- */
+/* Diagram tokens: inline SVGs use these classes so one drawing reads on paper and on night. */
+.art {
+  --art-line: var(--hair-strong);
+  --art-fill: var(--paper);
+  --art-fill-2: var(--paper-2);
+  --art-ink: var(--ink-2);
+  --art-ink-soft: var(--ink-4);
+  --art-accent: var(--amber);
+  --art-accent-ink: var(--amber-ink);
+  --art-alert: var(--err);
+  --art-ok: var(--ok);
+  width: 100%;
+  height: auto;
+  font-family: var(--font);
+}
+
+.night .art {
+  --art-line: rgba(255, 255, 255, 0.34);
+  --art-fill: rgba(255, 255, 255, 0.1);
+  --art-fill-2: var(--night-3);
+  --art-ink: var(--night-ink-2);
+  --art-ink-soft: var(--night-ink-3);
+  --art-accent-ink: var(--amber);
+  --art-alert: var(--night-err);
+  --art-ok: var(--night-ok);
+}
+
+.art .a-line {
+  fill: none;
+  stroke: var(--art-line);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.art .a-dash {
+  fill: none;
+  stroke: var(--art-line);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 4;
+  stroke-linecap: round;
+}
+
+.art .a-fill {
+  fill: var(--art-fill);
+  stroke: var(--art-line);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+
+.art .a-fill-2 {
+  fill: var(--art-fill-2);
+  stroke: var(--art-line);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+
+.art .a-ink {
+  fill: none;
+  stroke: var(--art-ink);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.art .a-accent {
+  fill: var(--art-accent);
+}
+
+.art .a-accent-line {
+  fill: none;
+  stroke: var(--art-accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.art .a-alert {
+  fill: var(--art-alert);
+}
+
+.art .a-alert-ring {
+  fill: none;
+  stroke: var(--art-alert);
+  stroke-width: 2;
+}
+
+.art .a-ok {
+  fill: var(--art-ok);
+}
+
+.art text {
+  fill: var(--art-ink);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.art .a-label {
+  fill: var(--art-ink-soft);
+  font-size: 11px;
+}
+
+.art .a-badge {
+  fill: var(--art-accent);
+}
+
+.art .a-badge-text {
+  fill: var(--amber-on);
+  font-size: 11px;
+  font-weight: 700;
+  text-anchor: middle;
+}
+
+.hero-visual-art {
+  width: 100%;
+  padding-top: 0;
+}
+
+@media (min-width: 900px) {
+  .hero-visual-art {
+    max-width: 520px;
+  }
+}
+
+/* Estates: the two layouts side by side, each with its own drawing. */
+.layouts {
+  display: grid;
+  gap: 2.5rem;
+}
+
+@media (min-width: 900px) {
+  .layouts {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+}
+
+.layout figure {
+  margin: 0 0 1.25rem;
+  padding: 1.25rem;
+  background: var(--paper);
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-lg);
+}
+
+.layout h3 {
+  font-size: var(--t-2xl);
+}
+
+.layout > p {
+  margin-top: 0.75rem;
+  color: var(--ink-2);
+}
+
+.layout ul {
+  list-style: none;
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.45rem;
+  font-size: var(--t-sm);
+  color: var(--ink-2);
+}
+
+.layout li {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.layout li svg {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin-top: 0.2rem;
+  color: var(--ok);
+}
+
+/* Who sees what: a real matrix, so a table; at phone width each row becomes a block
+   with the column heading repeated from data-th. */
+.who-table td:first-child {
+  white-space: normal;
+}
+
+@media (max-width: 639.98px) {
+  .who-table thead {
+    display: none;
+  }
+
+  .who-table,
+  .who-table tbody,
+  .who-table tr,
+  .who-table td {
+    display: block;
+  }
+
+  .who-table tr {
+    padding: 0.875rem 0;
+    border-bottom: 1px solid var(--hair);
+  }
+
+  .who-table td {
+    padding: 0.25rem 0;
+    border: 0;
+  }
+
+  .who-table td:first-child {
+    font-size: var(--t-base);
+    padding-bottom: 0.5rem;
+  }
+
+  .who-table td:not(:first-child)::before {
+    content: attr(data-th);
+    display: block;
+    font-size: var(--t-xs);
+    font-weight: 600;
+    color: var(--ink-3);
+  }
+}
+
+.who-table td svg {
+  width: 18px;
+  height: 18px;
+  color: var(--ok);
+}
+
+.who-table .no {
+  color: var(--ink-4);
+}
+
+/* Schools: a term calendar drawn in HTML so every label stays crisp at phone width. */
+.term {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+  list-style: none;
+  font-size: var(--t-xs);
+  color: var(--night-ink-3);
+}
+
+.term li {
+  position: relative;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border-radius: 4px;
+  background: var(--night-3);
+  border: 1px solid transparent;
+}
+
+.term .off {
+  background: transparent;
+  border-color: var(--night-hair);
+}
+
+.term .dow {
+  aspect-ratio: auto;
+  background: none;
+  padding-bottom: 0.25rem;
+  color: var(--night-ink-3);
+  font-weight: 600;
+}
+
+.term .trip {
+  border-color: var(--night-err);
+  color: var(--night-ink);
+  font-weight: 600;
+}
+
+.term .trip::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--night-err);
+}
+
+.term-bars {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.5rem;
+  font-size: var(--t-xs);
+  color: var(--night-ink-2);
+}
+
+.term-bars li {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.3rem;
+}
+
+.term-bars .bar {
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--night-err), rgba(255, 107, 143, 0.25));
+}
+
+.term-bars .bar.short {
+  width: 4%;
+  min-width: 10px;
+  background: var(--amber);
+}
+
+.term-bars strong {
+  color: var(--night-ink);
+}
+
+.term-foot {
+  margin-top: 0.75rem;
+  font-size: var(--t-xs);
+  color: var(--night-ink-3);
+}
+
+/* Farms: numbered map keys, the only numbering on the page, because they index the map. */
+.map-key {
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .map-key {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 2rem;
+  }
+}
+
+.map-key li {
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  gap: 0.75rem;
+  align-items: start;
+  font-size: var(--t-sm);
+  color: var(--ink-2);
+}
+
+.map-key .key {
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--amber);
+  color: var(--amber-on);
+  font-size: var(--t-xs);
+  font-weight: 700;
+}
+
+.map-key strong {
+  display: block;
+  color: var(--ink);
+}
+
+/* Worked example: a fictional site, always labelled as such. */
+.example {
+  max-width: 820px;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border: 1px solid var(--hair);
+  border-left: 3px solid var(--amber);
+  border-radius: var(--radius-lg);
+  background: var(--paper);
+}
+
+.example .example-note {
+  font-size: var(--t-xs);
+  color: var(--ink-3);
+}
+
+.example h3 {
+  margin-top: 0.5rem;
+  font-size: var(--t-2xl);
+}
+
+.example p + p {
+  margin-top: 0.75em;
+}
+
+.example > p {
+  color: var(--ink-2);
+}
+
+.example dl {
+  margin: 1.25rem 0 0;
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .example dl {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.example dt {
+  font-size: var(--t-xs);
+  color: var(--ink-3);
+}
+
+.example dd {
+  margin: 0.15rem 0 0;
+  font-size: var(--t-xl);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+
+.example dd small {
+  display: block;
+  font-size: var(--t-xs);
+  font-weight: 400;
+  color: var(--ink-3);
+}
+
+.example-steps {
+  margin-top: 1.25rem;
+  padding-left: 1.25rem;
+  color: var(--ink-2);
+  display: grid;
+  gap: 0.5rem;
+}
+
+/* Home: sector strip */
+.sectors {
+  list-style: none;
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 800px) {
+  .sectors {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.sectors a {
+  display: block;
+  height: 100%;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-lg);
+  background: var(--paper);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.sectors a:hover {
+  border-color: var(--ink);
+  text-decoration: none;
+}
+
+.sectors h3 {
+  font-size: var(--t-lg);
+}
+
+.sectors p {
+  margin-top: 0.4rem;
+  color: var(--ink-2);
+  font-size: var(--t-sm);
+}
+
+.sectors .go {
+  display: inline-block;
+  margin-top: 0.875rem;
+  color: var(--amber-ink);
+  font-weight: 600;
+  font-size: var(--t-sm);
 }

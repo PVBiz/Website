@@ -1,0 +1,32 @@
+---
+// Closing night band for the sector pages: the same sector-tagged mailto as the hero.
+import { EMAIL } from '../data/brands';
+
+interface Props {
+  sector: string;
+  big: string;
+}
+const { sector, big } = Astro.props;
+const mail = `mailto:${EMAIL}?subject=${encodeURIComponent(`PVBiz enquiry - ${sector}`)}`;
+---
+
+<section class="section night" id="talk">
+  <div class="container">
+    <div class="contact-card">
+      <div>
+        <p class="big">{big}</p>
+        <p class="muted">
+          <slot />
+        </p>
+      </div>
+      <div class="cta">
+        <a class="btn btn-primary btn-lg" href={mail}>
+          Talk to us
+        </a>
+        <a class="btn btn-secondary btn-lg" href="/contact/">
+          Contact page
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

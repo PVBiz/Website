@@ -1,0 +1,48 @@
+---
+// Night hero shared by the sector pages (estates, schools, farms). Sales-led: the primary
+// button is a sector-tagged mailto so the owner can see which page a lead came from.
+import { EMAIL } from '../data/brands';
+
+interface Props {
+  /** Breadcrumb label, e.g. "Estates". */
+  crumb: string;
+  title: string;
+  answer: string;
+  /** Mail subject tag, e.g. "estate" -> "PVBiz enquiry - estate". */
+  sector: string;
+}
+const { crumb, title, answer, sector } = Astro.props;
+const mail = `mailto:${EMAIL}?subject=${encodeURIComponent(`PVBiz enquiry - ${sector}`)}`;
+---
+
+<section class="hero night" id="top">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <ol class="crumbs">
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>{crumb}</li>
+        </ol>
+        <h1>{title}</h1>
+        <p class="answer">{answer}</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary btn-lg" href={mail}>
+            Talk to us
+          </a>
+          <a class="btn btn-secondary btn-lg" href="/contact/">
+            Contact page
+          </a>
+        </div>
+        <p class="hero-proof">
+          <slot name="proof" />
+        </p>
+      </div>
+      <div class="hero-visual hero-visual-art">
+        <slot />
+      </div>
+    </div>
+    <div class="hero-horizon" aria-hidden="true"></div>
+  </div>
+</section>
