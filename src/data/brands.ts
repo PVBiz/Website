@@ -222,7 +222,7 @@ export const HOME_FAQ: Faq[] = [
   },
   {
     q: 'What types of notifications does PVBiz provide?',
-    a: 'PVBiz provides real-time notifications via email, Telegram, and push notifications through the browser and mobile app. You can customise rules for 10 inverter metrics. WhatsApp notifications are available as an optional add-on through message bundles that can be added to any plan.',
+    a: 'PVBiz provides real-time notifications via email, Telegram, and push notifications through the browser and mobile app. Ready-made rules cover grid loss, low battery, inverter faults and lost communication, and you can set your own thresholds on many more inverter metrics. WhatsApp notifications are available as an optional add-on through message bundles that can be added to any plan.',
   },
   {
     q: 'Can I use PVBiz with multiple plants?',
