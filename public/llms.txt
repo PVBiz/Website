@@ -1,6 +1,6 @@
 # PVBiz
 
-> PVBiz is a South African solar monitoring and fleet-management platform. It connects to 14+ inverter brands and platforms and gives homeowners, businesses and solar installers one place for live monitoring, smart alerts, forecasting, reporting, tariff and savings analysis, and inverter automation.
+> PVBiz is a South African solar monitoring and fleet-management platform. It connects to 16 inverter brands and platforms and gives homeowners, businesses and solar installers one place for live monitoring, smart alerts, forecasting, reporting, tariff and savings analysis, and inverter automation.
 
 PVBiz Pty Ltd, South Africa. Contact: info@pvbiz.co.za, +27 61 546 7165.
 
@@ -20,7 +20,7 @@ PVBiz Pty Ltd, South Africa. Contact: info@pvbiz.co.za, +27 61 546 7165.
 
 ## Supported inverter brands and platforms
 
-[All integrations](https://www.pvbiz.co.za/integrations/): Sunsynk, Deye, Solarman, Solis, Huawei FusionSolar, SolarEdge, FoxESS, GoodWe, Growatt, Sungrow, LuxPower, Sol-Ark, ATESS, Canadian Solar, Solar Assistant.
+[All integrations](https://www.pvbiz.co.za/integrations/): Sunsynk, Deye, Solarman, Solis, Huawei FusionSolar, SolarEdge, FoxESS, GoodWe, Growatt, Sungrow, LuxPower, Sol-Ark, ATESS, Canadian Solar, Solar Assistant, Victron Energy (VRM).
 
 - [Sunsynk monitoring with PVBiz](https://www.pvbiz.co.za/integrations/sunsynk/)
 - [Deye monitoring with PVBiz](https://www.pvbiz.co.za/integrations/deye/)
@@ -37,6 +37,7 @@ PVBiz Pty Ltd, South Africa. Contact: info@pvbiz.co.za, +27 61 546 7165.
 - [ATESS monitoring with PVBiz](https://www.pvbiz.co.za/integrations/atess/)
 - [Canadian Solar monitoring with PVBiz](https://www.pvbiz.co.za/integrations/canadian-solar/)
 - [Solar Assistant monitoring with PVBiz](https://www.pvbiz.co.za/integrations/solar-assistant/)
+- [Victron Energy (VRM) monitoring with PVBiz](https://www.pvbiz.co.za/integrations/victron/)
 
 ## How it connects
 

@@ -6,7 +6,7 @@ import { brandLinks } from '../data/links';
 const path = Astro.url.pathname;
 const current = (p: string) => (path === p ? 'page' : undefined);
 const brands = await brandLinks();
-const cols = [brands.slice(0, 5), brands.slice(5, 10), brands.slice(10, 15)];
+const cols = [brands.slice(0, 5), brands.slice(5, 10), brands.slice(10, 16)];
 ---
 
 <a class="skip-link visually-hidden" href="#main">
@@ -162,7 +162,7 @@ const cols = [brands.slice(0, 5), brands.slice(5, 10), brands.slice(10, 15)];
             </svg>
           </button>
           <div class="menu menu-wide" id="menu-integrations">
-            <p class="menu-group-title">14+ inverter brands and platforms</p>
+            <p class="menu-group-title">16 inverter brands and platforms</p>
             <div class="menu-cols cols-3">
               {cols.map((col) => (
                 <ul class="menu-list">

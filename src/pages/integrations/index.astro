@@ -38,6 +38,8 @@ const CONNECT: Record<string, string> = {
     'An iSolarCloud region, App Key, Secret Key and your iSolarCloud login, added on the PVBiz Installer Platform. Available on the Installer Platform today.',
   atess:
     'An ATESS cloud username and password, added on the PVBiz Installer Platform. Available on the Installer Platform today.',
+  victron:
+    'A VRM access token (Preferences, Integrations, Access tokens in the VRM portal). Monitoring only.',
   'canadian-solar':
     'A Canadian Solar SmartEnergy Portal (EU) username and password, added on the PVBiz Installer Platform. Available on the Installer Platform today.',
 };
@@ -53,7 +55,7 @@ const FAQ = [
   },
   {
     q: 'Can I mix brands in one subscription?',
-    a: `Yes. A homeowner subscription covers two plants on any of the 14+ supported brands and platforms, and the Installer Platform puts a whole mixed fleet in one view: ${BRAND_NAMES}.`,
+    a: `Yes. A homeowner subscription covers two plants on any of the 16 supported brands and platforms, and the Installer Platform puts a whole mixed fleet in one view: ${BRAND_NAMES}.`,
   },
   {
     q: 'My brand is not listed. Can you add it?',
@@ -63,8 +65,8 @@ const FAQ = [
 ---
 
 <Base
-  title="Integrations - 14+ inverter brands and platforms PVBiz monitors"
-  description="PVBiz connects to 14+ inverter brands and platforms, including Sunsynk, Deye, Solis, Huawei and SolarEdge. See how each connects and what data is read."
+  title="Integrations - 16 inverter brands and platforms PVBiz monitors"
+  description="PVBiz connects to 16 inverter brands and platforms, including Sunsynk, Deye, Solis, Huawei and SolarEdge. See how each connects and what data is read."
   path="/integrations/"
   jsonLd={[
     {
@@ -90,10 +92,10 @@ const FAQ = [
         </li>
         <li>Integrations</li>
       </ol>
-      <h1>14+ inverter brands and platforms, one app.</h1>
+      <h1>16 inverter brands and platforms, one app.</h1>
       <p class="answer">
-        PVBiz monitors solar plants on 14+ inverter brands and platforms through read-only sharing
-        on the manufacturer's own cloud or your own portal login. No hardware, and inverter settings
+        PVBiz monitors solar plants on 16 inverter brands and platforms through read-only sharing on
+        the manufacturer's own cloud or your own portal login. No hardware, and inverter settings
         change only on Sunsynk, only if you allow it. From R55 a month for up to two plants.
       </p>
       <div class="hero-cta">
@@ -148,10 +150,10 @@ const FAQ = [
         <li>
           <h3>Or add your own portal login</h3>
           <p>
-            Add your portal login (or an API token, for Growatt) under Integrations, see every plant
-            it can reach, and choose which to sync. Atess, Huawei FusionSolar, Canadian Solar,
-            GoodWe and Sungrow are available on the PVBiz Installer Platform today. Passwords are
-            write-only and never shown again.
+            Add your portal login (or an API token, for Growatt and Victron VRM) under Integrations,
+            see every plant it can reach, and choose which to sync. Atess, Huawei FusionSolar,
+            Canadian Solar, GoodWe and Sungrow are available on the PVBiz Installer Platform today.
+            Passwords are write-only and never shown again.
           </p>
         </li>
         <li>

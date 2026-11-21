@@ -1,4 +1,4 @@
-// The 15 supported inverter brands and platforms, in the order the owner lists them.
+// The 16 supported inverter brands and platforms, in the order the owner lists them.
 // Logos stay at /img/brands/* (linked by absolute URL from the production email templates).
 export interface Brand {
   name: string;
@@ -76,6 +76,13 @@ export const BRANDS: Brand[] = [
     height: 300,
     tall: true,
   },
+  {
+    name: 'Victron Energy (VRM)',
+    slug: 'victron',
+    logo: '/img/brands/victron.svg',
+    width: 120,
+    height: 36,
+  },
 ];
 
 export const BRAND_NAMES = BRANDS.map((b) => b.name).join(', ');
@@ -100,7 +107,7 @@ export const ORGANIZATION = {
   url: SITE,
   logo: `${SITE}/img/pvbiz_logo.png`,
   description:
-    'Solar monitoring, analytics and automation across 14+ inverter brands and platforms, including Sunsynk, Deye, Solarman, Sol-Ark, Solis, Huawei FusionSolar and Solar Assistant.',
+    'Solar monitoring, analytics and automation across 16 inverter brands and platforms, including Sunsynk, Deye, Solarman, Sol-Ark, Solis, Huawei FusionSolar and Solar Assistant.',
   areaServed: 'Worldwide',
   address: {
     '@type': 'PostalAddress',
@@ -126,7 +133,7 @@ export const SOFTWARE_APPLICATION = {
   applicationSubCategory: 'Solar monitoring',
   operatingSystem: 'Web, iOS, Android',
   description:
-    'Solar monitoring, smart notifications, forecasting, reporting and automation for solar plants on 14+ inverter brands and platforms, including Sunsynk, Deye, Solarman, Sol-Ark, Solis, Huawei FusionSolar and Solar Assistant.',
+    'Solar monitoring, smart notifications, forecasting, reporting and automation for solar plants on 16 inverter brands and platforms, including Sunsynk, Deye, Solarman, Sol-Ark, Solis, Huawei FusionSolar and Solar Assistant.',
   publisher: { '@type': 'Organization', name: 'PVBiz', url: SITE },
   offers: [
     {
@@ -167,7 +174,7 @@ export const INSTALLER_APPLICATION = {
   applicationCategory: 'BusinessApplication',
   applicationSubCategory: 'Solar fleet monitoring and O&M',
   operatingSystem: 'Web',
-  description: `Multi-brand solar fleet monitoring, alerting, reporting, tariff modelling and analytics for solar installers and O&M teams, across 14+ inverter brands and platforms including ${BRAND_NAMES}.`,
+  description: `Multi-brand solar fleet monitoring, alerting, reporting, tariff modelling and analytics for solar installers and O&M teams, across 16 inverter brands and platforms including ${BRAND_NAMES}.`,
   publisher: {
     '@type': 'Organization',
     name: 'PVBiz',
@@ -210,7 +217,7 @@ export function breadcrumbs(items: { name: string; path: string }[]) {
 export const HOME_FAQ: Faq[] = [
   {
     q: 'What is PVBiz?',
-    a: "PVBiz is a solar monitoring solution that provides near real-time insights and smart notifications for solar plants on 14+ inverter brands and platforms, including Sunsynk, Deye, Solarman, Sol-Ark, Solis, Huawei FusionSolar and Solar Assistant. It helps you optimize your solar system's performance and stay informed about its health.",
+    a: "PVBiz is a solar monitoring solution that provides near real-time insights and smart notifications for solar plants on 16 inverter brands and platforms, including Sunsynk, Deye, Solarman, Sol-Ark, Solis, Huawei FusionSolar and Solar Assistant. It helps you optimize your solar system's performance and stay informed about its health.",
   },
   {
     q: 'How do I get started with PVBiz?',
@@ -226,7 +233,7 @@ export const HOME_FAQ: Faq[] = [
   },
   {
     q: 'Can I use PVBiz with multiple plants?',
-    a: 'Yes, PVBiz supports monitoring for multiple plants, even from different solar cloud platforms. PVBiz supports 14+ inverter brands and platforms, such as Sunsynk, Solarman, Deye, Sol-Ark, Solis, Huawei FusionSolar and Solar Assistant. You can add and manage all your plants from a single dashboard.',
+    a: 'Yes, PVBiz supports monitoring for multiple plants, even from different solar cloud platforms. PVBiz supports 16 inverter brands and platforms, such as Sunsynk, Solarman, Deye, Sol-Ark, Solis, Huawei FusionSolar and Solar Assistant. You can add and manage all your plants from a single dashboard.',
   },
   {
     q: 'What happens after my free trial ends?',

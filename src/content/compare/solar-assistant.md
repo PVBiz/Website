@@ -7,7 +7,7 @@ answer: 'Solar Assistant is local monitoring software on a small Raspberry Pi or
 description: 'PVBiz and Solar Assistant: a local monitoring device and a cloud app that reads it. What each does, alerts, prices and why many owners use both.'
 rows:
   - feature: What it is
-    pvbiz: Cloud monitoring, alerts and analysis app. Reads a Solar Assistant site through a share, plus 14+ other brands and platforms.
+    pvbiz: Cloud monitoring, alerts and analysis app. Reads a Solar Assistant site through a share, plus 15 other brands and platforms.
     them: Local monitoring and control software on a Raspberry Pi or Orange Pi, wired to the inverter and battery.
   - feature: Price
     pvbiz: R55 a month or R549 a year for up to two plants, every feature included. 7-day free trial.

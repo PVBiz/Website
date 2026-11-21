@@ -7,13 +7,13 @@ answer: "Sunsynk Connect is Sunsynk's own free app for Sunsynk inverters. PVBiz 
 description: "PVBiz vs Sunsynk Connect: Sunsynk's free app compared with PVBiz for alerts you can set, Telegram and WhatsApp delivery, forecasting and mixed-brand homes."
 rows:
   - feature: What it is
-    pvbiz: Independent monitoring, alerts and analysis app. Reads Sunsynk plants from the Sunsynk cloud, plus 14+ other inverter brands and platforms.
+    pvbiz: Independent monitoring, alerts and analysis app. Reads Sunsynk plants from the Sunsynk cloud, plus 15 other inverter brands and platforms.
     them: Sunsynk's own monitoring and settings app for Sunsynk inverters.
   - feature: Price
     pvbiz: R55 a month or R549 a year for up to two plants, every feature included. 7-day free trial.
     them: Free. The App Store listing shows no in-app purchases.
   - feature: Inverter brands
-    pvbiz: 14+ brands and platforms, side by side in one app.
+    pvbiz: 16 brands and platforms, side by side in one app.
     them: Sunsynk equipment.
   - feature: Live data
     pvbiz: Solar, battery, grid and load about every five minutes, plus per-string MPPT figures, battery temperature and per-phase grid readings.

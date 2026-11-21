@@ -7,13 +7,13 @@ answer: "Deye Cloud is Deye's own free platform for Deye inverters, with detaile
 description: "PVBiz vs Deye Cloud: Deye's free platform and inverter control, compared with PVBiz for alert thresholds, Telegram and WhatsApp, forecasts and mixed brands."
 rows:
   - feature: What it is
-    pvbiz: Independent monitoring, alerts and analysis app. Reads Deye plants from Deye Cloud, plus 14+ other brands and platforms.
+    pvbiz: Independent monitoring, alerts and analysis app. Reads Deye plants from Deye Cloud, plus 15 other brands and platforms.
     them: Deye's own monitoring and control platform, on the web and in one app for personal and business accounts.
   - feature: Price
     pvbiz: R55 a month or R549 a year for up to two plants, every feature included. 7-day free trial. Installer fleets priced per fleet.
     them: The app is free on the App Store. Deye's manual lists a subscription for its Deye Copilot AI battery control; no price is published.
   - feature: Inverter brands
-    pvbiz: 14+ brands and platforms, including Deye, side by side in one app.
+    pvbiz: 16 brands and platforms, including Deye, side by side in one app.
     them: Deye equipment, including loggers, hybrid and micro inverters, smart switches, EV chargers and heat pumps.
   - feature: Live data
     pvbiz: Solar, load, battery and grid about every five minutes, with each MPPT string and each phase, and energy totals refreshed hourly.

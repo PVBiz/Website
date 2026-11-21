@@ -7,13 +7,13 @@ answer: 'Solarman is the data-logger cloud behind many inverter brands, with the
 description: 'PVBiz vs Solarman Smart and Solarman Business: what each does, alert channels and thresholds, reports, and how PVBiz reads a Solarman plant read-only.'
 rows:
   - feature: What it is
-    pvbiz: Independent monitoring, alerts and analysis app. Reads Solarman plants through a share, plus 14+ other brands and platforms.
+    pvbiz: Independent monitoring, alerts and analysis app. Reads Solarman plants through a share, plus 15 other brands and platforms.
     them: The cloud and apps behind Solarman data loggers. Solarman Smart for homeowners, Solarman Business for installers, distributors and O&M teams.
   - feature: Price
     pvbiz: R55 a month or R549 a year for up to two plants, every feature included. 7-day free trial. Installer fleets priced per fleet.
     them: Solarman Smart is free on the App Store. No price is published for Solarman Business; Solarman's site offers a contact form.
   - feature: Inverter brands
-    pvbiz: 14+ brands and platforms, including Solarman, side by side in one app.
+    pvbiz: 16 brands and platforms, including Solarman, side by side in one app.
     them: Any inverter fitted with a Solarman data logger. Solarman states 190+ inverter brands.
   - feature: Live data
     pvbiz: Solar, load, battery and grid about every five minutes, with energy totals refreshed hourly.
