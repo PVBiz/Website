@@ -10,6 +10,7 @@ export default defineConfig(
     'dist/',
     '.astro/',
     '.wrangler/',
+    '.remember/',
     // Vendored or fixed-URL files served as-is.
     'public/fonts/',
     'public/img/',

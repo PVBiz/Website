@@ -61,7 +61,11 @@ const jsonLd = [
 ---
 
 <Base
-  title={`${d.name} monitoring with PVBiz`}
+  title={
+    installer
+      ? `${d.name} fleet monitoring and alerts for installers | PVBiz`
+      : `${d.name} monitoring with Telegram and email alerts | PVBiz`
+  }
   description={d.description}
   path={path}
   jsonLd={jsonLd}
